@@ -130,7 +130,7 @@ Smart people built standards so we don't have to worry about this. Your app work
 
 ---
 
-![image1][https://drive.google.com/file/d/1hDOOb-Cg2OqYG7i7FqLzW4UrZkUnhir3/view?usp=sharing]
+![image1](https://drive.google.com/file/d/1hDOOb-Cg2OqYG7i7FqLzW4UrZkUnhir3/view?usp=sharing)
 
 **Remember this terminology:**
 
@@ -153,7 +153,7 @@ Smart people built standards so we don't have to worry about this. Your app work
 
 Your car radio doesn't care WHAT music is playing (that's the higher layers). Layer 1 only cares about: "Am I receiving AM, FM, or Satellite signal?"
 
-![][image2]
+![img2](image2)
 
 ### **How It Works:**
 
@@ -183,7 +183,7 @@ Your network card (NIC) handles all of this automatically. You write code that s
 
       **DATA PACKET STRUCTURE**
 
-![][image3]
+l[img3](image3)
 
 MAC Address example: `00:1A:2B:3C:4D:5E`
 
@@ -226,7 +226,7 @@ When you mail a letter from New York to Tokyo:
 
 IP Packet structure:
 
-![][image4]
+![img4](image4)
 
 IP Address example: `192.168.1.1` or `2001:0db8::1`
 
@@ -247,7 +247,7 @@ IP Address example: `192.168.1.1` or `2001:0db8::1`
 - **Cannot be encrypted** (how would routers know where to send it?)
 - This is why VPNs encrypt by wrapping your packet in ANOTHER IP packet
 
-![][image5]
+![img5](image5)
 
 **Key protocol:** IP (Internet Protocol)
 
@@ -295,7 +295,7 @@ The postal service (Layer 3\) delivers mail to the building. But which office in
 
 ### **TCP (Reliable, Connection-oriented)**
 
-![][image6]
+![img6](image6)
 
 **How TCP Works:**
 

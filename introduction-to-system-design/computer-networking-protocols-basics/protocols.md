@@ -321,7 +321,7 @@ The postal service (Layer 3\) delivers mail to the building. But which office in
 
 ### **UDP (Fast, Fire-and-forget)**
 
-![][image7]
+![img7](image7)
 
 **How UDP Works:**
 
@@ -424,9 +424,9 @@ Imagine you speak English, your friend speaks Japanese. You need a translator (L
 
 ### **What Happens Here**
 
-### **![][image9]**
+### **![](image9)**
 
-![][image10]
+![img10](image10)
 
 ### **Why This Layer Exists:**
 

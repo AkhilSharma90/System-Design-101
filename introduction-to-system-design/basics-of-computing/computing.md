@@ -22,7 +22,6 @@ premium: false
 **Before diving into technical details, let's understand computers through a familiar analogy:**
 
 A COMPUTER \= A BUSTLING CITY
-═══════════════════════════════════════════
 
 🧠 CPU (Central Processing Unit)
    \= City Government / Mayor's Office
@@ -61,7 +60,7 @@ A COMPUTER \= A BUSTLING CITY
 #### **a. THE CPU \- The Brain (Decision Maker)**
 
 🧠 WHAT THE CPU DOES:
-═══════════════════════════════════════
+
 
 Think of it as a chef in a kitchen:
 
@@ -77,7 +76,7 @@ CPU's job:
 The CPU does this BILLIONS of times per second\!
 
 Modern CPU (2025):
-![img1][image1]
+![img1](https://res.cloudinary.com/dretwg3dy/image/upload/v1762354297/21_siflv3.png)
 
 **Real-world example:**
 
@@ -90,21 +89,21 @@ Modern CPU (2025):
 #### **b. RAM \- The Workspace (Active Memory)**
 
 💾 WHAT RAM DOES:
-═══════════════════════════════════════
+
 
 Think of it as your desk workspace:
 
 Initially empty desk (Computer off):
 
-![][image2]
+![img2](https://res.cloudinary.com/dretwg3dy/image/upload/v1762354294/12_dxtgjg.png)
 
 Working desk (Computer on with apps open):
 
-![][image3]
+![img3](https://res.cloudinary.com/dretwg3dy/image/upload/v1762354295/16_eomwct.png)
 
 Close Chrome (2GB freed):
 
-![][image4]
+![img4](https://res.cloudinary.com/dretwg3dy/image/upload/v1762354296/17_co8nfo.png)
 
 **Key characteristics:**
 
@@ -120,21 +119,21 @@ Close Chrome (2GB freed):
 #### **c. STORAGE \- The Library (Long-term Memory)**
 
 💿 WHAT STORAGE DOES:
-═══════════════════════════════════════
+
 
 Think of it as a library or filing cabinet:
 
-Your 1TB Storage:![][image5]
+Your 1TB Storage:![img5](https://res.cloudinary.com/dretwg3dy/image/upload/v1762354297/23_qcewxj.png)
 
 When you open a file:
 Storage → Copied to RAM → CPU processes it
 
-![][image6]
+![img6](https://res.cloudinary.com/dretwg3dy/image/upload/v1762354297/24_xp6bvh.png)
 
 When you save:
 CPU → Writes to RAM → Copied to Storage
 
-![][image7]
+![img7](https://res.cloudinary.com/dretwg3dy/image/upload/v1762354298/25_i56wa8.png)
 
 When you power off:
 Storage: ✅ Keeps everything
@@ -154,9 +153,9 @@ RAM: ❌ Loses everything
 #### **d. INPUT/OUTPUT \- The Communication System**
 
 🔄 HOW YOU INTERACT WITH THE COMPUTER:
-═══════════════════════════════════════
 
-![][image8]
+
+![img8](https://res.cloudinary.com/dretwg3dy/image/upload/v1762354299/29_uolrkl.png)
 
 **The I/O Journey:**
 
@@ -174,7 +173,7 @@ Example: Opening a photo
 3\. OUTPUT:
    Monitor: Displays the beautiful image\!
 
-![][image9]
+![img9](https://res.cloudinary.com/dretwg3dy/image/upload/v1762355306/page34_tnyzcv.png)
 
 
 Total time: \~100 milliseconds
@@ -187,7 +186,7 @@ Total time: \~100 milliseconds
 **Let's trace what happens when you open Netflix and play a video:**
 
 STEP-BY-STEP DATA JOURNEY:
-═══════════════════════════════════════════
+
 
 📍 STEP 1: You click "Play"
    Input: Mouse → CPU
@@ -224,7 +223,7 @@ STEP-BY-STEP DATA JOURNEY:
 ALL OF THIS HAPPENS 60 TIMES PER SECOND\! 🤯
 (That's 60 frames per second for smooth video)
 
-![][image10]
+![img10](https://res.cloudinary.com/dretwg3dy/image/upload/v1762354299/31_o6e8we.png)
 
 **Mental Model:** It's like a relay race where data is the baton, passed between different parts of the system\!
 
@@ -237,13 +236,11 @@ ALL OF THIS HAPPENS 60 TIMES PER SECOND\! 🤯
 **The Reality:** It's more nuanced\!
 
 ❌ WRONG UNDERSTANDING:
-═══════════════════════════════════
 "32GB RAM will make my computer 2x faster than 16GB\!"
 
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 ✅ CORRECT UNDERSTANDING:
-═══════════════════════════════════
+
 
 Scenario A: You have 8GB RAM, use 7.5GB
 ├─ RAM is 95% full
@@ -281,9 +278,9 @@ More RAM does nothing IF you already have enough.
 ### **🏗️ The Complete System: How It All Works Together**
 
 THE COMPUTER ORCHESTRA
-════════════════════════════════════════════
 
-![][image11]
+
+![img11](https://res.cloudinary.com/dretwg3dy/image/upload/v1762354299/30_pdnf9u.png)
 
 ---
 
@@ -339,7 +336,7 @@ F → 6 (Motherboard) \- The circuit board connecting everything
 **The Answer:** YES\! Computers do exactly this with electricity:
 
 BINARY \= The language of ON and OFF
-═══════════════════════════════════════
+
 
 Physical reality in computer:
 ├─ Voltage HIGH (5 volts) \= 1 (ON)
@@ -365,7 +362,7 @@ But from these simple 0s and 1s, we get:
 #### **The Hierarchy of Data**
 
 🔍 THE BUILDING BLOCKS:
-═══════════════════════════════════════
+
 
 1️⃣ BIT (Binary Digit)
    Smallest unit of data
@@ -375,7 +372,7 @@ But from these simple 0s and 1s, we get:
 
    Real-world: A single light switch
 
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
 
 2️⃣ BYTE (8 Bits)
    Basic unit of storage
@@ -390,7 +387,6 @@ But from these simple 0s and 1s, we get:
 
    Real-world: 8 light switches in a row
 
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 3️⃣ KILOBYTE (1,024 Bytes)
    1 KB ≈ 1 thousand bytes
@@ -400,7 +396,7 @@ But from these simple 0s and 1s, we get:
    ├─ Small text file: 5 KB
    └─ Tiny image: 10 KB
 
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
 
 4️⃣ MEGABYTE (1,024 KB)
    1 MB ≈ 1 million bytes
@@ -411,7 +407,6 @@ But from these simple 0s and 1s, we get:
    ├─ Short document: 0.5 MB
    └─ Typical app install: 50 MB
 
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 5️⃣ GIGABYTE (1,024 MB)
    1 GB ≈ 1 billion bytes
@@ -423,7 +418,6 @@ But from these simple 0s and 1s, we get:
    ├─ 1000 songs: 1 GB
    └─ Smartphone storage: 128 GB
 
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 6️⃣ TERABYTE (1,024 GB)
    1 TB ≈ 1 trillion bytes
@@ -435,7 +429,6 @@ But from these simple 0s and 1s, we get:
    ├─ Laptop hard drive: 1-2 TB
    └─ External backup drive: 4 TB
 
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 7️⃣ PETABYTE (1,024 TB)
    1 PB ≈ 1 quadrillion bytes
@@ -464,7 +457,6 @@ Petabyte     \[50 Libraries\]
 **Let's learn how binary represents numbers:**
 
 DECIMAL SYSTEM (Base 10):
-═══════════════════════════════════════
 
 Positions:  1000s  100s  10s  1s
 Number:        2     5    6   3
@@ -473,10 +465,8 @@ Number:        2     5    6   3
 
 We use 10 digits: 0,1,2,3,4,5,6,7,8,9
 
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 BINARY SYSTEM (Base 2):
-═══════════════════════════════════════
 
 Positions:  8s  4s  2s  1s
 Number:      1   0   1   1
@@ -485,10 +475,8 @@ Number:      1   0   1   1
 
 We use 2 digits: 0, 1
 
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 EXAMPLES:
-═══════════════════════════════════════
 
 Binary → Decimal:
 
@@ -534,7 +522,6 @@ Binary 0110 \= 0 \+ 4 \+ 2 \+ 0 \= 6
 **Ever wonder how computers store letters?**
 
 ASCII ENCODING:
-═══════════════════════════════════════
 
 Each letter \= 1 byte (8 bits)
 
@@ -573,7 +560,6 @@ b → 98 → 01100010
 ### **🎨 How Binary Represents Colors: RGB**
 
 COLOR ENCODING:
-═══════════════════════════════════════
 
 Every pixel on your screen \= 3 bytes (24 bits)
 
@@ -632,27 +618,22 @@ At 60 FPS:
 **The Reality:** It's actually 1,024\!
 
 ❌ MARKETING NUMBERS (Decimal):
-═══════════════════════════════════════
 1 KB \= 1,000 bytes
 1 MB \= 1,000 KB \= 1,000,000 bytes
 1 GB \= 1,000 MB \= 1,000,000,000 bytes
 
 (Hard drive manufacturers use this\!)
 
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 ✅ COMPUTER NUMBERS (Binary):
-═══════════════════════════════════════
 1 KB \= 1,024 bytes (2¹⁰)
 1 MB \= 1,024 KB \= 1,048,576 bytes (2²⁰)
 1 GB \= 1,024 MB \= 1,073,741,824 bytes (2³⁰)
 
 (Computer systems use this\!)
 
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 WHY THE DIFFERENCE?
-═══════════════════════════════════════
 
 Computers think in powers of 2:
 2¹⁰ \= 1,024 (close to 1,000)
@@ -660,7 +641,6 @@ Computers think in powers of 2:
 2³⁰ \= 1,073,741,824 (close to 1 billion)
 
 THE RESULT:
-═══════════════════════════════════════
 
 You buy a "500 GB" hard drive:
 Marketing: 500,000,000,000 bytes
@@ -678,7 +658,6 @@ That's a 7% difference\!
 ### **🎯 The Power of Binary: Everything is Numbers**
 
 WHAT BINARY REPRESENTS:
-═══════════════════════════════════════
 
 Text:
 "Hello" → 5 bytes
@@ -738,10 +717,9 @@ You’ll learn more about storage in the **“Storage Fundamentals”**section o
 ### **🏔️ The Memory Pyramid**
 
 THE MEMORY HIERARCHY
-═══════════════════════════════════════
 (Top \= Fastest/Smallest, Bottom \= Slowest/Largest)
 
-![][image12]
+![img12](https://res.cloudinary.com/dretwg3dy/image/upload/v1762355306/page35_gbmyot.png)
 
 ---
 
@@ -750,7 +728,6 @@ THE MEMORY HIERARCHY
 **Let's make these time scales relatable:**
 
 LATENCY HUMANIZED:
-═══════════════════════════════════════
 
 If accessing a CPU register took 1 second:
 
@@ -770,7 +747,6 @@ The difference is MASSIVE\!
 #### **Level 1: CPU Registers**
 
 🎯 REGISTERS \- The Brain's Scratchpad
-═══════════════════════════════════════
 
 Location: Inside the CPU itself
 Size: \~16-32 registers × 64 bits \= 100-200 bytes
@@ -781,7 +757,7 @@ What they hold:
 ├─ Temporary calculation results
 ├─ Memory addresses being accessed
 └─ Program counter (what to do next
-![][image13]
+![img13](https://res.cloudinary.com/dretwg3dy/image/upload/v1762355590/3_6_w565ib.png)
 
 └─────────────────────────┘
 
@@ -792,7 +768,6 @@ Think of it as: Calculator display showing current number
 #### **Level 2: L1 Cache**
 
 🚀 L1 CACHE \- The CPU's Immediate Memory
-═══════════════════════════════════════
 
 Location: On the CPU chip, closest to cores
 Size: 32-64 KB per core
@@ -803,7 +778,7 @@ Split into two parts:
 └─ L1 Data Cache (data being processed)
 
 Modern CPU (8 cores):
-![][image14]
+![img14](https://res.cloudinary.com/dretwg3dy/image/upload/v1762354297/22_aozppg.png)
 
 Think of it as: Items on your desk within arm's reach
 
@@ -812,7 +787,6 @@ Think of it as: Items on your desk within arm's reach
 #### **Level 3: L2 Cache**
 
 💨 L2 CACHE \- The CPU's Short-term Memory
-═══════════════════════════════════════
 
 Location: On CPU chip, still very close
 Size: 256-512 KB per core
@@ -825,7 +799,7 @@ Holds:
 
 Modern CPU (8 cores):
 
-![][image15]
+![img15](https://res.cloudinary.com/dretwg3dy/image/upload/v1762355807/37_vxrhpt.png)
 
 Think of it as: Drawer under your desk
 
@@ -834,7 +808,6 @@ Think of it as: Drawer under your desk
 #### **Level 4: L3 Cache**
 
 ⚡ L3 CACHE \- Shared CPU Memory
-═══════════════════════════════════════
 
 Location: On CPU chip, shared by all cores
 Size: 8-64 MB (entire chip)
@@ -842,7 +815,7 @@ Speed: 40 cycles (\~15 nanoseconds)
 
 Shared resource:
 
-![][image16]
+![img16](https://res.cloudinary.com/dretwg3dy/image/upload/v1762354295/18_nz9ltg.png)
 
 Benefits:
 ✓ Cores can share data efficiently
@@ -856,7 +829,6 @@ Think of it as: Bookshelf in your office (shared)
 #### **Level 5: RAM (Random Access Memory)**
 
 💾 RAM \- Main System Memory
-═══════════════════════════════════════
 
 Location: Separate chips on motherboard
 Size: 8-128 GB (typical systems)
@@ -871,7 +843,7 @@ What it holds:
 
 Example system with 16GB RAM:
 
-![][image17]
+![img17](https://res.cloudinary.com/dretwg3dy/image/upload/v1762354296/15_sb6c2i.png)
 
 Characteristics:
 ✓ Volatile (loses data when powered off)
@@ -886,7 +858,6 @@ Think of it as: Your desk workspace
 #### **Level 6: SSD (Solid State Drive)**
 
 💿 SSD \- Fast Persistent Storage
-═══════════════════════════════════════
 
 Location: Connected via SATA/NVMe
 Size: 256 GB \- 4 TB
@@ -906,7 +877,7 @@ Characteristics:
 
 Speed comparison to HDD:
 
-![][image18]
+![img18](https://res.cloudinary.com/dretwg3dy/image/upload/v1762354296/13_bwainy.png)
 
 Think of it as: Filing cabinet with instant-access drawers
 
@@ -915,14 +886,13 @@ Think of it as: Filing cabinet with instant-access drawers
 #### **Level 7: HDD (Hard Disk Drive)**
 
 💽 HDD \- Slow Mechanical Storage
-═══════════════════════════════════════
 
 Location: Connected via SATA
 Size: 1-20 TB
 Speed: 10 milliseconds (10,000,000 nanoseconds)
 
 Physical structure:
-![][image19]
+![img19](https://res.cloudinary.com/dretwg3dy/image/upload/v1762354300/32_yns27w.png)
 
 ┌──────────────────────┐
 Characteristics:
@@ -943,7 +913,6 @@ Think of it as: Warehouse storage (takes time to retrieve)
 **Let's follow what happens when the CPU needs data:**
 
 THE DATA RETRIEVAL JOURNEY
-═══════════════════════════════════════
 
 CPU needs value at memory address 0x1234:
 
@@ -994,7 +963,6 @@ Time taken: 1 nanosecond
 ### **📊 Cache Hit Rates: Why They Matter**
 
 CACHE PERFORMANCE
-═══════════════════════════════════════
 
 Typical cache hit rates:
 L1 Cache: 95% hit rate
@@ -1033,7 +1001,6 @@ CACHE MAKES IT 42x FASTER\! 🚀
 **The Reality:** Cache size is a careful balance\!
 
 ❌ WHY YOU CAN'T HAVE HUGE CACHES:
-═══════════════════════════════════════
 
 Problem 1: PHYSICAL SPACE
 ├─ Caches are on the CPU disk
@@ -1053,7 +1020,6 @@ Problem 3: COST
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 ✅ ACTUAL DESIGN:
-═══════════════════════════════════════
 
 Modern CPUs use optimal sizes:
 L1: 32-64 KB (tiny but INSTANT)
@@ -1085,7 +1051,6 @@ Result: Small but fast beats large but slow\!
 ### **🎯 Memory Hierarchy Summary**
 
 THE COMPLETE PICTURE:
-═══════════════════════════════════════
 
 Why this hierarchy exists:
 
@@ -1102,7 +1067,6 @@ Why this hierarchy exists:
 The Principle: Keep frequently used data close\!
 
 LOCALITY OF REFERENCE:
-═══════════════════════════════════════
 
 Temporal locality:
 "If I accessed this data, I'll likely access it again soon"
@@ -1135,11 +1099,10 @@ This is why caches work so well\!
 ### **🧠 What is a CPU Core?**
 
 CPU CORE \- The Processing Unit
-═══════════════════════════════════════
 
 A core is one independent processing unit:
 
-![][image20]
+![img20](https://res.cloudinary.com/dretwg3dy/image/upload/v1762354301/33_fuuv50.png)
 
 One core can execute ONE instruction
 stream at a time.
@@ -1149,11 +1112,10 @@ stream at a time.
 ### **🔢 Multi-Core CPUs: The Team Approach**
 
 EVOLUTION OF CPUS
-═══════════════════════════════════════
 
 📅 YEAR 2000: Single Core
 
-![][image21]
+![img21](https://res.cloudinary.com/dretwg3dy/image/upload/v1762356154/38_ffmsoi.png)
 
 Power: 1x
 Can do: 1 task at a time
@@ -1162,7 +1124,7 @@ Can do: 1 task at a time
 
 📅 YEAR 2006: Dual Core
 
-![][image22]
+![img22](https://res.cloudinary.com/dretwg3dy/image/upload/v1762354298/26_rmw1oa.png)
 
 Power: 2x (nearly)
 Can do: 2 tasks simultaneously
@@ -1171,7 +1133,7 @@ Can do: 2 tasks simultaneously
 
 📅 YEAR 2010: Quad Core
 
-![][image23]
+![img23](https://res.cloudinary.com/dretwg3dy/image/upload/v1762354298/27_rx20ty.png)
 
 Power: 4x (nearly)
 Can do: 4 tasks simultaneously
@@ -1180,7 +1142,7 @@ Can do: 4 tasks simultaneously
 
 📅 YEAR 2025: Many Cores
 
-![][image24]
+![img24](https://res.cloudinary.com/dretwg3dy/image/upload/v1762354298/28_mcqmzg.png)
 
 High-End Desktop: 32 cores
 Server CPU: 128+ cores\!
@@ -1192,9 +1154,8 @@ Server CPU: 128+ cores\!
 **Let's see how cores are used while gaming:**
 
 GAME RUNNING ON 8-CORE CPU
-═══════════════════════════════════════
 
-![][image25]
+![img25](https://res.cloudinary.com/dretwg3dy/image/upload/v1762354295/14_oq93li.png)
 
 Without multiple cores:
 One core at 370% \= Impossible\!
@@ -1207,7 +1168,6 @@ Game would run at \<30 FPS
 ### **⏱️ Clock Speed: How Fast the CPU Thinks**
 
 CLOCK SPEED (GHz \- Gigahertz)
-═══════════════════════════════════════
 
 Clock speed \= How many cycles per second
 
@@ -1220,7 +1180,6 @@ Modern CPU: 3.5 GHz
 \= 3,500,000,000 cycles per second\!
 
 What happens in one cycle?
-────────────────────────────────────
 
 Simple instruction (add two numbers):
 1 cycle \= **Fetch, Decode, Execute, Write**
@@ -1240,7 +1199,6 @@ Memory access:
 **How does a CPU execute instructions?**
 
 THE 4-STAGE PIPELINE
-═══════════════════════════════════════
 
 Classic  pipeline:
 
@@ -1259,7 +1217,7 @@ Classic  pipeline:
 **Stage 4: WRITE BACK**
 ├─ Write result back
 └─ "Register now contains 8"
-![][image26]
+![img26](https://res.cloudinary.com/dretwg3dy/image/upload/v1762354296/19_rhxfhm.png)
 
 ---
 
@@ -1270,7 +1228,6 @@ Classic  pipeline:
 **The Reality:** It's more complex\!
 
 ❌ NAIVE COMPARISON:
-═══════════════════════════════════════
 
 CPU A: 5.0 GHz, 4 cores
 CPU B: 3.5 GHz, 8 cores
@@ -1280,7 +1237,6 @@ Your assumption: A is 43% faster\!
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 ✅ REAL-WORLD RESULTS:
-═══════════════════════════════════════
 
 Single-threaded task (video game main thread):
 ├─ CPU A: 100 FPS  ✓ (Winner\!)
@@ -1304,7 +1260,6 @@ Multi-threaded: All cores used
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 OTHER FACTORS THAT MATTER:
-═══════════════════════════════════════
 
 Architecture efficiency:
 ├─ Instructions per cycle (IPC)

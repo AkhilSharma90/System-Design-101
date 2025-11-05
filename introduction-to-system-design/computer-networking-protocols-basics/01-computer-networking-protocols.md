@@ -1,6 +1,6 @@
 ---
-slug: networking-protocols
-title: The 8 Core protocol properties and the OSI Model
+slug: computer-networking-protocols
+title: The 8 Core protocol properties and the Open Systems Interconnection Model
 readTime: 15 min
 orderIndex: 1
 premium: false

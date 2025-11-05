@@ -1,12 +1,12 @@
 ---
 slug: networking-protocols
-title: The 8 Core Protocol Properties
+title: The 8 Core protocol properties and the OSI Model
 readTime: 15 min
 orderIndex: 1
 premium: false
 ---
 
-# The 8 Core Protocol Properties
+# The 8 core protocol properties
 
 ## **What Even IS a Protocol?**
 

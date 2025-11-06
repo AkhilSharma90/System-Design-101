@@ -35,7 +35,7 @@ iii) GCP is Google’s Cloud Service (Google Cloud Service)
 
 iv) We are also going to use lot of terms like EBS,EC2,S3,Glacier, EFS,CDN you can come back and refer to this photo whenever you get confused
 
-![][image1]
+![img1](https://res.cloudinary.com/dretwg3dy/image/upload/v1762436769/53_o39gys.png)
 
 ---
 
@@ -128,7 +128,7 @@ Think of a Hard Drive:
 
 Physical disk divided into blocks:
 
-![][image2]
+![img2](https://res.cloudinary.com/dretwg3dy/image/upload/v1762436764/43_ru1dts.png)
 
 Each block in a block storage has
 \-  Fixed size (usually 4KB)
@@ -298,7 +298,7 @@ Google Filestore
 Multiple Web Servers Sharing Files:
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
-![][image3]
+![img3](https://res.cloudinary.com/dretwg3dy/image/upload/v1762436767/52_xifyn5.png)
 
 
 All servers see same files\!
@@ -464,7 +464,7 @@ Cost: VERY CHEAP (\~$0.023/GB/month for S3)
 
 ### **The Comparison Table**
 
- ![][image4]
+ ![img4](https://res.cloudinary.com/dretwg3dy/image/upload/v1762436769/58_a19dvf.png)
 
 ### **Real-World Architecture Example**
 
@@ -482,7 +482,7 @@ Cost: $50/month
 \[PostgreSQL\] → \[EBS Volume 500GB\]
                (Direct block access)
 
-![][image5]
+![img5](https://res.cloudinary.com/dretwg3dy/image/upload/v1762436765/47_gqcxuc.png)
 
 Component 2: Application Servers
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
@@ -492,7 +492,7 @@ What data does it store? : Application logs, temp files, configs
 Volume: 100 GB
 Cost: $30/month
 
-![][image6]
+![img6](https://res.cloudinary.com/dretwg3dy/image/upload/v1762438956/54_koydvs.png)
 
 Component 3: Product Images
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
@@ -502,7 +502,7 @@ Data: Product photos, user uploads
 Volume: 5 TB
 Cost: $115/month
 
-![][image7]
+![img7](https://res.cloudinary.com/dretwg3dy/image/upload/v1762436767/55_vp5syz.png)
 
 Component 4: Database Backups
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
@@ -512,7 +512,7 @@ Data: Daily database backups
 Volume: 10 TB
 Cost: $40/month (Glacier Deep Archive\!)
 
-![][image8]
+![img8](https://res.cloudinary.com/dretwg3dy/image/upload/v1762436768/51_we1d9q.png)
 
 Total Monthly Cost: $235
 Total Storage: 15.6 TB
@@ -577,7 +577,7 @@ Remember the storage diagram we discussed on the first section (the fundamentals
 Physical RAM Module:
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
-![][image9]
+![img9](https://res.cloudinary.com/dretwg3dy/image/upload/v1762436766/48_wtkdft.png)
 
 Characteristics:
 \- Random access (any address in same time)
@@ -679,7 +679,7 @@ How SSDs Work:
 
 Flash Memory Cells:
 
-![][image10]
+![img10](https://res.cloudinary.com/dretwg3dy/image/upload/v1762436766/49_psldow.png)
 
 No moving parts\!
 \- Electronic (like RAM)
@@ -732,7 +732,7 @@ Interface: SATA (same as old HDDs)
 Cost: $0.10/GB
 Use: Laptops, desktops
 
-![][image11]
+![img11](https://res.cloudinary.com/dretwg3dy/image/upload/v1762436769/59_ietplb.png)
 
 NVMe SSD (High Performance):
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
@@ -741,7 +741,7 @@ Interface: PCIe (direct to CPU)
 Cost: $0.15/GB
 Use: Gaming PCs, servers, databases
 
-![][image12]
+![img12](https://res.cloudinary.com/dretwg3dy/image/upload/v1762436769/61_rx1nnr.png)
 
 Cloud SSD (AWS gp3):
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
@@ -787,7 +787,7 @@ Total: \~10ms per operation
 Compare to SSD: 0.1ms
 HDD is 100x slower\!
 
-![][image13]
+![img13](https://res.cloudinary.com/dretwg3dy/image/upload/v1762354300/32_yns27w.png)
 
 Why Sequential is Better:
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
@@ -849,7 +849,7 @@ Bad use cases:
 The Memory/Storage Pyramid (**we saw similar diagram in our computer fundamentals section this is the detailed/extended diagram for the original diagram**)
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
-![][image14]
+![img14](https://res.cloudinary.com/dretwg3dy/image/upload/v1762436766/46_pdclle.png)
 
 
 ---
@@ -865,14 +865,14 @@ Your Closet:
 
 Front of Closet (Hot Data):
 
-![][image15]
+![img15](https://res.cloudinary.com/dretwg3dy/image/upload/v1762436766/50_csiig8.png)
 
 Back of Closet (Warm Data):
-![][image16]
+![img16](https://res.cloudinary.com/dretwg3dy/image/upload/v1762436765/41_kxbxqo.png)
 
 Storage Unit (Cold Data):
 
-![][image17]
+![img17](https://res.cloudinary.com/dretwg3dy/image/upload/v1762436764/40_ptmfvp.png)
 
 ### **Defining Data Temperature**
 
@@ -1248,7 +1248,7 @@ Layer 1: Cache (HOT 🔥)
 \- TTL: 1-24 hours
 \- Cost: $500/month
 
-![][image18]
+![img18](https://res.cloudinary.com/dretwg3dy/image/upload/v1762436766/44_lgyzvx.png)
 
 Layer 2: Primary Database (HOT 🔥)
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
@@ -1265,7 +1265,7 @@ Layer 2: Primary Database (HOT 🔥)
 \- Backup: Hourly
 \- Cost: $400/month
 
-![][image19]
+![img19](https://res.cloudinary.com/dretwg3dy/image/upload/v1762436769/60_xzhrob.png)
 
 Layer 3: Media Storage \- Recent (HOT 🔥)
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
@@ -1281,24 +1281,16 @@ Layer 3: Media Storage \- Recent (HOT 🔥)
 \- Lifecycle: Move to warm after 30 days
 \- Cost: $1,150/month
 
-![][image20]
+![img20](https://res.cloudinary.com/dretwg3dy/image/upload/v1762436768/56_xuced2.png)
 
 Layer 4: Media Storage \- Historical (WARM 🌤️)
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
-\[S3 Infrequent Access\]
-\- Type: Object Storage
-\- Size: 200 TB
-\- Latency: 300ms
-\- Data:
-  ✓ Photos 30-365 days old
-  ✓ Older videos
-  ✓ Historical user content
-\- Lifecycle: Move to cold after 1 year
-\- Cost: $2000/month
-![][image21]
-Layer 5: Analytics Data (WARM 🌤️)
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+\[S3 Infrequent Access\] \- Type: Object Storage \- Size: 200 TB \- Latency:
+300ms \- Data: ✓ Photos 30-365 days old ✓ Older videos ✓ Historical user content
+\- Lifecycle: Move to cold after 1 year \- Cost: $2000/month (for 200TB)
+![img21](https://res.cloudinary.com/dretwg3dy/image/upload/v1762436764/42_uz7dol.png)
+Layer 5: Analytics Data (WARM 🌤️) ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 \[Data Warehouse on HDD\]
 \- Type: File Storage / Block Storage
@@ -1314,7 +1306,7 @@ Layer 5: Analytics Data (WARM 🌤️)
 
 Layer 6: Archives (COLD ❄️)
 
-![][image22]
+![img22](https://res.cloudinary.com/dretwg3dy/image/upload/v1762440179/57_ir8cpn.png)
 
 \[S3 Glacier\]
 \- Type: Object Storage (Archive)
@@ -1383,7 +1375,7 @@ User Views a Post:
    "Initiate restore (5 hours)"
    Found: User gets "This post is being retrieved" \[0.01% of requests\]
 
-![][image23]
+![img23](https://res.cloudinary.com/dretwg3dy/image/upload/v1762440474/final_ziwy35.png)
 
 
 Result:

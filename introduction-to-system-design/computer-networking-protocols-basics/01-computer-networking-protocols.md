@@ -130,7 +130,7 @@ Smart people built standards so we don't have to worry about this. Your app work
 
 ---
 
-![img1](https://res.cloudinary.com/dretwg3dy/image/upload/v1762264641/6_zb87ad.png)
+![img1](https://res.cloudinary.com/dretwg3dy/image/upload/v1762395693/6_lz4d8g.png)
 
 **Remember this terminology:**
 
@@ -153,7 +153,7 @@ Smart people built standards so we don't have to worry about this. Your app work
 
 Your car radio doesn't care WHAT music is playing (that's the higher layers). Layer 1 only cares about: "Am I receiving AM, FM, or Satellite signal?"
 
-![img2](https://res.cloudinary.com/dretwg3dy/image/upload/v1762264640/Phyiscla_uyssdj.png)
+![img2](https://res.cloudinary.com/dretwg3dy/image/upload/v1762395692/1_mvbltv.png)
 
 ### **How It Works:**
 
@@ -183,7 +183,7 @@ Your network card (NIC) handles all of this automatically. You write code that s
 
       **DATA PACKET STRUCTURE**
 
-![img3](https://res.cloudinary.com/dretwg3dy/image/upload/v1762264641/7_zl41a9.png)
+![img3](https://res.cloudinary.com/dretwg3dy/image/upload/v1762395692/7_ng0kes.png)
 
 MAC Address example: `00:1A:2B:3C:4D:5E`
 
@@ -226,7 +226,7 @@ When you mail a letter from New York to Tokyo:
 
 IP Packet structure:
 
-![img4](https://res.cloudinary.com/dretwg3dy/image/upload/v1762264640/2_kibqyi.png)
+![img4](https://res.cloudinary.com/dretwg3dy/image/upload/v1762395692/2_uywpbl.png)
 
 IP Address example: `192.168.1.1` or `2001:0db8::1`
 
@@ -247,7 +247,7 @@ IP Address example: `192.168.1.1` or `2001:0db8::1`
 - **Cannot be encrypted** (how would routers know where to send it?)
 - This is why VPNs encrypt by wrapping your packet in ANOTHER IP packet
 
-![img5](https://res.cloudinary.com/dretwg3dy/image/upload/v1762264641/3_kysxn2.png)
+![img5](https://res.cloudinary.com/dretwg3dy/image/upload/v1762395692/3_xt5eng.png)
 **Key protocol:** IP (Internet Protocol)
 
 **What lives here:** Routers (Layer 3 devices)
@@ -294,7 +294,7 @@ The postal service (Layer 3\) delivers mail to the building. But which office in
 
 ### **TCP (Reliable, Connection-oriented)**
 
-![img6](https://res.cloudinary.com/dretwg3dy/image/upload/v1762264640/5_wdak58.png)
+![img6](https://res.cloudinary.com/dretwg3dy/image/upload/v1762395692/5_fextjy.png)
 
 **How TCP Works:**
 
@@ -320,7 +320,7 @@ The postal service (Layer 3\) delivers mail to the building. But which office in
 
 ### **UDP (Fast, Fire-and-forget)**
 
-![img7](https://res.cloudinary.com/dretwg3dy/image/upload/v1762264641/4_v9doka.png)
+![img7](https://res.cloudinary.com/dretwg3dy/image/upload/v1762395693/4_bpontz.png)
 
 **How UDP Works:**
 
@@ -379,7 +379,7 @@ This is where:
 - **TCP 3-way handshake happens** (SYN, SYN-ACK, ACK) \- "Dialing and answering"
 - **TLS encryption is negotiated** \- "Setting up secure line"
 - **Connection state is maintained** \- "Keeping the line open"
-- **Sessions are established and torn down** \- "Calling and hanging up"![img8](https://res.cloudinary.com/dretwg3dy/image/upload/v1762264641/9_mfxmkr.png)
+- **Sessions are established and torn down** \- "Calling and hanging up"![img8](https://res.cloudinary.com/dretwg3dy/image/upload/v1762395693/9_ol2tux.png)
 
 ### **Why This Layer Exists:**
 
@@ -423,9 +423,9 @@ Imagine you speak English, your friend speaks Japanese. You need a translator (L
 
 ### **What Happens Here**
 
-### **![img9](https://res.cloudinary.com/dretwg3dy/image/upload/v1762264640/8_l3yiaz.png)**
+### **![img9](https://res.cloudinary.com/dretwg3dy/image/upload/v1762395692/8_xuast8.png)**
 
-![img10](https://res.cloudinary.com/dretwg3dy/image/upload/v1762266446/receiving_data_swl9ue.png)
+![img10](https://res.cloudinary.com/dretwg3dy/image/upload/v1762395693/11_iaxqoq.png)
 
 ### **Why This Layer Exists:**
 
@@ -483,4 +483,4 @@ Content-Type: application/json
 
 ## **🎎 The Matryoshka Doll Model**
 
-Each layer wraps the previous one. To read data, you unwrap layer by layer\!![img12](https://res.cloudinary.com/dretwg3dy/image/upload/v1762264642/10_ehe3q3.png)
+Each layer wraps the previous one. To read data, you unwrap layer by layer\!![img12](https://res.cloudinary.com/dretwg3dy/image/upload/v1762395693/10_bnqlhf.png)

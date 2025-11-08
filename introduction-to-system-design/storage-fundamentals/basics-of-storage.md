@@ -2,7 +2,7 @@
 slug: basics-of-data-storage
 title: Basics of Storage
 readTime: 20 min
-orderIndex: 1
+orderIndex: 2
 premium: false
 ---
 

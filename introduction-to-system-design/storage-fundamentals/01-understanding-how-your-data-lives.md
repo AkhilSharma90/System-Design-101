@@ -1,6 +1,6 @@
 ---
 slug: basics-of-data-storage
-title: Basics of Storage
+title: Understanding Where Your Data Lives
 readTime: 20 min
 orderIndex: 1
 premium: false

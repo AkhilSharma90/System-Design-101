@@ -2,7 +2,7 @@
 slug: transport-layer-security
 title: Transport Layer Security
 readTime: 15 min
-orderIndex: 5
+orderIndex: 6
 premium: false
 ---
 

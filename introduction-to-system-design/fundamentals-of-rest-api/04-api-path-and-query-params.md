@@ -9,7 +9,7 @@ premium: false
 
 
 
-# **🎯 19\. Query Parameters vs Path Parameters: The Address System**
+# Query Parameters vs Path Parameters: The Address System
 
 Alright, let's talk about something that confuses a lot of beginners. When you're designing an API, you need to send information to the server, right? There are two main ways to do this in the URL itself: **path parameters** and **query parameters**.
 

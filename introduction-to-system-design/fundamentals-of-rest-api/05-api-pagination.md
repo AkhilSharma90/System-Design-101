@@ -14,7 +14,7 @@ That's exactly the problem pagination solves.
 
 ### **The Phone Book Story**
 
-Remember old phone books? (Okay, maybe you don't, but work with me here\!) Phone books had thousands of listings. Did they print one giant list? No\! They:
+Remember old phone books?  Phone books had thousands of listings. Did they print one giant list? No\! They:
 
 1. Organized alphabetically
 2. Added page numbers

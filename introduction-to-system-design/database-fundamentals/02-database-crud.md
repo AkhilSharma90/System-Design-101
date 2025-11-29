@@ -1,6 +1,6 @@
 ---
 slug: database-crud
-title: SQL vs NoSQL
+title: Database Crud Operations
 readTime: 15 min
 orderIndex: 2
 premium: false

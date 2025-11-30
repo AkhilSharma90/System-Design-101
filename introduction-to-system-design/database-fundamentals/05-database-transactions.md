@@ -489,6 +489,7 @@ Problem: Slowest performance
   // Still shows: $1000 (consistent snapshot)
 
   COMMIT;
+  ```
 
 ---
 

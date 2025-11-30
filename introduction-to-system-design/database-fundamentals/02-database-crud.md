@@ -5,7 +5,7 @@ readTime: 15 min
 orderIndex: 2
 premium: false
 ---
-# CRUD Operations \- The Four Essential Database Actions
+# **CRUD Operations \- The Four Essential Database Actions**
 
 ### **🎯 Challenge 5: The Todo App**
 

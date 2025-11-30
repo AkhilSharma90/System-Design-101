@@ -5,8 +5,7 @@ readTime: 15 min
 orderIndex: 3
 premium: false
 ---
-
-##  **ACID Properties \- The Four Pillars of Database Reliability**
+#  **ACID Properties \- The Four Pillars of Database Reliability**
 
 ### **🎯 Challenge 2: The Bank Transfer Mystery**
 

@@ -6,7 +6,7 @@ orderIndex: 1
 premium: false
 ---
 
-#  What is Caching? \- Your Speed Multiplier**
+#  What is Caching? \- Your Speed Multiplier
 
 ### **🎯 Challenge 1: The Library Puzzle**
 

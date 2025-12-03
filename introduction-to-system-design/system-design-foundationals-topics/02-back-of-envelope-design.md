@@ -1,6 +1,6 @@
 ---
 slug: back-of-envelope-design
-title: Back of Envelope Design
+title: Back of Envelope Estimations
 readTime: 20 min
 orderIndex: 2
 premium: false

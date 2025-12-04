@@ -1,5 +1,5 @@
 ---
-slug: functional testing
+slug: functional-testing
 title: Functional Testing
 readTime: 7 min
 orderIndex: 2

@@ -281,7 +281,7 @@ Scenario: E-commerce site
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
-| 14:00 \- \[INFO\] Server started
+| 14:00 \- [INFO\] Server started
 
 14:15 \- \[INFO\] 100 requests/minute (normal)
 

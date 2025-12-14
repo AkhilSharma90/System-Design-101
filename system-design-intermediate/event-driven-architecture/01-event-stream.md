@@ -1,5 +1,5 @@
 ---
-slug: Event Streams
+slug: event-streams
 title: Fundamentals of Event Streams
 readTime: 10 min
 orderIndex: 1

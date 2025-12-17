@@ -1,9 +1,9 @@
 ---
 
-slug: web-real-time-communication
-title: Web Real Time Communication (WEBRTC)
+slug: simple-mail-transfer-protocol
+title: Simple Mail Transfer Protocol (SMTP)
 readTime: 30 min
-orderIndex: 4
+orderIndex: 5
 premium: false
 ---
 

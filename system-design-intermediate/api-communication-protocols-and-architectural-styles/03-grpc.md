@@ -818,7 +818,8 @@ channel = grpc.insecure_channel(
 )
 
 # DNS returns multiple IPs, gRPC balances automatically!
-# ````
+#
+```
 
 
 

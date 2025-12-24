@@ -8,9 +8,9 @@ premium: false
 
 
 
-## **🎭 PART 5: Stateless vs Stateful Services \- The Memory Question**
+## **🎭Stateless vs Stateful Services \- The Memory Question**
 
-### **🎯 Challenge 5: The Forgetful vs Remembering Server**
+### **🎯 The Forgetful vs Remembering Server**
 
 **Scenario:** You're talking to a customer service agent.
 

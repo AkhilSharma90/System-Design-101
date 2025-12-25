@@ -1,6 +1,6 @@
 ---
 slug: forward-reverse-proxy
-title:Forward and Reverse Proxy
+title: Forward and Reverse Proxy
 readTime: 20 min
 orderIndex: 4
 premium: false

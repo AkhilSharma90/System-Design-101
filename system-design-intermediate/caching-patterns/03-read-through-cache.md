@@ -1,5 +1,5 @@
 ---
-slug: write-through-cache
+slug: read-through-cache
 title: Read Through Cache
 readTime: 15 min
 orderIndex: 3

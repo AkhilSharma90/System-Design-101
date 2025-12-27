@@ -1,14 +1,10 @@
-
 ---
 slug: mqtt
 title: MQTT
 readTime: 30 min
 orderIndex: 8
 premium: false
-
 ---
-
-
 
 # The Whisper Network: How Millions of Devices Talk Without Shouting
 

@@ -3,14 +3,14 @@
 slug: distributed-consensus
 title: Distributed Consensus
 readTime: 20 min
-orderIndex: 3
+orderIndex: 5
 premium: false
 
 ---
 
 
 
-# Distributed Consensus (Paxos, Raft, ZooKeeper) (Interactive TCP-Style)
+# Distributed Consensus (Paxos, Raft, ZooKeeper)
 
 > Audience: advanced distributed systems engineers who want a mental model that survives real outages.
 

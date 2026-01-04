@@ -1,3 +1,15 @@
+---
+slug: blast-radius-and-failure-domain-isolation
+title: Blast Radius and Failure Domain Isolation
+readTime: 20 min
+orderIndex: 3
+premium: false
+---
+
+
+
+
+
 # Blast Radius and Failure Domain Isolation (Containing the Blast)
 
 > Audience: platform engineers and architects designing fault-tolerant distributed systems.

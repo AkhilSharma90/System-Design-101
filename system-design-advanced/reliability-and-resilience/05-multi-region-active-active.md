@@ -2,7 +2,7 @@
 slug: multi-region-active-active
 title: Multi Region Active Active
 readTime: 20 min
-orderIndex: 4
+orderIndex: 5
 premium: false
 ---
 

@@ -1,4 +1,15 @@
-# Kappa Architecture vs Lambda Architecture (Distributed Systems, Interactive TCP Style)
+---
+slug: kappa-archiecture-vs-lambda-architecture
+title: Kappa Architecture vs Lambda Architecture
+readTime: 20 min
+orderIndex: 6
+premium: false
+---
+
+
+
+
+# Kappa Architecture vs Lambda Architecture
 
 > Audience: advanced distributed-systems engineers and architects building streaming + analytics platforms at scale.
 >

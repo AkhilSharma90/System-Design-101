@@ -9,7 +9,7 @@ premium: false
 
 
 
-# Optimistic vs Pessimistic Locking (Distributed Systems Edition)
+# Optimistic vs Pessimistic Locking
 
 > You’re about to design concurrency control for a distributed system that handles money, inventory, bookings, or collaborative edits. You have two archetypal strategies:
 >

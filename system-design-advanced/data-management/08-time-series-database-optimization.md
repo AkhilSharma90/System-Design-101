@@ -9,7 +9,7 @@ premium: false
 
 
 
-# Time-Series Database Optimization (Distributed Systems Edition)
+# Time-Series Database Optimization
 
 > **Audience**: engineers who already ship distributed systems and now need their time-series stack to stay fast, cheap, and correct under load.
 

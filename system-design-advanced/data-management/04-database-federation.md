@@ -6,7 +6,7 @@ orderIndex: 4
 premium: false
 ---
 
-# Database Federation (Distributed Systems) - Interactive TCP-Style Article
+# Database Federation
 
 > **Audience**: advanced distributed systems engineers, architects, SREs, and platform teams.
 

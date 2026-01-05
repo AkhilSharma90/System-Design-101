@@ -11,7 +11,7 @@ premium: false
 
 
 
-# Polyglot Persistence (in Distributed Systems): Choosing the Right “Kitchen” for Every Dish
+# Polyglot Persistence : Choosing the Right “Kitchen” for Every Dish
 
 > Audience: advanced distributed-systems engineers, architects, and senior developers
 >

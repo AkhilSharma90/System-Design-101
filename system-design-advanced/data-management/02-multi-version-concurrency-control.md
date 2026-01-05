@@ -10,7 +10,7 @@ premium: false
 
 
 
-# Multi-Version Concurrency Control (MVCC) in Distributed Systems — an Interactive Deep Dive
+# Multi-Version Concurrency Control (MVCC) an Interactive Deep Dive
 
 > Audience: engineers who already know basic transactions, isolation levels, and replication, and want to reason rigorously about MVCC in distributed environments.
 

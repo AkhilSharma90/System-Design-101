@@ -10,7 +10,7 @@ premium: false
 
 
 
-## Hot Partition Detection and Mitigation (Interactive TCP-Style Guide)
+## Hot Partition Detection and Mitigation
 
 > Audience: engineers building/operating distributed databases, stream processors, caches, and event-driven systems.
 >

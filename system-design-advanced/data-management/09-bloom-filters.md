@@ -8,8 +8,7 @@ premium: false
 
 
 
-## Bloom Filters in Distributed Systems - An Interactive Deep Dive (Final Reviewed)
-
+## Bloom Filters  - An Interactive Deep Dive
 Audience: advanced distributed systems engineers and architects
 
 Goal: build an intuition you can operate - choose parameters, predict failure modes, and design safe integrations.

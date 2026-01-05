@@ -8,7 +8,7 @@ premium: false
 
 
 
-## LSM Tree Compaction Strategies (Size-Tiered vs Leveled) — An Interactive Distributed Systems Deep Dive
+## LSM Tree Compaction Strategies (Size-Tiered vs Leveled) —
 
 > Audience: engineers who already know what an LSM tree is, and now want to reason about compaction strategies under distributed workloads, failures, and operational constraints.
 

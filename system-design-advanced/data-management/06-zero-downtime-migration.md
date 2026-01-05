@@ -11,7 +11,7 @@ premium: false
 
 
 
-# Zero-Downtime Migrations (Distributed Systems Edition)
+# Zero-Downtime Migrations
 
 > You're about to change the shape of your data while the system is live, traffic is unpredictable, and multiple services are reading/writing concurrently.
 >

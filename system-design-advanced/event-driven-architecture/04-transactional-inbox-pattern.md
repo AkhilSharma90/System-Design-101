@@ -1,3 +1,15 @@
+---
+
+slug: transactional-inbox-pattern
+title: Transactional Inbox Pattern
+readTime: 20 min
+orderIndex: 4
+premium: false
+
+---
+
+
+
 # Transactional Inbox Pattern (a.k.a. "Transactional Message Handling") — An Interactive Deep Dive
 
 Challenge: Your service got the message... but did it *process* it?

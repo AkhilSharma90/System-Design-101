@@ -22,7 +22,7 @@ premium: false
 
 ---
 
-## [CHALLENGE] One Product, Five Clients, Fifty APIs
+## One Product, Five Clients, Fifty APIs
 
 You’re on-call for a platform that serves:
 - A web app (desktop)
@@ -65,7 +65,7 @@ Challenge question:
 
 ---
 
-## [SECTION] What Is a BFF (Backend for Frontend)?
+## What Is a BFF (Backend for Frontend)?
 
 A Backend for Frontend (BFF) is a backend layer tailored to a specific frontend experience (or client type). It typically:
 - Exposes endpoints that match UI needs (screen/view models)
@@ -91,7 +91,7 @@ Challenge question:
 
 ---
 
-## [MISCONCEPTION] “BFF = API Gateway Aggregation”
+## “BFF = API Gateway Aggregation”
 
 Many teams try to implement BFF behavior inside an API gateway:
 - “We’ll just add a plugin to call 3 services and merge JSON.”
@@ -114,7 +114,7 @@ Mental model:
 - Gateway: traffic cop
 - BFF: concierge (understands what the client is trying to do)
 
-[DECISION GAME] Which statement is true?
+ Which statement is true?
 A) A BFF must always be deployed at the edge.
 B) A BFF is always a GraphQL server.
 C) A BFF is defined by client-specific contracts and composition, not by protocol.
@@ -132,7 +132,7 @@ Challenge question:
 
 ---
 
-## [CHALLENGE] The “Home Screen” Explosion
+##  The “Home Screen” Explosion
 
 Consider a “Home” screen:
 - user profile summary
@@ -182,7 +182,7 @@ Challenge question:
 
 ---
 
-## [MENTAL MODEL] BFF as a “View Model Service”
+## BFF as a “View Model Service”
 
 A useful mental model:
 - Microservices expose domain APIs.
@@ -224,7 +224,7 @@ Production guidance:
 
 ---
 
-## [DECISION GAME] How Many BFFs Should You Have?
+## How Many BFFs Should You Have?
 
 You can structure BFFs by:
 - platform: web-bff, mobile-bff
@@ -261,7 +261,7 @@ Challenge question:
 
 ---
 
-## [SECTION] How BFF Works in Distributed Environments
+## How BFF Works in Distributed Environments
 
 A BFF lives in the blast radius of distributed systems realities:
 - partial failures
@@ -296,7 +296,7 @@ Production insight:
 
 ---
 
-## [CHALLENGE] Tail Latency and the “Fan-Out Tax”
+## Tail Latency and the “Fan-Out Tax”
 
 Suppose Home needs 6 downstream calls.
 Each service has p99 latency of 200ms.
@@ -323,7 +323,7 @@ Challenge question:
 
 ---
 
-## [MENTAL MODEL] Latency Budgeting Like a Restaurant Kitchen
+## Latency Budgeting Like a Restaurant Kitchen
 
 Restaurant parallelism:
 - grill cooks steak
@@ -356,7 +356,7 @@ Challenge question:
 
 ---
 
-## [MISCONCEPTION] “BFF Always Returns 200 OK”
+## “BFF Always Returns 200 OK”
 
 Some teams degrade by always returning 200 with partial content—even if critical data is missing.
 
@@ -430,7 +430,7 @@ Challenge question:
 
 ---
 
-## [SECTION] BFF vs GraphQL vs “API Composition”
+## BFF vs GraphQL vs “API Composition”
 
 BFF is an architectural pattern; GraphQL is a protocol + runtime model.
 
@@ -463,7 +463,7 @@ Challenge question:
 
 ---
 
-## [CHALLENGE] Ownership and Change Velocity
+##  Ownership and Change Velocity
 
 A key reason BFF exists: frontend teams iterate faster than backend domain teams.
 
@@ -486,7 +486,7 @@ Challenge question:
 
 ---
 
-## [SECTION] BFF Responsibilities (and What Not to Do)
+## BFF Responsibilities (and What Not to Do)
 
 Typical responsibilities
 - Aggregation and orchestration
@@ -518,7 +518,7 @@ Challenge question:
 
 ---
 
-## [CHALLENGE] Authentication, Authorization, and Token Exchange
+## Authentication, Authorization, and Token Exchange
 
 In distributed systems, identity is messy:
 - mobile uses OAuth + PKCE
@@ -555,7 +555,7 @@ Production insight:
 
 ---
 
-## [MISCONCEPTION] “BFF Improves Security Automatically”
+##  “BFF Improves Security Automatically”
 
 A BFF can reduce exposed surfaces, but it can also:
 - centralize sensitive data
@@ -579,7 +579,7 @@ Challenge question:
 
 ---
 
-## [CHALLENGE] Caching — Where and What?
+## Caching — Where and What?
 
 Caching is where BFFs either shine or explode.
 
@@ -617,7 +617,7 @@ Challenge question:
 
 ---
 
-## [MENTAL MODEL] BFF as a “Circuit Breaker Hub”
+## BFF as a “Circuit Breaker Hub”
 
 In a microservice world, each dependency can fail differently:
 - timeout
@@ -713,7 +713,7 @@ Challenge question:
 
 ---
 
-## [SECTION] Failure Scenarios: What Actually Breaks
+##  Failure Scenarios: What Actually Breaks
 
 Let’s walk through realistic distributed failures and what a BFF can do.
 
@@ -754,7 +754,7 @@ Key insight:
 
 ---
 
-## [DECISION GAME] Timeouts — Who Decides?
+##  Timeouts — Who Decides?
 
 You have an SLO: GET /home p95 < 250ms.
 
@@ -788,7 +788,7 @@ Challenge question:
 
 ---
 
-## [MISCONCEPTION] “Retries Make It Reliable”
+## “Retries Make It Reliable”
 
 Retries can amplify outages.
 
@@ -821,7 +821,7 @@ Challenge question:
 
 ---
 
-## [SECTION] BFF and Consistency: What Do You Promise?
+##  BFF and Consistency: What Do You Promise?
 
 BFF often composes data from services with different consistency models:
 - cart is strongly consistent (often, within a region)
@@ -851,7 +851,7 @@ Challenge question:
 
 ---
 
-## [SECTION] Contract Design: Versioning and Evolution
+## Contract Design: Versioning and Evolution
 
 BFF contracts evolve rapidly.
 
@@ -932,7 +932,7 @@ Challenge question:
 
 ---
 
-## [CHALLENGE] Observability — Debugging a Composed Endpoint
+## Observability — Debugging a Composed Endpoint
 
 A user reports: “Home page loads forever.”
 
@@ -970,7 +970,7 @@ Production checklist:
 
 ---
 
-## [MENTAL MODEL] Backpressure and Bulkheads
+## Backpressure and Bulkheads
 
 BFF often runs as a stateless service with a thread pool/event loop.
 
@@ -1095,7 +1095,7 @@ Challenge question:
 
 ---
 
-## [CHALLENGE] Data Duplication and “Logic Drift” Between BFFs
+## Data Duplication and “Logic Drift” Between BFFs
 
 If you have separate web-bff and mobile-bff, you may duplicate:
 - mapping rules
@@ -1124,7 +1124,7 @@ Challenge question:
 
 ---
 
-## [SECTION] BFF and Deployment Topology: Edge vs Core
+## BFF and Deployment Topology: Edge vs Core
 
 Where should BFF run?
 
@@ -1157,7 +1157,7 @@ Challenge question:
 
 ---
 
-## [CHALLENGE] Multi-Region and Failover
+## Multi-Region and Failover
 
 Your services are active-active across regions.
 
@@ -1193,7 +1193,7 @@ Challenge question:
 
 ---
 
-## [MISCONCEPTION] “BFF Reduces Overall Complexity”
+## “BFF Reduces Overall Complexity”
 
 BFF reduces client complexity, but can increase backend complexity:
 - more services to operate
@@ -1211,7 +1211,7 @@ Challenge question:
 
 ---
 
-## [DECISION GAME] Pick the Best Design
+## Pick the Best Design
 
 You have:
 - mobile app with flaky network
@@ -1237,7 +1237,7 @@ Challenge question:
 
 ---
 
-## [SECTION] Patterns: Aggregation, Orchestration, and Choreography
+## Patterns: Aggregation, Orchestration, and Choreography
 
 BFF tends to be an orchestrator for read-heavy UI flows.
 
@@ -1259,7 +1259,7 @@ Challenge question:
 
 ---
 
-## [CHALLENGE] Handling Writes Safely
+## Handling Writes Safely
 
 Example: “Add to cart”
 
@@ -1321,7 +1321,7 @@ Challenge question:
 
 ---
 
-## [MENTAL MODEL] Error Taxonomy for BFF
+## Error Taxonomy for BFF
 
 A practical taxonomy:
 - Client errors (4xx): invalid input, unauthenticated, forbidden
@@ -1355,7 +1355,7 @@ Challenge question:
 
 ---
 
-## [SECTION] Real-World Usage Patterns
+## Real-World Usage Patterns
 
 BFF is common in:
 - consumer apps with multiple clients
@@ -1379,7 +1379,7 @@ Challenge question:
 
 ---
 
-## [MISCONCEPTION] “BFF Means One Endpoint Per Screen”
+##  “BFF Means One Endpoint Per Screen”
 
 Sometimes that’s good (mobile), but not always.
 
@@ -1399,7 +1399,7 @@ Challenge question:
 
 ---
 
-## [EXERCISE] Progressive Reveal: Design Your BFF Endpoint
+## Progressive Reveal: Design Your BFF Endpoint
 
 Step 1 — Question
 You need a Product Page response for mobile.
@@ -1424,7 +1424,7 @@ Challenge question:
 
 ---
 
-## [DECISION GAME] BFF and Service Boundaries
+## BFF and Service Boundaries
 
 Your domain team says:
 > “Stop building new endpoints in BFF; add them to the catalog service.”
@@ -1450,7 +1450,7 @@ Challenge question:
 
 ---
 
-## [SECTION] Performance Tactics: Making BFF Fast
+## Performance Tactics: Making BFF Fast
 
 Common tactics
 - parallel fan-out with strict timeouts
@@ -1476,7 +1476,7 @@ Challenge question:
 
 ---
 
-## [SECTION] GraphQL-Specific Pitfalls (If Your BFF Uses GraphQL)
+## GraphQL-Specific Pitfalls (If Your BFF Uses GraphQL)
 
 Pitfall 1: N+1 resolver explosions
 - Each field triggers downstream calls per item
@@ -1542,7 +1542,7 @@ Challenge question:
 
 ---
 
-## [CHALLENGE] Operational Concerns: Scaling and Capacity Planning
+##  Operational Concerns: Scaling and Capacity Planning
 
 Because BFF fans out, its load can grow superlinearly:
 - 1 client request -> N downstream requests
@@ -1573,7 +1573,7 @@ Challenge question:
 
 ---
 
-## [MISCONCEPTION] “BFF is Just a Thin Proxy”
+## “BFF is Just a Thin Proxy”
 
 If BFF is truly a thin proxy, it adds little value.
 
@@ -1592,7 +1592,7 @@ Challenge question:
 
 ---
 
-## [SYNTHESIS] Design a BFF Under Real Constraints
+##  Design a BFF Under Real Constraints
 
 You’re building mobile-bff for an e-commerce app.
 
@@ -1639,7 +1639,7 @@ Key insight:
 
 ---
 
-## [CLOSING] Spot the Anti-Pattern
+## Spot the Anti-Pattern
 
 You join a new team and see:
 - BFF stores user session state in a database

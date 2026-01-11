@@ -2,7 +2,7 @@
 slug: master-slave-archiecture
 title: Master Slave Archiecture
 readTime: 20 min
-orderIndex: 3
+orderIndex: 2
 premium: false
 ---
 

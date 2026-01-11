@@ -45,9 +45,13 @@ Server publishes to: "home/living-room/commands" → Light receives update insta
 **Benefits:**
 
 - ✅ Minimal bandwidth (only send when there's news)
+
 - ✅ Battery efficient (no constant polling)
+
 - ✅ Low server load (push only when needed)
+
 - ✅ Real-time (instant delivery)
+
 - ✅ Scales easily (1M devices, same efficiency)
 
 **Pause and think:** What if devices could "subscribe" to topics and only receive messages when something actually happens?
@@ -68,27 +72,8 @@ The MQTT broker is like a post office that routes messages between publishers an
 
 **Broker's Job:**
 
-```
-┌─────────────────────────────────────┐
-│         MQTT Broker                 │
-│  (Message Router & Manager)         │
-├─────────────────────────────────────┤
-│                                     │
-│  ┌───────────────────────────┐     │
-│  │   Topic: home/temperature │     │
-│  │   Subscribers: [Sensor1,  │     │
-│  │                Display,   │     │
-│  │                Logger]    │     │
-│  └───────────────────────────┘     │
-│                                     │
-│  ┌───────────────────────────┐     │
-│  │   Topic: home/lights      │     │
-│  │   Subscribers: [App,      │     │
-│  │                Automation]│     │
-│  └───────────────────────────┘     │
-│                                     │
-└─────────────────────────────────────┘
-```
+![img1](https://res.cloudinary.com/dretwg3dy/image/upload/v1768097982/148_zhttpz.png)
+
 
 **Features:**
 
@@ -200,9 +185,13 @@ Subscribe to multiple topics at once using wildcards.
 Subscribe to: "home/+/temperature"
 
 Receives from:
+
 ✅ home/living-room/temperature
+
 ✅ home/bedroom/temperature
+
 ✅ home/kitchen/temperature
+
 ❌ home/living-room/lights/ceiling (too many levels)
 ```
 
@@ -213,9 +202,13 @@ Subscribe to: "home/living-room/#"
 
 Receives from:
 ✅ home/living-room/temperature
+
 ✅ home/living-room/humidity
+
 ✅ home/living-room/lights/ceiling
+
 ✅ home/living-room/lights/lamp
+
 ❌ home/bedroom/temperature (different room)
 ```
 
@@ -281,8 +274,11 @@ Total per reading: ~700 bytes
 
 **Costs:**
 - ❌ High bandwidth (HTTP headers overhead)
+
 - ❌ Battery drain (maintain HTTP connection)
+
 - ❌ Server processes 28,800 requests/day
+
 - ❌ Firewall/NAT traversal issues
 
 ### MQTT Approach (Publish/Subscribe)
@@ -321,9 +317,13 @@ Message size: ~50 bytes (MQTT overhead + payload)
 ```
 
 **Benefits:**
+
 - ✅ 93% less bandwidth (1.44 MB vs 20.16 MB)
+
 - ✅ Battery efficient (persistent connection)
+
 - ✅ Broker handles routing (server just subscribes)
+
 - ✅ Works through NAT/firewalls
 
 **Real-world parallel:** HTTP is like mailing individual letters. MQTT is like having a subscription to a newspaper — you only get what's relevant, when it's published.
@@ -338,19 +338,15 @@ MQTT provides three levels of message delivery guarantee:
 
 **How it works:**
 
-```
-Publisher                    Broker                    Subscriber
-    |                          |                           |
-    |------- PUBLISH ---------->|                           |
-    |                          |------- PUBLISH ---------->|
-    |                          |                           |
-    Done!                      Done!                      Done!
-```
+![img2](https://res.cloudinary.com/dretwg3dy/image/upload/v1768097982/149_a0geml.png)
 
 **Characteristics:**
 - ✅ Fastest delivery
+
 - ✅ Lowest overhead
+
 - ❌ No delivery guarantee
+
 - ❌ Message may be lost
 
 **Use when:** Loss is acceptable (e.g., frequent sensor readings where next reading compensates)
@@ -366,17 +362,8 @@ client.publish("home/temperature", "22.5", qos=0)
 
 **How it works:**
 
-```
-Publisher                    Broker                    Subscriber
-    |                          |                           |
-    |------- PUBLISH ---------->|                           |
-    |                          |------- PUBLISH ---------->|
-    |                          |                           |
-    |                          |<------ PUBACK ------------|
-    |<------ PUBACK ------------|                           |
-    |                          |                           |
-    Done!                      Done!                      Done!
-```
+![img3](https://res.cloudinary.com/dretwg3dy/image/upload/v1768097982/150_qb2nym.png)
+
 
 **Characteristics:**
 - ✅ Delivery guaranteed
@@ -397,20 +384,7 @@ client.publish("home/door/unlock", "open", qos=1)
 
 **How it works:**
 
-```
-Publisher                    Broker                    Subscriber
-    |                          |                           |
-    |------- PUBLISH ---------->|                           |
-    |                          |------- PUBLISH ---------->|
-    |                          |                           |
-    |<------ PUBREC ------------|<------ PUBREC ------------|
-    |                          |                           |
-    |------- PUBREL ----------->|------- PUBREL ----------->|
-    |                          |                           |
-    |<------ PUBCOMP -----------|<------ PUBCOMP -----------|
-    |                          |                           |
-    Done!                      Done!                      Done!
-```
+![img4](https://res.cloudinary.com/dretwg3dy/image/upload/v1768097982/151_xffgyt.png)
 
 **Characteristics:**
 - ✅ Exactly once delivery guaranteed
@@ -825,26 +799,7 @@ Allowed to:
 ## 🎯 Complete MQTT Example: Smart Home System
 
 ### Architecture:
-
-```
-┌─────────────────────────────────────────────────────────┐
-│                    MQTT Broker                          │
-│                  (broker.smarthome.local)               │
-└─────────────────────────────────────────────────────────┘
-           ↑                    ↑                    ↑
-           │                    │                    │
-    ┌──────┴──────┐      ┌─────┴─────┐      ┌──────┴──────┐
-    │  Publishers │      │ Hybrid    │      │ Subscribers │
-    │             │      │           │      │             │
-    │ Temperature │      │ Mobile    │      │ Dashboard   │
-    │ Sensor      │      │ App       │      │             │
-    │             │      │           │      │ Automation  │
-    │ Motion      │      │ (Pub/Sub) │      │ Engine      │
-    │ Sensor      │      │           │      │             │
-    │             │      │           │      │ Logger      │
-    │ Door Lock   │      │           │      │             │
-    └─────────────┘      └───────────┘      └─────────────┘
-```
+![img5](https://res.cloudinary.com/dretwg3dy/image/upload/v1768097982/152_h2scaw.png)
 
 ### Temperature Sensor (Publisher):
 

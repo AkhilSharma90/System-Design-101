@@ -11,7 +11,7 @@ premium: false
 
 # Saga Pattern in Distributed Systems: Choreography vs Orchestration (Production Review)
 
-[CHALLENGE] **Challenge: Your checkout succeeded... but your inventory didn't**
+ **Challenge: Your checkout succeeded... but your inventory didn't**
 
 You run an e-commerce platform. A customer clicks **"Place Order"**.
 
@@ -30,7 +30,7 @@ Welcome to the **Saga pattern**.
 
 ---
 
-## [HANDSHAKE] Section 1 - What problem does a Saga solve?
+## Section 1 - What problem does a Saga solve?
 
 ### Scenario
 Your system is decomposed into services. Each service owns its data. Cross-service operations are **distributed transactions** in disguise.
@@ -94,7 +94,7 @@ If ticket issuing fails, you might cancel the seat and refund payment. That's a 
 
 ---
 
-## [ALERT] Section 2 - Mental model: Sagas are state machines, not transactions
+##  Section 2 - Mental model: Sagas are state machines, not transactions
 
 ### Scenario
 You want to reason about correctness. With ACID transactions, you reason about isolation and atomicity. With Sagas, you reason about **states** and **transitions**.
@@ -132,7 +132,7 @@ A Saga should have explicit terminal states and policies:
 
 ---
 
-## [CHALLENGE] Section 3 - Two flavors: Choreography vs Orchestration
+## Section 3 - Two flavors: Choreography vs Orchestration
 
 ### Scenario
 You need to implement a Saga. You must decide: do services coordinate **implicitly** via events, or **explicitly** via a controller?
@@ -156,7 +156,7 @@ Pause and think: Which one sounds more scalable? Which one sounds easier to debu
 
 ---
 
-## [MAGNIFY] Section 4 - Choreography Saga: how it works (and how it fails)
+##  Section 4 - Choreography Saga: how it works (and how it fails)
 
 ### Example workflow (checkout)
 1. Order Service emits `OrderCreated`
@@ -216,7 +216,7 @@ During a partition, some services may continue processing while others lag.
 
 ---
 
-## [ALERT] Section 5 - Common misconception: "Choreography means no coupling"
+## Section 5 - Common misconception: "Choreography means no coupling"
 
 ### Scenario
 Teams often say: "We're event-driven, so we're loosely coupled." Then they add 12 subscribers to a single event.
@@ -233,7 +233,7 @@ Teams often say: "We're event-driven, so we're loosely coupled." Then they add 1
 
 ---
 
-## [GAME] Section 6 - Decision game: Which statement is true?
+##  Section 6 - Decision game: Which statement is true?
 
 Pick the true statement(s). Pause first.
 
@@ -256,7 +256,7 @@ D. In orchestration, the orchestrator is a single point of failure.
 
 ---
 
-## [MAGNIFY] Section 7 - Orchestration Saga: how it works (and how it fails)
+## Section 7 - Orchestration Saga: how it works (and how it fails)
 
 ### Scenario
 Implement the same checkout with an orchestrator.
@@ -304,7 +304,7 @@ Centralized logic means a single bug can affect all flows.
 
 ---
 
-## [ALERT] Section 8 - Common misconception: "Orchestration is just a monolith in disguise"
+##  Section 8 - Common misconception: "Orchestration is just a monolith in disguise"
 
 ### Key insight
 > **Key insight:** Orchestration centralizes *control flow*, not *data ownership*. The monolith risk comes from putting domain logic into the orchestrator instead of services.
@@ -315,7 +315,7 @@ Centralized logic means a single bug can affect all flows.
 
 ---
 
-## [HANDSHAKE] Section 9 - Comparison table: Choreography vs Orchestration
+##  Section 9 - Comparison table: Choreography vs Orchestration
 
 | Dimension | Choreography Saga | Orchestration Saga |
 |---|---|---|
@@ -335,7 +335,7 @@ Centralized logic means a single bug can affect all flows.
 
 ---
 
-## [PUZZLE] Section 10 - Matching exercise: Map failure modes to mitigations
+##  Section 10 - Matching exercise: Map failure modes to mitigations
 
 ### Failure modes
 1. Duplicate `AuthorizePayment` command
@@ -372,7 +372,7 @@ A common fencing technique is a **monotonic saga step/version** stored with the 
 
 ---
 
-## [MAGNIFY] Section 11 - The hard part: designing compensations
+## Section 11 - The hard part: designing compensations
 
 Compensations are not perfect inverses.
 
@@ -394,7 +394,7 @@ If you can't undo a step (email sent, external bank transfer settled), you can o
 
 ---
 
-## [ALERT] Section 12 - Isolation levels in Sagas (why anomalies happen)
+##  Section 12 - Isolation levels in Sagas (why anomalies happen)
 
 Two customers try to buy the last item.
 
@@ -414,7 +414,7 @@ Without global isolation, anomalies include:
 
 ---
 
-## [CHALLENGE] Section 13 - Implementation building blocks (the unglamorous essentials)
+## Section 13 - Implementation building blocks (the unglamorous essentials)
 
 A Saga design is only as reliable as its messaging and persistence patterns.
 
@@ -547,7 +547,7 @@ For effectively-once processing, consumers should store processed `event_id` (or
 
 ---
 
-## [MAGNIFY] Section 14 - Choreography in practice: event design and governance
+##  Section 14 - Choreography in practice: event design and governance
 
 Choreography works best with **facts**.
 
@@ -563,7 +563,7 @@ If the message is addressed to a specific service and implies obligation ("do X"
 
 ---
 
-## [FAUCET] Section 15 - Orchestration in practice: workflow engines vs custom orchestrators
+##  Section 15 - Orchestration in practice: workflow engines vs custom orchestrators
 
 ### Build vs buy
 Building your own orchestrator means implementing:
@@ -655,7 +655,7 @@ export async function runCheckoutSaga(store, sagaId, orderId) {
 
 ---
 
-## [GAME] Section 16 - Quiz: pick the best design
+## Section 16 - Quiz: pick the best design
 
 ### Workflow A: Simple email notification chain
 Order placed -> send confirmation email -> send SMS
@@ -674,7 +674,7 @@ Create ride request -> match driver -> driver accepts -> start trip -> end trip
 
 ---
 
-## [MAGNIFY] Section 17 - Observability: making Sagas debuggable
+## Section 17 - Observability: making Sagas debuggable
 
 Minimum identifiers to propagate:
 
@@ -694,7 +694,7 @@ Also:
 
 ---
 
-## [ALERT] Section 18 - Timeouts, retries, and the "unknown outcome" problem
+## Section 18 - Timeouts, retries, and the "unknown outcome" problem
 
 Orchestrator calls Payment Service. It times out.
 
@@ -712,7 +712,7 @@ Mitigations:
 
 ---
 
-## [PUZZLE] Section 19 - Data consistency and read models during a Saga
+## Section 19 - Data consistency and read models during a Saga
 
 While a Saga is in progress, users refresh the UI.
 
@@ -735,7 +735,7 @@ Patterns:
 
 ---
 
-## [CHALLENGE] Section 20 - Hybrid approach: choreograph inside, orchestrate outside
+## Section 20 - Hybrid approach: choreograph inside, orchestrate outside
 
 Many real systems mix both styles.
 
@@ -750,7 +750,7 @@ Example:
 
 ---
 
-## [ALERT] Section 21 - Security and compliance: auditability, PII, and least privilege
+## Section 21 - Security and compliance: auditability, PII, and least privilege
 
 Choreography often broadcasts events broadly, increasing risk of:
 
@@ -768,7 +768,7 @@ Mitigations:
 
 ---
 
-## [MAGNIFY] Section 22 - Real-world usage patterns
+## Section 22 - Real-world usage patterns
 
 Common domains:
 
@@ -785,7 +785,7 @@ Common infrastructure choices:
 
 ---
 
-## [CHALLENGE] Section 23 - Final synthesis challenge: design a Saga under chaos
+##  Section 23 - Final synthesis challenge: design a Saga under chaos
 
 Design a checkout Saga for:
 
@@ -821,7 +821,7 @@ Constraints:
 
 ---
 
-## [BYE] Epilogue - What you should remember
+##  Epilogue - What you should remember
 
 - Sagas coordinate distributed workflows using local transactions + compensations.
 - Choreography distributes control flow across event subscribers.

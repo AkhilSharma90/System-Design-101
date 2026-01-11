@@ -2,7 +2,7 @@
 slug: database-replication
 title: Database Replication
 readTime: 20 min
-orderIndex: 2
+orderIndex: 3
 premium: false
 ---
 

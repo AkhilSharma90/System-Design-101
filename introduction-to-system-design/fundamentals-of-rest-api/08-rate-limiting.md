@@ -87,6 +87,7 @@ This is the easiest to understand. Imagine a stopwatch that resets every minute:
 Example: 100 requests per minute
 
 Minute 1 (00:00 \- 00:59):
+
 ━━━━━━━━━━━━━━━━━━━━━━━━━
 
 User makes:
@@ -101,7 +102,9 @@ User makes:
 \- 1 request at 00:55    ❌ BLOCKED (101/100)
 
 Minute 2 (01:00 \- 01:59):
+
 ━━━━━━━━━━━━━━━━━━━━━━━━━
+
 Counter resets to 0\!
 \- 100 requests at 01:01  ✓ Allowed (100/100)
 
@@ -126,7 +129,9 @@ Example: 100 requests per minute
 Current time: 02:30 (2 minutes, 30 seconds)
 
 Server looks back 60 seconds:
+
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
 From 01:30 to 02:30:
 
 Requests:
@@ -146,7 +151,9 @@ New request at 02:30?
 ❌ BLOCKED (would be 101\)
 
 At 02:36 (after the 01:35 requests expire):
+
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
 Now counting: 01:36 to 02:36
 Only 80 requests (the 20 from 01:35 dropped off)
 
@@ -160,7 +167,9 @@ This prevents the "burst problem"\!
 Imagine a piggy bank:
 
 The Rules:
+
 ━━━━━━━━━━━
+
 1\. Piggy bank starts with 100 tokens
 
 2\. Each API request costs 1 token
@@ -170,6 +179,7 @@ The Rules:
 4\. Maximum capacity: 100 tokens
 
 Example Timeline:
+
 ━━━━━━━━━━━━━━━━━
 
 Time 00:00 → Bucket has 100 tokens
@@ -199,7 +209,9 @@ Time 10:00 → 10 tokens added every minute for 8 minutes
 Let’s see   what a real rate-limited response looks like:
 
 Successful Request:
+
 ━━━━━━━━━━━━━━━━━━━
+
 ```bash
  GET /api/users
 
@@ -220,7 +232,9 @@ Successful Request:
 
 
 Rate Limit Exceeded:
+
 ━━━━━━━━━━━━━━━━━━━━
+
 ```bash
  GET  /api/users
 
@@ -247,7 +261,9 @@ Rate Limit Exceeded:
 Professional APIs often have tiered limits:
 
 Free Tier:
+
 ━━━━━━━━━━
+
 
 \- 100 requests/hour
 
@@ -261,7 +277,9 @@ X-RateLimit-Remaining: 45
 ```
 
 Pro Tier ($29/month):
+
 ━━━━━━━━━━━━━━━━━━━━
+
 
 \- 10,000 requests/hour
 
@@ -275,7 +293,9 @@ X-RateLimit-Remaining: 8542
 ```
 
 Enterprise Tier (Custom):
+
 ━━━━━━━━━━━━━━━━━━━━━━━
+
 
 \- Unlimited requests
 
@@ -382,6 +402,7 @@ Real-World Scenario: Photo Sharing API
 ![img1](https://res.cloudinary.com/dretwg3dy/image/upload/v1763360912/api_gateway_wvdmoo.png)
 
 Example Request Flow:
+
 ━━━━━━━━━━━━━━━━━━━━━
 
 1\. Get photos from a specific user, filtered by date:

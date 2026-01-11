@@ -16,6 +16,7 @@ We have already introduced this concept in the earlier section here is a bit det
 Let’s compare computer storage with something familiar: cooking in a kitchen.
 
 Your Kitchen Layout:
+
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 Level 1: Your Hands (analogous to the CPU Registers)
@@ -67,6 +68,7 @@ Level 5: Storage Unit (Cloud/Tape)
 \- Persistent, archived
 
 The Pattern:
+
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 Closer \= Faster but Less Space
@@ -80,6 +82,7 @@ Remember the storage diagram we discussed on the first section (the fundamentals
 **What it actually is:**
 
 Physical RAM Module:
+
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 ![img9](https://res.cloudinary.com/dretwg3dy/image/upload/v1762436766/48_wtkdft.png)
@@ -93,6 +96,7 @@ Characteristics:
 **Speed Demonstration:**
 
 RAM Access Time:
+
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 Reading 1 byte from RAM: \~100 nanoseconds
@@ -147,6 +151,7 @@ const getUser = async (userId) => {
 **The Volatility Problem:**
 
 What Happens When Power is Lost:
+
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 RAM (Volatile):
@@ -173,6 +178,7 @@ This is why:
 **RAM Usage Patterns:**
 
 What Goes in RAM:
+
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 1\. Active Process Memory
@@ -204,6 +210,7 @@ What Goes in RAM:
    \- OS caches file contents
 
 Monitoring RAM:
+
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 ```bash
@@ -225,6 +232,7 @@ Available: 7.5GB (can be freed if needed)
 **What it actually is:**
 
 How SSDs Work:
+
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 Flash Memory Cells:
@@ -244,6 +252,7 @@ Best of both worlds\!
 **Speed Profile:**
 
 SSD Performance:
+
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 Random Read: 0.1ms (fast\!)
@@ -265,6 +274,7 @@ This is why modern computers feel fast\!
 **Real-World Impact:**
 
 Loading a Web Application:
+
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 HDD System:
@@ -292,7 +302,9 @@ Total: 15 seconds ⚡
 **Types of SSDs:**
 
 SATA SSD (Consumer Grade):
+
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
 Speed: 500 MB/s
 
 Interface: SATA (same as old HDDs)
@@ -304,6 +316,7 @@ Use: Laptops, desktops
 ![img11](https://res.cloudinary.com/dretwg3dy/image/upload/v1762436769/59_ietplb.png)
 
 NVMe SSD (High Performance):
+
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 Speed: 3,500 MB/s (7x faster\!)
@@ -317,6 +330,7 @@ Use: Gaming PCs, servers, databases
 ![img12](https://res.cloudinary.com/dretwg3dy/image/upload/v1762436769/61_rx1nnr.png)
 
 Cloud SSD (AWS gp3):
+
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 Speed: 3,000 IOPS baseline
@@ -330,6 +344,7 @@ Use: Production databases, VMs
 **What it actually is:**
 
 Mechanical Hard Drive:
+
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 Physical Components:
@@ -349,6 +364,7 @@ Like a record player\!
 **Why HDDs are Slow:**
 
 Lets look at the steps involved in reading data from HDD:
+
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 Step 1: Seek Time (5-10ms)
@@ -374,6 +390,7 @@ HDD is 100x slower\!
 ![img13](https://res.cloudinary.com/dretwg3dy/image/upload/v1762354300/32_yns27w.png)
 
 Why Sequential is Better:
+
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 
@@ -402,6 +419,7 @@ Total: 10ms for 3 blocks
 **Where HDDs Still Make Sense:**
 
 HDD Advantages:
+
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 1\. Cost
@@ -429,6 +447,7 @@ HDD Advantages:
    Better for cold storage\!
 
 Good use cases:
+
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 ✓ Backups (sequential writes)
@@ -442,6 +461,7 @@ Good use cases:
 ✓ Data warehouses (sequential scans)
 
 Bad use cases:
+
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 ❌ Databases (random access)
@@ -457,6 +477,7 @@ Bad use cases:
 ### **The Complete Storage Hierarchy**
 
 The Memory/Storage Pyramid (**we saw similar diagram in our computer fundamentals section this is the detailed/extended diagram for the original diagram**)
+
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 ![img14](https://res.cloudinary.com/dretwg3dy/image/upload/v1762436766/46_pdclle.png)

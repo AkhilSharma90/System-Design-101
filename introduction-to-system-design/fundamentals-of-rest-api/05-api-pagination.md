@@ -71,6 +71,7 @@ Page 3: Items 21-30
 Let’s see how this looks in an API:
 
 Request for Page 1:
+
 ━━━━━━━━━━━━━━━━━━
 
 ```bash
@@ -95,7 +96,9 @@ Request for Page 1:
 Now, the user wants page 2:
 
 Request for Page 2:
+
 ━━━━━━━━━━━━━━━━━━
+
 ```bash
  GET /posts?page=2\&limit=10
  ```
@@ -183,7 +186,9 @@ Cursor pagination is like using a bookmark. Instead of remembering page numbers,
 Let see how:
 
 First Request:
+
 ━━━━━━━━━━━━━━
+
 ```bash
  GET /posts?limit=10
 ```
@@ -198,6 +203,7 @@ That `next_cursor` is encoded data saying "you left off at ID 110"
 
 Second Request:
 ━━━━━━━━━━━━━━━
+
 ```bash
 
  GET /posts?limit=10\&cursor=eyJpZCI6MTEwfQ==
@@ -238,6 +244,7 @@ Nothing shifted because you're using absolute identifiers\!
 Think about your Instagram/Twitter feed. Let me walk you through what happens:
 
 You open the app:
+
 ━━━━━━━━━━━━━━━━━
 
  App:
@@ -252,7 +259,9 @@ You open the app:
  ```
 
 You scroll down:
+
 ━━━━━━━━━━━━━━━━━
+
 App:
 
 ```bash

@@ -48,15 +48,22 @@ Imagine three different types of libraries, each organized completely differentl
 **Library 1: The Block Storage Library**
 
 The Warehouse:
+
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 Floor plan:
 ┌─────┬─────┬─────┬─────┬─────┐
+
 │       001 │ 002 │ 003 │ 004 │ 005 │
+
 ├─────┼─────┼─────┼─────┼─────┤
+
 │ 006 │ 007 │ 008 │ 009 │ 010 │
+
 ├─────┼─────┼─────┼─────┼─────┤
+
 │ 011 │ 012 │ 013 │ 014 │ 015 │
+
 └─────┴─────┴─────┴─────┴─────┘
 
 Each box (block):
@@ -80,6 +87,7 @@ This is BLOCK STORAGE.
 **Library 2: The File Storage Library**
 
 The Traditional Library:
+
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 Organization:
@@ -119,6 +127,7 @@ This is FILE STORAGE.
 **Library 3: The Object Storage Library**
 
 The Amazon Warehouse:
+
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 Everything gets a unique ID:
@@ -145,9 +154,11 @@ This is OBJECT STORAGE.
 **What it actually is:**
 
 Think of a Hard Drive:
+
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 Physical disk divided into blocks:
+
 
 ![img2](https://res.cloudinary.com/dretwg3dy/image/upload/v1762436764/43_ru1dts.png)
 
@@ -166,6 +177,7 @@ It's like raw memory on disk\!
 **How data is stored:**
 
 Example: Storing "HELLO WORLD" (11 bytes)
+
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 Operating system:
@@ -191,6 +203,7 @@ The filesystem (ext4, NTFS, etc.) tracks all this\!
 **Real-World Usage:**
 
 Perfect for:
+
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 1\. Databases
@@ -228,6 +241,7 @@ Perfect for:
    \- Server's boot volume
 
 Examples in the Cloud:
+
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 AWS EBS (Elastic Block Store provided by Amazon Cloud )
@@ -251,6 +265,7 @@ Google Persistent Disks
 **The Performance Characteristics:**
 
 Block Storage Performance:
+
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 Speed: VERY FAST ⚡
@@ -282,13 +297,14 @@ Cost: More expensive (you're paying for performance)
 **What it actually is:**
 
 Your Computer's Files:
+
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 | C:\\Users\\YourName\\
 
             ── Documents
-            ├── Resume.pdf
-            ├── Cover Letter.docx
+              ├── Resume.pdf
+              ├── Cover Letter.docx
 
             ──Tax 2024
               ├── W2.pdf
@@ -310,7 +326,9 @@ This is file storage\!
 **How it works under the hood:**
 
 When you save "Resume.pdf":
+
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
 
 1\. Filesystem creates entry:
 
@@ -336,6 +354,7 @@ The filesystem manages the complexity\!
 **Real-World Usage:**
 
 Perfect for:
+
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 1\. Shared File Systems
@@ -373,6 +392,7 @@ Perfect for:
    \- Familiar folder structure
 
 Examples in the Cloud:
+
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 AWS EFS (Elastic File System)
@@ -445,6 +465,7 @@ js
 **Performance Characteristics:**
 
 File Storage Performance:
+
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 Speed: FAST (but slower than block)
@@ -480,6 +501,7 @@ Cost: Moderate
 **What it actually is:**
 
 The Flat Namespace:
+
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 No folders are involved \! Just objects with unique IDs:
@@ -511,6 +533,7 @@ Each object is self-contained\!
 **The "key" looks like a path, but it's not\!**
 
 Common Misconception:
+
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 This looks like a folder structure:
@@ -532,6 +555,7 @@ They group objects by common prefix.
 **Real-World Usage:**
 
 Perfect for:
+
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 1\. Static Assets (Images, Videos, PDFs)
@@ -578,6 +602,7 @@ Perfect for:
    \- SPA (Single Page Application)
 
 Examples in the Cloud:
+
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 AWS S3 (Simple Storage Service)
@@ -603,6 +628,7 @@ Google Cloud Storage
 **Performance Characteristics:**
 
 Object Storage Performance:
+
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 Speed: SLOWER ( block storage is optimized for throughput, not latency)
@@ -651,9 +677,11 @@ Object storage is accessed via HTTP REST APIs\! Remember GET, PUT, DELETE? That'
 ### **Real-World Architecture Example**
 
 E-commerce Platform Storage Design:
+
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 Component 1: Database
+
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 Storage Type: BLOCK STORAGE (AWS EBS)
@@ -673,6 +701,7 @@ Cost: $50/month
 
 
 Component 2: Application Servers
+
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 Storage Type: FILE STORAGE (AWS EFS)
@@ -688,6 +717,7 @@ Cost: $30/month
 ![img6](https://res.cloudinary.com/dretwg3dy/image/upload/v1762438956/54_koydvs.png)
 
 Component 3: Product Images
+
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 Storage Type: OBJECT STORAGE (AWS S3)
@@ -703,6 +733,7 @@ Cost: $115/month
 ![img7](https://res.cloudinary.com/dretwg3dy/image/upload/v1762436767/55_vp5syz.png)
 
 Component 4: Database Backups
+
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 Storage Type:

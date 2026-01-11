@@ -13,6 +13,7 @@ premium: false
 Think about your closet:
 
 Your Closet:
+
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 Front of Closet (Hot Data):
@@ -31,6 +32,7 @@ Storage Unit (Cold Data):
 **Hot Data: The Active Zone**
 
 What Makes Data "Hot":
+
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 Characteristics:
@@ -46,6 +48,7 @@ Characteristics:
 ✓ Needs low latency
 
 Examples:
+
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 1\. In the case of  E-commerce:
@@ -79,6 +82,7 @@ Examples:
    \- Real-time fraud detection data
 
 Storage Choice:
+
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 Ideal: RAM cache \+ SSD
@@ -92,6 +96,7 @@ Worth it: Users notice any delay\!
 **Warm Data: The Middle Ground**
 
 What Makes Data "Warm":
+
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 Characteristics:
@@ -107,6 +112,7 @@ Characteristics:
 ✓ Can tolerate slight delay
 
 Examples:
+
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 1\. E-commerce:
@@ -140,6 +146,7 @@ Examples:
    \- Completed loan applications
 
 Storage Choice:
+
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 
@@ -154,6 +161,7 @@ Worth it: Good enough performance
 **Cold Data: The Archive**
 
 What Makes Data "Cold":
+
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 Characteristics:
@@ -169,6 +177,7 @@ Characteristics:
 ✓ Needs to be kept (legal/audit)
 
 Examples:
+
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 1\. E-commerce:
@@ -216,6 +225,7 @@ Worth it: 20x cheaper\! Storage at scale\!
 ### **Data Temperature Transitions**
 
 The Lifecycle of Data:
+
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 Day 1: HOT 🔥
@@ -261,9 +271,11 @@ Day 2555: FROZEN 🧊
 **Real-World Example: Instagram**
 
 Instagram Photo Storage Strategy:
+
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 When you upload a photo to instagram
+
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 Day 0-7: HOT 🔥
@@ -323,6 +335,7 @@ Cost per GB: $0.001/month
 User experience: 12 hours to retrieve (if ever needed)
 
 Instagram's savings:
+
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 1 billion photos uploaded/day
@@ -354,6 +367,7 @@ ed on access patterns
 ### **The 80/20 Rule in Storage**
 
 Pareto Principle for Data:
+
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 Observation:
@@ -369,6 +383,7 @@ Translation:
 \- Keep 80% (cold) on cheap slow storage
 
 Real Numbers:
+
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 Total data: 100 TB
@@ -392,6 +407,7 @@ Same user experience for 99% of requests\!
 ### **Decision Framework: Choosing Storage Temperature**
 
 Decision Tree:
+
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 Question 1: How often is it accessed?
@@ -439,6 +455,7 @@ Question 5: How much does latency cost?
 **Case Study 1: Netflix**
 
 Netflix Content Storage:
+
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 HOT 🔥 (10% of catalog, 90% of views):
@@ -483,6 +500,7 @@ COLD ❄️ (50% of catalog, 1% of views):
 └─ Cost: Very low
 
 Result:
+
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 \- 90% of user requests: \<50ms (great UX\!)
 
@@ -493,6 +511,7 @@ Result:
 **Case Study 2: Healthcare Records**
 
 Patient Medical Records:
+
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 HOT 🔥 (Active patients):
@@ -540,6 +559,7 @@ COLD ❄️ (Archives):
 └─ Retention: 7+ years
 
 Compliance:
+
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 ✓ HIPAA requires 7-year retention
 
@@ -558,9 +578,11 @@ Savings: $500k/year for mid-size hospital
 Let’s see data storage patterns in  a real production system:
 
 Social Media Platform \- Complete Storage Design:
+
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 Layer 1: Cache (HOT 🔥)
+
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 \[Redis Cluster\]
@@ -588,6 +610,7 @@ Layer 1: Cache (HOT 🔥)
 ![img18](https://res.cloudinary.com/dretwg3dy/image/upload/v1762436766/44_lgyzvx.png)
 
 Layer 2: Primary Database (HOT 🔥)
+
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 \[PostgreSQL on NVMe SSD\]
@@ -615,6 +638,7 @@ Layer 2: Primary Database (HOT 🔥)
 ![img19](https://res.cloudinary.com/dretwg3dy/image/upload/v1762436769/60_xzhrob.png)
 
 Layer 3: Media Storage \- Recent (HOT 🔥)
+
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 \[S3 Standard \+ CloudFront CDN\]
@@ -640,6 +664,7 @@ Layer 3: Media Storage \- Recent (HOT 🔥)
 ![img20](https://res.cloudinary.com/dretwg3dy/image/upload/v1762436768/56_xuced2.png)
 
 Layer 4: Media Storage \- Historical (WARM 🌤️)
+
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 \[S3 Infrequent Access\]
@@ -665,7 +690,10 @@ Move to cold after 1 year
 \- Cost: $2000/month (for 200TB)
 
 ![img21](https://res.cloudinary.com/dretwg3dy/image/upload/v1762436764/42_uz7dol.png)
-Layer 5: Analytics Data (WARM 🌤️) ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Layer 5: Analytics Data (WARM 🌤️)
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 \[Data Warehouse on HDD\]
 
@@ -716,6 +744,7 @@ Layer 6: Archives (COLD ❄️)
 \- Cost: $2,000/month
 
 Layer 7: Deep Archive (FROZEN 🧊)
+
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 \[S3 Glacier Deep Archive\]
@@ -744,6 +773,7 @@ Total Storage: 1,853 TB
 Total Cost: $7,850/month
 
 If everything was HOT storage:
+
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 1,853 TB × $0.10/GB \= $185,300/month 😱
@@ -754,6 +784,7 @@ Savings: $177,450/month (96% reduction\!)
 **The Request Flow:**
 
 User Views a Post:
+
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 1\. Check Redis (Layer 1):

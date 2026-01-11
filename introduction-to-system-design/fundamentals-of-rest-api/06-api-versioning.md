@@ -99,6 +99,7 @@ GET /v3/users
 Let’s  walk  through a real scenario:
 
 Your Startup's Journey:
+
 ━━━━━━━━━━━━━━━━━━━━━
 
 | 2023: Launch API v1
@@ -192,6 +193,7 @@ Accept: application/vnd.myapi.v2+json
 Let’s see  a conversation:
 
 Client → Server
+
 ━━━━━━━━━━━━━━━
 
 ```bash
@@ -318,6 +320,7 @@ v1.1: Returns correct calculation  ← Same format, OK\! |
 Let’s see how a professional API (Stripe) does versioning:
 
 Stripe's approach:
+
 ━━━━━━━━━━━━━━━━━
 
 Every API call includes version:
@@ -344,6 +347,7 @@ You can upgrade when ready\!
 Here's how to retire an old version responsibly:
 
 Step 1: Announce deprecation (12 months ahead)
+
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 ```bash
@@ -358,6 +362,7 @@ Please migrate to v2:
 https://docs.myapi.com/v2\-migration
 
 Step 2: Remind users (6 months ahead)
+
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 ```bash
@@ -369,6 +374,7 @@ Step 2: Remind users (6 months ahead)
  Only 20% of users have migrated. Start now
 
 Step 3: Final warning (1 month ahead)
+
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 ```bash
@@ -382,7 +388,9 @@ Step 3: Final warning (1 month ahead)
  Migrate to v2 immediately
 
 Step 4: Shutdown
+
 ━━━━━━━━━━━━━━━
+
 ```bash
  GET
  /v1/users

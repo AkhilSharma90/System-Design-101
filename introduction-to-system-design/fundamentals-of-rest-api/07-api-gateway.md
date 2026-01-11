@@ -33,10 +33,15 @@ Now, imagine you hire a brilliant receptionist who sits at the front desk. Every
 Let’s see what happens when a client makes an API request through a gateway:
 
 Without API Gateway (The Chaos):
+
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-Mobile App ──────\> http://users-service.internal:3000/users
+
+Mobile App ──────\>
+http://users-service.internal:3000/users
+
 
 Web App ──────────\> http://orders-service.internal:4000/orders
+
 
 Partner API ──────\> http://payments-service.internal:5000/pay
 
@@ -55,6 +60,7 @@ Problems:
 Now watch what happens WITH an API Gateway:
 
 With API Gateway (The Order):
+
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 ![img1](https://res.cloudinary.com/dretwg3dy/image/upload/v1763354595/load_balancers_fp051m.png)
@@ -116,6 +122,7 @@ Gateway thinks:
 **Step 3: Gateway Forwards to Internal Service**
 
 Gateway forwards to Orders Service:
+
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 Original request:

@@ -50,6 +50,7 @@ Your Architecture (Dangerous):
 **What happens when the database fails?**
 
 2:00 AM \- Database server crashes
+
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 2:00:01 AM \- All 1000 servers can't reach database
@@ -79,7 +80,9 @@ Duration: Until you fix the database (hours? days?)
 **The Fix: Eliminate the SPOF**
 
 Improved Architecture (Resilient):
+
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
 ![img3](https://res.cloudinary.com/dretwg3dy/image/upload/v1764778259/266_pieq4l.png)
 
 
@@ -122,10 +125,13 @@ Your sleep: Undisturbed 😴
 **SPOF \#1: Single Load Balancer**
 
 The Problem:
+
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
 ![img4](https://res.cloudinary.com/dretwg3dy/image/upload/v1764778259/271_kec8pn.png)
 
 The Solution:
+
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 ![img5](https://res.cloudinary.com/dretwg3dy/image/upload/v1764778260/272_yahcpj.png)
@@ -136,6 +142,7 @@ If LB1 fails → LB2 takes over automatically
 **SPOF \#2: Single Internet Connection**
 
 The Problem:
+
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 ![img6](https://res.cloudinary.com/dretwg3dy/image/upload/v1764778259/267_zxsg3p.png)
@@ -144,6 +151,7 @@ The Problem:
 ISP has outage → You're offline
 
 The Solution:
+
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 ![img7](https://res.cloudinary.com/dretwg3dy/image/upload/v1764778261/268_vuyqra.png)
@@ -153,6 +161,7 @@ Multiple ISPs → If one fails, other takes over
 **SPOF \#3: Single Payment Provider**
 
 The Problem:
+
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 ![img8](https://res.cloudinary.com/dretwg3dy/image/upload/v1764778259/265_dyib6z.png)
@@ -160,6 +169,7 @@ The Problem:
 Stripe down → Can't process ANY payments
 
 The Solution:
+
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 ![img9](https://res.cloudinary.com/dretwg3dy/image/upload/v1764778259/264_tlqhi7.png)
@@ -171,7 +181,9 @@ Try Stripe → If fails, try PayPal
 Let’s  find SPOFs in any system. Look at this architecture:
 
 System Architecture:
+
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
 ![img10](https://res.cloudinary.com/dretwg3dy/image/upload/v1764778259/269_v7imcb.png)
 
 
@@ -236,6 +248,7 @@ Fix: Distributed storage (S3, multiple regions)
 Eliminating every SPOF is expensive. Let's see the tradeoffs:
 
 Scenario: Small Startup ($1M revenue/year)
+
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 Option A: Single Database
@@ -263,6 +276,7 @@ Total cost: $36,020/year
 Is the extra $30,000 worth it? Maybe not\!
 
 Scenario: Large Company ($100M revenue/year)
+
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 Option A:
@@ -282,6 +296,7 @@ Now the extra $36,000 is worth it\! ✓
 **The Decision Framework:**
 
 Should you eliminate this SPOF?
+
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 Ask yourself:

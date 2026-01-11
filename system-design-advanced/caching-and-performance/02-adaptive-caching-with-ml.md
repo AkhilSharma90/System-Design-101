@@ -11,7 +11,7 @@ premium: false
 
 # Adaptive Caching with ML (in Distributed Systems)
 
-[TARGET] Challenge: Your cache is "good"... until the traffic changes
+ Challenge: Your cache is "good"... until the traffic changes
 
 It's Friday 11:58 AM. Your food delivery app is calm. At 12:00 PM, lunch hits and suddenly:
 
@@ -34,7 +34,7 @@ That's adaptive caching with ML: using learned models (or learning-like methods)
 
 ---
 
-## [HANDSHAKE] What you'll build mentally in this article
+## What you'll build mentally in this article
 
 You'll develop:
 
@@ -71,9 +71,9 @@ flowchart LR
 
 ---
 
-# [FAUCET] Section 1 - Caching is a delivery service, not a storage box
+#  Section 1 - Caching is a delivery service, not a storage box
 
-[TARGET] Scenario
+ Scenario
 
 Imagine a coffee shop with a limited pastry display case (cache). The kitchen (database) can bake anything, but it's slower. The display case holds a subset of items to serve quickly.
 
@@ -92,7 +92,7 @@ Now translate:
 
 Key point: caching is a **policy under constraints**.
 
-## [PUZZLE] Pause and think
+## Pause and think
 
 If you could only change one knob dynamically in a cache, which gives the biggest benefit under changing workloads?
 
@@ -108,15 +108,13 @@ D) Admission policy (what gets cached)
 
 It depends, but **admission policy often dominates**. A cache that admits "expensive and likely-to-be-reused" objects can outperform a larger cache with naive admission. TTL and eviction matter too, but admission decides what enters the game.
 
-[KEY INSIGHT]
-
 Adaptive caching is mostly about learning which objects are worth caching under current conditions.
 
 ---
 
-# [MAGNIFY] Section 2 - What "adaptive caching with ML" actually means
+# Section 2 - What "adaptive caching with ML" actually means
 
-[TARGET] Scenario
+ Scenario
 
 Your service has:
 
@@ -140,7 +138,7 @@ Each tier has different constraints:
 6. Replication: should we replicate hot keys across shards/regions?
 7. Compression/encoding: store compressed? which codec?
 
-## [GAME] Decision game: Which statement is true?
+## Decision game: Which statement is true?
 
 1) "Adaptive caching with ML always requires deep reinforcement learning."
 
@@ -152,15 +150,14 @@ Each tier has different constraints:
 
 2 is true. Many production systems use bandits, regression, or heuristics with learned parameters. Deep RL exists in papers and some specialized deployments, but it's not a prerequisite.
 
-[KEY INSIGHT]
 
 Treat ML as a spectrum: from lightweight online learning to heavy offline training.
 
 ---
 
-# [MAGNIFY] Section 3 - Mental model: caching as an online optimization problem
+# Section 3 - Mental model: caching as an online optimization problem
 
-[TARGET] Scenario
+ Scenario
 
 You operate a distributed cache cluster. Every request is a choice:
 
@@ -174,7 +171,7 @@ You have a budget (memory) and objectives:
 - Maintain freshness/correctness.
 - Control cost (memory, network, CPU).
 
-## [PUZZLE] Pause and think
+## Pause and think
 
 What makes caching hard in distributed systems compared to a single-node cache?
 
@@ -218,15 +215,14 @@ quadrantChart
   D: [0.3, 0.3]
 ```
 
-[KEY INSIGHT]
 
 ML helps estimate "future reuse" and "miss cost" under drift, turning caching into a data-driven policy.
 
 ---
 
-# [SIREN] Section 4 - Common misconceptions (that break ML caching)
+# Section 4 - Common misconceptions (that break ML caching)
 
-## [SIREN] Misconception 1: "Hit rate is the only metric"
+## Misconception 1: "Hit rate is the only metric"
 
 High hit rate can be useless if you're caching cheap items and missing expensive ones.
 
@@ -240,7 +236,7 @@ Better metrics:
 - Byte hit rate (bytes served from cache)
 - Cost-aware hit rate (hit rate weighted by miss penalty)
 
-## [SIREN] Misconception 2: "A global policy is best"
+## Misconception 2: "A global policy is best"
 
 In distributed systems, locality matters:
 
@@ -249,7 +245,7 @@ In distributed systems, locality matters:
 
 Global ML models can underfit local patterns.
 
-## [SIREN] Misconception 3: "ML will automatically handle invalidation"
+## Misconception 3: "ML will automatically handle invalidation"
 
 ML can tune TTLs, but correctness often needs explicit mechanisms:
 
@@ -264,9 +260,9 @@ ML improves efficiency, but correctness still comes from distributed systems des
 
 ---
 
-# [HANDSHAKE] Section 5 - The distributed caching stack: where ML plugs in
+# Section 5 - The distributed caching stack: where ML plugs in
 
-[TARGET] Scenario
+ Scenario
 
 You have three tiers:
 
@@ -276,7 +272,7 @@ You have three tiers:
 
 Where can ML act?
 
-## [PUZZLE] Matching exercise
+##  Matching exercise
 
 Match the decision to the tier where it's most impactful.
 
@@ -324,15 +320,14 @@ flowchart TB
   end
 ```
 
-[KEY INSIGHT]
 
 Different tiers have different feedback loops and failure modes; ML policies must be tier-aware.
 
 ---
 
-# [MAGNIFY] Section 6 - Telemetry: the fuel for adaptive caching
+#  Section 6 - Telemetry: the fuel for adaptive caching
 
-[TARGET] Scenario
+ Scenario
 
 You want to predict whether caching a response will pay off. What data do you need?
 
@@ -345,7 +340,7 @@ At minimum:
 - Update frequency / staleness risk
 - Tenant/region/shard context
 
-## [PUZZLE] Pause and think
+## Pause and think
 
 Which is more dangerous to get wrong for ML caching?
 
@@ -387,9 +382,9 @@ Adaptive caching is as much a telemetry + control-plane problem as an ML problem
 
 ---
 
-# [PUZZLE] Section 7 - Baselines before ML: what you must beat
+# Section 7 - Baselines before ML: what you must beat
 
-[TARGET] Scenario
+ Scenario
 
 Your team proposes "ML caching." Your SRE asks: "What baseline are we beating?"
 
@@ -400,7 +395,7 @@ Common baselines:
 - Size-aware eviction (GreedyDual)
 - Admission via TinyLFU (modern high-perf caches)
 
-## [GAME] Decision game: Which baseline is hardest to beat in practice?
+## Decision game: Which baseline is hardest to beat in practice?
 
 1) Plain LRU
 
@@ -428,9 +423,9 @@ The bar is high: ML must beat strong heuristics under real constraints.
 
 ---
 
-# [FAUCET] Section 8 - Approach 1: Cost-aware admission with supervised learning
+# Section 8 - Approach 1: Cost-aware admission with supervised learning
 
-[TARGET] Scenario
+ Scenario
 
 You have a cache-aside pattern:
 
@@ -474,7 +469,7 @@ A common approximation is **value-per-byte** with a global pressure factor.
 - Recent request rate (EWMA)
 - Recent uniqueness ratio (how many distinct keys)
 
-## [PUZZLE] Exercise: label definition
+## Exercise: label definition
 
 You need labels for supervised learning.
 
@@ -549,15 +544,14 @@ So you often train per-scope models:
 - per tenant tier
 - per key namespace
 
-[KEY INSIGHT]
 
 Supervised admission works when you can define a stable horizon and collect reliable reuse labels per scope.
 
 ---
 
-# [MAGNIFY] Section 9 - Approach 2: Contextual bandits for TTL tuning
+#  Section 9 - Approach 2: Contextual bandits for TTL tuning
 
-[TARGET] Scenario
+ Scenario
 
 Static TTL is a blunt instrument:
 
@@ -575,7 +569,7 @@ TTL tuning is an exploration vs exploitation problem:
 
 A contextual bandit chooses an action (TTL bucket) given context, observes reward (hit improvement minus staleness penalty), and updates.
 
-## [GAME] Decision game: bandit reward design
+## Decision game: bandit reward design
 
 Which reward is safer?
 
@@ -653,15 +647,14 @@ Common mitigation:
 - cap TTL for high-risk namespaces
 - incorporate update streams (CDC) to measure staleness events
 
-[KEY INSIGHT]
 
 Bandits are production-friendly for tuning discrete knobs (TTL buckets) with controlled exploration.
 
 ---
 
-# [FAUCET] Section 10 - Approach 3: Learned eviction (and why it's tricky)
+#  Section 10 - Approach 3: Learned eviction (and why it's tricky)
 
-[TARGET] Scenario
+ Scenario
 
 Eviction happens under pressure. Your cache is full; you must choose a victim.
 
@@ -682,7 +675,7 @@ Value might be:
 - size
 - staleness risk
 
-## [PUZZLE] Pause and think
+## Pause and think
 
 If you could store only one extra byte of metadata per cache entry, what would you store?
 
@@ -726,9 +719,9 @@ Start with learned admission/TTL; learned eviction is higher complexity and risk
 
 ---
 
-# [MAGNIFY] Section 11 - Placement and replication: ML meets topology
+#  Section 11 - Placement and replication: ML meets topology
 
-[TARGET] Scenario
+ Scenario
 
 You run a multi-region service with a regional cache per region. Some keys are global (product catalog), some are local (delivery ETAs).
 
@@ -748,7 +741,7 @@ A retailer has:
 
 Stocking globally reduces misses but increases shipping and spoilage risk.
 
-## [PUZZLE] Think about it
+##  Think about it
 
 What's the distributed systems cost of replicating hot keys across regions?
 
@@ -814,15 +807,13 @@ Cross-region replication forces you to choose trade-offs:
 
 For authoritative data (inventory, balances), prefer CP at the source of truth and cache only derived or validated views.
 
-[KEY INSIGHT]
 
 Placement is a multi-objective optimization over topology; ML helps forecast demand but must respect consistency constraints.
 
 ---
 
-# [SIREN] Section 12 - Failure scenarios: when adaptive caching goes wrong
+#  Section 12 - Failure scenarios: when adaptive caching goes wrong
 
-[TARGET] Scenario
 
 Your ML caching system is live. Suddenly:
 
@@ -841,7 +832,7 @@ What happens?
 5. Poisoning / adversarial keys -> attackers force caching of large objects.
 6. Cache stampede: synchronized expiry causes thundering herd to backend.
 
-## [GAME] Decision game: safe fallback
+##  Decision game: safe fallback
 
 If the model service is down, what's the safest behavior?
 
@@ -903,9 +894,9 @@ Adaptive caching must degrade gracefully; otherwise it becomes a new single poin
 
 ---
 
-# [HANDSHAKE] Section 13 - Trade-offs: accuracy, latency, and operational complexity
+#  Section 13 - Trade-offs: accuracy, latency, and operational complexity
 
-[TARGET] Scenario
+ Scenario
 
 Your ML team proposes a transformer model to predict reuse for each key. Your cache team says: "We can't afford 2 ms extra per request."
 
@@ -927,7 +918,7 @@ So ML inference must be:
 | Async scoring | sidecar / background | avoids hot path | less reactive | TTL tuning, prefetch lists |
 | Offline scoring | batch job | cheap at runtime | slow adaptation | CDN pre-warm, catalog caching |
 
-## [PUZZLE] Pause and think
+##  Pause and think
 
 Which is most appropriate for in-process caches inside a stateless microservice?
 
@@ -941,15 +932,14 @@ C) Offline scoring only
 
 Usually B (or a very lightweight A). In-process caches need minimal overhead; periodic updates and simple heuristics are common.
 
-[KEY INSIGHT]
 
 In distributed systems, operational simplicity and predictability often beat marginal accuracy gains.
 
 ---
 
-# [FAUCET] Section 14 - Real-world patterns: what companies actually do
+#  Section 14 - Real-world patterns: what companies actually do
 
-[TARGET] Scenario
+ Scenario
 
 You want "real-world usage," not just research.
 
@@ -972,7 +962,7 @@ Common industry patterns (generalized):
 4. Databases and storage systems
    - learned buffer pool management (research + some specialized deployments)
 
-## [SIREN] Common misconception
+##  Common misconception
 
 "Everyone uses deep RL for cache eviction."
 
@@ -982,15 +972,14 @@ In practice, teams:
 - keep eviction mostly classical
 - invest heavily in observability and safety
 
-[KEY INSIGHT]
 
 The highest ROI is often in cost-aware admission + safe adaptive TTLs, not exotic eviction.
 
 ---
 
-# [MAGNIFY] Section 15 - Designing the control loop (closed-loop caching)
+#  Section 15 - Designing the control loop (closed-loop caching)
 
-[TARGET] Scenario
+ Scenario
 
 Adaptive caching is a control system:
 
@@ -1024,7 +1013,7 @@ flowchart LR
   Delay[(Time delay)] -.-> Decide
 ```
 
-## [PUZZLE] Think about delay
+##  Think about delay
 
 If your policy updates every 30 minutes, what kinds of workload changes will it fail to handle?
 
@@ -1039,15 +1028,14 @@ Mitigation:
 - multi-timescale control: fast heuristics + slow ML
 - anomaly detection triggers for rapid fallback
 
-[KEY INSIGHT]
 
 Adaptive caching often needs multiple timescales: fast local reactions and slower global learning.
 
 ---
 
-# [PUZZLE] Section 16 - Interactive lab: design an ML admission policy
+#  Section 16 - Interactive lab: design an ML admission policy
 
-[TARGET] Scenario
+ Scenario
 
 You run an API gateway caching responses for endpoints:
 
@@ -1136,15 +1124,14 @@ def should_admit(ctx: AdmissionContext, w: dict[str, float], threshold: float = 
     return p_reuse >= threshold
 ```
 
-[KEY INSIGHT]
 
 A good ML caching policy is: simple model + good features + strong guardrails.
 
 ---
 
-# [SIREN] Section 17 - Observability and debugging: proving the model helps
+#  Section 17 - Observability and debugging: proving the model helps
 
-[TARGET] Scenario
+ Scenario
 
 You deploy adaptive caching and hit rate goes up-but p99 latency also goes up. Why?
 
@@ -1164,7 +1151,7 @@ Possible reasons:
 - Staleness incidents (version mismatch, invalidation lag)
 - Miss reason (cold start, TTL expiry, eviction, invalidation, node restart)
 
-## [PUZZLE] Debug exercise
+##  Debug exercise
 
 You see:
 
@@ -1199,9 +1186,9 @@ Always evaluate caching by saved cost, not raw hit rate.
 
 ---
 
-# [HANDSHAKE] Section 18 - Multi-tenancy and fairness: caches are shared resources
+#  Section 18 - Multi-tenancy and fairness: caches are shared resources
 
-[TARGET] Scenario
+ Scenario
 
 A single large tenant floods your cache with hot keys, evicting smaller tenants' data. Your ML policy might "correctly" cache what's hot-but it's unfair.
 
@@ -1211,7 +1198,7 @@ A single large tenant floods your cache with hot keys, evicting smaller tenants'
 - Weighted fairness (paid tiers)
 - Isolation for noisy neighbors
 
-## [PUZZLE] Pause and think
+##  Pause and think
 
 How can ML make fairness worse?
 
@@ -1249,15 +1236,14 @@ def admit_with_fairness(base_score: float, state: TenantState, penalty_weight: f
     return score > 0.0
 ```
 
-[KEY INSIGHT]
 
 In multi-tenant distributed systems, caching is resource allocation; ML must encode fairness explicitly.
 
 ---
 
-# [MAGNIFY] Section 19 - Consistency and invalidation: ML-friendly correctness patterns
+#  Section 19 - Consistency and invalidation: ML-friendly correctness patterns
 
-[TARGET] Scenario
+ Scenario
 
 Your cache stores user profiles. Users update their address; stale cached data is unacceptable.
 
@@ -1281,7 +1267,7 @@ Most caches provide eventual consistency for reads unless you add validation/ver
 
 This is the CAP trade-off in practice.
 
-## [GAME] Decision game: ML and TTL
+##  Decision game: ML and TTL
 
 True or false:
 
@@ -1308,9 +1294,9 @@ Correctness comes from invalidation/versioning; ML tunes performance within safe
 
 ---
 
-# [FAUCET] Section 20 - Security and abuse: adversarial caching
+#  Section 20 - Security and abuse: adversarial caching
 
-[TARGET] Scenario
+ Scenario
 
 An attacker discovers your cache admits objects based on predicted reuse. They generate traffic that makes large objects appear reusable, causing cache pollution.
 
@@ -1327,7 +1313,7 @@ An attacker discovers your cache admits objects based on predicted reuse. They g
 - Robust features (don't trust client-supplied)
 - Anomaly detection
 
-## [PUZZLE] Pause and think
+##  Pause and think
 
 Which is a strong mitigation with low complexity?
 
@@ -1341,15 +1327,14 @@ C) Use deep RL
 
 B. Simple guardrails beat complex models for abuse resistance.
 
-[KEY INSIGHT]
 
 Guardrails are part of the caching policy; ML should operate inside them.
 
 ---
 
-# [PUZZLE] Section 21 - Progressive design: from heuristic to ML to safe autonomy
+#  Section 21 - Progressive design: from heuristic to ML to safe autonomy
 
-[TARGET] Scenario
+ Scenario
 
 You want to adopt adaptive caching without risking outages.
 
@@ -1363,7 +1348,7 @@ You want to adopt adaptive caching without risking outages.
 6. Placement optimization: per-region forecasting.
 7. (Maybe) learned eviction: only if necessary.
 
-## [GAME] Decision game: rollout strategy
+##  Decision game: rollout strategy
 
 Which rollout is safest?
 
@@ -1421,9 +1406,9 @@ Treat ML caching like any control-plane change: shadow -> canary -> gradual roll
 
 ---
 
-# [WAVE] Section 22 - Final synthesis challenge: design your own adaptive cache
+#  Section 22 - Final synthesis challenge: design your own adaptive cache
 
-[TARGET] Synthesis scenario
+ Synthesis scenario
 
 You run a globally distributed "event ticketing" platform.
 
@@ -1441,7 +1426,7 @@ You have:
 - Regional Redis
 - Service in-process caches
 
-## [PUZZLE] Challenge questions (progressive reveal)
+##  Challenge questions (progressive reveal)
 
 ### 1) What do you cache at the edge?
 
@@ -1479,7 +1464,7 @@ Model outage: caches revert to baseline admission + conservative TTL caps; contr
 
 ---
 
-[KEY INSIGHT] (final)
+
 
 Adaptive caching with ML is a distributed control system: ML forecasts value, distributed systems enforce correctness, and operations ensures safety under failure.
 

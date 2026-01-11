@@ -14,7 +14,7 @@ premium: false
 
 ---
 
-## [CHALLENGE] The “Three Coffee Shops” Problem (Why CRDTs Exist)
+##  The “Three Coffee Shops” Problem (Why CRDTs Exist)
 
 - Scenario or challenge
 - Interactive question
@@ -70,7 +70,7 @@ Which of the three options (1/2/3) best matches the CRDT approach? (Don’t answ
 
 ---
 
-## [AGREEMENT] What “Conflict-free” Actually Means (and What It Doesn’t)
+##  What “Conflict-free” Actually Means (and What It Doesn’t)
 
 - Scenario or challenge
 - Interactive question
@@ -116,7 +116,7 @@ Which answer (A/B/C) is correct? Keep it in mind; we’ll reveal soon.
 
 ---
 
-## [WARNING] The Core CRDT Contract (The Math You Actually Need)
+##  The Core CRDT Contract (The Math You Actually Need)
 
 - Scenario or challenge
 - Interactive question
@@ -172,7 +172,7 @@ Which of the three properties (1/2/3) are required? (We’ll reveal shortly.)
 
 ---
 
-## [GAME] Decision Game — Are You Sure You Want a CRDT?
+##  Decision Game — Are You Sure You Want a CRDT?
 
 - Scenario or challenge
 - Interactive question
@@ -209,7 +209,7 @@ Which statement (1/2/3) is correct?
 
 ---
 
-## [INVESTIGATE] Two Big Families — State-based vs Operation-based CRDTs
+##  Two Big Families — State-based vs Operation-based CRDTs
 
 - Scenario or challenge
 - Interactive question
@@ -270,7 +270,7 @@ Which approach would you choose for a mobile offline-first notes app? Why?
 
 ---
 
-## [PUZZLE] The Greatest Hits — Common CRDT Types (and When to Use Them)
+##  The Greatest Hits — Common CRDT Types (and When to Use Them)
 
 ### Scenario
 Your product team asks for:
@@ -299,7 +299,7 @@ Pause and think. We’ll reveal answers after explaining.
 
 ---
 
-## [PIPELINE] G-Counter — The Friendly Counter That Only Goes Up
+##  G-Counter — The Friendly Counter That Only Goes Up
 
 ### Scenario
 Each cafe branch tracks “number of coffees sold today.” You never decrement.
@@ -375,7 +375,7 @@ What breaks if you allow decrements in a G-Counter without changing the design?
 
 ---
 
-## [INVESTIGATE] PN-Counter — When You Need Decrements Too
+##  PN-Counter — When You Need Decrements Too
 
 ### Scenario
 You track “active orders”:
@@ -451,7 +451,7 @@ Can PN-Counter guarantee value >= 0 without coordination? Why or why not?
 
 ---
 
-## [MISCONCEPTION] “CRDTs Are Just LWW Everywhere”
+##  “CRDTs Are Just LWW Everywhere”
 
 ### Scenario
 A team says: “We’ll just do last-write-wins with timestamps for everything. That’s a CRDT, right?”
@@ -485,7 +485,7 @@ Name one domain field where LWW is correct, and one where it’s dangerous.
 
 ---
 
-## [AGREEMENT] Sets — Where Conflicts Become Real
+##  Sets — Where Conflicts Become Real
 
 ### Scenario
 Customers can add/remove items from a shopping cart while offline.
@@ -517,7 +517,7 @@ In your product, would users expect add-wins or observed-remove behavior for car
 
 ---
 
-## [INVESTIGATE] OR-Set (Observed-Remove Set) — “Remove What You’ve Seen”
+##  OR-Set (Observed-Remove Set) — “Remove What You’ve Seen”
 
 ### Scenario
 You want cart semantics that match user intent:
@@ -597,7 +597,7 @@ Why can’t a plain “add-wins set” without tags represent the difference bet
 
 ---
 
-## [WARNING] Tombstones and Garbage Collection (The Part Everyone Forgets)
+##  Tombstones and Garbage Collection (The Part Everyone Forgets)
 
 ### Scenario
 Your OR-Set stores removed tags forever. Over months, metadata grows.
@@ -627,7 +627,7 @@ What could happen if you garbage-collect tombstones too early?
 
 ---
 
-## [GAME] Decision Game — Shopping Cart Semantics
+##  Decision Game — Shopping Cart Semantics
 
 ### Scenario
 Two devices modify a cart concurrently:
@@ -654,7 +654,7 @@ Pick a domain (cart, ACL, feature flags). Which semantics would you choose and w
 
 ---
 
-## [PUZZLE] Text Editing CRDTs — Why They’re Harder Than Sets
+##  Text Editing CRDTs — Why They’re Harder Than Sets
 
 ### Scenario
 You’re building a collaborative note editor.
@@ -717,7 +717,7 @@ What happens if your position identifiers grow without bound? What engineering t
 
 ---
 
-## [INVESTIGATE] Delivery Guarantees — Causal vs Eventual vs “I Hope So”
+##  Delivery Guarantees — Causal vs Eventual vs “I Hope So”
 
 ### Scenario
 You choose an op-based CRDT for efficiency. Your network can reorder messages.
@@ -745,7 +745,7 @@ Would you rather pay for causal delivery in the network layer or in the CRDT met
 
 ---
 
-## [WARNING] Failure Scenarios Walkthrough (CRDTs Under Stress)
+##  Failure Scenarios Walkthrough (CRDTs Under Stress)
 
 ### Scenario
 Your replicas experience:
@@ -781,7 +781,7 @@ What’s the worst outcome if a replica loses its local CRDT state and rejoins w
 
 ---
 
-## [AGREEMENT] Anti-Entropy — How Replicas Actually Sync
+##  Anti-Entropy — How Replicas Actually Sync
 
 ### Scenario
 You have 50 replicas. You can’t broadcast full state constantly.
@@ -847,7 +847,7 @@ What happens if anti-entropy never completes (e.g., a replica is permanently off
 
 ---
 
-## [MISCONCEPTION] “Eventual Consistency Means No Guarantees”
+##  “Eventual Consistency Means No Guarantees”
 
 ### Scenario
 An engineer says: “Eventual consistency is basically random; you can’t reason about it.”
@@ -872,7 +872,7 @@ Define SEC in your own words in one sentence.
 
 ---
 
-## [INVESTIGATE] Trade-offs — What You Pay to Avoid Coordination
+##  Trade-offs — What You Pay to Avoid Coordination
 
 ### Scenario
 Your team is choosing between:
@@ -914,7 +914,7 @@ Name a feature in your system that must be strongly consistent, and one that cou
 
 ---
 
-## [PUZZLE] Designing With CRDTs — Start From Semantics, Not Data Structures
+##  Designing With CRDTs — Start From Semantics, Not Data Structures
 
 ### Scenario
 You’re building a “team task board”:
@@ -950,7 +950,7 @@ Which fields in the task board can be modeled as sets/counters, and which need r
 
 ---
 
-## [GAME] Quiz — Identify the CRDT (Progressive Reveal)
+##  Quiz — Identify the CRDT (Progressive Reveal)
 
 ### Question 1
 You need a replicated value where concurrent updates should be merged by taking the maximum numeric value.
@@ -981,7 +981,7 @@ Invent a merge rule for “status” with values {online, away, offline} that be
 
 ---
 
-## [INVESTIGATE] Real-World Usage Patterns
+##  Real-World Usage Patterns
 
 ### Scenario
 You want confidence that CRDTs aren’t just academic.
@@ -1009,7 +1009,7 @@ Which of your system’s state is “user intent that can be merged,” versus �
 
 ---
 
-## [WARNING] Security and Abuse Considerations (Yes, Really)
+##  Security and Abuse Considerations (Yes, Really)
 
 ### Scenario
 Clients can submit CRDT operations directly (offline-first). A malicious client can:
@@ -1038,7 +1038,7 @@ If clients can generate unique tags for OR-Set adds, how do you prevent tag-spac
 
 ---
 
-## [PUZZLE] Putting It Together — A Mini Offline-First Design
+##  Putting It Together — A Mini Offline-First Design
 
 ### Scenario
 You’re building “CafeNotes”: a mobile app for baristas to keep shared notes per shift.
@@ -1069,7 +1069,7 @@ Where would you still use strong consistency in this app (if anywhere)?
 
 ---
 
-## [INVESTIGATE] Answer Reveal — Earlier Questions
+##  Answer Reveal — Earlier Questions
 
 ### 1) The “Three Coffee Shops” Problem
 Correct choice: 3) Build data types whose merges are deterministic and converge automatically.
@@ -1091,7 +1091,7 @@ Correct statement: 2) CRDTs guarantee convergence, but invariants may require co
 
 ---
 
-## [CHALLENGE] Final Synthesis Challenge: Design a CRDT-Based Feature Like a Pro
+##  Final Synthesis Challenge: Design a CRDT-Based Feature Like a Pro
 
 ### Scenario
 You’re designing a multi-region, offline-capable “incident response board”:
@@ -1128,7 +1128,7 @@ Mitigation:
 
 ---
 
-## [GOODBYE] Closing: When CRDTs Should Be Your Default (and When They Shouldn’t)
+##  Closing: When CRDTs Should Be Your Default (and When They Shouldn’t)
 
 Use CRDTs when:
 - you need offline-first or active-active

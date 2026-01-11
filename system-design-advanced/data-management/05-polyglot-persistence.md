@@ -19,7 +19,7 @@ premium: false
 
 ---
 
-## [CHALLENGE] Your app is a busy food court, not a single restaurant
+##  Your app is a busy food court, not a single restaurant
 
 Scenario: You’re building a global commerce platform.
 
@@ -33,7 +33,7 @@ Your team proposes: “Let’s use one database for everything.”
 
 Pause and think: If you had to run a food court, would you force every vendor to cook every cuisine with one oven?
 
-### [INTERACTIVE] Question
+###  Question
 Which statement is more realistic?
 
 A) One database can be optimal for all workloads, and operational simplicity always wins.
@@ -57,9 +57,9 @@ Each station is optimized for a type of work. But the customer experience depend
 
 ---
 
-## [INVESTIGATE] What Polyglot Persistence actually means (and what it doesn’t)
+##  What Polyglot Persistence actually means (and what it doesn’t)
 
-### [CHALLENGE] Define it precisely
+###  Define it precisely
 You hear “polyglot persistence” used to mean:
 - microservices each with their own DB
 - using Redis + Postgres
@@ -68,7 +68,7 @@ You hear “polyglot persistence” used to mean:
 
 Some of these overlap; some are orthogonal.
 
-### [INTERACTIVE] Question (pause and think)
+###  Question (pause and think)
 Is polyglot persistence primarily:
 
 1) A data modeling strategy
@@ -82,7 +82,7 @@ Answer: **1 and 3**.
 - It’s data modeling/workload driven (document vs relational vs graph vs column vs key-value).
 - And it’s integration driven (consistency boundaries, replication, failure handling).
 
-### [MISCONCEPTION]
+###
 > “Polyglot persistence means we’ll store the same data in multiple databases for safety.”
 
 Not necessarily. That’s redundancy (which you might do), but polyglot persistence is about fit-for-purpose.
@@ -101,7 +101,7 @@ Name one workload where a relational DB is suboptimal even if it can technically
 
 ---
 
-## [CHALLENGE] The “one DB” trap in distributed environments
+##  The “one DB” trap in distributed environments
 
 ### Scenario
 You pick a single relational database for everything. Then:
@@ -111,7 +111,7 @@ You pick a single relational database for everything. Then:
 
 You scale vertically. Then you shard. Then you discover cross-shard joins and cross-region latency.
 
-### [INTERACTIVE] Question
+###  Question
 Which is the most common failure mode of the “one DB for everything” approach at scale?
 
 A) It can’t store enough data
@@ -149,9 +149,9 @@ If you must keep one DB, what’s the first sign that you’re past its “comfo
 
 ---
 
-## [INVESTIGATE] Workload -> Datastore mapping (the “menu”)
+##  Workload -> Datastore mapping (the “menu”)
 
-### [CHALLENGE] Build your storage food court
+###  Build your storage food court
 You’re designing the platform. You can choose multiple datastores.
 
 But you must justify each with:
@@ -178,7 +178,7 @@ But you must justify each with:
 | Time-series metrics | TSDB (Prometheus, InfluxDB, VictoriaMetrics) | time-window queries | high cardinality; retention policies; downsampling |
 | Event log / integration | Kafka/Pulsar | durable ordered log | ordering is per-partition; “exactly-once” is nuanced; consumer lag and reprocessing |
 
-### [DECISION GAME] Which statement is true?
+###  Which statement is true?
 
 1) “Search indices should be treated as the system of record.”
 2) “Search indices are usually derived views and can be rebuilt.”
@@ -199,7 +199,7 @@ Pick one workload above and write down the single most important distributed-sys
 
 ---
 
-## [CHALLENGE] Polyglot persistence forces you to draw boundaries
+##  Polyglot persistence forces you to draw boundaries
 
 ### Scenario
 You adopt:
@@ -215,7 +215,7 @@ Now you must decide:
 - what is cached?
 - what is rebuildable?
 
-### [INTERACTIVE] Question
+###  Question
 For each store, label it as one of:
 
 - **SoR** (System of Record)
@@ -250,9 +250,9 @@ If Elasticsearch is a derived view, what’s your plan when it loses data or bec
 
 ---
 
-## [INVESTIGATE] Distributed data duplication—friend, foe, or inevitability?
+##  Distributed data duplication—friend, foe, or inevitability?
 
-### [CHALLENGE] You will duplicate data—now do it intentionally
+###  You will duplicate data—now do it intentionally
 In polyglot persistence, duplication happens because:
 - read models differ from write models
 - indexes and caches copy data
@@ -261,7 +261,7 @@ In polyglot persistence, duplication happens because:
 
 Duplication is not “bad.” Undisciplined duplication is.
 
-### [INTERACTIVE] Question
+###  Question
 Which duplication is safer?
 
 A) Copying data into a derived view that can be rebuilt from an immutable event log
@@ -278,7 +278,7 @@ From safest to scariest:
 3) Caches with TTL + fallback
 4) Dual-writes with no reconciliation
 
-### [MISCONCEPTION]
+###
 > “Eventual consistency means it will eventually be consistent.”
 
 Only if:
@@ -300,7 +300,7 @@ What’s the difference between “eventual consistency” and “eventual conve
 
 ---
 
-## [CHALLENGE] The hardest part—cross-store consistency
+##  The hardest part—cross-store consistency
 
 ### Scenario
 A customer places an order.
@@ -314,7 +314,7 @@ You must:
 
 You want: no lost orders, no double decrements, no missing events.
 
-### [DECISION GAME] Which statement is true?
+###  Which statement is true?
 
 1) “We can wrap all of these in a distributed transaction (2PC) and be done.”
 
@@ -347,14 +347,14 @@ List two reasons why 2PC can hurt availability in a partition.
 
 ---
 
-## [INVESTIGATE] Patterns for polyglot persistence (with failure behavior)
+##  Patterns for polyglot persistence (with failure behavior)
 
-### [CHALLENGE] Choose a consistency strategy you can operate
+###  Choose a consistency strategy you can operate
 Here are the big patterns. You’ll pick based on failure tolerance and correctness needs.
 
 ---
 
-## [PATTERN] Transactional Outbox (SoR -> Event Log)
+##  Transactional Outbox (SoR -> Event Log)
 
 Goal: Ensure that if you commit to the SoR, you also reliably publish an event.
 
@@ -365,12 +365,12 @@ How it works:
 
 [IMAGE: Sequence diagram showing service writing to Postgres (business table + outbox table in same transaction), then an outbox relay publishing to Kafka, then consumers updating Elasticsearch/warehouse. Include failure points and retries.]
 
-### [INTERACTIVE] Question (pause and think)
+###  Question (pause and think)
 What happens if the service crashes right after committing the transaction but before publishing to Kafka?
 
 Answer: The outbox row is committed, so the relay will publish later. No lost event.
 
-### [MISCONCEPTION]
+###
 > “Outbox guarantees exactly-once delivery.”
 
 Outbox helps prevent lost messages, but you still need:
@@ -510,7 +510,7 @@ What’s the main downside of polling the outbox table? Name one improvement.
 
 ---
 
-## [PATTERN] Change Data Capture (CDC) (DB log -> Event Log)
+##  Change Data Capture (CDC) (DB log -> Event Log)
 
 Goal: Publish changes by reading the DB’s replication log instead of writing outbox rows.
 
@@ -520,7 +520,7 @@ How it works:
 
 [IMAGE: Diagram showing Postgres WAL -> Debezium -> Kafka topics -> consumers -> Elasticsearch/warehouse.]
 
-### [INTERACTIVE] Question
+###  Question
 Which is more coupled to your application code?
 
 A) Outbox
@@ -532,7 +532,7 @@ Answer: **Outbox** is more explicit in app code; CDC is more infrastructure-driv
 - CDC can capture all changes (including ones not emitted by app)
 - But schema evolution and event semantics can be tricky
 
-### [MISCONCEPTION]
+###
 > “CDC events are domain events.”
 
 CDC produces data change events (row-level). Domain events encode business meaning.
@@ -548,7 +548,7 @@ If you rely on CDC, how do you prevent leaking sensitive columns into your event
 
 ---
 
-## [PATTERN] CQRS + Materialized Views (Write model vs Read model)
+##  CQRS + Materialized Views (Write model vs Read model)
 
 Goal: Optimize reads without compromising writes.
 
@@ -559,7 +559,7 @@ How it works:
 
 [IMAGE: CQRS diagram with write side (commands) -> event log -> projections -> multiple read stores.]
 
-### [INTERACTIVE] Question
+###  Question
 Your customer updates their address. For 30 seconds, the order history page still shows the old address. Is that a bug?
 
 Answer: It depends on your consistency SLO and product requirements. In CQRS, staleness is expected unless you add read-your-writes mechanisms.
@@ -577,7 +577,7 @@ Name one technique to provide “read-your-writes” in a CQRS system.
 
 ---
 
-## [PATTERN] Saga (Orchestration vs Choreography)
+##  Saga (Orchestration vs Choreography)
 
 Goal: Coordinate multi-step workflows across services/stores without global transactions.
 
@@ -618,14 +618,14 @@ If compensation fails, what’s your operational plan? (Hint: dead-letter queues
 
 ---
 
-## [CHALLENGE] Failure scenarios you must game out (polyglot edition)
+##  Failure scenarios you must game out (polyglot edition)
 
 ### Scenario
 Your order write succeeds in Postgres. Kafka is temporarily unavailable. Elasticsearch cluster is green but lagging. Redis fails over.
 
 What does the user see? What do you guarantee?
 
-### [DECISION GAME] Which statement is true?
+###  Which statement is true?
 
 A) If Postgres commit succeeded, then all other stores must reflect it immediately.
 
@@ -656,9 +656,9 @@ Pick one feature in your system that should be Tier 0 and one that can be Tier 2
 
 ---
 
-## [INVESTIGATE] Consistency models across stores—what you can and can’t promise
+##  Consistency models across stores—what you can and can’t promise
 
-### [CHALLENGE] Users ask for “strong consistency,” but across what boundary?
+###  Users ask for “strong consistency,” but across what boundary?
 
 Within a single datastore, you might get:
 - serializable transactions
@@ -676,7 +676,7 @@ Across multiple stores, you usually get:
 
 In polyglot systems, you typically can only guarantee these **within a boundary** (one DB, one partition, one service) unless you add coordination.
 
-### [INTERACTIVE] Matching exercise
+###  Matching exercise
 Match the guarantee to the mechanism.
 
 Guarantees:
@@ -693,7 +693,7 @@ D) Client-side read tokens + routing to leader/primary
 
 Suggested answers: **1->D, 2->B, 3->A, 4->C**
 
-### [MISCONCEPTION]
+###
 > “Kafka gives exactly-once, so my whole pipeline is exactly-once.”
 
 Exactly-once is end-to-end. Any sink without idempotency breaks it.
@@ -706,7 +706,7 @@ What’s the difference between idempotency and deduplication? Why do you often 
 
 ---
 
-## [CHALLENGE] Multi-region polyglot persistence (latency vs correctness)
+##  Multi-region polyglot persistence (latency vs correctness)
 
 ### Scenario
 You expand to 3 regions: us-east, eu-west, ap-south.
@@ -716,7 +716,7 @@ You want:
 - global inventory correctness
 - consistent order IDs
 
-### [INTERACTIVE] Question
+###  Question
 Which is usually hardest to make both low-latency and strongly consistent globally?
 
 A) Product catalog reads
@@ -747,9 +747,9 @@ If you choose reservation tokens per region, what happens during a sudden demand
 
 ---
 
-## [INVESTIGATE] Schema evolution and contracts across stores
+##  Schema evolution and contracts across stores
 
-### [CHALLENGE] One field change breaks five systems
+###  One field change breaks five systems
 You add a field `preferredDeliveryWindow`.
 
 - Postgres: add column
@@ -758,7 +758,7 @@ You add a field `preferredDeliveryWindow`.
 - Warehouse: update ingestion
 - Cache: update serialization
 
-### [INTERACTIVE] Question
+###  Question
 Which is the safest evolution strategy?
 
 A) Rename fields in-place and deploy everything at once
@@ -774,7 +774,7 @@ Schema isn’t just DDL. It’s:
 - serialization formats
 - query expectations
 
-### [MISCONCEPTION]
+###
 > “NoSQL means no schema.”
 
 It means schema-on-read or flexible schema, but you still have contracts.
@@ -815,7 +815,7 @@ What’s one reason Elasticsearch mapping changes can be painful compared to rel
 
 ---
 
-## [CHALLENGE] Observability—debugging across stores is a distributed tracing problem
+##  Observability—debugging across stores is a distributed tracing problem
 
 ### Scenario
 A user reports: “My order doesn’t show up in search.”
@@ -827,7 +827,7 @@ Possible causes:
 - mapping rejection
 - event schema mismatch
 
-### [INTERACTIVE] Exercise: Build a diagnostic checklist
+###  Exercise: Build a diagnostic checklist
 What are the first 5 metrics/logs you’d check?
 
 Suggested checklist:
@@ -856,9 +856,9 @@ What correlation key would you propagate to connect a Postgres transaction to an
 
 ---
 
-## [INVESTIGATE] Operational complexity—how to keep the food court clean
+##  Operational complexity—how to keep the food court clean
 
-### [CHALLENGE] More stores = more operational surfaces
+###  More stores = more operational surfaces
 Each datastore adds:
 - backups/restores
 - upgrades
@@ -867,7 +867,7 @@ Each datastore adds:
 - access control
 - cost management
 
-### [DECISION GAME]
+###
 Which statement is true?
 
 1) “Polyglot persistence always increases complexity.”
@@ -893,9 +893,9 @@ Name one operational capability you must standardize across all stores (hint: ba
 
 ---
 
-## [CHALLENGE] Anti-patterns (and how they fail)
+##  Anti-patterns (and how they fail)
 
-### [MISCONCEPTION/ANTI-PATTERN] Dual writes without a log
+###  Dual writes without a log
 You write to Postgres and Elasticsearch in the same request handler.
 
 Failure:
@@ -906,7 +906,7 @@ Failure:
 
 Fix: outbox/CDC + idempotent indexing.
 
-### [MISCONCEPTION/ANTI-PATTERN] Treating caches as SoR
+###  Treating caches as SoR
 You store the shopping cart only in Redis.
 
 Failure:
@@ -915,7 +915,7 @@ Failure:
 
 Fix: persist carts (or events) in a durable store; use Redis as cache.
 
-### [MISCONCEPTION/ANTI-PATTERN] Cross-store joins at request time
+###  Cross-store joins at request time
 You fetch user profile from MongoDB and orders from Postgres and recommendations from graph DB on every request.
 
 Failure:
@@ -933,9 +933,9 @@ Which anti-pattern is most tempting for teams early in a project, and why?
 
 ---
 
-## [INVESTIGATE] Real-world usage patterns (what companies actually do)
+##  Real-world usage patterns (what companies actually do)
 
-### [CHALLENGE] “What does polyglot look like in production?”
+###  “What does polyglot look like in production?”
 
 Common blueprint:
 - SoR: relational or NewSQL
@@ -949,7 +949,7 @@ Why it works:
 - derived stores rebuildable
 - event pipelines provide integration
 
-### [INTERACTIVE] Question
+###  Question
 If you had to remove one component to simplify, which would you remove first?
 
 A) Kafka
@@ -966,7 +966,7 @@ In your system, which store is “optional”? What’s the fallback path if it�
 
 ---
 
-## [CHALLENGE] Design exercise—build a polyglot persistence plan
+##  Design exercise—build a polyglot persistence plan
 
 ### Scenario
 You’re designing “BeanCart,” a global coffee subscription service.
@@ -984,7 +984,7 @@ Constraints:
 - Recommendations can be stale up to 1 day
 - Must handle regional outages
 
-### [INTERACTIVE] Worksheet (pause and think)
+###  Worksheet (pause and think)
 Fill this table (mentally or on paper):
 
 | Feature | SoR | Derived stores | Consistency target | Failure behavior |
@@ -1013,9 +1013,9 @@ Where would you place the outbox: in the checkout service DB, or in a shared int
 
 ---
 
-## [INVESTIGATE] Testing polyglot persistence (the part teams skip)
+##  Testing polyglot persistence (the part teams skip)
 
-### [CHALLENGE] Your unit tests pass, but production fails
+###  Your unit tests pass, but production fails
 Polyglot persistence fails in the seams:
 - retries
 - duplicates
@@ -1023,7 +1023,7 @@ Polyglot persistence fails in the seams:
 - partial outages
 - schema drift
 
-### [INTERACTIVE] Question
+###  Question
 Which test catches the most real polyglot bugs?
 
 A) Unit tests of repository classes
@@ -1079,14 +1079,14 @@ What’s one invariant you can assert even under eventual consistency? (Example:
 
 ---
 
-## [CHALLENGE] Security and compliance across multiple datastores
+##  Security and compliance across multiple datastores
 
 ### Scenario
 You store PII in Postgres, but you also index user names in Elasticsearch and copy events to a warehouse.
 
 Now GDPR deletion requests arrive.
 
-### [INTERACTIVE] Question
+###  Question
 What’s the correct interpretation of “delete user data” in polyglot persistence?
 
 A) Delete from the SoR only
@@ -1099,7 +1099,7 @@ Answer: **B**.
 - Tombstones: propagate deletion events to derived stores
 - Scoped indexing: avoid indexing sensitive fields
 
-### [MISCONCEPTION]
+###
 > “We can’t delete from Kafka, so we can’t be compliant.”
 
 You can design to avoid storing raw PII in immutable logs, or use encryption strategies.
@@ -1115,9 +1115,9 @@ If you use “encrypt + forget,” what new operational risk do you introduce?
 
 ---
 
-## [MENTAL MODEL] Polyglot persistence as a pipeline of truth
+##  Polyglot persistence as a pipeline of truth
 
-### [CHALLENGE] Stop thinking in databases; think in truth flows
+###  Stop thinking in databases; think in truth flows
 A durable system often looks like:
 
 1) Truth write happens in a transactional boundary (SoR)
@@ -1145,9 +1145,9 @@ If your event log is unavailable for 30 minutes, what parts of your system must 
 
 ---
 
-## [FINAL SYNTHESIS] The Polyglot Persistence Incident Game
+##  The Polyglot Persistence Incident Game
 
-### [CHALLENGE] Scenario: “Search is wrong, checkout is slow, and metrics are missing”
+###  Scenario: “Search is wrong, checkout is slow, and metrics are missing”
 It’s Black Friday.
 
 Symptoms:

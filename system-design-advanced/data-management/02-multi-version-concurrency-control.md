@@ -16,7 +16,7 @@ premium: false
 
 ---
 
-## [CHALLENGE] The cafe with one espresso machine and 200 customers
+##  The cafe with one espresso machine and 200 customers
 
 You run a busy coffee shop. There’s **one espresso machine** (the shared resource), but customers want two kinds of experiences:
 
@@ -27,7 +27,7 @@ If you force everyone into a single line with a single “lock” on the machine
 
 **Your mission:** allow customers to read the menu and see the order queue without blocking the barista, while still ensuring orders are correct.
 
-### [PAUSE AND THINK]
+###
 If you were designing the shop rules, which would you prefer?
 
 A) Readers block writers so readers always see the “latest” queue.
@@ -40,7 +40,7 @@ Pick one. Don’t overthink.
 
 ---
 
-### [REVEAL]
+###
 Most distributed databases aiming for high concurrency pick **C**.
 
 That’s the central promise of **MVCC**:
@@ -57,7 +57,7 @@ Instead of “the row,” the database stores **multiple versions** of a row, ea
 
 ---
 
-### [KEY INSIGHT]
+###
 **MVCC = time travel for data.**
 
 - Reads select the version valid at the reader’s snapshot time.
@@ -66,7 +66,7 @@ Instead of “the row,” the database stores **multiple versions** of a row, ea
 
 ---
 
-## [MENTAL MODEL] A timeline per row
+##  A timeline per row
 
 Imagine each row as a small timeline:
 
@@ -78,7 +78,7 @@ A transaction reading at time 27 picks V2; reading at time 12 picks V1.
 
 [IMAGE: A horizontal timeline for one row with colored segments for versions, labeled with begin_ts and end_ts; overlay multiple reader snapshot times as vertical lines selecting different versions.]
 
-### [DECISION GAME] Which statement is true?
+###  Which statement is true?
 
 1) MVCC guarantees serializable isolation by default.
 2) MVCC guarantees readers never block writers.
@@ -89,19 +89,19 @@ Pause and pick.
 
 ---
 
-### [ANSWER]
+###
 **3 is always true.**
 
 - (1) depends on the system and isolation level (Snapshot Isolation, Serializable, etc.).
 - (2) is “mostly true,” but there are caveats: schema changes, vacuum/compaction, hot-spot updates, and some locking paths.
 - (4) is false: MVCC shifts the problem; you still need write-write conflict detection and sometimes read-write validation.
 
-### [KEY INSIGHT]
+###
 MVCC is a **mechanism**. Isolation level is a **policy** implemented on top of it.
 
 ---
 
-## [CHALLENGE] Build MVCC from scratch (conceptually)
+##  Build MVCC from scratch (conceptually)
 
 You are designing a key-value store with transactions. Each key can be updated. You want:
 
@@ -109,14 +109,14 @@ You are designing a key-value store with transactions. Each key can be updated. 
 - High concurrency
 - Reasonable performance under replication
 
-### [PAUSE AND THINK]
+###
 What is the minimum metadata you need per version to answer:
 
 - “Is this version visible to transaction T?”
 
 ---
 
-### [REVEAL] Typical metadata
+###  Typical metadata
 Common MVCC systems store something like:
 
 - **begin timestamp** (often a *commit timestamp*) — when version becomes visible
@@ -131,12 +131,12 @@ In practice, implementations vary:
 
 [IMAGE: A table showing versions with columns: key, value, begin_ts, end_ts, created_by_txn, committed?; plus arrows showing visibility checks.]
 
-### [KEY INSIGHT]
+###
 Visibility = **snapshot time** + **version validity interval** + **commit status**.
 
 ---
 
-## [COMMON MISCONCEPTION] “MVCC means no locks”
+##  “MVCC means no locks”
 
 MVCC reduces *read locks*, but many systems still use locks for:
 
@@ -145,12 +145,12 @@ MVCC reduces *read locks*, but many systems still use locks for:
 - Index structure protection (latches)
 - Commit coordination (2PC/consensus)
 
-### [PAUSE AND THINK]
+###
 If MVCC doesn’t lock reads, how do we prevent two writers from both committing updates to the same row?
 
 ---
 
-### [ANSWER]
+###
 You need **conflict detection**:
 
 - **Pessimistic**: lock the row/key at write time.
@@ -161,12 +161,12 @@ Many distributed MVCC databases do a hybrid:
 - Lock or “intent” at write time to avoid wasted work.
 - Validate at commit to ensure snapshot rules.
 
-### [KEY INSIGHT]
+###
 MVCC removes *read locks*, not the need for coordination.
 
 ---
 
-## [ANALOGY] The restaurant: receipts vs rewriting the menu
+##  The restaurant: receipts vs rewriting the menu
 
 Non-MVCC (in-place updates) is like rewriting the menu board every time a dish changes. Customers reading the menu might catch it mid-erasure.
 
@@ -180,7 +180,7 @@ The kitchen doesn’t pause to let everyone re-read the menu.
 
 ---
 
-## [DEEP DIVE] MVCC visibility rules (core logic)
+##  MVCC visibility rules (core logic)
 
 Let’s formalize the “menu sheet” rule.
 
@@ -194,7 +194,7 @@ A version `V` is visible to `T` if:
 
 **Clarification:** some systems use `begin_ts` as *commit_ts*; others store `created_ts` and a separate commit record. The visibility predicate is conceptually the same: “committed before snapshot and not overwritten before snapshot.”
 
-### [MATCHING EXERCISE]
+###
 Match each term to its role:
 
 | Term | Role |
@@ -207,14 +207,14 @@ Pause and match.
 
 ---
 
-### [ANSWER]
+###
 - Snapshot timestamp -> **B**
 - Begin/commit timestamp -> **C**
 - End timestamp -> **A**
 
 ---
 
-## [CHALLENGE] Snapshot Isolation vs Serializable using MVCC
+##  Snapshot Isolation vs Serializable using MVCC
 
 MVCC is often paired with **Snapshot Isolation (SI)**:
 
@@ -224,7 +224,7 @@ MVCC is often paired with **Snapshot Isolation (SI)**:
 
 SI prevents many anomalies but not all.
 
-### [DECISION GAME] Which anomaly can happen under SI?
+###  Which anomaly can happen under SI?
 
 1) Dirty read
 2) Non-repeatable read
@@ -235,7 +235,7 @@ Pause and pick all that apply.
 
 ---
 
-### [REVEAL]
+###
 Under Snapshot Isolation:
 
 - Dirty reads: **No** (reads see committed snapshot)
@@ -248,7 +248,7 @@ Under Snapshot Isolation:
 - you do blind writes that overwrite without checking a predicate (depends on API)
 - you rely on secondary indexes that are not transactionally consistent
 
-### [COMMON MISCONCEPTION]
+###
 “MVCC automatically gives serializable.”
 
 Reality: SI is not serializable. Serializable MVCC typically requires additional machinery:
@@ -257,12 +257,12 @@ Reality: SI is not serializable. Serializable MVCC typically requires additional
 - SSI (Serializable Snapshot Isolation) with dependency tracking
 - Commit-time validation with read sets
 
-### [KEY INSIGHT]
+###
 MVCC + SI = great performance and strong guarantees, but not full serializability.
 
 ---
 
-## [DEEP DIVE] Write skew: the story you should be able to tell at a whiteboard
+##  Write skew: the story you should be able to tell at a whiteboard
 
 Two doctors are on call. Rule: **at least one doctor must be on call**.
 
@@ -280,25 +280,25 @@ Each transaction updated a different row, so no write-write conflict is detected
 
 [IMAGE: A dependency diagram showing Txn A and Txn B reading both rows from same snapshot, then writing disjoint rows, leading to invalid final state.]
 
-### [CHALLENGE QUESTION]
+###
 How would you prevent this?
 
 Pause and think.
 
 ---
 
-### [REVEAL]
+###
 - Use **serializable** isolation (SSI/predicate locking).
 - Model invariant with a single row (forcing same-row conflict) — sometimes practical, sometimes not.
 - Use explicit locks / `SELECT ... FOR UPDATE` on both rows.
 - Use constraints enforced at commit with validation.
 
-### [KEY INSIGHT]
+###
 Write skew is an **invariant violation** caused by **concurrent reads + disjoint writes**.
 
 ---
 
-## [CHALLENGE] MVCC on one node vs distributed
+##  MVCC on one node vs distributed
 
 On a single machine, MVCC mostly answers:
 
@@ -313,7 +313,7 @@ In distributed systems, add:
 - How do we handle **failures** mid-commit?
 - How do we keep **replicas** consistent with versions?
 
-### [PAUSE AND THINK]
+###
 What’s the hardest part of distributed MVCC?
 
 A) Storing multiple versions
@@ -322,17 +322,17 @@ C) Coordinating timestamps and commit across nodes
 
 ---
 
-### [ANSWER]
+###
 **C** dominates complexity.
 
 Storing versions is engineering. Distributed correctness is coordination.
 
-### [KEY INSIGHT]
+###
 Distributed MVCC is not “MVCC + networking.” It’s “MVCC + distributed commit + distributed time.”
 
 ---
 
-## [DEEP DIVE] Distributed MVCC design space
+##  Distributed MVCC design space
 
 Common architectural choices:
 
@@ -346,7 +346,7 @@ And for commits:
 - **Consensus per transaction** (less common)
 - **Deterministic ordering** (not MVCC-centric, but interacts)
 
-### [COMPARISON TABLE] Timestamp strategies
+###  Timestamp strategies
 
 | Strategy | Pros | Cons | Typical fit |
 |---|---|---|---|
@@ -360,7 +360,7 @@ And for commits:
 
 ---
 
-## [CHALLENGE] The “snapshot across shards” problem
+##  The “snapshot across shards” problem
 
 You have a database sharded by key:
 
@@ -369,7 +369,7 @@ You have a database sharded by key:
 
 A transaction reads `K` from shard 1 and `T` from shard 2.
 
-### [PAUSE AND THINK]
+###
 How do you guarantee the transaction sees a **single consistent snapshot** across both shards?
 
 A) Each shard picks its own snapshot timestamp.
@@ -378,7 +378,7 @@ C) Read from leaders only; followers are unsafe.
 
 ---
 
-### [REVEAL]
+###
 **B** is the core pattern: one snapshot timestamp `S` used everywhere.
 
 But implementing B requires:
@@ -399,7 +399,7 @@ Different systems name this differently:
 
 [IMAGE: Two shards with their own safe_time lines; coordinator picks S that is <= min(safe_time_1, safe_time_2).]
 
-### [KEY INSIGHT]
+###
 A distributed snapshot is only as fresh as the **slowest shard’s safe time**.
 
 ---
@@ -410,15 +410,15 @@ If nodes have skewed clocks, “now” is not globally meaningful.
 
 Even with perfectly synchronized clocks, “now” does not ensure all shards have applied all commits up to “now.”
 
-### [MENTAL MODEL]
+###
 Think of each shard like a kitchen station. Even if the order was placed at 12:01, the dessert station might not have received the ticket yet. Serving a “snapshot at 12:01” requires every station to have processed tickets up to 12:01.
 
-### [KEY INSIGHT]
+###
 Snapshot time is not “wall time.” It’s “time for which the system has a completeness guarantee.”
 
 ---
 
-## [DEEP DIVE] MVCC + replication: leader/follower and read-your-writes
+##  MVCC + replication: leader/follower and read-your-writes
 
 ### Scenario
 You write `x=5` to the leader. Immediately after, you read from a follower.
@@ -439,27 +439,27 @@ So to read your write:
 
 [IMAGE: Leader with commit ts c; follower lagging with applied ts < c; read at S=c fails or returns old version.]
 
-### [KEY INSIGHT]
+###
 MVCC makes staleness explicit: a replica’s **applied frontier** limits which snapshots it can serve.
 
 **Production insight:** if you offer follower reads, expose a client-visible token (e.g., `min_read_ts`) so services can enforce session consistency without always hitting leaders.
 
 ---
 
-## [CHALLENGE] Distributed transaction commit with MVCC
+##  Distributed transaction commit with MVCC
 
 A write transaction touches 3 shards. Each shard will store new versions.
 
 Question: when do those versions become visible?
 
-### [PAUSE AND THINK]
+###
 A) As soon as each shard writes its local version.
 B) Only after all shards agree the transaction commits, using a commit protocol.
 C) Immediately, but readers ignore them until a background process validates.
 
 ---
 
-### [REVEAL]
+###
 **B** is the usual correctness requirement.
 
 Most systems implement:
@@ -470,7 +470,7 @@ Most systems implement:
 
 This is typically **2PC** (two-phase commit) with a coordinator.
 
-### [FAILURE SCENARIO]
+###
 Coordinator crashes after some shards commit and others haven’t.
 
 Without recovery, you risk:
@@ -479,7 +479,7 @@ Without recovery, you risk:
 - stuck intents blocking others
 - inconsistent visibility
 
-### [KEY INSIGHT]
+###
 MVCC needs a **durable commit decision**. In distributed systems, that’s where 2PC/consensus enters.
 
 **Distributed systems rigor (CAP framing):**
@@ -490,7 +490,7 @@ MVCC needs a **durable commit decision**. In distributed systems, that’s where
 
 ---
 
-## [DEEP DIVE] How “write intents” work (and why they exist)
+##  How “write intents” work (and why they exist)
 
 A common MVCC trick: uncommitted writes are stored as **intents** (a provisional version).
 
@@ -505,7 +505,7 @@ This allows the system to:
 
 [IMAGE: A key with committed versions and an uncommitted intent at the head; arrows showing reader skipping intent and writer encountering it.]
 
-### [DECISION GAME] Intent handling
+###  Intent handling
 Which statement is true?
 
 1) Intents are visible to all readers.
@@ -523,22 +523,22 @@ Intents are often “lock+value”: they both reserve the key and store the tent
 
 ---
 
-## [MENTAL MODEL] Garbage collection: the delivery service’s storage room
+##  Garbage collection: the delivery service’s storage room
 
 Every new version is like keeping a copy of a delivery receipt.
 
 - Great for auditing and for customers who started reading earlier.
 - But the storage room fills up.
 
-### [CHALLENGE]
+###
 When can we safely delete old versions?
 
-### [PAUSE AND THINK]
+###
 What condition must be true before deleting a version with end timestamp `E`?
 
 ---
 
-### [REVEAL]
+###
 A version can be collected when **no active transaction** can still read it.
 
 In snapshot terms:
@@ -561,14 +561,14 @@ Systems use:
 
 [IMAGE: Multiple transactions with snapshot times; a GC line at min_active_snapshot; versions to the left are safe to delete.]
 
-### [KEY INSIGHT]
+###
 MVCC performance is often limited by **GC and long-running transactions**.
 
 **Production insight:** enforce max transaction duration (or at least max *read snapshot age*) for OLTP paths; route long analytics to replicas / separate systems.
 
 ---
 
-## [COMMON MISCONCEPTION] “MVCC makes long reads cheap”
+## MISCONCEPTION “MVCC makes long reads cheap”
 
 Long read-only transactions can be expensive because they:
 
@@ -577,12 +577,11 @@ Long read-only transactions can be expensive because they:
 - increase storage and compaction work
 - can slow down reads and writes (more versions to scan; larger LSM levels)
 
-### [KEY INSIGHT]
 MVCC trades lock contention for **version retention pressure**.
 
 ---
 
-## [DEEP DIVE] MVCC and distributed indexes
+## MVCC and distributed indexes
 
 Indexes must also be versioned or at least consistent with MVCC visibility.
 
@@ -600,14 +599,14 @@ Distributed twist:
 - Secondary indexes may be stored on different nodes than base data.
 - Maintaining them atomically requires distributed transactions.
 
-### [CHALLENGE]
+###
 If secondary index updates are async, what anomaly might you see?
 
 Pause and think.
 
 ---
 
-### [REVEAL]
+###
 You can see:
 
 - missing rows (index not updated yet)
@@ -620,12 +619,12 @@ Systems either:
 - accept eventual consistency for indexes (documented semantics), or
 - use changefeeds / backfill and tolerate anomalies.
 
-### [KEY INSIGHT]
+###
 MVCC correctness is easiest when **all read paths consult the same versioned truth**.
 
 ---
 
-## [CHALLENGE] Read paths — point reads vs range scans
+##  Read paths — point reads vs range scans
 
 Point reads are easy: find the newest version <= snapshot.
 
@@ -634,7 +633,7 @@ Range scans are harder:
 - Need to avoid phantoms under serializable.
 - Need to be efficient when many versions exist.
 
-### [PAUSE AND THINK]
+###
 Why are range scans especially tricky in distributed MVCC?
 
 A) They require scanning more keys.
@@ -643,7 +642,7 @@ C) They require global locks.
 
 ---
 
-### [ANSWER]
+###
 **B** is the correctness issue; **A** is the performance issue.
 
 Serializable isolation needs to ensure that if you scan “all orders with status=pending,” concurrent inserts don’t violate your assumptions.
@@ -656,12 +655,12 @@ Approaches:
 
 [IMAGE: A key range [k1,k9] scanned at snapshot S; concurrent insert k5 at S+1; show phantom issue.]
 
-### [KEY INSIGHT]
+###
 Phantoms are about **sets**, not individual rows.
 
 ---
 
-## [DEEP DIVE] MVCC under failures: what breaks first?
+##  MVCC under failures: what breaks first?
 
 Distributed MVCC must handle:
 
@@ -671,7 +670,7 @@ Distributed MVCC must handle:
 - replica lag
 - clock skew (if timestamps depend on time)
 
-### [FAILURE SCENARIO 1] Coordinator crash during 2PC
+###  Coordinator crash during 2PC
 
 Progressive reveal question:
 
@@ -681,7 +680,7 @@ Pause and think.
 
 ---
 
-### [REVEAL]
+###
 Prepared intents are “in doubt.” Systems resolve them using:
 
 - a **transaction record** stored durably (often replicated)
@@ -690,14 +689,14 @@ Prepared intents are “in doubt.” Systems resolve them using:
 
 Without a durable transaction record, you can get stuck.
 
-### [KEY INSIGHT]
+###
 To make MVCC robust, the commit decision must be **recoverable** and **discoverable** by any participant.
 
 **Production insight:** treat “intent resolution” as a first-class background subsystem with SLOs (age, backlog). If it falls behind, reads and GC degrade.
 
 ---
 
-### [FAILURE SCENARIO 2] Network partition + timestamp oracle
+###  Network partition + timestamp oracle
 
 If you rely on a centralized timestamp oracle and it becomes unreachable from some nodes:
 
@@ -705,7 +704,7 @@ If you rely on a centralized timestamp oracle and it becomes unreachable from so
 - writes may block (can’t get commit timestamps)
 - or the system might fail over to another oracle (needs fencing)
 
-#### [DECISION GAME] Fencing
+####  Fencing
 Which statement is true?
 
 1) If two timestamp oracles run concurrently, it’s fine as long as they’re fast.
@@ -714,24 +713,24 @@ Which statement is true?
 
 ---
 
-### [ANSWER]
+###
 **2** is true.
 
-### [KEY INSIGHT]
+###
 Time assignment is part of correctness, not an optimization.
 
 ---
 
-### [FAILURE SCENARIO 3] Replica applies commits out of order
+###  Replica applies commits out of order
 
 In MVCC, versions have commit timestamps. If a replica applies commits out of timestamp order, can it still serve snapshot reads?
 
-#### [PAUSE AND THINK]
+####
 Is “apply order” important?
 
 ---
 
-### [REVEAL]
+###
 It depends on the system’s invariants:
 
 - If replication log defines a total order, replicas apply in log order.
@@ -739,14 +738,14 @@ It depends on the system’s invariants:
 
 Only snapshots <= resolved_ts are safe.
 
-### [KEY INSIGHT]
+###
 Serving a snapshot requires a **completeness frontier**, not just “latest timestamp seen.”
 
 ---
 
-## [TRADE-OFFS] MVCC is not free
+##  MVCC is not free
 
-### [COMPARISON TABLE] MVCC vs locking (high level)
+###  MVCC vs locking (high level)
 
 | Dimension | MVCC | Two-phase locking (2PL) |
 |---|---|---|
@@ -757,14 +756,14 @@ Serving a snapshot requires a **completeness frontier**, not just “latest time
 | Distributed snapshot reads | Natural but needs safe time | Harder; often still needs coordination |
 | Serializable isolation | Requires extra machinery | More direct (but can deadlock) |
 
-### [CHALLENGE QUESTION]
+###
 If you’re building a write-heavy system with few reads, is MVCC always the best choice?
 
 Pause.
 
 ---
 
-### [ANSWER]
+###
 Not necessarily. MVCC shines when:
 
 - you have many reads
@@ -777,12 +776,12 @@ Write-heavy workloads may suffer due to:
 - compaction overhead
 - hotspot contention (intents/locks)
 
-### [KEY INSIGHT]
+###
 MVCC optimizes for **read concurrency**, not pure write throughput.
 
 ---
 
-## [REAL WORLD] Usage patterns
+##  Usage patterns
 
 MVCC appears in many places, but with different trade-offs:
 
@@ -792,17 +791,17 @@ MVCC appears in many places, but with different trade-offs:
 - CockroachDB: MVCC with HLC timestamps; intents; closed timestamps.
 - TiDB/TiKV: MVCC over RocksDB; Percolator-like transactions; timestamp oracle.
 
-### [PAUSE AND THINK]
+###
 Which systems use MVCC but still require locks?
 
 Answer: most of them.
 
-### [KEY INSIGHT]
+###
 MVCC is ubiquitous because it composes well with replication and snapshots.
 
 ---
 
-## [CODE] Implementing MVCC visibility (toy model)
+##  Implementing MVCC visibility (toy model)
 
 **Corrections vs many toy examples:**
 - Visibility must consider *commit status* and *own writes*.
@@ -861,7 +860,7 @@ What this code should make you feel:
 
 ---
 
-## [CODE] Distributed snapshot read coordination (toy coordinator)
+##  Distributed snapshot read coordination (toy coordinator)
 
 **Corrections/clarifications:**
 - The coordinator must read *per-shard safe time* and choose `S <= min(safeTime)`.
@@ -909,7 +908,7 @@ What to watch for:
 
 ---
 
-## [CHALLENGE] Unresolved intents and read stalls
+##  Unresolved intents and read stalls
 
 ### Scenario
 A write transaction creates intents on shard 1 and shard 2.
@@ -928,7 +927,7 @@ C) Reader sees partial commit.
 
 ---
 
-### [REVEAL]
+###
 **B** is the usual behavior in strongly consistent systems.
 
 The system must not serve snapshots that might miss a commit <= S.
@@ -946,12 +945,12 @@ Systems mitigate with:
 - pushing transactions (force abort/commit)
 - bounded staleness reads (serve older snapshot)
 
-### [KEY INSIGHT]
+###
 In distributed MVCC, **transaction cleanup is part of the read path**.
 
 ---
 
-## [COMMON MISCONCEPTION] “Read-only transactions are always fast”
+##  “Read-only transactions are always fast”
 
 Read-only transactions can be slow if:
 
@@ -960,12 +959,12 @@ Read-only transactions can be slow if:
 - unresolved intents prevent safe time advancement
 - read spans many shards
 
-### [KEY INSIGHT]
+###
 Read latency is often driven by **coordination for freshness**, not by local MVCC lookup.
 
 ---
 
-## [DEEP DIVE] MVCC and isolation levels in distributed systems
+##  MVCC and isolation levels in distributed systems
 
 Different products expose different semantics:
 
@@ -973,7 +972,7 @@ Different products expose different semantics:
 - **Repeatable Read / SI**: transaction sees one snapshot.
 - **Serializable**: additional checks.
 
-### [COMPARISON TABLE] Isolation on MVCC
+###  Isolation on MVCC
 
 | Isolation | Snapshot behavior | Typical anomaly risk | How it’s implemented on MVCC |
 |---|---|---|---|
@@ -981,26 +980,26 @@ Different products expose different semantics:
 | Snapshot Isolation | Snapshot per transaction | write skew | snapshot + write-write conflict |
 | Serializable | As-if serial | none (within model) | SSI/predicate locks/validation |
 
-### [CHALLENGE QUESTION]
+###
 If your system offers SI, what must your application still do?
 
 Pause.
 
 ---
 
-### [ANSWER]
+###
 Model invariants carefully. If invariants involve multiple rows, you may need:
 
 - explicit locking
 - serializable isolation
 - redesign invariants
 
-### [KEY INSIGHT]
+###
 Isolation level selection is an **application correctness decision**.
 
 ---
 
-## [DEEP DIVE] MVCC with consensus replication (log-based)
+##  MVCC with consensus replication (log-based)
 
 Some systems tie commit timestamps to the replication log.
 
@@ -1019,12 +1018,12 @@ Cons:
 
 [IMAGE: A Raft log with entries labeled with commit_ts; snapshot corresponds to applied index; readers can read at applied index.]
 
-### [KEY INSIGHT]
+###
 Consensus can provide “time” (ordering), but cross-shard atomicity remains hard.
 
 ---
 
-## [DEEP DIVE] MVCC and clock-based time (TrueTime/HLC)
+##  MVCC and clock-based time (TrueTime/HLC)
 
 If commit timestamps are derived from physical time (or hybrid time), you get benefits:
 
@@ -1036,22 +1035,22 @@ But you must handle uncertainty:
 - TrueTime uses bounded uncertainty and commit wait.
 - HLC preserves causality-ish ordering without strict bounds, but you still need safe time frontiers.
 
-### [CHALLENGE]
+###
 Why might a system do a “commit wait” before making a transaction visible?
 
 Pause.
 
 ---
 
-### [REVEAL]
+###
 To ensure external consistency: if a transaction commits at timestamp `t`, the system waits until real time is definitely past `t` before acknowledging, so no later transaction can appear to commit “in the past.”
 
-### [KEY INSIGHT]
+###
 Some MVCC systems pay latency to align timestamps with real-world time.
 
 ---
 
-## [MATCHING] MVCC components to distributed responsibilities
+##  MVCC components to distributed responsibilities
 
 Match the MVCC component to the distributed concern it stresses most:
 
@@ -1066,18 +1065,18 @@ Pause and match.
 
 ---
 
-### [ANSWER]
+###
 - Timestamp assignment -> **B** (failover, fencing, monotonicity)
 - Intent resolution -> **D**
 - Version GC -> **A**
 - Safe time / resolved timestamp -> **C**
 
-### [KEY INSIGHT]
+###
 Distributed MVCC is a web of *correctness + liveness + performance* constraints.
 
 ---
 
-## [QUIZ] Which statement is true? (advanced)
+##  Which statement is true? (advanced)
 
 1) If you have MVCC, you can serve linearizable reads from any replica.
 2) If you have MVCC and a resolved timestamp, you can serve consistent historical reads from followers up to that timestamp.
@@ -1088,7 +1087,7 @@ Pause.
 
 ---
 
-### [ANSWERS]
+###
 - (1) False. Linearizable reads require additional coordination or lease-based leadership.
 - (2) True (assuming resolved timestamp means completeness).
 - (3) False.
@@ -1096,7 +1095,7 @@ Pause.
 
 ---
 
-## [PRACTICAL ENGINEERING] What will bite you in production
+##  What will bite you in production
 
 ### 1) Hot keys and intent contention
 Even if readers don’t block writers, **writers block writers**.
@@ -1126,12 +1125,12 @@ You need to see:
 
 [IMAGE: A dashboard mockup showing min_active_snapshot, resolved_ts per shard, intent age histogram, and MVCC GC bytes.]
 
-### [KEY INSIGHT]
+###
 MVCC correctness bugs are subtle; MVCC performance bugs are loud.
 
 ---
 
-## [SECTION CHALLENGE] Diagnose a latency spike
+##  Diagnose a latency spike
 
 ### Scenario
 At 14:05, p99 read latency jumps from 20ms to 800ms. Writes are steady.
@@ -1142,7 +1141,7 @@ Metrics show:
 - intent count increases on shard 7
 - GC bytes pending increase cluster-wide
 
-### [PAUSE AND THINK]
+###
 What’s the most plausible root cause?
 
 A) A long-running read transaction started.
@@ -1151,18 +1150,18 @@ C) A follower fell behind.
 
 ---
 
-### [REVEAL]
+###
 **B** is most directly suggested: intents piling up and resolved timestamp stuck.
 
 A long read would pin GC but doesn’t necessarily create intents.
 A lagging follower doesn’t necessarily stop resolved timestamp on a shard (depends on definition), but the intent buildup is a strong signal of unresolved transactional state.
 
-### [KEY INSIGHT]
+###
 When safe time stops, look for **unresolved transactional metadata**.
 
 ---
 
-## [DESIGN PATTERNS] Choosing MVCC semantics for your distributed system
+##  Choosing MVCC semantics for your distributed system
 
 ### Pattern 1: Strong reads, fresh reads (expensive coordination)
 - Linearizable reads
@@ -1177,26 +1176,26 @@ When safe time stops, look for **unresolved transactional metadata**.
 - Keep versions for auditing
 - Reads may not be transactionally consistent across shards
 
-### [CHALLENGE QUESTION]
+###
 Which pattern fits a shopping cart service?
 
 Pause.
 
 ---
 
-### [DISCUSSION]
+###
 Often:
 
 - cart reads should be consistent for a user session (read-your-writes)
 - global serializability may be unnecessary
 - follower reads can work with session tokens
 
-### [KEY INSIGHT]
+###
 MVCC is a knob: you can trade freshness, latency, and availability.
 
 ---
 
-## [FINAL SYNTHESIS CHALLENGE] Design MVCC for a global delivery platform
+##  Design MVCC for a global delivery platform
 
 You’re building a global delivery platform with:
 
@@ -1211,7 +1210,7 @@ You’re building a global delivery platform with:
 - Inventory must not go negative.
 - System must tolerate region partitions.
 
-### [PAUSE AND THINK] Design worksheet
+###  Design worksheet
 Answer these progressively:
 
 1) **Timestamps:** centralized oracle, HLC, or consensus-derived?
@@ -1224,19 +1223,19 @@ Write down your choices.
 
 ---
 
-### [REVEAL] One plausible solution
+###  One plausible solution
 1) **HLC + resolved timestamps** to avoid a single global bottleneck; ensure fencing via lease-based leadership per range.
 2) **Follower reads** for tracking pages using resolved timestamp; **leader reads** for cart/session read-your-writes.
 3) **Serializable** (or explicit locking) for inventory decrement; SI for most order updates.
 4) Durable **transaction record** replicated; background intent resolution; push/abort on timeouts.
 5) Separate analytics store or use bounded-staleness snapshots; enforce max txn duration; run analytics on follower snapshots.
 
-### [KEY INSIGHT]
+###
 A good MVCC design is not “turn it on.” It’s a set of explicit choices about **time, coordination, cleanup, and semantics**.
 
 ---
 
-## [CLOSING] Take-home questions
+##  Take-home questions
 
 1) Name two reasons MVCC read latency can spike even when CPU is fine.
 2) Explain why resolved timestamp is about *completeness*, not *freshness*.
@@ -1244,16 +1243,3 @@ A good MVCC design is not “turn it on.” It’s a set of explicit choices abo
 4) Describe how you’d monitor MVCC health in production.
 
 ---
-
-## Appendix: Visuals you may want to add
-
-- [IMAGE: MVCC version chain diagram for a single key, showing committed versions and an intent]
-- [IMAGE: Distributed snapshot selection across shards using min(safe_time)]
-- [IMAGE: Write skew dependency example]
-- [IMAGE: Dashboard for MVCC metrics]
-
-## Appendix: Code you may want to add
-
-- [CODE: Python, MVCC visibility + version selection]
-- [CODE: JavaScript, distributed snapshot coordinator]
-- [CODE: SQL, examples of SI anomalies and SERIALIZABLE fixes in a real DB]

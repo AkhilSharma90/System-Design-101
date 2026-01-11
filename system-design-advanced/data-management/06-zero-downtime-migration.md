@@ -19,7 +19,7 @@ premium: false
 
 ---
 
-## [HANDSHAKE] How to use this article
+##  How to use this article
 
 This is an interactive, progressive-reveal guide. You'll repeatedly see:
 
@@ -40,7 +40,7 @@ At the end you'll face a final synthesis challenge that combines everything.
 
 ---
 
-## [TARGET] Challenge: Friday 2pm, you need to change a core table
+##  Challenge: Friday 2pm, you need to change a core table
 
 ### Scenario
 You run a global e-commerce platform. Your `orders` table is central: every checkout writes to it; fulfillment reads it; customer support queries it; analytics streams it.
@@ -84,7 +84,7 @@ Answer: **You will run mixed versions concurrently** (for minutes to hours), and
 
 ---
 
-## [MAGNIFIER] Mental model: migrations as a compatibility contract
+##  Mental model: migrations as a compatibility contract
 
 ### Scenario
 You have 12 microservices. 4 write to the same table. Deploys are rolling; some pods update slower. Meanwhile, read replicas serve 60% of reads.
@@ -129,7 +129,7 @@ Examples:
 
 ---
 
-## [MAGNIFIER] Distributed systems rigor: what you can and cannot assume
+##  Distributed systems rigor: what you can and cannot assume
 
 ### Network assumptions (state them explicitly)
 - The network can drop, delay, duplicate, and reorder packets.
@@ -159,7 +159,7 @@ So your migration protocol must tolerate **inconsistency windows** and reconcile
 
 ---
 
-## [SIREN] Common Misconception: "Zero downtime means no risk"
+##  Common Misconception: "Zero downtime means no risk"
 
 ### Misconception
 "If we do it without downtime, users won't notice and we're safe."
@@ -198,7 +198,7 @@ Examples:
 
 ---
 
-## [PUZZLE] The core playbook: Expand -> Migrate -> Contract
+##  The core playbook: Expand -> Migrate -> Contract
 
 This is the foundational protocol used across many systems.
 
@@ -232,7 +232,7 @@ Examples:
 
 ---
 
-## [GAME] Decision game: Which migration is safe under rolling deploy?
+##  Decision game: Which migration is safe under rolling deploy?
 
 ### Scenario
 You have service `checkout` writing to `orders`. You want to add a NOT NULL column `currency`.
@@ -270,7 +270,7 @@ Answer: it can require a table scan and take locks that block writes (Postgres r
 
 ---
 
-## [MAGNIFIER] DDL in distributed environments: locks, replicas, and blast radius
+##  DDL in distributed environments: locks, replicas, and blast radius
 
 ### Scenario
 Your primary DB is PostgreSQL with streaming replicas. You run `ALTER TABLE ...` at peak traffic.
@@ -314,7 +314,7 @@ Answer: some requests routed to replicas see old schema/data while others routed
 
 ---
 
-## [HANDSHAKE] Compatibility matrix: app versions x schema versions
+##  Compatibility matrix: app versions x schema versions
 
 ### Scenario
 You deploy `checkout` v1 -> v2 while the DB migrates from schema S1 -> S2.
@@ -350,7 +350,7 @@ Answer: **capability detection** (e.g., checking column existence, or using a mi
 
 ---
 
-## [FAUCET] Pattern 1: Additive columns with backfill (the classic)
+##  Pattern 1: Additive columns with backfill (the classic)
 
 ### Scenario
 Add `currency` and `fx_rate` to `order_lines`.
@@ -424,7 +424,7 @@ Answer: idempotent updates + durable checkpoints + safe retry semantics.
 
 ---
 
-## [SIREN] Common Misconception: "Backfill is just a script"
+##  Common Misconception: "Backfill is just a script"
 
 ### Misconception
 "We'll write a one-off script that updates all rows."
@@ -454,7 +454,7 @@ Answer: a monotonic, indexed key (often the primary key), plus a job name/versio
 
 ---
 
-## [MAGNIFIER] Pattern 2: Dual-write with read-repair
+##  Pattern 2: Dual-write with read-repair
 
 ### Scenario
 You're moving from `orders.total_amount` to `orders.total_amount_minor` and want to keep them consistent.
@@ -510,7 +510,7 @@ Answer:
 
 ---
 
-## [GAME] Decision game: Dual-write across systems
+##  Decision game: Dual-write across systems
 
 ### Scenario
 You're migrating from Postgres to a new distributed SQL cluster. For months you will write to both.
@@ -614,7 +614,7 @@ Answer: you usually rollback by **routing** (feature flag / traffic shift) while
 
 ---
 
-## [MAGNIFIER] Pattern 4: Online index changes and query plan safety
+##  Pattern 4: Online index changes and query plan safety
 
 ### Scenario
 You add an index to support a new query, but index build can be heavy. In distributed systems, index builds can also impact replication and storage.
@@ -683,7 +683,7 @@ Examples:
 
 ---
 
-## [HANDSHAKE] Distributed failure modes you must design for
+##  Distributed failure modes you must design for
 
 ### Scenario
 Your migration plan looks perfect in staging. Production fails anyway.
@@ -753,7 +753,7 @@ Auto-generated migrations might:
 
 ---
 
-## [PUZZLE] Event-driven systems: schema changes beyond the database
+##  Event-driven systems: schema changes beyond the database
 
 ### Scenario
 You publish `OrderCreated` events to Kafka. Multiple teams consume them.
@@ -825,7 +825,7 @@ Answer: it’s a **semantic breaking change** even if the schema is backward-com
 
 ---
 
-## [FAUCET] Pattern 5: Expand/Contract for caches and derived stores
+##  Pattern 5: Expand/Contract for caches and derived stores
 
 ### Scenario
 You store `order_total` in Redis for fast reads, and also in Elasticsearch for search.
@@ -889,7 +889,7 @@ Answer: it can cause cache stampedes, overload downstream systems, and create us
 
 ---
 
-## [MAGNIFIER] Operational discipline: feature flags, phased deploys, and kill switches
+##  Operational discipline: feature flags, phased deploys, and kill switches
 
 ### Scenario
 You've added new columns and deployed dual-write. Now you need to turn on "read-new" safely.
@@ -918,7 +918,7 @@ Treat flags as part of the migration protocol:
 
 ---
 
-## [PUZZLE] Backfill engineering: idempotency, chunking, and correctness
+##  Backfill engineering: idempotency, chunking, and correctness
 
 ### Scenario
 You must backfill `currency` for 800M order lines.
@@ -1027,7 +1027,7 @@ Answer: exactly-once would mean each row is updated once and only once. For most
 
 ---
 
-## [GAME] Quiz: Choose the correct statement (locks & DDL)
+##  Quiz: Choose the correct statement (locks & DDL)
 
 Which statement is true?
 
@@ -1053,7 +1053,7 @@ Answer: column order and presence can change; clients may deserialize positional
 
 ---
 
-## [SIREN] Common Misconception: "We can always roll back"
+##  Common Misconception: "We can always roll back"
 
 ### Misconception
 "If something goes wrong, we'll roll back."
@@ -1090,7 +1090,7 @@ Answer: usually **old semantics** (or a way to recompute them). Schema alone is 
 
 ---
 
-## [MAGNIFIER] Contract changes: renames, type changes, and semantic changes
+##  Contract changes: renames, type changes, and semantic changes
 
 ### Scenario
 You want to:
@@ -1191,7 +1191,7 @@ Answer: when the table is small, traffic is low, you can tolerate a maintenance 
 
 ---
 
-## [HANDSHAKE] Multi-service coordination: who owns the migration?
+##  Multi-service coordination: who owns the migration?
 
 ### Scenario
 Three services write to the same table:
@@ -1230,7 +1230,7 @@ Answer: all three, but minimally a **design doc + runbook** for anything that ca
 
 ---
 
-## [FAUCET] Observability for migrations: what to measure
+##  Observability for migrations: what to measure
 
 ### Scenario
 You start a backfill and dual-write. How do you know it's safe?
@@ -1261,7 +1261,7 @@ Answer: ideally all three at different cadences—fast signal in-app, authoritat
 
 ---
 
-## [PUZZLE] Cutover strategies: dark reads, canaries, and progressive delivery
+##  Cutover strategies: dark reads, canaries, and progressive delivery
 
 ### Scenario
 You have `orders_v2` shadow table fully backfilled.
@@ -1318,7 +1318,7 @@ Answer: almost always **routing/feature flag**.
 
 ---
 
-## [SIREN] Common Misconception: "Replication makes it consistent everywhere"
+##  Common Misconception: "Replication makes it consistent everywhere"
 
 ### Misconception
 "Our replicas will catch up quickly; it's fine."
@@ -1356,7 +1356,7 @@ Answer: track error signatures like `column does not exist`, correlate with repl
 
 ---
 
-## [MAGNIFIER] Advanced topic: migrations with sharding and partitioning
+##  Advanced topic: migrations with sharding and partitioning
 
 ### Scenario
 Your `orders` table is sharded by `customer_id`. Some shards are busier.
@@ -1392,7 +1392,7 @@ Answer: usually one shard at a time (or small batches) to limit blast radius and
 
 ---
 
-## [FAUCET] Advanced topic: online schema changes in MySQL and friends
+##  Advanced topic: online schema changes in MySQL and friends
 
 ### Scenario
 You run MySQL with large tables. Some ALTER operations copy tables.
@@ -1472,7 +1472,7 @@ Answer: full checksums are expensive but comprehensive; sampling is cheap but ca
 
 ---
 
-## [GAME] Matching exercise: choose the right pattern
+##  Matching exercise: choose the right pattern
 
 ### Scenario
 Match the migration goal to the best pattern.
@@ -1505,7 +1505,7 @@ Answer: cross-system dual-write (C) and semantic changes (D) are typically harde
 
 ---
 
-## [MAGNIFIER] Contract phase: how to safely drop old schema
+##  Contract phase: how to safely drop old schema
 
 ### Scenario
 You've been dual-writing for weeks. You want to drop old columns.
@@ -1564,7 +1564,7 @@ Answer: fear of breaking something + lack of ownership. Cost: schema bloat, ongo
 
 ---
 
-## [SIREN] Common Misconception: "We can leave both forever"
+##  Common Misconception: "We can leave both forever"
 
 ### Misconception
 "We'll keep old and new columns indefinitely. No need to drop."
@@ -1587,7 +1587,7 @@ Answer: a migration RFC/runbook with an explicit contract date, plus an owner an
 
 ---
 
-## [PUZZLE] Case study walkthrough: changing order totals safely
+##  Case study walkthrough: changing order totals safely
 
 ### Scenario
 You must change from `orders.total_amount` (INT cents) to:
@@ -1652,7 +1652,7 @@ Answer: backfill and constraint validation (and sometimes index builds) because 
 
 ---
 
-## [TARGET] Final synthesis challenge: design your own zero-downtime migration plan
+##  Final synthesis challenge: design your own zero-downtime migration plan
 
 ### Scenario
 You run a ride-sharing platform.
@@ -1746,7 +1746,7 @@ Production answer: **mismatch metrics**. Dark reads and throttling help, but mis
 
 ---
 
-## [WAVE] Closing: your migration maturity checklist
+##  Closing: your migration maturity checklist
 
 - [ ] Expand-first mindset
 - [ ] Mixed-version compatibility tested

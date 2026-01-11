@@ -18,7 +18,7 @@ premium: false
 
 ---
 
-## [CHALLENGE] The "One Counter Kills the Cluster" Incident
+##  The "One Counter Kills the Cluster" Incident
 
 Its 10:17 AM. Your on-call phone rings.
 
@@ -50,7 +50,7 @@ Production note:
 
 ---
 
-## [HANDSHAKE] What Exactly Is a Hot Partition?
+##  What Exactly Is a Hot Partition?
 
 ### Scenario
 You have a partitioned dataset or stream:
@@ -95,7 +95,7 @@ Clarification:
 
 ---
 
-## [WARNING] Why Hot Partitions Are So Dangerous in Distributed Systems
+##  Why Hot Partitions Are So Dangerous in Distributed Systems
 
 ### Scenario
 Your system has:
@@ -135,7 +135,7 @@ Production insight:
 
 ---
 
-## [MENTAL MODEL] How Partitioning Creates Hot Spots
+##  How Partitioning Creates Hot Spots
 
 ### Mental model
 Partitioning is a function:
@@ -182,7 +182,7 @@ Network assumption (explicit):
 
 ---
 
-## [GAME] Decision Game - Is This a Hot Partition or Something Else?
+##  Decision Game - Is This a Hot Partition or Something Else?
 
 ### Scenario
 You observe:
@@ -214,7 +214,7 @@ Production checklist to disambiguate:
 
 ---
 
-## [HANDSHAKE] Observability Prerequisites - You Cant Fix What You Cant See
+##  Observability Prerequisites - You Cant Fix What You Cant See
 
 ### Scenario
 Your monitoring shows node-level CPU and disk, but nothing about partitions.
@@ -272,7 +272,7 @@ Production insight:
 
 ---
 
-## [INVESTIGATE] Detection - From "Somethings Slow" to "Partition 17 Is Hot"
+##  Detection - From "Somethings Slow" to "Partition 17 Is Hot"
 
 ### Scenario
 Your cluster has 256 partitions. You suspect partition 17 is hot.
@@ -307,7 +307,7 @@ Alerting production note:
 
 ---
 
-## [PUZZLE] Quantifying Skew (So You Dont Argue in Slack)
+##  Quantifying Skew (So You Dont Argue in Slack)
 
 ### Scenario
 Two engineers disagree:
@@ -396,7 +396,7 @@ Production insight:
 
 ---
 
-## [WARNING] Common Misconceptions (Hot Partitions Edition)
+##  Common Misconceptions (Hot Partitions Edition)
 
 ### Misconception 1: "Hash partitioning prevents hot partitions."
 Reality: Hashing spreads random keys well, but it cannot fix skewed popularity (celebrity keys). If 40% of traffic targets one key, hashing faithfully routes 40% to one partition.
@@ -418,7 +418,7 @@ Key insight:
 
 ---
 
-## [CHALLENGE] Root Causes - The Usual Suspects
+##  Root Causes - The Usual Suspects
 
 ### Scenario
 You found partition 17 is hot. Now you need to know why.
@@ -467,7 +467,7 @@ Key insight:
 
 ---
 
-## [INVESTIGATE] Diagnosing Hot Keys (Inside a Hot Partition)
+##  Diagnosing Hot Keys (Inside a Hot Partition)
 
 ### Scenario
 Partition 17 has 10x QPS. Is it one key or many?
@@ -488,7 +488,7 @@ Partition 17 has 10x QPS. Is it one key or many?
 - per-key lock stats
 - per-range read/write bytes
 
-#### [IMAGE] Hot partition internal distribution (ASCII)
+####  Hot partition internal distribution (ASCII)
 
 ```
 Case A: single hot key dominates
@@ -524,7 +524,7 @@ Key insight:
 
 ---
 
-## [HANDSHAKE] Mitigation Strategy Map (Pick the Right Lever)
+##  Mitigation Strategy Map (Pick the Right Lever)
 
 ### Scenario
 You have 30 minutes to stabilize production, then a week to fix properly.
@@ -561,7 +561,7 @@ Key insight:
 
 ---
 
-## [FIREHOSE] Immediate Tactics - Stop the Bleeding
+##  Immediate Tactics - Stop the Bleeding
 
 ### Scenario
 Partition 17 leader is at 100% CPU. p99 is exploding. Customers are timing out.
@@ -739,7 +739,7 @@ Production insight:
 
 ---
 
-## [INVESTIGATE] Structural Fixes - Designing for Skew
+##  Structural Fixes - Designing for Skew
 
 ### Scenario
 Your product has a "global like counter" updated on every page view. Thats a write-hot key.
@@ -898,7 +898,7 @@ Production insight:
 
 ---
 
-## [GAME] Decision Game - Pick a Mitigation Under Constraints
+##  Decision Game - Pick a Mitigation Under Constraints
 
 ### Scenario
 You run a multi-tenant event ingestion pipeline.
@@ -929,7 +929,7 @@ Key insight:
 
 ---
 
-## [WARNING] Failure Scenarios You Must Plan For
+##  Failure Scenarios You Must Plan For
 
 ### Scenario 1: Hot partition triggers leader failover loop
 
@@ -979,7 +979,7 @@ Key insight:
 
 ---
 
-## [INVESTIGATE] Distributed Coordination Angle - Hot Partitions in Consensus Systems
+##  Distributed Coordination Angle - Hot Partitions in Consensus Systems
 
 ### Scenario
 You store metadata in a consensus-backed store (Raft/Paxos) and notice one Raft group is overloaded.
@@ -1009,7 +1009,7 @@ Answer
 - use leases/read-only queries on followers (if safe)
 - batch proposals
 
-#### [IMAGE] Multiple Raft groups with one hot group (ASCII)
+####  Multiple Raft groups with one hot group (ASCII)
 
 ```
 Clients
@@ -1035,7 +1035,7 @@ CAP/consistency note:
 
 ---
 
-## [HANDSHAKE] Stream Processing Angle - Hot Partitions in Kafka/Flink/Spark
+##  Stream Processing Angle - Hot Partitions in Kafka/Flink/Spark
 
 ### Scenario
 Kafka topic has 48 partitions. Consumer group lags, but only on partitions 3 and 17.
@@ -1092,7 +1092,7 @@ Ordering clarification:
 
 ---
 
-## [PUZZLE] Trade-offs - Consistency, Ordering, and the Cost of Spreading Load
+##  Trade-offs - Consistency, Ordering, and the Cost of Spreading Load
 
 ### Scenario
 You want to "just salt the key." But your product requires:
@@ -1129,7 +1129,7 @@ CAP framing (practical):
 
 ---
 
-## [WARNING] Operational Playbook - Step-by-Step Incident Response
+##  Operational Playbook - Step-by-Step Incident Response
 
 ### Scenario
 Its happening again. You have 15 minutes to restore SLOs.
@@ -1175,7 +1175,7 @@ Production insight:
 
 ---
 
-## [INVESTIGATE] Designing Alerts That Dont Cry Wolf
+##  Designing Alerts That Dont Cry Wolf
 
 ### Scenario
 You add an alert "max/median partition QPS > 5" and get paged constantly during normal diurnal patterns.
@@ -1206,7 +1206,7 @@ Key insight:
 
 ---
 
-## [HANDSHAKE] Real-World Patterns (What Big Systems Actually Do)
+##  Real-World Patterns (What Big Systems Actually Do)
 
 ### Pattern 1: "Celebrity user" isolation
 - detect top users/tenants
@@ -1232,7 +1232,7 @@ Key insight:
 
 ---
 
-## [PUZZLE] Worked Example - Hot Partition in a Sharded KV Store
+##  Worked Example - Hot Partition in a Sharded KV Store
 
 ### Scenario
 You operate a sharded KV store with:
@@ -1318,7 +1318,7 @@ Key insight:
 
 ---
 
-## [WARNING] When Mitigation Backfires (And How to Notice)
+##  When Mitigation Backfires (And How to Notice)
 
 ### Scenario
 You deployed key salting for a hot counter. Writes spread out, but now reads are slow and expensive.
@@ -1352,7 +1352,7 @@ Production insight:
 
 ---
 
-## [CHALLENGE] Final Synthesis - The Hot Partition Gauntlet
+##  Final Synthesis - The Hot Partition Gauntlet
 
 ### Scenario
 Youre designing a new multi-region system:
@@ -1407,7 +1407,7 @@ Multi-region note:
 
 ---
 
-## [GOODBYE] Closing Challenge Questions
+##  Closing Challenge Questions
 
 1) In your current system, what are the top 5 keys/tenants by traffic? Do you know?
 2) Do you have per-partition queue depth and latency histograms?

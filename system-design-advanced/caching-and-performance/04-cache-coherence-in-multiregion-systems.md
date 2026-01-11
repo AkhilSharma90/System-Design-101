@@ -58,7 +58,7 @@ In multi-region systems, “cache coherence” is less about perfect global agre
 
 ---
 
-##  HANDSHAKE: What “Cache Coherence” Means Outside a CPU
+##  What “Cache Coherence” Means Outside a CPU
 
 ### Scenario
 In CPUs, cache coherence means cores don’t see contradictory values for the same memory location (MESI, etc.). In distributed systems, the word gets overloaded.
@@ -314,7 +314,7 @@ Challenge question: would you use a global cache for feature flags, authenticati
 
 ---
 
-##  INVESTIGATE: The Race Conditions That Break Your Intuition
+##   The Race Conditions That Break Your Intuition
 
 Scenario: “Write DB then invalidate cache” still serves stale.
 
@@ -357,7 +357,7 @@ Challenge question: where would you instrument to measure propagation delay end-
 
 ---
 
-##  WARNING: Common Misconceptions (and Why They Bite)
+##   Common Misconceptions (and Why They Bite)
 
 Misconception 1: “If we invalidate, we’re coherent.”
 
@@ -392,7 +392,7 @@ Challenge question: which misconception is most likely to show up during a regio
 
 ---
 
-##  HANDSHAKE: Coherence Strategies by Consistency Goal
+##   Coherence Strategies by Consistency Goal
 
 Let’s map common product requirements to cache strategies.
 
@@ -434,7 +434,7 @@ Challenge question: if you use session affinity (C), what happens when the regio
 
 ---
 
-## PIPELINE: Versioning—Your Best Friend Against Stale Refills
+##  Versioning—Your Best Friend Against Stale Refills
 
 Scenario: you want to prevent stale values from being reintroduced into cache after an update.
 
@@ -509,7 +509,7 @@ Challenge question: where do versions come from (DB commit LSN, application coun
 
 ---
 
-##  INVESTIGATE: Leases—Time-Bounded Exclusivity for Cached Data
+##  Leases—Time-Bounded Exclusivity for Cached Data
 
 Scenario: you want a cache entry to be “authoritative” for a short time, and you want to avoid thundering herds and stale overwrites.
 
@@ -543,7 +543,7 @@ Challenge question: in multi-region systems, can a lease be global without addin
 
 ---
 
-##  GAME: Decision Game—Invalidate vs Update vs Bypass
+##  Decision Game—Invalidate vs Update vs Bypass
 
 Scenario: a write occurs: price changes.
 
@@ -575,7 +575,7 @@ Challenge question: what’s the risk of pushing updates (2) across regions duri
 
 ---
 
-##  WARNING: Failure Scenarios (The Real Curriculum)
+##   Failure Scenarios (The Real Curriculum)
 
 ### Failure 1: Invalidation bus partition
 
@@ -679,7 +679,7 @@ Challenge question: where must you use wall-clock time anyway (e.g., user-visibl
 
 ---
 
-##  HANDSHAKE: Client-Centric Coherence—Make the User Happy First
+##   Client-Centric Coherence—Make the User Happy First
 
 Scenario: a user updates their shipping address. They expect to see the update immediately—for them—even if the rest of the world catches up later.
 
@@ -716,7 +716,7 @@ Challenge question: what’s the operational cost of version tokens (token size,
 
 ---
 
-##  PIPELINE: Invalidation Delivery—At-Most-Once, At-Least-Once, Exactly-Once (and Why You Still Lose)
+##   Invalidation Delivery—At-Most-Once, At-Least-Once, Exactly-Once (and Why You Still Lose)
 
 Scenario: you publish invalidations: `{key, version}`.
 
@@ -752,7 +752,7 @@ Challenge question: if your invalidation stream is partitioned by key, what does
 
 ---
 
-## INVESTIGATE: Write Propagation Architectures
+##  Write Propagation Architectures
 
 Architecture A: Central event bus + regional consumers
 
@@ -797,7 +797,7 @@ Challenge question: what happens if CDC is delayed but clients demand read-your-
 
 ---
 
-##  WARNING: Multi-Key and Transactional Coherence (Where Dreams Go to Die)
+##  Multi-Key and Transactional Coherence (Where Dreams Go to Die)
 
 Scenario: checkout updates:
 
@@ -841,7 +841,7 @@ Challenge question: which is cheaper—caching a transaction snapshot per user, 
 
 ---
 
-## HANDSHAKE: Practical Techniques That Actually Work
+##  Practical Techniques That Actually Work
 
 Technique 1: “Soft TTL” + background refresh (stale-while-revalidate)
 
@@ -884,7 +884,7 @@ Challenge question: which of these techniques would you avoid for security-sensi
 
 ---
 
-##  GAME: Coherence vs Availability—Pick Your Poison (CAP in Cache Clothing)
+##  Coherence vs Availability—Pick Your Poison (CAP in Cache Clothing)
 
 Scenario: during a partition, eu-west cannot reach us-east.
 
@@ -916,7 +916,7 @@ Challenge question: for each endpoint in your API, would you choose A, B, or C d
 
 ---
 
-##  INVESTIGATE: Observability—How to Know Your Cache Is Lying
+##   Observability—How to Know Your Cache Is Lying
 
 Scenario: you suspect coherence issues but can’t prove them.
 
@@ -950,7 +950,7 @@ Challenge question: what is the SLO for coherence? “99% of reads within 2 seco
 
 ---
 
-##  PIPELINE: Implementation Sketch—Versioned Cache-Aside with Invalidation
+##   Implementation Sketch—Versioned Cache-Aside with Invalidation
 
 Below is a simplified pattern that handles:
 
@@ -1025,7 +1025,7 @@ Challenge question: if your database can’t provide a global monotonic version,
 
 ---
 
-##  HANDSHAKE: Real-World Usage Patterns (What Big Systems Often Do)
+##  Real-World Usage Patterns (What Big Systems Often Do)
 
 Pattern: CDN + regional cache + DB
 
@@ -1053,7 +1053,7 @@ Challenge question: if you introduce key ownership, how do you handle a region o
 
 ---
 
-##  PUZZLE: Choose Your Coherence Contract (Interactive Worksheet)
+## Choose Your Coherence Contract (Interactive Worksheet)
 
 You’re designing caching for three endpoints:
 
@@ -1094,7 +1094,7 @@ Challenge question: write down one explicit sentence per endpoint: “We guarant
 
 ---
 
-##  FINAL CHALLENGE: The “Global Price Change” Incident Postmortem Game
+##  The “Global Price Change” Incident Postmortem Game
 
 Scenario: you are on-call. A global price change rollout caused:
 
@@ -1146,7 +1146,7 @@ Final challenge question: if you could only implement one improvement this quart
 
 ---
 
-##  GOODBYE: The Mental Model to Keep
+## The Mental Model to Keep
 
 - Caches are distributed replicas with weaker semantics.
 - Coherence is about bounded staleness and client experience, not perfection.

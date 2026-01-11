@@ -30,7 +30,7 @@ Distributed locking discussions get misleading unless we state assumptions:
 
 ---
 
-## [Challenge] Challenge 1: The last croissant problem (why locking exists)
+##  Challenge 1: The last croissant problem (why locking exists)
 
 - Scenario or challenge
   You run a busy coffee shop. There is **one last croissant** in the display case. Two baristas take orders at the same time:
@@ -65,7 +65,7 @@ Distributed locking discussions get misleading unless we state assumptions:
 
 ---
 
-## [Mental model] Two ways to avoid double-selling
+##  Two ways to avoid double-selling
 
 - Scenario or challenge
   You need a mental picture that generalizes from “croissant” to “distributed state.”
@@ -98,7 +98,7 @@ Distributed locking discussions get misleading unless we state assumptions:
 
 ---
 
-## [Challenge] Challenge 2: A distributed cart checkout with two services
+##  Challenge 2: A distributed cart checkout with two services
 
 - Scenario or challenge
   A user checks out a cart:
@@ -139,7 +139,7 @@ Distributed locking discussions get misleading unless we state assumptions:
 
 ---
 
-## [Common Misconception] “Optimistic locking means no locking”
+##  “Optimistic locking means no locking”
 
 - Scenario or challenge
   Teams hear “optimistic” and assume “no synchronization.”
@@ -165,7 +165,7 @@ Distributed locking discussions get misleading unless we state assumptions:
 
 ---
 
-## [Deep dive] Pessimistic locking in distributed systems
+##  Pessimistic locking in distributed systems
 
 - Scenario or challenge
   Reserving the last table at a restaurant: the host says, “I’ll put your name on it and hold the table.” Others must wait.
@@ -194,7 +194,7 @@ Distributed locking discussions get misleading unless we state assumptions:
 
 ---
 
-## [Puzzle] Failure drill: The lock holder crashes
+##  Failure drill: The lock holder crashes
 
 - Scenario or challenge
   A worker acquires a lock on `inventory:sku123`, then crashes mid-operation.
@@ -227,7 +227,7 @@ Distributed locking discussions get misleading unless we state assumptions:
 
 ---
 
-## [Decision game] Which statement is true? (Pessimistic edition)
+##  Which statement is true? (Pessimistic edition)
 
 - Scenario or challenge
   You must decide whether to block or to abort.
@@ -260,7 +260,7 @@ Distributed locking discussions get misleading unless we state assumptions:
 
 ---
 
-## [Deep dive] Optimistic locking in distributed systems
+##  Optimistic locking in distributed systems
 
 - Scenario or challenge
   Two people editing the same Google Doc line: you type a sentence, someone else edits the same line. The system merges or asks you to resolve.
@@ -287,7 +287,7 @@ Distributed locking discussions get misleading unless we state assumptions:
 
 ---
 
-## [Common Misconception] “Optimistic locking is only for databases”
+##  “Optimistic locking is only for databases”
 
 - Scenario or challenge
   You see it in JPA or SQL and assume it’s a DB-only technique.
@@ -313,7 +313,7 @@ Distributed locking discussions get misleading unless we state assumptions:
 
 ---
 
-## [Puzzle] Failure drill: Retry storms and thundering herds
+##  Failure drill: Retry storms and thundering herds
 
 - Scenario or challenge
   A popular SKU goes viral. Thousands of clients attempt to decrement stock using optimistic locking.
@@ -348,7 +348,7 @@ Distributed locking discussions get misleading unless we state assumptions:
 
 ---
 
-## [Deep dive] Comparison table: Optimistic vs Pessimistic (distributed focus)
+##  Comparison table: Optimistic vs Pessimistic (distributed focus)
 
 | Dimension | Pessimistic locking | Optimistic locking |
 |---|---|---|
@@ -366,7 +366,7 @@ Distributed locking discussions get misleading unless we state assumptions:
 
 ---
 
-## [Challenge] Challenge 3: Don’t hold locks across the payment gateway
+##  Challenge 3: Don’t hold locks across the payment gateway
 
 - Scenario or challenge
   Your checkout flow:
@@ -402,7 +402,7 @@ Distributed locking discussions get misleading unless we state assumptions:
 
 ---
 
-## [Deep dive] Implementation patterns (with code markers)
+##  Implementation patterns (with code markers)
 
 ### Pattern A: Pessimistic locking with SQL row locks (and what the demo is / isn’t)
 
@@ -645,7 +645,7 @@ class LeaseLock:
 
 ---
 
-## [Deep dive] Progressive reveal: The consistency triangle behind your choice
+##  Progressive reveal: The consistency triangle behind your choice
 
 - Scenario or challenge
   You want both perfect correctness and perfect availability.
@@ -676,7 +676,7 @@ class LeaseLock:
 
 ---
 
-## [Decision game] Which statement is true? (Optimistic edition)
+##  Which statement is true? (Optimistic edition)
 
 - Scenario or challenge
   You’re considering “no waiting, just retry.”
@@ -708,7 +708,7 @@ class LeaseLock:
 
 ---
 
-## [Puzzle] Matching exercise: Choose the right tool
+##  Matching exercise: Choose the right tool
 
 - Scenario or challenge
   You must map workload shape to coordination strategy.
@@ -749,7 +749,7 @@ class LeaseLock:
 
 ---
 
-## [Deep dive] Trade-offs under failure: partitions, timeouts, and ambiguity
+##  Trade-offs under failure: partitions, timeouts, and ambiguity
 
 - Scenario or challenge
   You attempt an update. The database commits, but the client times out and retries.
@@ -776,7 +776,7 @@ class LeaseLock:
 
 ---
 
-## [Common Misconception] “Distributed locks make everything consistent”
+##  “Distributed locks make everything consistent”
 
 - Scenario or challenge
   You add a lock and expect multi-service atomicity.
@@ -801,7 +801,7 @@ class LeaseLock:
 
 ---
 
-## [Deep dive] Leases, fencing tokens, and “lock loss” correctness
+##  Leases, fencing tokens, and “lock loss” correctness
 
 - Scenario or challenge
   Worker W1 acquires a lease-based lock and starts processing. A network hiccup delays renewals; the lease expires. Worker W2 acquires the lock and starts processing too. W1 comes back and continues, unaware it lost the lock.
@@ -830,7 +830,7 @@ class LeaseLock:
 
 ---
 
-## [Challenge] Challenge 4: Inventory at scale - one SKU, many regions
+##  Challenge 4: Inventory at scale - one SKU, many regions
 
 - Scenario or challenge
   You run an e-commerce platform with multiple regions. Inventory for a hot SKU is shared globally.
@@ -862,7 +862,7 @@ class LeaseLock:
 
 ---
 
-## [Deep dive] Hybrid strategies (because reality is messy)
+##  Hybrid strategies (because reality is messy)
 
 - Scenario or challenge
   Pure optimistic vs pure pessimistic is rarely the whole story.
@@ -900,7 +900,7 @@ class LeaseLock:
 
 ---
 
-## [Puzzle] Exercise: Design a locking strategy for a flash sale
+##  Exercise: Design a locking strategy for a flash sale
 
 - Scenario or challenge
   You have:
@@ -944,7 +944,7 @@ class LeaseLock:
 
 ---
 
-## [Deep dive] Observability: How to tell you chose wrong
+##  Observability: How to tell you chose wrong
 
 - Scenario or challenge
   You deployed your locking strategy. Now production traffic arrives.
@@ -981,7 +981,7 @@ class LeaseLock:
 
 ---
 
-## [Common Misconception] “Deadlocks only happen with pessimistic locking”
+##  “Deadlocks only happen with pessimistic locking”
 
 - Scenario or challenge
   You avoided locks and feel safe.
@@ -1004,7 +1004,7 @@ class LeaseLock:
 
 ---
 
-## [Deep dive] Distributed transactions vs locking (where the boundary is)
+##  Distributed transactions vs locking (where the boundary is)
 
 - Scenario or challenge
   You want atomic updates across:
@@ -1035,7 +1035,7 @@ class LeaseLock:
 
 ---
 
-## [Decision game] Quiz: Spot the bug (progressive reveal)
+##  Quiz: Spot the bug (progressive reveal)
 
 - Scenario or challenge
   You implement optimistic locking for account withdrawal:
@@ -1095,7 +1095,7 @@ def withdraw(acct: str, amount: int, idem_key: str):
 
 ---
 
-## [Puzzle] Practical checklist: choosing optimistic vs pessimistic
+##  Practical checklist: choosing optimistic vs pessimistic
 
 - Scenario or challenge
   You must choose a default strategy and defend it in design review.
@@ -1123,7 +1123,7 @@ def withdraw(acct: str, amount: int, idem_key: str):
 
 ---
 
-## [Synthesis] Final synthesis challenge: Design the “shared whiteboard” service
+##  Final synthesis challenge: Design the “shared whiteboard” service
 
 - Scenario or challenge
   You’re building a shared whiteboard:

@@ -15,7 +15,7 @@ premium: false
 
 ---
 
-## [HANDSHAKE] What you'll build in your head
+## What you'll build in your head
 
 By the end, you should be able to:
 
@@ -28,7 +28,7 @@ By the end, you should be able to:
 
 ---
 
-## [NETWORK ASSUMPTIONS] The ground rules (don’t skip)
+##  The ground rules (don’t skip)
 
 A Redis “distributed lock” is a time-bounded lease stored in Redis. Its behavior depends on assumptions:
 
@@ -49,7 +49,7 @@ Redis locks are typically used to keep systems available and “mostly single-ow
 
 ---
 
-## [CHALLENGE] Challenge 1: The coffee shop espresso machine
+##  Challenge 1: The coffee shop espresso machine
 
 ### Scenario
 You run a busy coffee shop. There’s one espresso machine. Two baristas (two app instances) might try to use it at the same time. You need a rule:
@@ -82,15 +82,14 @@ All four can happen depending on failure mode:
 - (3) network partition / packet loss / timeouts
 - (4) race conditions if the locking protocol is wrong
 
-[KEY INSIGHT]
 A distributed lock is not “mutual exclusion in the universe.” It’s a protocol that provides some mutual exclusion properties under assumptions.
-[/KEY INSIGHT]
+
 
 Challenge question: What assumptions do you think Redis-based locks rely on? (Network? Redis availability? Clocks?)
 
 ---
 
-## [MENTAL MODEL] Lock vs Lease vs Ownership
+##  Lock vs Lease vs Ownership
 
 ### Scenario
 A restaurant gives you a pager that lets you occupy a table. But the pager expires if you don’t check in.
@@ -113,9 +112,7 @@ Pause.
 ### Progressive reveal: answer
 Correct: B.
 
-[KEY INSIGHT]
 Redis locks are time-bounded leases. Time is part of the correctness story.
-[/KEY INSIGHT]
 
 Challenge question: If time is part of correctness, what happens when a process is paused for longer than the TTL?
 
@@ -123,7 +120,7 @@ Challenge question: If time is part of correctness, what happens when a process 
 
 ---
 
-## [PIPELINE] The simplest Redis lock: `SET NX PX`
+##  The simplest Redis lock: `SET NX PX`
 
 ### Scenario
 You have N workers processing jobs. Each job has a unique ID. You want at most one worker to process a job.
@@ -224,15 +221,13 @@ If your lease expires (TTL) and another worker acquires the lock, and then your 
 
 This is the classic “unlocking someone else’s lock” bug.
 
-[KEY INSIGHT]
 Release must be ownership-aware. Use a unique token and an atomic check-and-delete.
-[/KEY INSIGHT]
 
 Challenge question: Is token-checking sufficient to guarantee mutual exclusion? (Hint: consider long pauses.)
 
 ---
 
-## [ALERT] Failure scenarios you must simulate (mentally)
+##  Failure scenarios you must simulate (mentally)
 
 Distributed locks fail in the cracks between:
 
@@ -248,7 +243,7 @@ We’ll play through failures like a delivery service where drivers (clients) an
 
 ---
 
-## [CHALLENGE] Challenge 2: The “paused barista” bug
+##  Challenge 2: The “paused barista” bug
 
 ### Scenario
 Worker A acquires lock with TTL=10s. It starts updating inventory in a DB transaction.
@@ -274,15 +269,13 @@ Correct: No.
 
 Token-based unlock prevents incorrect unlock, but it doesn’t stop A from continuing to act after its lease expired.
 
-[KEY INSIGHT]
 A Redis lease only controls who may enter. It does not physically stop a paused process from continuing later.
-[/KEY INSIGHT]
 
 Challenge question: What additional mechanism can prevent “stale owners” from committing side effects?
 
 ---
 
-## [MENTAL MODEL] The missing ingredient: Fencing tokens
+##  The missing ingredient: Fencing tokens
 
 ### Scenario (restaurant ticket numbers)
 A restaurant gives each table a ticket number. The kitchen only accepts orders with a ticket number that is higher than any previously seen.
@@ -394,15 +387,13 @@ Correct: B.
 
 TTL is for liveness (eventual progress). Fencing tokens are for safety (reject stale owners).
 
-[KEY INSIGHT]
 TTL gives liveness; fencing gives safety against paused or partitioned clients.
-[/KEY INSIGHT]
 
 Challenge question: Where should fencing be enforced in Redis, in your app, or in the downstream system?
 
 ---
 
-## [HANDSHAKE] Enforcing fencing: “the kitchen must check the ticket”
+##  Enforcing fencing: “the kitchen must check the ticket”
 
 ### Scenario
 You protect a shared resource: e.g., updating a row in Postgres.
@@ -436,21 +427,18 @@ WHERE id = :id
 - Consider `CHECK (fence_token >= 0)`.
 - If multiple operations exist, ensure every write path enforces the fence.
 
-### [COMMON MISCONCEPTION]
+###
 “If I use Redis locks, I don’t need conditional updates.”
 
 Reality: Redis locks control entry best-effort. Your database is where correctness often must be enforced.
-[/COMMON MISCONCEPTION]
 
-[KEY INSIGHT]
 Put the strongest correctness check closest to the state you’re protecting.
-[/KEY INSIGHT]
 
 Challenge question: What if the protected resource is not a DB row but an external API call? How could fencing work there?
 
 ---
 
-## [GAME] Decision game: Which statement is true?
+##  Decision game: Which statement is true?
 
 Pick the true statement(s). Pause before reading the answer.
 
@@ -467,15 +455,13 @@ Pause and think: which are true?
 - (3) True: stale owners can act.
 - (4) False as a blanket claim: Redlock is a probabilistic mitigation under assumptions; it does not remove the need for fencing for correctness-critical side effects.
 
-[KEY INSIGHT]
 Most Redis lock correctness debates are really about what your system assumes about time, partitions, and failover.
-[/KEY INSIGHT]
 
 Challenge question: What is your service’s tolerance for duplicate critical section execution? (Never? Rare? Acceptable with idempotency?)
 
 ---
 
-## [PIPELINE] Renewals (“watchdog”) and why they don’t solve everything
+##  Renewals (“watchdog”) and why they don’t solve everything
 
 ### Scenario (parking meter)
 You park with a 30-second meter (TTL). You can keep feeding it coins (renewal) so you don’t get towed.
@@ -617,9 +603,7 @@ Correct: B.
 
 If the JVM pauses, the watchdog pauses. If the host is frozen, everything pauses. The lease can still expire.
 
-[KEY INSIGHT]
 Renewal reduces accidental expiry during normal operation, but cannot eliminate expiry under stop-the-world pauses or partitions.
-[/KEY INSIGHT]
 
 ### Production insight: what renewal is good for
 - Reduces expiry during normal latency spikes.
@@ -634,7 +618,7 @@ Challenge question: If you rely on renewal, what is the worst-case pause you mus
 
 ---
 
-## [ALERT] Redis failover: when the ground moves under your lock
+##  Redis failover: when the ground moves under your lock
 
 ### Scenario (manager swap)
 A manager (Redis primary) keeps the reservation book. A backup manager (replica) is copying notes.
@@ -665,9 +649,7 @@ Pause.
 ### Progressive reveal: answer
 Correct: B.
 
-[KEY INSIGHT]
 With async replication, failover can violate the assumption “if I got OK, the lock exists.”
-[/KEY INSIGHT]
 
 ### Mitigations (and their costs)
 1) `WAIT numreplicas timeout` after acquiring
@@ -689,7 +671,7 @@ Challenge question: Which knob would you turn first in production: `WAIT` or fen
 
 ---
 
-## [MENTAL MODEL] Redis Cluster and sharding: one lock, one shard
+##  Redis Cluster and sharding: one lock, one shard
 
 ### Scenario (multiple reservation books)
 Now the coffee shop has multiple reservation books (shards). Your lock key maps to one book.
@@ -710,15 +692,15 @@ That’s fine for a single lock key. But multi-key atomicity becomes hard.
   - Use try-lock + bounded retries + jitter.
   - Consider a single-writer architecture (consistent hashing) instead.
 
-[KEY INSIGHT]
+
 Redis makes single-key atomic operations easy; multi-key coordination is where complexity explodes.
-[/KEY INSIGHT]
+
 
 Challenge question: If you need to lock multiple resources, what strategy would you use? (Ordering? Try-lock + backoff? Transactional system instead?)
 
 ---
 
-## [CHALLENGE] Challenge 3: Protecting a critical section vs protecting correctness
+##  Challenge 3: Protecting a critical section vs protecting correctness
 
 ### Scenario
 You want to ensure “only one worker sends a billing charge for invoice 123.”
@@ -742,15 +724,15 @@ For billing, idempotency + durable state constraint is usually stronger than a v
 
 Redis locks can help reduce concurrency, but correctness should not depend solely on them.
 
-[KEY INSIGHT]
+
 Locks are often a performance/concurrency optimization, not the ultimate correctness mechanism.
-[/KEY INSIGHT]
+
 
 Challenge question: Name one domain where a Redis lock is a reasonable primary mechanism (hint: ephemeral leader election for cache warming).
 
 ---
 
-## [ALERT] Common misconceptions (and the uncomfortable truth)
+##  Common misconceptions (and the uncomfortable truth)
 
 ### Misconception 1: “If I got the lock, I’m safe.”
 Reality: you’re safe only if:
@@ -770,15 +752,13 @@ Reality: Redlock is a specific algorithm with assumptions. It may reduce some fa
 ### Misconception 4: “Redis is fast so locks are cheap.”
 Reality: contention + retries can create thundering herds and amplify latency. Locks can become a hidden global bottleneck.
 
-[KEY INSIGHT]
 The hardest part is not `SET NX PX`; it’s designing the system behavior when the lock lies.
-[/KEY INSIGHT]
 
 Challenge question: What is your system’s plan when two owners act concurrently? Can you tolerate it, detect it, or roll it back?
 
 ---
 
-## [MENTAL MODEL] Redlock: what it tries to fix, and what it assumes
+##  Redlock: what it tries to fix, and what it assumes
 
 ### Scenario (five independent coffee shops)
 Instead of one reservation book, you keep five independent books in five separate shops (independent Redis masters). To reserve the espresso machine, you must get a reservation in a majority of shops quickly.
@@ -822,15 +802,13 @@ Critiques (not exhaustive):
 - If a client is paused, it may believe it holds a lock that has expired; Redlock doesn’t stop it from acting.
 - Operational complexity: N masters, cross-AZ latency, partial failure handling.
 
-[KEY INSIGHT]
 Redlock can reduce the probability of certain failover anomalies but does not eliminate the need for fencing if side effects must be correct.
-[/KEY INSIGHT]
 
 Challenge question: Under what conditions would you accept Redlock? (Think: low-stakes cache rebuild vs financial transfer.)
 
 ---
 
-## [GAME] Matching exercise: choose the right tool
+##  Matching exercise: choose the right tool
 
 Match the problem to the preferred coordination primitive.
 
@@ -860,15 +838,13 @@ A reasonable mapping:
 4 -> D
 5 -> E
 
-[KEY INSIGHT]
 Use locks for coordination, but use transactional systems for state correctness.
-[/KEY INSIGHT]
 
 Challenge question: Which of these choices changes if you are in a multi-region active-active architecture?
 
 ---
 
-## [PIPELINE] Designing a Redis lock you can live with
+##  Designing a Redis lock you can live with
 
 ### Scenario
 You still want Redis locks because:
@@ -958,9 +934,7 @@ export async function renewOrThrow(lockKey, token, ttlMs) {
 // Usage: await renewOrThrow("lock:job:42", token, 30000)
 ```
 
-[KEY INSIGHT]
 The lock is a living contract: acquire, maintain, and prove ownership continuously.
-[/KEY INSIGHT]
 
 ### Production decision: transient renewal timeout
 If renewal fails due to a transient Redis timeout, do you stop immediately or retry?
@@ -973,7 +947,7 @@ A common compromise:
 
 ---
 
-## [ALERT] Edge cases that bite (with progressive reveal)
+##  Edge cases that bite (with progressive reveal)
 
 ### Edge case 1: The “timeout but succeeded” ambiguity
 
@@ -1004,9 +978,7 @@ Common approach:
 Production note:
 - Beware client libraries that automatically retry writes: you can accidentally acquire twice with different tokens.
 
-[KEY INSIGHT]
 Distributed systems often force you to handle “did it happen?” uncertainty.
-[/KEY INSIGHT]
 
 Challenge question: How does this ambiguity change if you use connection pooling and retries at the driver layer?
 
@@ -1036,9 +1008,7 @@ Mitigations:
 - Use a dedicated Redis with `maxmemory-policy noeviction`.
 - Monitor memory and eviction counters.
 
-[KEY INSIGHT]
 A lock stored in a cache that can forget is not a lock; it’s a suggestion.
-[/KEY INSIGHT]
 
 Challenge question: If you must share Redis with cache workloads, what guardrails can you add?
 
@@ -1062,9 +1032,7 @@ Pause.
 #### Progressive reveal: answer
 Correct: C.
 
-[KEY INSIGHT]
 Time-based coordination assumes bounded drift and bounded pauses; your environment may not provide that.
-[/KEY INSIGHT]
 
 Challenge question: What’s your maximum observed GC pause? How does it compare to your TTL?
 
@@ -1082,15 +1050,13 @@ Challenge question: What’s your maximum observed GC pause? How does it compare
 
 [IMAGE: Dashboard mock: lock contention, renewal failures, fencing rejections correlated with GC pauses]
 
-[KEY INSIGHT]
 If you don’t measure lease loss, you will assume it never happens until it happens in the worst possible moment.
-[/KEY INSIGHT]
 
 Challenge question: Which metric would you alert on first: renewal failures or fencing rejections? Why?
 
 ---
 
-## [HANDSHAKE] Real-world usage patterns (and safer variants)
+##  Real-world usage patterns (and safer variants)
 
 ### Pattern A: Leader election for non-critical tasks
 - Example: one instance runs cache warmup.
@@ -1111,15 +1077,13 @@ Challenge question: Which metric would you alert on first: renewal failures or f
 - Prefer DB transactions, uniqueness constraints, compare-and-set.
 - If you use Redis lock, add fencing.
 
-[KEY INSIGHT]
 Redis locks are best when duplicates are tolerable and work is idempotent.
-[/KEY INSIGHT]
 
 Challenge question: Name one operation in your system that is not idempotent. How would you protect it without relying on a lock?
 
 ---
 
-## [GAME] Quiz: “Lock, lease, or queue?”
+##  Quiz: “Lock, lease, or queue?”
 
 ### Scenario
 You have 100 workers processing image thumbnails. Only one should process a given image ID.
@@ -1136,15 +1100,13 @@ Which do you choose and why?
 ### Progressive reveal: answer
 Often C is the most robust: state machine in durable storage with conditional transitions. A lock (A) may be used as optimization, but DB transition is the correctness anchor. Queue (B) can work, but “exactly once” is hard; you still typically need idempotency/state.
 
-[KEY INSIGHT]
 Durable state transitions beat ephemeral coordination for correctness.
-[/KEY INSIGHT]
 
 Challenge question: If you choose C, do you still need Redis at all? What does Redis add?
 
 ---
 
-## [SEARCH] Comparison table: Redis lock vs etcd/ZooKeeper vs DB CAS
+##  Comparison table: Redis lock vs etcd/ZooKeeper vs DB CAS
 
 | Property | Redis `SET NX PX` | Redis + fencing | etcd/ZooKeeper lease | DB conditional update (CAS) |
 |---|---|---|---|---|
@@ -1156,15 +1118,13 @@ Challenge question: If you choose C, do you still need Redis at all? What does R
 | Good for protecting DB writes | Weak | Stronger | Stronger | Strong |
 | Requires TTL/time assumptions | Yes | Yes | Yes (leases) | No (unless you add timeouts) |
 
-[KEY INSIGHT]
 The “best” lock depends on what you’re protecting and where correctness must be enforced.
-[/KEY INSIGHT]
 
 Challenge question: Where does your system sit on the spectrum: coordination convenience vs correctness-critical?
 
 ---
 
-## [PUZZLE] Putting it together: a safer Redis locking recipe
+##  Putting it together: a safer Redis locking recipe
 
 ### Scenario
 You must prevent concurrent execution of “rebalance account X” across workers. Rebalance writes to DB.
@@ -1270,9 +1230,7 @@ export async function runFenced(lockKey, fenceKey, ttlMs, applySideEffect) {
 // Usage: await runFenced("lock:acct:7","fence:acct:7",30000,(f)=>dbUpdateWithFence(f));
 ```
 
-[KEY INSIGHT]
 Redis coordinates who should try; the DB decides who is allowed to win.
-[/KEY INSIGHT]
 
 ### Trade-off: retrying DB failures while holding the lock
 If the DB update fails due to transient error, do you keep the lock and retry, or release and let others try?
@@ -1290,7 +1248,7 @@ A common production pattern:
 
 ---
 
-## [ALERT] When not to use Redis locks
+##  When not to use Redis locks
 
 ### Avoid Redis locks when:
 - Side effects are irreversible and non-idempotent (money movement, external emails without idempotency).
@@ -1305,15 +1263,15 @@ A common production pattern:
 - Single-writer per shard (consistent hashing)
 - Queues with idempotent consumers
 
-[KEY INSIGHT]
+
 Don’t use a coordination primitive as a substitute for a correctness primitive.
-[/KEY INSIGHT]
+
 
 Challenge question: What would it take to make your operation idempotent so you don’t need a lock?
 
 ---
 
-## [CHALLENGE] Final synthesis challenge: The delivery dispatch incident
+##  Final synthesis challenge: The delivery dispatch incident
 
 ### Scenario
 You run a delivery platform. Each order must be assigned to exactly one driver.
@@ -1377,25 +1335,14 @@ Fill in the blanks:
 - How retries are handled: _____________________
 - What you will monitor: _______________________
 
-[KEY INSIGHT]
 Distributed locks are coordination hints. Correctness lives in durable state + monotonic ordering (fencing) + idempotency.
-[/KEY INSIGHT]
 
 ---
 
-## [WAVE] Closing: a practical rule of thumb
+##  Closing: a practical rule of thumb
 
 If you remember only one thing:
 
 > If executing the critical section twice is catastrophic, don’t rely on a Redis lock alone. Use fencing/conditional writes or a system built for coordination.
 
 ---
-
-### Appendix: Quick reference snippets
-
-- Acquire: `SET key token NX PX ttl`
-- Release (Lua): `if get==token then del`
-- Renew (Lua): `if get==token then pexpire`
-- Fencing token: `INCR fenceKey` and enforce in downstream
-
-[IMAGE: Cheat-sheet infographic summarizing: Acquire/Release/Renew + Failure modes + Fencing + Failover risk]

@@ -1112,7 +1112,7 @@ def test_place_order_payment_timeout_does_not_persist_or_emit():
 
 ---
 
-## :mag: Section: Handling consistency and sagas with ports
+## Section: Handling consistency and sagas with ports
 
 ### Scenario
 Placing an order requires:

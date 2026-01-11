@@ -14,7 +14,7 @@ premium: false
 
 ---
 
-## [CHALLENGE] Your database is “fast”… until compaction day
+##  Your database is “fast”… until compaction day
 
 You run a distributed key-value store backed by an LSM-tree engine. Writes are blazing fast. Then:
 
@@ -48,7 +48,7 @@ Compaction isn’t a background detail. It’s a **core part of your storage pro
 
 ---
 
-## [MENTAL MODEL] Compaction as a coffee shop’s “table management”
+##  Compaction as a coffee shop’s “table management”
 
 Imagine a busy coffee shop.
 
@@ -73,7 +73,7 @@ Different compaction strategies are like different restaurant policies:
 
 ---
 
-## [DEEP DIVE] What compaction actually does (beyond “merge files”)
+##  What compaction actually does (beyond “merge files”)
 
 Compaction typically:
 
@@ -102,7 +102,7 @@ Pause and think.
 
 ---
 
-## [CHALLENGE] Two compaction strategies, one SLA
+##  Two compaction strategies, one SLA
 
 You must choose compaction strategy defaults for a distributed store with:
 
@@ -133,7 +133,7 @@ But distributed reality complicates this. We’ll build up the reasoning.
 
 ---
 
-## [EXERCISE] Matching: Map “amplifications” to the strategy
+##  Matching: Map “amplifications” to the strategy
 
 Match each statement to STC or LC.
 
@@ -157,9 +157,9 @@ Pause and think.
 
 ---
 
-## [SECTION] Size-Tiered Compaction (STC)
+##  Size-Tiered Compaction (STC)
 
-### [CHALLENGE] The delivery service that bundles packages
+###  The delivery service that bundles packages
 
 You run a delivery hub. Small packages (fresh SSTables) arrive constantly. To reduce clutter, you wait until you have, say, 4 similarly sized bundles, then you **merge them into a larger bundle**.
 
@@ -198,7 +198,7 @@ In distributed systems, IO spikes can align across nodes (same workload patterns
 
 ---
 
-### [DEEP DIVE] Distributed systems angle: STC under replication
+###  Distributed systems angle: STC under replication
 
 Consider a replicated LSM store:
 
@@ -224,7 +224,7 @@ The replica with **lower read amplification** (fewer SSTables to consult, better
 
 ---
 
-### [FAILURE] Tombstones + STC = long-lived ghosts
+###  Tombstones + STC = long-lived ghosts
 
 In STC, because overlapping runs persist, tombstones may take longer to be fully purged.
 
@@ -257,9 +257,9 @@ Distributed impact:
 
 ---
 
-## [SECTION] Leveled Compaction (LC)
+##  Leveled Compaction (LC)
 
-### [CHALLENGE] A restaurant with labeled shelves (strict organization)
+###  A restaurant with labeled shelves (strict organization)
 
 Instead of piles of tickets on the counter, you install shelves:
 
@@ -308,7 +308,7 @@ LC can be worse when:
 
 ---
 
-### [DEEP DIVE] Distributed systems angle: LC and predictable quorum reads
+###  Distributed systems angle: LC and predictable quorum reads
 
 With LC, each replica tends to have:
 
@@ -334,7 +334,7 @@ By reducing per-replica variance, LC reduces the chance that one replica is dram
 
 ---
 
-## [MENTAL MODEL] Compaction as “pay now vs pay later”
+##  Compaction as “pay now vs pay later”
 
 - **STC**: Pay later (reads pay by checking more runs; space pays by duplicates; occasional big merges).
 - **LC**: Pay now (writes pay by rewriting data at multiple levels; steady background work; reads are cheaper).
@@ -349,7 +349,7 @@ Analogy:
 
 ---
 
-## [COMPARISON] STC vs LC (single-node + distributed consequences)
+##  STC vs LC (single-node + distributed consequences)
 
 | Dimension | Size-Tiered (STC) | Leveled (LC) | Distributed consequence |
 |---|---|---|---|
@@ -366,7 +366,7 @@ Analogy:
 
 ---
 
-## [CHALLENGE] Why compaction is a distributed systems problem
+##  Why compaction is a distributed systems problem
 
 Compaction is local work with global consequences. It interacts with:
 
@@ -396,7 +396,7 @@ All can be dangerous, but **C** is the cluster killer: unthrottled compaction ca
 
 ---
 
-## [DEEP DIVE] Amplification math (just enough to reason)
+##  Amplification math (just enough to reason)
 
 Goal: directional reasoning, not exact formulas.
 
@@ -431,7 +431,7 @@ Read amplification dominates—so LC often wins, or you must heavily tune STC an
 
 ---
 
-## [EXERCISE] Pick a strategy for each workload
+##  Pick a strategy for each workload
 
 Match the workload to the likely better default:
 
@@ -463,9 +463,9 @@ Pause and think.
 
 ---
 
-## [SECTION] Compaction selection and scheduling (where theory meets pager)
+##  Compaction selection and scheduling (where theory meets pager)
 
-### [CHALLENGE] Two tenants, one disk
+###  Two tenants, one disk
 
 Tenant A: write-heavy ingestion.
 Tenant B: latency-sensitive reads.
@@ -516,11 +516,11 @@ C) compression algorithm
 
 ---
 
-## [FAILURE] Distributed failure scenarios: What compaction changes (and what it doesn’t)
+##  Distributed failure scenarios: What compaction changes (and what it doesn’t)
 
 Compaction preserves semantics, but failures happen mid-compaction.
 
-### [CHALLENGE] Node crashes mid-compaction
+###  Node crashes mid-compaction
 
 Pause and think: what could go wrong?
 
@@ -543,7 +543,7 @@ Distributed consequence:
 
 ---
 
-### [CHALLENGE] Replica divergence + read repair
+###  Replica divergence + read repair
 
 Compaction affects the *cost* of reconciliation:
 
@@ -562,7 +562,7 @@ Not directly. Repair is about logical divergence, not physical layout. Compactio
 
 ---
 
-## [MISCONCEPTION] “Compaction is purely local, so it can’t affect cluster stability”
+##  “Compaction is purely local, so it can’t affect cluster stability”
 
 Reality: compaction is local work with global consequences.
 
@@ -575,7 +575,7 @@ Reality: compaction is local work with global consequences.
 
 ---
 
-## [SECTION] Real-world usage patterns
+##  Real-world usage patterns
 
 ### Cassandra
 STCS (size-tiered), LCS (leveled), TWCS (time-window).
@@ -591,7 +591,7 @@ Minor/major compactions; major compaction can be disruptive.
 
 ---
 
-## [MENTAL MODEL] L0 is your “waiting room”
+##  L0 is your “waiting room”
 
 In LC:
 
@@ -606,7 +606,7 @@ Analogy: clinic waiting room overflow slows the whole clinic.
 
 ---
 
-## [GAME] Which statement is true about range scans?
+##  Which statement is true about range scans?
 
 1) STC is always better for range scans because it rewrites less.
 
@@ -623,9 +623,9 @@ Analogy: clinic waiting room overflow slows the whole clinic.
 
 ---
 
-## [SECTION] Compaction and caching: Why your cache hit rate lies
+##  Compaction and caching: Why your cache hit rate lies
 
-### [CHALLENGE] Cache looks great, p99 still bad
+###  Cache looks great, p99 still bad
 
 Hit rate is 95%, p99 still spikes.
 
@@ -641,9 +641,9 @@ Tail reads may touch many SSTables, causing extra metadata lookups and cache mis
 
 ---
 
-## [SECTION] Bootstrap and rebalancing
+##  Bootstrap and rebalancing
 
-### [CHALLENGE] Adding a new node (streaming SSTables)
+###  Adding a new node (streaming SSTables)
 
 Compaction strategy affects data movement:
 
@@ -661,7 +661,7 @@ Pause and think: which strategy is more likely to cause extra network transfer d
 
 ---
 
-## [SECTION] Anti-entropy (repair) scans
+##  Anti-entropy (repair) scans
 
 LC can reduce redundant reads during scans, but repair cost is still dominated by data size + network + hashing.
 
@@ -670,7 +670,7 @@ LC can reduce redundant reads during scans, but repair cost is still dominated b
 
 ---
 
-## [EXERCISE] Simulate read amplification in your head
+##  Simulate read amplification in your head
 
 Toy model:
 
@@ -690,7 +690,7 @@ Now STC: 4 tiers with 10 overlapping runs each -> worst case ~40.
 
 ---
 
-## [SECTION] Tuning knobs: What matters differently for STC vs LC
+##  Tuning knobs: What matters differently for STC vs LC
 
 ### STC tuning themes
 - fan-in / min threshold
@@ -762,9 +762,9 @@ if __name__ == "__main__":
 
 ---
 
-## [SECTION] Compaction with snapshots and long-running readers
+##  Compaction with snapshots and long-running readers
 
-### [CHALLENGE] Analytics query holds a snapshot for 30 minutes
+###  Analytics query holds a snapshot for 30 minutes
 
 Compaction cannot drop overwritten versions/tombstones visible to an active snapshot.
 
@@ -779,7 +779,7 @@ Distributed consequence: one long-running query on one replica can increase disk
 
 ---
 
-## [SECTION] Hot keys, skew, and compaction fairness
+##  Hot keys, skew, and compaction fairness
 
 Hot partitions flush more, create more L0 files, and can trigger compaction hotspotting.
 
@@ -794,7 +794,7 @@ Pause and think: which strategy is more sensitive to hot partitions causing writ
 
 ---
 
-## [SECTION] Operational playbook: Recognizing compaction pathologies
+##  Operational playbook: Recognizing compaction pathologies
 
 | Symptom | Likely cause | Strategy association |
 |---|---|---|
@@ -809,7 +809,7 @@ Pause and think: which strategy is more sensitive to hot partitions causing writ
 
 ---
 
-## [CHALLENGE] Compaction storms during node replacement
+##  Compaction storms during node replacement
 
 New node bootstraps data and then triggers compaction to reach steady-state (“compaction aftershock”).
 
@@ -861,7 +861,7 @@ func main() {
 
 ---
 
-## [SECTION] Hybrid strategies and why they exist
+##  Hybrid strategies and why they exist
 
 - Time-window compaction (TWCS): compact within time buckets; older windows become immutable
 - Universal compaction: tiered-like with different heuristics
@@ -872,7 +872,7 @@ func main() {
 
 ---
 
-## [MENTAL MODEL] Temperature layers in storage
+##  Temperature layers in storage
 
 Recent data: optimize ingestion, accept overlap.
 Old data: optimize scans/reads, enforce order.
@@ -882,9 +882,9 @@ Old data: optimize scans/reads, enforce order.
 
 ---
 
-## [LAB] Design a compaction policy for a 3-region deployment
+##  Design a compaction policy for a 3-region deployment
 
-### [CHALLENGE]
+###
 3-region active-active, local quorum reads, cross-region latency high.
 
 Question: would you choose the same strategy everywhere?
@@ -899,7 +899,7 @@ Not necessarily: read-heavy regions may prefer LC; ingestion-heavy regions may p
 
 ---
 
-## [QUIZ] Pick the true statements (multi-select)
+##  Pick the true statements (multi-select)
 
 1) In LC, non-overlapping levels mean a point read consults at most one SSTable per level.
 2) In STC, merging more files at once always reduces read amplification.
@@ -915,7 +915,7 @@ Not necessarily: read-heavy regions may prefer LC; ingestion-heavy regions may p
 
 ---
 
-## [GUIDE] Choosing between STC and LC
+##  Choosing between STC and LC
 
 ### If you lean STC
 Use when:
@@ -949,7 +949,7 @@ Better: compaction budgets, IO isolation, and planning for rebuild/repair capaci
 
 ---
 
-## [SYNTHESIS CHALLENGE] You are the compaction scheduler
+##  You are the compaction scheduler
 
 ### Scenario (progressive reveal)
 200-node cluster, RF=3, 80% writes, p99 read SLO 50ms, NVMe shared, ingestion peaks at noon, TTL=7 days, weekly node replacements.
@@ -974,7 +974,7 @@ Pause and think (write down your answer).
 
 ---
 
-## [CLOSING] Challenge questions
+##  Challenge questions
 
 1) If p99 spikes correlate with compaction, is the root cause always “too much compaction”? What else might it be?
 2) In your system, what dominates tail reads: L0 overlap, bloom filter false positives, or disk queueing?

@@ -15,7 +15,7 @@ premium: false
 
 ---
 
-## [CHALLENGE] The “Black Friday Telemetry Storm”
+##  The “Black Friday Telemetry Storm”
 
 It’s 11:58 PM. Your on-call phone is quiet. Two minutes later, your dashboards freeze.
 
@@ -32,7 +32,7 @@ It’s 11:58 PM. Your on-call phone is quiet. Two minutes later, your dashboards
 - **Retention**: predictable storage costs
 - **Correctness**: no silent data loss, and clear semantics when failures happen
 
-### [PAUSE AND THINK]
+###
 If you could change only one thing *right now* to survive the storm, which would it be?
 
 1) Increase replication factor
@@ -44,7 +44,7 @@ Don’t answer yet—keep it in mind. We’ll return to it after building the me
 
 ---
 
-## [MENTAL MODEL] A TSDB is a delivery service for timestamps
+##  A TSDB is a delivery service for timestamps
 
 Imagine a city-wide delivery service:
 
@@ -62,7 +62,7 @@ A TSDB must do two opposing jobs:
 
 It achieves this by **buffering** and **organizing** data over time.
 
-### [KEY INSIGHT]
+###
 > **Most TSDB optimizations are about controlling amplification**:
 > - **Write amplification** (how many bytes written per byte ingested)
 > - **Read amplification** (how many bytes scanned per byte returned)
@@ -71,9 +71,9 @@ It achieves this by **buffering** and **organizing** data over time.
 
 ---
 
-## [SECTION] The ingestion pipeline (where performance is born or dies)
+##  The ingestion pipeline (where performance is born or dies)
 
-### [CHALLENGE] “Why are my writes timing out?”
+###  “Why are my writes timing out?”
 
 Your ingestion path typically includes:
 
@@ -85,7 +85,7 @@ Your ingestion path typically includes:
 6. **Flush to immutable files** (segments/blocks)
 7. **Compaction** (merge, dedupe, downsample)
 
-### [PAUSE AND THINK]
+###
 Where do you expect the first bottleneck under a sudden ingest spike?
 
 - A) Network bandwidth
@@ -109,10 +109,10 @@ If the ticket printer jams (WAL fsync), the whole line stops.
 ### Real-world parallel
 Many TSDBs (Prometheus TSDB, InfluxDB, ClickHouse MergeTree, Cassandra-based systems, M3DB, VictoriaMetrics) rely on a WAL to survive crashes. The WAL is frequently a **latency floor**.
 
-### [KEY INSIGHT]
+###
 > If your WAL is synchronous per request, your *p99 write latency* is often bounded by **fsync latency** and **queueing**.
 
-### [DECISION GAME] Which statement is true?
+###  Which statement is true?
 
 1) “If I increase replication, ingestion gets faster because more nodes share the load.”
 2) “If I batch writes, I can reduce WAL overhead per sample.”
@@ -130,7 +130,7 @@ If you can only change one client-side behavior to help ingestion, what is it?
 
 ---
 
-## [CHALLENGE] Cardinality—the silent budget killer
+##  Cardinality—the silent budget killer
 
 A time series is identified by metric + labels/tags. **Cardinality** is how many distinct series exist.
 
@@ -140,7 +140,7 @@ A time series is identified by metric + labels/tags. **Cardinality** is how many
 - compaction becomes endless
 - queries that touch “all series” become O(N)
 
-### [PAUSE AND THINK]
+###
 Which metric is more dangerous?
 
 A) 10 metrics x 1,000,000 series each
@@ -160,7 +160,7 @@ But if every customer customizes their dish differently (high label cardinality)
 - Kubernetes labels like `pod`, `container`, `request_id`, `user_id` can explode cardinality.
 - Logs-to-metrics pipelines often accidentally turn unique IDs into labels.
 
-### [KEY INSIGHT]
+###
 > **Cardinality is not just storage**. It’s **index size**, **memory residency**, **compaction fanout**, and **query fanout**.
 
 ### [COMMON MISCONCEPTION]
@@ -168,7 +168,7 @@ But if every customer customizes their dish differently (high label cardinality)
 
 Compression helps sample payloads. High cardinality kills you in **metadata and indexes**, which often compress poorly and must be kept hot.
 
-### [MATCHING EXERCISE]
+###
 Match the label to “safe-ish” vs “dangerous”:
 
 | Label example | Safe-ish | Dangerous |
@@ -191,7 +191,7 @@ Name one label you should almost never use in metrics.
 
 ---
 
-## [MENTAL MODEL] Partitioning = choosing the “neighborhood map”
+##  Partitioning = choosing the “neighborhood map”
 
 Distributed TSDBs must decide:
 
@@ -199,14 +199,14 @@ Distributed TSDBs must decide:
 - how to place data for a **time range**
 - how to handle **rebalancing** when nodes join/leave
 
-### [CHALLENGE] You must pick a shard key
+###  You must pick a shard key
 Common approaches:
 
 1) **Hash by series key** (metric+labels)
 2) **Time-based partitioning** (by day/week)
 3) **Hybrid** (hash by series + time blocks)
 
-### [PAUSE AND THINK]
+###
 If you shard purely by time (e.g., daily partitions), what happens to write load?
 
 - A) evenly distributed
@@ -225,7 +225,7 @@ If you assign deliveries by **day** instead of by **address**, then *today’s w
 ### [KEY INSIGHT]
 > **Good sharding spreads writes and bounds query fanout**. You rarely get both for free.
 
-### [DECISION GAME] Which sharding choice best fits the workload?
+###  Which sharding choice best fits the workload?
 
 Workload: high ingest, most queries are “last 15 minutes for a single service”, occasional “30 days across all services”.
 
@@ -244,16 +244,16 @@ What query pattern becomes expensive when sharding by series hash?
 
 ---
 
-## [SECTION] Replication, quorum, and “what does success mean?”
+##  Replication, quorum, and “what does success mean?”
 
-### [CHALLENGE] A node dies mid-ingest
+###  A node dies mid-ingest
 You replicate data for durability and availability. But replication raises questions:
 
 - Do you require **quorum acks** for writes?
 - What happens during partitions?
 - How do you handle duplicates and out-of-order samples?
 
-### [PAUSE AND THINK]
+###
 If your TSDB returns HTTP 200 for a write, what do you want that to guarantee?
 
 - A) at least one node has it
@@ -277,10 +277,10 @@ Write acknowledgment levels map to stages of completion.
 - Kafka-like ingestion: ack levels and durability.
 - Cortex/Mimir: distributor -> ingesters with replication; queries hit ingesters + store.
 
-### [KEY INSIGHT]
+###
 > Decide your **write success contract** explicitly. Otherwise, you’ll discover it during an incident.
 
-### [COMMON MISCONCEPTION]
+###
 > “Replication factor 3 means I can lose 2 nodes without losing data.”
 
 Only if:
@@ -289,7 +289,7 @@ Only if:
 - anti-entropy repaired gaps
 - you didn’t acknowledge early
 
-### [DECISION GAME] Which statement is true?
+###  Which statement is true?
 
 1) With `RF=3` and `W=1`, you can lose data on a single-node failure.
 2) With `RF=3` and `W=2`, you can never lose data.
@@ -304,9 +304,9 @@ What’s the trade-off between `W=quorum` and `W=1` for metrics?
 
 ---
 
-## [SECTION] Query optimization: Make the common path scream
+##  Query optimization: Make the common path scream
 
-### [CHALLENGE] “My dashboards are slow, but only sometimes”
+###  “My dashboards are slow, but only sometimes”
 
 Dashboard queries are usually:
 
@@ -314,7 +314,7 @@ Dashboard queries are usually:
 - high fanout aggregations (sum/avg over many series)
 - repeated every few seconds
 
-### [PAUSE AND THINK]
+###
 Which is typically the biggest query accelerator?
 
 A) better compression
@@ -333,7 +333,7 @@ If customers constantly order “large drip coffee”, you pre-brew a big batch.
 - InfluxDB tasks
 - Mimir/Cortex ruler
 
-### [KEY INSIGHT]
+###
 > **Most dashboards don’t need raw 10s resolution for 30-day ranges.**
 
 [IMAGE: A diagram showing query path for “recent” (hits ingesters/mem + cache) vs “historical” (hits object storage blocks + index) with fanout across shards and a query-frontend cache.]
@@ -345,9 +345,9 @@ What is the risk of downsampling for incident response?
 
 ---
 
-## [SECTION] Indexes: The part you don’t see until it hurts
+##  Indexes: The part you don’t see until it hurts
 
-### [CHALLENGE] Index fits in RAM… until it doesn’t
+###  Index fits in RAM… until it doesn’t
 
 TSDBs maintain an index mapping:
 
@@ -357,7 +357,7 @@ TSDBs maintain an index mapping:
 
 When the index spills to disk, query latency becomes unpredictable.
 
-### [PAUSE AND THINK]
+###
 If you have to choose, would you rather keep:
 
 - A) raw samples in cache
@@ -373,10 +373,10 @@ Raw samples are books. The index is the card catalog. Without the catalog, findi
 - ClickHouse: primary key and skip indexes
 - Cassandra: partition index vs clustering
 
-### [KEY INSIGHT]
+###
 > **Index locality matters more than raw throughput** for interactive queries.
 
-### [COMMON MISCONCEPTION]
+###
 > “SSD solves index problems.”
 
 SSDs reduce pain, but the cost is still high: random reads + cache misses + CPU overhead. RAM-resident indexes still win for p99.
@@ -386,9 +386,9 @@ Name one optimization that reduces index size.
 
 ---
 
-## [SECTION] Compaction: The janitor that can block the hallway
+##  Compaction: The janitor that can block the hallway
 
-### [CHALLENGE] Compaction is eating my cluster
+###  Compaction is eating my cluster
 Compaction merges small immutable files into larger ones to:
 
 - reduce read amplification
@@ -419,7 +419,7 @@ If no one clears tables, the restaurant can still take orders—until every surf
 - MergeTree merges in ClickHouse
 - Prometheus block compaction and remote storage
 
-### [KEY INSIGHT]
+###
 > **Compaction debt** is real operational debt. Track it like error budget.
 
 [IMAGE: Timeline showing ingestion producing many small segments, compaction merging into larger blocks, and how backlog increases read amplification.]
@@ -429,9 +429,9 @@ What’s one safe lever to reduce compaction pressure without losing data?
 
 ---
 
-## [SECTION] Failure scenarios: When distributed reality shows up
+##  Failure scenarios: When distributed reality shows up
 
-### [CHALLENGE] Network partition during peak ingest
+###  Network partition during peak ingest
 
 You have:
 
@@ -441,7 +441,7 @@ You have:
 
 A partition isolates half of the storage nodes.
 
-### [PAUSE AND THINK]
+###
 What do you prefer during the partition?
 
 - A) accept writes in A even if replication to B fails (AP-ish)
@@ -456,10 +456,10 @@ Do you accept packages when your second warehouse is unreachable?
 ### Real-world parallel
 Metrics are often treated as **AP**: better to accept and be “eventually consistent” than to drop all telemetry.
 
-### [KEY INSIGHT]
+###
 > For metrics, **availability often dominates consistency**, but you must engineer **reconciliation** (dedupe, backfill, anti-entropy).
 
-### [COMMON MISCONCEPTION]
+###
 > “Metrics are non-critical, so we can drop them.”
 
 During incidents, metrics become critical. Dropping them precisely when failure happens is the worst time.
@@ -471,12 +471,12 @@ What mechanism can you use to survive partitions without losing data?
 
 ---
 
-## [SECTION] Backpressure and overload control: Stop the retry storm
+##  Backpressure and overload control: Stop the retry storm
 
-### [CHALLENGE] Retries make it worse
+###  Retries make it worse
 When writes fail, clients retry. If they retry immediately, they amplify load.
 
-### [PAUSE AND THINK]
+###
 Which retry policy is safer?
 
 1) immediate retry with fixed delay
@@ -517,9 +517,9 @@ What is the risk of buffering too much at the edge?
 
 ---
 
-## [SECTION] Data modeling for TSDBs: Design for queries you actually run
+##  Data modeling for TSDBs: Design for queries you actually run
 
-### [CHALLENGE] Your schema is your query plan
+###  Your schema is your query plan
 In TSDBs, “schema” often means:
 
 - metric naming
@@ -543,7 +543,7 @@ If every customer can invent a new dish name, the kitchen collapses. If choices 
 ### Real-world parallel
 Use route templates like `/users/:id` not `/users/12345`.
 
-### [KEY INSIGHT]
+###
 > **Bounded label values** are the difference between observability and self-inflicted DDoS.
 
 ### Challenge question
@@ -551,9 +551,9 @@ Name a label you would normalize before storing.
 
 ---
 
-## [SECTION] Distributed query execution: Fanout is the tax you always pay
+##  Distributed query execution: Fanout is the tax you always pay
 
-### [CHALLENGE] “Why does a simple sum() touch 200 nodes?”
+###  “Why does a simple sum() touch 200 nodes?”
 
 In distributed TSDBs, a query often executes as:
 
@@ -563,7 +563,7 @@ In distributed TSDBs, a query often executes as:
 4. Partial aggregations occur near data
 5. Results merge at frontend
 
-### [PAUSE AND THINK]
+###
 Where should aggregation happen?
 
 - A) always at the frontend
@@ -579,7 +579,7 @@ If each restaurant branch totals its day’s sales locally, HQ only merges total
 - Druid brokers + historical nodes
 - ClickHouse distributed queries
 
-### [KEY INSIGHT]
+###
 > **Query pushdown** converts network amplification into CPU work near data.
 
 [IMAGE: A distributed query plan diagram showing pushdown aggregation on shard nodes, then merge step.]
@@ -589,12 +589,12 @@ What’s the danger of too much pushdown?
 
 ---
 
-## [SECTION] Consistency, deduplication, and out-of-order samples
+##  Consistency, deduplication, and out-of-order samples
 
-### [CHALLENGE] Two writers, one series
+###  Two writers, one series
 You have HA scrapers or multiple agents writing the same metric series.
 
-### [PAUSE AND THINK]
+###
 If two writers send the same timestamp with different values, what should happen?
 
 - A) last-write-wins
@@ -610,10 +610,10 @@ Two couriers deliver the same package. Do you keep both? Return one? Decide base
 - Prometheus HA pairs with external labels; remote storage may dedupe
 - Some TSDBs treat identical timestamps as overwrite or keep-first
 
-### [KEY INSIGHT]
+###
 > Define dedupe behavior for **same timestamp**, **out-of-order**, and **late arriving** data.
 
-### [COMMON MISCONCEPTION]
+###
 > “Out-of-order is just a minor annoyance.”
 
 Out-of-order can break compression, compaction assumptions, and query correctness.
@@ -623,9 +623,9 @@ What ingestion-side technique reduces out-of-order risk?
 
 ---
 
-## [SECTION] Storage tiers: Hot, warm, cold (and object storage reality)
+##  Storage tiers: Hot, warm, cold (and object storage reality)
 
-### [CHALLENGE] 400 TB/month and growing
+###  400 TB/month and growing
 You can’t keep everything on fast disks.
 
 Common architecture:
@@ -634,7 +634,7 @@ Common architecture:
 - **Warm**: compacted blocks on cheaper disks
 - **Cold**: object storage (S3/GCS) with index gateways
 
-### [PAUSE AND THINK]
+###
 What gets worse when you move data to object storage?
 
 - A) latency
@@ -650,7 +650,7 @@ Hot storage is your local warehouse. Cold storage is a remote warehouse with slo
 ### Real-world parallel
 Cortex/Mimir/Thanos store blocks in object storage; query path includes store gateways and caches.
 
-### [KEY INSIGHT]
+###
 > Object storage is cheap and durable, but it shifts complexity into **caching, indexing, and consistency handling**.
 
 [IMAGE: Tiered storage diagram with hot ingesters, compactors, object storage, store-gateway, query-frontend cache.]
@@ -660,9 +660,9 @@ Why do many systems keep a “recent window” in ingesters even after shipping 
 
 ---
 
-## [SECTION] Caching strategies: Cache what’s expensive to recompute
+##  Caching strategies: Cache what’s expensive to recompute
 
-### [CHALLENGE] Cache everything? Not possible.
+###  Cache everything? Not possible.
 Caches in TSDB architectures:
 
 - **Query result cache** (range queries)
@@ -670,7 +670,7 @@ Caches in TSDB architectures:
 - **Index/postings cache**
 - **Metadata cache** (label names/values)
 
-### [PAUSE AND THINK]
+###
 Which cache is most sensitive to cardinality?
 
 - A) chunk cache
@@ -684,7 +684,7 @@ If the catalog grows, caching the catalog pages matters more than caching books.
 ### Real-world parallel
 Thanos store gateway uses index cache; Mimir uses multiple caches.
 
-### [KEY INSIGHT]
+###
 > Cache the *join points*: label -> series sets, series -> chunks.
 
 ### Challenge question
@@ -692,9 +692,9 @@ What cache invalidation strategy works for immutable blocks?
 
 ---
 
-## [SECTION] Observability of the TSDB itself: Measure the measurer
+##  Observability of the TSDB itself: Measure the measurer
 
-### [CHALLENGE] You can’t optimize what you can’t see
+###  You can’t optimize what you can’t see
 
 Track:
 
@@ -706,7 +706,7 @@ Track:
 - tail latencies (p95/p99)
 - dropped samples / rejected writes
 
-### [PAUSE AND THINK]
+###
 Which metric is the earliest warning sign of cardinality explosion?
 
 - A) disk usage
@@ -718,7 +718,7 @@ Which metric is the earliest warning sign of cardinality explosion?
 ### Explanation (restaurant analogy)
 Kitchen prep space (RAM) fills before the pantry (disk).
 
-### [KEY INSIGHT]
+###
 > Watch **series count**, **active series**, and **index memory** like you watch CPU.
 
 ### Challenge question
@@ -726,9 +726,9 @@ What SLO would you set for dashboard queries during incidents?
 
 ---
 
-## [SECTION] Optimization playbook: Levers and trade-offs
+##  Optimization playbook: Levers and trade-offs
 
-### [CHALLENGE] Pick the right lever under pressure
+###  Pick the right lever under pressure
 
 Below is a comparison table of common optimizations.
 
@@ -752,7 +752,7 @@ Which lever is most likely to fix **write timeouts** quickly?
 
 **Answer reveal**: **B**.
 
-### [KEY INSIGHT]
+###
 > Optimize the path that’s failing: ingest failures rarely yield to query-side tricks.
 
 ### Challenge question
@@ -760,7 +760,7 @@ If you see WAL fsync p99 spike, what are two immediate mitigations?
 
 ---
 
-## [SECTION] Interactive incident simulation: You are the TSDB on-call
+##  Interactive incident simulation: You are the TSDB on-call
 
 ### [CHALLENGE SCENARIO]
 At 00:03:
@@ -771,7 +771,7 @@ At 00:03:
 - WAL fsync p99 jumps from 3ms -> 80ms
 - series count climbs rapidly
 
-### [PAUSE AND THINK]
+###
 Pick the **best first action**:
 
 1) add more queriers
@@ -784,7 +784,7 @@ Pick the **best first action**:
 ### Explanation (firefighting analogy)
 Don’t rearrange furniture while the kitchen is on fire. Reduce inflow, then fix root cause.
 
-### [KEY INSIGHT]
+###
 > In distributed systems, **stability** beats **throughput** during incidents.
 
 ### Challenge question
@@ -792,9 +792,9 @@ After stabilizing, what’s your second action to address root cause?
 
 ---
 
-## [SECTION] Progressive optimization: From single node to multi-region
+##  Progressive optimization: From single node to multi-region
 
-### [CHALLENGE] Your architecture evolves
+###  Your architecture evolves
 
 **Phase 1**: Single-node TSDB
 - optimize WAL, disk, retention
@@ -808,7 +808,7 @@ After stabilizing, what’s your second action to address root cause?
 **Phase 4**: Multi-region
 - write locality, cross-region replication, failover semantics
 
-### [PAUSE AND THINK]
+###
 In multi-region, where should writes go?
 
 - A) always to a single home region
@@ -820,7 +820,7 @@ In multi-region, where should writes go?
 ### Explanation (delivery hub analogy)
 Ship from nearest hub, then transfer to central warehouse later.
 
-### [KEY INSIGHT]
+###
 > Multi-region TSDBs are mostly about **latency and failure domains**, not raw throughput.
 
 ### Challenge question
@@ -828,7 +828,7 @@ What’s the hardest part of multi-region queries?
 
 ---
 
-## [SECTION] Common misconceptions (rapid-fire)
+##  Common misconceptions (rapid-fire)
 
 ### [COMMON MISCONCEPTION 1] “TSDB optimization is mostly about compression.”
 **Reality**: compression helps, but **cardinality, indexing, and compaction** dominate many failure modes.
@@ -847,9 +847,9 @@ Which misconception have you personally seen cause an outage?
 
 ---
 
-## [SECTION] Practical exercises (with progressive reveal)
+##  Practical exercises (with progressive reveal)
 
-### [EXERCISE 1] Spot the cardinality bomb
+###  Spot the cardinality bomb
 You see a metric:
 
 ```
@@ -865,7 +865,7 @@ http_requests_total{service="api", path="/users/12345", status="200"} 1
 
 ---
 
-### [EXERCISE 2] Pick the right rollup
+###  Pick the right rollup
 You need:
 
 - dashboards for last 6 hours at 10s resolution
@@ -880,19 +880,19 @@ You need:
 
 ---
 
-### [EXERCISE 3] Quorum semantics
+###  Quorum semantics
 You run RF=3 across AZs. You choose `W=1` for ingestion.
 
-[PAUSE AND THINK] What failure can lose acknowledged writes?
+ What failure can lose acknowledged writes?
 
 **Answer reveal**: the single node that acked crashes before replicating or before durable fsync.
 
-### [KEY INSIGHT]
+###
 > Acknowledgment level defines durability, not replication factor.
 
 ---
 
-## [SECTION] Code markers: Where code clarifies key tuning knobs
+##  Code markers: Where code clarifies key tuning knobs
 
 [CODE: YAML, Prometheus remote_write queue settings demonstrating batching, backoff, and capacity tuning]
 
@@ -1031,7 +1031,7 @@ query 'topk(10, count by (label_name) (prometheus_tsdb_head_series_created_total
 
 ---
 
-## [FINAL SYNTHESIS CHALLENGE] Design an optimized distributed TSDB for a delivery marketplace
+##  Design an optimized distributed TSDB for a delivery marketplace
 
 You’re building telemetry for a delivery marketplace (drivers, restaurants, customers). Requirements:
 
@@ -1042,7 +1042,7 @@ You’re building telemetry for a delivery marketplace (drivers, restaurants, cu
 - multi-region (2 regions) active-active
 - cost constraint: object storage for long retention
 
-### [DECISION GAME] Multi-part
+###  Multi-part
 
 **Part 1: Labeling**
 Which label is most dangerous?
@@ -1098,7 +1098,7 @@ You need fast dashboards during incidents. Pick two:
 
 ---
 
-### [YOUR DESIGN WRITE-UP] Do it for real
+###  Do it for real
 Write a 10-bullet design:
 
 - ingestion path
@@ -1112,12 +1112,12 @@ Write a 10-bullet design:
 - caching layers
 - failure handling (partition + node loss)
 
-### [KEY INSIGHT]
+###
 > Optimization is not one trick—it’s aligning **data model, partitioning, and failure semantics** with your actual query and ingest patterns.
 
 ---
 
-## [CLOSING] Return to the opening question
+##  Return to the opening question
 
 At the start, you had one change to survive the telemetry storm:
 

@@ -16,7 +16,7 @@ premium: false
 
 ---
 
-## [CHALLENGE] “The cafe door just opened” (What is a thundering herd?)
+## “The cafe door just opened” (What is a thundering herd?)
 
 - **Scenario / challenge**
   It’s 8:59 AM. A coffee shop has a sign: **“Fresh croissants at 9:00”**.
@@ -57,7 +57,7 @@ premium: false
 
 ---
 
-## [MENTAL MODEL] Synchronization is a hidden amplifier
+## Synchronization is a hidden amplifier
 
 - **Scenario / challenge**
   Imagine 1,000 people want coffee.
@@ -103,7 +103,7 @@ premium: false
 
 ---
 
-## [WARNING] Failure story: “The lock is free!” (and then everything burns)
+## Failure story: “The lock is free!” (and then everything burns)
 
 - **Scenario / challenge**
   You run 5,000 workers that process jobs. They coordinate using a **distributed lock** stored in Redis or ZooKeeper.
@@ -156,7 +156,7 @@ premium: false
 
 ---
 
-## [DEEP DIVE] Where thundering herds show up in distributed environments
+## Where thundering herds show up in distributed environments
 
 - **Scenario / challenge**
   Think of thundering herd as a pattern that appears in many costumes. Here are common distributed systems hotspots:
@@ -197,7 +197,7 @@ premium: false
 
 ---
 
-## [GAME] Decision game: “Is it a herd or just load?”
+## Decision game: “Is it a herd or just load?”
 
 - **Scenario / challenge**
   You see a latency spike on your database.
@@ -233,7 +233,7 @@ premium: false
 
 ---
 
-## [MENTAL MODEL] The bathtub and the drain (queueing view)
+## The bathtub and the drain (queueing view)
 
 - **Scenario / challenge**
   Picture a bathtub:
@@ -265,7 +265,7 @@ premium: false
 
 ---
 
-## [DEEP DIVE] Cache stampede (classic thundering herd)
+## Cache stampede (classic thundering herd)
 
 - **Scenario / challenge**
   Your API uses Redis as a cache in front of Postgres.
@@ -348,7 +348,7 @@ def get_singleflight(key: str, ttl_s: float = 0.2) -> str:
 
 ---
 
-## [TOOLBOX] Mitigation toolbox overview (and why each has trade-offs)
+## Mitigation toolbox overview (and why each has trade-offs)
 
 - **Scenario / challenge**
   You’re the platform owner. You can’t “just fix it” with one knob.
@@ -395,7 +395,7 @@ def get_singleflight(key: str, ttl_s: float = 0.2) -> str:
 
 ---
 
-## [COMMON MISCONCEPTION] “Just add capacity”
+## “Just add capacity”
 
 - **Misconception**
   > “If we scale the database/Redis/Kafka enough, herds go away.”
@@ -421,7 +421,7 @@ def get_singleflight(key: str, ttl_s: float = 0.2) -> str:
 
 ---
 
-## [DEEP DIVE] Retry storms: the herd’s evil twin
+##  Retry storms: the herd’s evil twin
 
 - **Scenario / challenge**
   A downstream service starts returning 500s for 2 seconds.
@@ -494,7 +494,7 @@ export async function retryWithBackoff(op, {maxRetries=6, baseMs=100, capMs=2000
 
 ---
 
-## [PATTERN] Request coalescing (singleflight): “One person orders for the table”
+## Request coalescing (singleflight): “One person orders for the table”
 
 - **Scenario / challenge**
   In a restaurant, a table of 10 doesn’t send 10 people to the counter. One person orders for everyone.
@@ -526,7 +526,7 @@ export async function retryWithBackoff(op, {maxRetries=6, baseMs=100, capMs=2000
 
 ---
 
-## [DEEP DIVE] Serving stale (soft TTL): “Sell yesterday’s croissant while baking”
+## Serving stale (soft TTL): “Sell yesterday’s croissant while baking”
 
 - **Scenario / challenge**
   At 9:00, croissants are supposed to be fresh. But if the bakery is overwhelmed, you can:
@@ -623,7 +623,7 @@ export class SoftTTLCache {
 
 ---
 
-## [COMMON MISCONCEPTION] “Broadcast notifications are always better than polling”
+## “Broadcast notifications are always better than polling”
 
 - **Misconception**
   > “Polling is inefficient; watches/notifications are always superior.”
@@ -650,7 +650,7 @@ export class SoftTTLCache {
 
 ---
 
-## [DEEP DIVE] Distributed locks and leader election: herd patterns in coordination systems
+## Distributed locks and leader election: herd patterns in coordination systems
 
 - **Scenario / challenge**
   You use ZooKeeper/etcd/Consul for leader election.
@@ -693,7 +693,7 @@ export class SoftTTLCache {
 
 ---
 
-## [PATTERN] Techniques to break synchronization (jitter, staggering, and randomization)
+##  Techniques to break synchronization (jitter, staggering, and randomization)
 
 - **Scenario / challenge**
   You manage 50,000 instances that refresh tokens every 60 minutes.
@@ -723,7 +723,7 @@ export class SoftTTLCache {
 
 ---
 
-## [DEEP DIVE] Connection storms: “Everyone calls back at once”
+##  Connection storms: “Everyone calls back at once”
 
 - **Scenario / challenge**
   A load balancer restarts, dropping 100,000 idle connections.
@@ -813,7 +813,7 @@ export async function connectWithBackoff(host, port, {baseMs=100, capMs=2000, ma
 
 ---
 
-## [WARNING] Herds across microservices: cascading failure anatomy
+## Herds across microservices: cascading failure anatomy
 
 - **Scenario / challenge**
   Service A calls Service B calls Service C (DB).
@@ -854,7 +854,7 @@ export async function connectWithBackoff(host, port, {baseMs=100, capMs=2000, ma
 
 ---
 
-## [PUZZLE] Comparison table: mitigation techniques and trade-offs
+## Comparison table: mitigation techniques and trade-offs
 
 - **Scenario / challenge**
   You need to pick mitigations that match your correctness constraints.
@@ -886,7 +886,7 @@ export async function connectWithBackoff(host, port, {baseMs=100, capMs=2000, ma
 
 ---
 
-## [GAME] Quiz: Which statement is true? (Herd edition)
+## Quiz: Which statement is true? (Herd edition)
 
 - **Scenario / challenge**
   You’re reviewing a PR that changes retry logic and cache semantics.
@@ -915,7 +915,7 @@ export async function connectWithBackoff(host, port, {baseMs=100, capMs=2000, ma
 
 ---
 
-## [DEEP DIVE] Observability: how to detect a thundering herd in production
+## Observability: how to detect a thundering herd in production
 
 - **Scenario / challenge**
   You’re on call. Something spiked. You need to know if it’s a herd.
@@ -956,7 +956,7 @@ export async function connectWithBackoff(host, port, {baseMs=100, capMs=2000, ma
 
 ---
 
-## [PATTERN] Design patterns to prevent herds (by architecture)
+## Design patterns to prevent herds (by architecture)
 
 - **Scenario / challenge**
   You want herd resilience to be structural, not a pile of ad-hoc patches.
@@ -1003,7 +1003,7 @@ export async function connectWithBackoff(host, port, {baseMs=100, capMs=2000, ma
 
 ---
 
-## [WARNING] Edge cases: hot keys and uneven popularity
+##  Edge cases: hot keys and uneven popularity
 
 - **Scenario / challenge**
   Even with jittered TTLs, one key is requested 1,000x more than others.
@@ -1033,7 +1033,7 @@ export async function connectWithBackoff(host, port, {baseMs=100, capMs=2000, ma
 
 ---
 
-## [PUZZLE] Hands-on thought lab: choose a mitigation plan
+## Hands-on thought lab: choose a mitigation plan
 
 - **Scenario / challenge**
   You operate an e-commerce checkout.
@@ -1071,7 +1071,7 @@ export async function connectWithBackoff(host, port, {baseMs=100, capMs=2000, ma
 
 ---
 
-## [DEEP DIVE] Real-world usage patterns (what big systems do)
+##  Real-world usage patterns (what big systems do)
 
 - **Scenario / challenge**
   You want patterns that scale operationally across fleets.
@@ -1102,7 +1102,7 @@ export async function connectWithBackoff(host, port, {baseMs=100, capMs=2000, ma
 
 ---
 
-## [COMMON MISCONCEPTION] “Hedged requests always improve tail latency”
+## “Hedged requests always improve tail latency”
 
 - **Misconception**
   > “If p99 is bad, send duplicates (hedge) and take the fastest response.”
@@ -1127,7 +1127,7 @@ export async function connectWithBackoff(host, port, {baseMs=100, capMs=2000, ma
 
 ---
 
-## [FINAL SYNTHESIS] Design a herd-resilient subsystem
+## Design a herd-resilient subsystem
 
 - **Scenario / challenge**
   You are building a distributed feature flag service.
@@ -1182,18 +1182,3 @@ export async function connectWithBackoff(host, port, {baseMs=100, capMs=2000, ma
 - [ ] Can we survive reconnect storms?
 
 ---
-
-## Appendix B — Code markers index
-
-- [CODE: Python, demonstrate cache stampede + singleflight]
-- [CODE: Go, exponential backoff with jitter]
-- [CODE: Java/Kotlin, cache with soft TTL + background refresh]
-- [CODE: Rust, connection retry loop with jittered backoff]
-
-## Appendix C — Image markers index
-
-- [IMAGE: diagram of cache stampede timeline]
-- [IMAGE: retry alignment wave diagram]
-- [IMAGE: layered herd diagram]
-- [IMAGE: cascade diagram with retry amplification]
-- [IMAGE: dashboard layout for herd detection]

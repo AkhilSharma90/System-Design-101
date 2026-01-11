@@ -228,7 +228,7 @@ STEP-BY-STEP DATA JOURNEY:
 ALL OF THIS HAPPENS 60 TIMES PER SECOND\! 🤯
 (That's 60 frames per second for smooth video)
 
-![img10](https://res.cloudinary.com/dretwg3dy/image/upload/v1762354299/31_o6e8we.png)
+![img10](https://res.cloudinary.com/dretwg3dy/image/upload/v1768101443/basics_of_computing_kiwmm3.png)
 
 **Mental Model:** It's like a relay race where data is the baton, passed between different parts of the system\!
 

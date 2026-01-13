@@ -22,7 +22,7 @@ This article assumes:
 
 ---
 
-## [CHALLENGE] Challenge: One microservice takes down your entire platform
+## Challenge: One microservice takes down your entire platform
 
 ### Scenario
 It's Black Friday. Your recommendation service crashes due to a memory leak.
@@ -66,7 +66,7 @@ If you could only add ONE isolation mechanism to your system right now, would yo
 
 ---
 
-## [MENTAL MODEL] Mental model - Failures want to spread; isolation contains them
+## Mental model - Failures want to spread; isolation contains them
 
 ### Scenario
 Your system has three layers: frontend, backend, database.
@@ -112,7 +112,7 @@ Is it possible to have TOO MUCH isolation? What are the costs of over-isolating?
 
 ---
 
-## [WARNING] Understanding blast radius dimensions
+## Understanding blast radius dimensions
 
 ### Scenario
 Your database goes down. What's the blast radius?
@@ -197,7 +197,7 @@ How do you measure blast radius BEFORE an incident happens? (Hint: Game Days)
 
 ---
 
-## [DEEP DIVE] Core isolation techniques (and their trade-offs)
+##  Core isolation techniques (and their trade-offs)
 
 ### Scenario
 You're designing a multi-tenant SaaS platform. 1000 customers, ranging from small businesses to enterprises.
@@ -328,7 +328,7 @@ You isolate tenants into separate database shards. One tenant's query runs a tab
 
 ---
 
-## [PUZZLE] Circuit breakers - failing fast to prevent cascades
+##  Circuit breakers - failing fast to prevent cascades
 
 ### Scenario
 Your service calls a payment provider API. The provider is having issues:
@@ -562,7 +562,7 @@ Your circuit breaker opens. How do you communicate this to users: "Payment tempo
 
 ---
 
-## [DEEP DIVE] Cell-based architecture - the ultimate isolation
+##  Cell-based architecture - the ultimate isolation
 
 ### Scenario
 You run a global SaaS platform. A bad deployment takes down your entire us-west region.
@@ -699,7 +699,7 @@ You have 1000 servers. Monolithic pool vs 10 cells of 100 servers each. Which de
 
 ---
 
-## [WARNING] The hidden cost of isolation - operational complexity
+##  The hidden cost of isolation - operational complexity
 
 ### Scenario
 Your SRE team is thrilled. You've implemented:
@@ -804,7 +804,7 @@ How would you measure if you're over-isolated or under-isolated? What metrics in
 
 ---
 
-## [PUZZLE] Quota management - isolating greedy neighbors
+##  Quota management - isolating greedy neighbors
 
 ### Scenario
 You run a multi-tenant API platform. CustomerA is running a badly written script that hammers your API:
@@ -946,7 +946,7 @@ A customer hits their quota at 11:59 PM. Their critical business process runs at
 
 ---
 
-## [DEEP DIVE] Measuring blast radius - knowing your exposure
+##  Measuring blast radius - knowing your exposure
 
 ### Scenario
 Your VP asks: "If our payment service goes down, how many customers are affected and for how long?"
@@ -1090,7 +1090,7 @@ Two services: Service A has 10% error rate for 1 hour. Service B has 1% error ra
 
 ---
 
-## [SYNTHESIS] Final synthesis - Design a resilient multi-tenant platform
+##  Final synthesis - Design a resilient multi-tenant platform
 
 ### Synthesis challenge
 You're the architect for a new B2B SaaS analytics platform.

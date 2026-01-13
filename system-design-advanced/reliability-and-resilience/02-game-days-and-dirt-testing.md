@@ -21,7 +21,7 @@ This article assumes:
 
 ---
 
-## [CHALLENGE] Challenge: Your perfectly designed system fails anyway
+##  Challenge: Your perfectly designed system fails anyway
 
 ### Scenario
 It's 3 AM. Your payment processor is down. The on-call engineer:
@@ -61,7 +61,7 @@ If you could only practice one failure scenario per quarter, which category woul
 
 ---
 
-## [MENTAL MODEL] Mental model - Failure is a learning opportunity, not a risk
+##  Mental model - Failure is a learning opportunity, not a risk
 
 ### Scenario
 Your VP asks: "Why would we intentionally break production?"
@@ -109,7 +109,7 @@ What's more dangerous: a failure you've practiced recovering from, or a failure 
 
 ---
 
-## [WARNING] What "Game Days" vs "DiRT" vs "Chaos Engineering" actually mean
+##  What "Game Days" vs "DiRT" vs "Chaos Engineering" actually mean
 
 ### Scenario
 Your team debates what to call these exercises. The terms are often confused.
@@ -172,7 +172,7 @@ What happens if you run chaos experiments but never practice the human incident 
 
 ---
 
-## [DEEP DIVE] Core components of a Game Day
+##  Core components of a Game Day
 
 ### Scenario
 You're planning your first Game Day. What do you actually need?
@@ -249,7 +249,7 @@ If your Game Day runs perfectly and nothing breaks, what went wrong with your sc
 
 ---
 
-## [PUZZLE] Designing safe chaos experiments - the blast radius game
+##  Designing safe chaos experiments - the blast radius game
 
 ### Scenario
 You want to test "what if Kafka loses a partition."
@@ -329,7 +329,7 @@ How would you design a chaos experiment for a system where "safe" and "critical"
 
 ---
 
-## [DEEP DIVE] DiRT testing - validating disaster recovery for real
+##  DiRT testing - validating disaster recovery for real
 
 ### Scenario
 Your RTO (Recovery Time Objective) SLA says "4 hours to restore service."
@@ -485,7 +485,7 @@ Your DiRT test succeeds: you restored from backup in 30 minutes. But your RTO is
 
 ---
 
-## [WARNING] The "we'll just manually fix it" fallacy
+##  The "we'll just manually fix it" fallacy
 
 ### Scenario
 During a Game Day, the team manually recovers in 20 minutes.
@@ -557,7 +557,7 @@ You've automated 90% of your incident response. The remaining 10% requires human
 
 ---
 
-## [PUZZLE] Game Day scenario library - what to practice
+##  Game Day scenario library - what to practice
 
 ### Scenario
 You have limited time. Which failures matter most?
@@ -667,7 +667,7 @@ Design a Game Day that tests your team's response to a security incident (compro
 
 ---
 
-## [DEEP DIVE] Measuring chaos engineering success
+##  Measuring chaos engineering success
 
 ### Scenario
 You've run 10 Game Days. How do you know if you're getting more resilient?
@@ -776,7 +776,7 @@ Your Game Day found 15 issues. You have budget to fix 5 this quarter. How do you
 
 ---
 
-## [SYNTHESIS] Final synthesis - Build your own chaos program
+##  Final synthesis - Build your own chaos program
 
 ### Synthesis challenge
 You're the SRE lead for a fintech company's payment processing platform.

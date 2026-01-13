@@ -20,7 +20,7 @@ This article assumes:
 
 ---
 
-## [CHALLENGE] Challenge: Your "multi-region" architecture fails the regional outage test
+## Challenge: Your "multi-region" architecture fails the regional outage test
 
 ### Scenario
 You proudly announce: "We're multi-region! We have servers in US and EU."
@@ -66,7 +66,7 @@ If active-active is so much better, why doesn't everyone do it? What's the hidde
 
 ---
 
-## [MENTAL MODEL] Mental model - Active-active is a distributed systems problem, not a deployment problem
+##  Mental model - Active-active is a distributed systems problem, not a deployment problem
 
 ### Scenario
 Your VP says: "Just deploy to multiple regions. That's active-active."
@@ -119,7 +119,7 @@ Can you have active-active for reads but active-passive for writes? Would that b
 
 ---
 
-## [WARNING] Understanding the CAP theorem trade-offs in multi-region
+##  Understanding the CAP theorem trade-offs in multi-region
 
 ### Scenario
 You're designing active-active architecture. Your database vendor says "Choose: strong consistency or high availability."
@@ -257,7 +257,7 @@ If you choose eventual consistency, how do you handle conflicts when both region
 
 ---
 
-## [DEEP DIVE] Core components of active-active architecture
+##  Core components of active-active architecture
 
 ### Scenario
 You're building active-active. What are the actual building blocks?
@@ -469,7 +469,7 @@ How do you test active-active data synchronization? Simulating network partition
 
 ---
 
-## [PUZZLE] Routing users to regions - DNS, Anycast, or Application?
+##  Routing users to regions - DNS, Anycast, or Application?
 
 ### Scenario
 You have servers in US and EU. User in New York makes a request. Where should it go?
@@ -598,7 +598,7 @@ User is in New York but their data is sharded to EU region (data residency). Sho
 
 ---
 
-## [DEEP DIVE] Handling regional failures - detection and recovery
+##  Handling regional failures - detection and recovery
 
 ### Scenario
 Your EU region goes down. How quickly can you detect it and route traffic away?
@@ -782,7 +782,7 @@ During failover, what happens to in-flight requests? Do they fail, get retried, 
 
 ---
 
-## [WARNING] The hidden costs of active-active
+##  The hidden costs of active-active
 
 ### Scenario
 Your CFO asks: "Why did our cloud bill double when we went active-active?"
@@ -918,7 +918,7 @@ Your active-active setup costs $300K/year extra. Your biggest outage last year c
 
 ---
 
-## [SYNTHESIS] Final synthesis - Design your active-active architecture
+##  Final synthesis - Design your active-active architecture
 
 ### Synthesis challenge
 You're the architect for a global SaaS collaboration platform (think: Slack, Microsoft Teams).

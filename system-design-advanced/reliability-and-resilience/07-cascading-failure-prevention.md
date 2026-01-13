@@ -21,7 +21,7 @@ This article assumes:
 
 ---
 
-## [CHALLENGE] Challenge: One microservice takes down your entire platform
+## Challenge: One microservice takes down your entire platform
 
 ### Scenario
 Black Friday, 10 AM. Your recommendation service has a memory leak.
@@ -68,7 +68,7 @@ Name three architectural patterns that would have prevented this cascade. Can yo
 
 ---
 
-## [MENTAL MODEL] Mental model - Failures amplify through dependency chains
+## Mental model - Failures amplify through dependency chains
 
 ### Scenario
 Your system has a dependency graph:
@@ -123,7 +123,7 @@ Can you design a system where Service B's failure has ZERO impact on Service A? 
 
 ---
 
-## [WARNING] Understanding cascade amplification factors
+## Understanding cascade amplification factors
 
 ### Scenario
 Service B handles 100 requests/second normally.
@@ -247,7 +247,7 @@ If retries make cascades worse, should you disable retries entirely? What's the 
 
 ---
 
-## [DEEP DIVE] Core cascade prevention patterns
+## Core cascade prevention patterns
 
 ### Scenario
 You're designing a system that must survive partial failures.
@@ -605,7 +605,7 @@ pattern_2_exponential_backoff:
   benefit: Gives downstream time to recover
 ```
 
-### Key insight box
+### Key insight
 > Cascade prevention requires multiple defenses: timeouts (fail fast), circuit breakers (stop trying), bulkheads (isolate), load shedding (reject), and backpressure (slow down).
 
 ### Challenge question
@@ -613,7 +613,7 @@ You implement all five patterns. Your system is now "failure-proof." What happen
 
 ---
 
-## [PUZZLE] Retry storms - when fixing makes it worse
+## Retry storms - when fixing makes it worse
 
 ### Scenario
 Service B is overloaded. Clients start seeing errors.
@@ -783,7 +783,7 @@ Your service receives a retry storm (1000 req/sec retries on top of 1000 req/sec
 
 ---
 
-## [DEEP DIVE] Graceful degradation - failing partially instead of completely
+## Graceful degradation - failing partially instead of completely
 
 ### Scenario
 Your recommendation service is down. Should your entire product page fail?
@@ -926,7 +926,7 @@ You've classified features into critical/important/nice-to-have. During an incid
 
 ---
 
-## [WARNING] Correlated failures - when everything fails at once
+## Correlated failures - when everything fails at once
 
 ### Scenario
 All your circuit breakers, timeouts, and bulkheads are perfect.
@@ -1050,7 +1050,7 @@ Your system survives individual component failures perfectly. How do you test th
 
 ---
 
-## [SYNTHESIS] Final synthesis - Design a cascade-resistant architecture
+## Final synthesis - Design a cascade-resistant architecture
 
 ### Synthesis challenge
 You're the architect for a global payment processing platform.

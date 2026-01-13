@@ -21,7 +21,7 @@ This article assumes:
 
 ---
 
-## [CHALLENGE] Challenge: Your "five 9s" promise is meaningless
+##  Challenge: Your "five 9s" promise is meaningless
 
 ### Scenario
 Your sales team promises customers "99.999% uptime" (five 9s).
@@ -62,7 +62,7 @@ But what if:
 
 The metric is technically accurate but completely misleading.
 
-### Key insight box
+### Key insight
 > SLIs (Service Level Indicators) must measure what users actually care about, not what's easy to measure.
 
 ### Challenge question
@@ -70,7 +70,7 @@ If you could only measure ONE metric to represent reliability, what would it be?
 
 ---
 
-## [MENTAL MODEL] Mental model - Error budgets as a reliability currency
+##  Mental model - Error budgets as a reliability currency
 
 ### Scenario
 Your product team wants to ship a new feature. Your SRE team says "We can't deploy - we're out of error budget."
@@ -105,7 +105,7 @@ A building project has a time buffer. If weather delays use up the buffer, the p
 
 If the buffer is intact, they can afford some experimentation.
 
-### Key insight box
+### Key insight
 > Error budgets formalize the trade-off: reliability is not "maximize uptime" but "maintain agreed reliability while moving fast."
 
 ### Challenge question
@@ -116,7 +116,7 @@ If you have 99.9% SLO (43 minutes downtime/month), should you spend your error b
 
 ---
 
-## [WARNING] What SLI, SLO, SLA actually mean (and why people confuse them)
+##  What SLI, SLO, SLA actually mean (and why people confuse them)
 
 ### Scenario
 Your team debates reliability targets. Three acronyms get thrown around interchangeably.
@@ -209,7 +209,7 @@ Answer: D.
 - Wrong: "We have 99.9% uptime so we're reliable"
 - Right: "Uptime doesn't measure latency, data correctness, or user-perceived availability"
 
-### Key insight box
+### Key insight
 > SLI is the thermometer. SLO is the target temperature. SLA is the contract saying "we'll keep it above freezing."
 
 ### Challenge question
@@ -217,7 +217,7 @@ Should your SLO be tighter than your SLA? By how much? What's the cost of the bu
 
 ---
 
-## [DEEP DIVE] Choosing good SLIs - what to measure
+##  Choosing good SLIs - what to measure
 
 ### Scenario
 You're defining SLIs for an e-commerce checkout service.
@@ -382,7 +382,7 @@ Google SRE recommends focusing on:
 
 Start simple. Add complexity only when needed.
 
-### Key insight box
+### Key insight
 > The best SLI is one that, when it degrades, a user has a bad experience. If users don't care, it's not an SLI - it's an internal metric.
 
 ### Challenge question
@@ -390,7 +390,7 @@ For a video streaming service, should you have separate SLIs for "start time" an
 
 ---
 
-## [PUZZLE] Setting SLO targets - the Goldilocks problem
+##  Setting SLO targets - the Goldilocks problem
 
 ### Scenario
 You need to set an SLO target for your API.
@@ -511,7 +511,7 @@ How to spend:
 - Wrong: "We'll be 99.99% reliable" (but your database vendor only promises 99.9%)
 - Right: "Our SLO must account for dependency SLOs" (can't exceed weakest link)
 
-### Key insight box
+### Key insight
 > Your SLO should be: (1) Achievable with current architecture, (2) Meaningful to users, (3) Tighter than your SLA. If it's not all three, revisit.
 
 ### Challenge question
@@ -519,7 +519,7 @@ Your SLO is 99.9%, but you're consistently achieving 99.95%. Should you tighten 
 
 ---
 
-## [DEEP DIVE] Error budgets - the engine of risk-taking
+##  Error budgets - the engine of risk-taking
 
 ### Scenario
 Month starts:
@@ -701,7 +701,7 @@ Netflix:
 - When budget low, automated policies kick in (deploy freeze)
 - Incentivizes reliability: more reliable = more freedom to innovate
 
-### Key insight box
+### Key insight
 > Error budgets convert reliability from a vague goal into a concrete currency. You can spend it on innovation or hoard it. Choose wisely.
 
 ### Challenge question
@@ -709,7 +709,7 @@ Your error budget is 43 min/month. Should you spend it all on: (1) one big risky
 
 ---
 
-## [WARNING] Common SLO anti-patterns
+##  Common SLO anti-patterns
 
 ### Scenario
 You've set SLOs. But things feel off. Users are still unhappy. Engineers are frustrated.
@@ -823,7 +823,7 @@ Fix:
   - Set component SLOs tighter to account for composition
 ```
 
-### Key insight box
+### Key insight
 > Bad SLOs are worse than no SLOs. They create false confidence and misallocate engineering effort.
 
 ### Challenge question
@@ -831,7 +831,7 @@ If your SLO is consistently exceeded (always 99.99% when target is 99.9%), is th
 
 ---
 
-## [DEEP DIVE] Measuring SLIs in practice - implementation patterns
+##  Measuring SLIs in practice - implementation patterns
 
 ### Scenario
 You've defined your SLIs. Now you need to actually measure them.
@@ -1029,7 +1029,7 @@ func CalculateBurnRate(slo float64, window time.Duration) float64 {
 // At this rate, error budget exhausted in 3 days
 ```
 
-### Key insight box
+### Key insight
 > SLI measurement is not "set it and forget it." Continuously validate: does this metric reflect user experience? If not, adjust.
 
 ### Challenge question
@@ -1037,7 +1037,7 @@ Your server-side SLI shows 99.9% success rate, but your client-side RUM shows 95
 
 ---
 
-## [SYNTHESIS] Final synthesis - Design a complete SLO framework
+## Final synthesis - Design a complete SLO framework
 
 ### Synthesis challenge
 You're the SRE lead for a ride-sharing platform.
@@ -1292,7 +1292,7 @@ escalation:
     - Customer escalations correlated with metrics
 ```
 
-### Key insight box
+### Key insight
 > A complete SLO framework turns reliability from art to science: measurable, predictable, and blameless.
 
 ### Final challenge question

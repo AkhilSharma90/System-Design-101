@@ -18,7 +18,7 @@ This article assumes:
 
 ---
 
-## [CHALLENGE] Challenge: Your "global" load balancer isn't actually global
+## Challenge: Your "global" load balancer isn't actually global
 
 ### Scenario
 You deploy to three AWS regions: US, EU, and Asia.
@@ -64,7 +64,7 @@ If GSLB is so much better, why does anyone still use basic DNS routing?
 
 ---
 
-## [MENTAL MODEL] Mental model - GSLB as traffic orchestrator
+##  Mental model - GSLB as traffic orchestrator
 
 ### Scenario
 You have three data centers: US-West, US-East, and EU.
@@ -119,7 +119,7 @@ Should GSLB routing decisions prioritize latency, cost, or reliability? Or does 
 
 ---
 
-## [WARNING] Understanding GSLB architectures - DNS vs proxy vs hybrid
+##  Understanding GSLB architectures - DNS vs proxy vs hybrid
 
 ### Scenario
 Your team debates: "Should our GSLB be DNS-based, proxy-based, or hybrid?"
@@ -284,7 +284,7 @@ Can you implement GSLB without any special infrastructure, using only standard D
 
 ---
 
-## [DEEP DIVE] GSLB health checks and failover - the detection problem
+##  GSLB health checks and failover - the detection problem
 
 ### Scenario
 Your EU region is degraded (high latency, elevated errors). When should GSLB stop routing traffic there?
@@ -494,7 +494,7 @@ Your health check shows region is healthy, but real user requests are failing. W
 
 ---
 
-## [PUZZLE] GSLB routing policies - latency vs cost vs compliance
+##  GSLB routing policies - latency vs cost vs compliance
 
 ### Scenario
 You have three regions: US ($), EU ($$), Asia ($$$).
@@ -660,7 +660,7 @@ Can you dynamically adjust routing weights based on time of day (e.g., route to 
 
 ---
 
-## [DEEP DIVE] Anycast and BGP - GSLB's secret weapon
+##  Anycast and BGP - GSLB's secret weapon
 
 ### Scenario
 You want instant failover (no DNS caching) and you want users to reach "nearest" region automatically.
@@ -813,7 +813,7 @@ Can you use anycast for a database connection (stateful TCP)? What breaks?
 
 ---
 
-## [WARNING] GSLB observability - can you see what it's deciding?
+##  GSLB observability - can you see what it's deciding?
 
 ### Scenario
 Your GSLB routes traffic globally. Users in EU complain about slow response times.
@@ -954,7 +954,7 @@ User reports: "I'm in London but your API is slow." How do you use GSLB metrics 
 
 ---
 
-## [SYNTHESIS] Final synthesis - Design your GSLB strategy
+##  Final synthesis - Design your GSLB strategy
 
 ### Synthesis challenge
 You're the infrastructure lead for a global video streaming platform.

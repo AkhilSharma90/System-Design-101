@@ -17,7 +17,7 @@ premium: false
 
 ---
 
-## [CHALLENGE] Your analytics platform is melting down
+## Your analytics platform is melting down
 
 It is Monday 9:07 AM. Your product team wants:
 
@@ -50,7 +50,7 @@ We are about to compare two architectural patterns designed to answer exactly th
 
 ---
 
-## [MENTAL MODEL] Two kitchens vs one kitchen with a freezer
+##  Two kitchens vs one kitchen with a freezer
 
 Imagine you run a restaurant that must serve:
 
@@ -73,9 +73,9 @@ Key insight:
 
 ---
 
-## [DEEP DIVE] What problem are we really solving?
+##  What problem are we really solving?
 
-### [CHALLENGE] Scenario
+###  Scenario
 You have an immutable event log (Kafka/Pulsar/Kinesis) and you want:
 
 - Low latency insights
@@ -115,11 +115,11 @@ If you only retain raw events for 7 days, what does "recompute history" actually
 
 ---
 
-## [OVERVIEW] Lambda in one picture
+##  Lambda in one picture
 
 [IMAGE: Diagram of Lambda Architecture. Left: event ingestion into both a Batch Layer (S3/HDFS + batch compute) and a Speed Layer (stream processor). Both produce views to a Serving Layer (query engine) that merges results. Include labels: recomputation via batch, low latency via speed, and merge logic complexity.]
 
-### [CHALLENGE] Scenario
+###  Scenario
 Your pipeline writes:
 
 - Batch views: computed from all historical data nightly
@@ -167,11 +167,11 @@ Where do you put the "T" boundary in practice, and how do you ensure batch and s
 
 ---
 
-## [OVERVIEW] Kappa in one picture
+##  Kappa in one picture
 
 [IMAGE: Diagram of Kappa Architecture. Event ingestion into a durable log (Kafka). Single Stream Processing Layer consumes log and writes materialized views to serving stores. Reprocessing shown by spinning up a new consumer group reading from earliest offset and writing to a new versioned output, then switching traffic.]
 
-### [CHALLENGE] Scenario
+###  Scenario
 You decide: "No batch pipeline. Everything is a stream."
 
 - A single stream processor reads the event log
@@ -211,7 +211,7 @@ What is your maximum acceptable replay time (RTO for "logic correction")?
 
 ---
 
-## [PUZZLE] Matching exercise: Components and responsibilities
+## Matching exercise: Components and responsibilities
 
 Match the component to its primary responsibility.
 
@@ -239,9 +239,9 @@ Where does "data quality validation" belong in each architecture?
 
 ---
 
-## [DEEP DIVE] The real distributed challenge: time, ordering, determinism
+##  The real distributed challenge: time, ordering, determinism
 
-### [CHALLENGE] Scenario
+###  Scenario
 Events arrive out of order:
 
 - Mobile devices buffer events offline
@@ -302,9 +302,9 @@ If your Kafka retention is 7 days, can you do true Kappa for "recompute last 6 m
 
 ---
 
-## [DEEP DIVE] Correctness semantics: exactly-once, at-least-once, effectively-once
+##  Correctness semantics: exactly-once, at-least-once, effectively-once
 
-### [CHALLENGE] Scenario
+###  Scenario
 You compute revenue in a materialized view store.
 
 - Processor crashes after writing to the DB but before committing Kafka offsets.
@@ -388,7 +388,7 @@ If you cannot make the sink idempotent, what alternative architecture pattern ca
 
 ---
 
-## [DISTRIBUTED SYSTEMS RIGOR] CAP, partitions, and what you actually choose
+##  CAP, partitions, and what you actually choose
 
 ### Network assumptions (state them explicitly)
 - Partitions happen: between producers and Kafka, between Kafka brokers, between processors and sinks.
@@ -410,9 +410,9 @@ What does your product prefer during an incident: stale-but-available dashboards
 
 ---
 
-## [OPERATIONS] Two pipelines vs one pipeline
+##  Two pipelines vs one pipeline
 
-### [CHALLENGE] Scenario
+###  Scenario
 You are on-call. It is 2 AM.
 
 In Lambda, you might have:
@@ -457,9 +457,9 @@ Which architecture is easier to staff if your team has strong Spark skills but m
 
 ---
 
-## [FAILURES] Failure scenarios (distributed reality)
+##  Failure scenarios (distributed reality)
 
-### [CHALLENGE] Scenario 1: Stream processor crash loop
+###  Scenario 1: Stream processor crash loop
 Your stream job repeatedly fails due to a bad deployment.
 
 Lambda impact:
@@ -487,7 +487,7 @@ What deployment guardrails would prevent crash loops (canary, shadow traffic, sc
 
 ---
 
-### [CHALLENGE] Scenario 2: Serving layer inconsistency
+###  Scenario 2: Serving layer inconsistency
 Your serving DB has partial writes due to a node failure.
 
 Some partitions updated, others not.
@@ -521,7 +521,7 @@ How do you ensure consumers do not see partial rebuild results?
 
 ---
 
-### [CHALLENGE] Scenario 3: Backfill after a bug
+###  Scenario 3: Backfill after a bug
 You discover a bug in sessionization logic that existed for 30 days.
 
 Lambda:
@@ -562,7 +562,7 @@ What validation checks would you run before switching from old to new outputs?
 
 ---
 
-## [MENTAL MODEL] Where does truth live?
+##  Where does truth live?
 
 Two competing truths:
 - Truth in computed views (batch outputs are canonical)
@@ -593,9 +593,9 @@ What metadata would you store with every materialized view build (git SHA, schem
 
 ---
 
-## [DEEP DIVE] Data modeling: materialized views, late data, corrections
+##  Data modeling: materialized views, late data, corrections
 
-### [CHALLENGE] Scenario
+###  Scenario
 You maintain a "daily active users" (DAU) table.
 
 But events arrive late (up to 48 hours). You need corrections.
@@ -700,9 +700,9 @@ What batch workloads remain even if you adopt Kappa for analytics views?
 
 ---
 
-## [ECONOMICS] Performance and cost: the economics of recomputation
+##  Performance and cost: the economics of recomputation
 
-### [CHALLENGE] Scenario
+###  Scenario
 You store 1 TB/day of events.
 
 - Retain 180 days = 180 TB raw
@@ -741,9 +741,9 @@ How would you choose a snapshot cadence (hourly/daily/weekly) given your replay 
 
 ---
 
-## [SERVING] Serving layer design: merging vs switching
+##  Serving layer design: merging vs switching
 
-### [CHALLENGE] Scenario
+###  Scenario
 You expose a query API for dashboards.
 
 - In Lambda, query must combine batch + speed.
@@ -778,9 +778,9 @@ What does "atomic switch" mean for your serving tech (alias swap, view swap, rou
 
 ---
 
-## [GAME] Choose an architecture under constraints
+##  Choose an architecture under constraints
 
-### [CHALLENGE] Scenario
+###  Scenario
 You are building analytics for a global marketplace.
 
 Constraints:
@@ -828,9 +828,9 @@ How does the deletion requirement interact with immutable logs? What strategies 
 
 ---
 
-## [DEEP DIVE] The merge problem in Lambda: where bugs hide
+##  The merge problem in Lambda: where bugs hide
 
-### [CHALLENGE] Scenario
+###  Scenario
 Your serving layer answers:
 
 result = batch_view(up_to_T) + speed_view(after_T)
@@ -898,9 +898,9 @@ How would you detect semantic divergence between batch and speed outputs automat
 
 ---
 
-## [DEEP DIVE] Reprocessing in Kappa: replay is not a button
+##  Reprocessing in Kappa: replay is not a button
 
-### [CHALLENGE] Scenario
+###  Scenario
 You need to replay 60 days of events.
 
 Interactive question:
@@ -942,9 +942,9 @@ What is your replay throttling mechanism (rate limits, partition-by-partition, p
 
 ---
 
-## [OPERATIONS] Versioning strategy: blue/green for data products
+##  Versioning strategy: blue/green for data products
 
-### [CHALLENGE] Scenario
+###  Scenario
 You maintain a "user_metrics" materialized view.
 
 You want to deploy v2 of the logic.
@@ -979,9 +979,9 @@ How do you validate v2 without doubling serving cost forever?
 
 ---
 
-## [DEEP DIVE] Tooling reality: frameworks and what they imply
+##  Tooling reality: frameworks and what they imply
 
-### [CHALLENGE] Scenario
+###  Scenario
 You are choosing a stack.
 
 Comparison table: common ecosystem choices
@@ -1016,9 +1016,9 @@ If you are not using Beam, what practices keep batch and stream semantics aligne
 
 ---
 
-## [PUZZLE] Spot the hidden assumptions
+##  Spot the hidden assumptions
 
-### [CHALLENGE] Scenario
+###  Scenario
 A teammate says:
 
 "Let's do Kappa. We'll just replay Kafka from earliest when we need to backfill."
@@ -1043,9 +1043,9 @@ Which assumption is most likely to fail first in your environment?
 
 ---
 
-## [DEEP DIVE] Schema evolution and compatibility: the slow-burn distributed failure
+##  Schema evolution and compatibility: the slow-burn distributed failure
 
-### [CHALLENGE] Scenario
+###  Scenario
 You add a field to events. Old events do not have it.
 
 - Speed layer sees new schema immediately.
@@ -1112,7 +1112,7 @@ How do you test that your new consumer can read 12 months of historical events?
 
 ---
 
-## [MISCONCEPTION] "Event sourcing = Kappa"
+##  "Event sourcing = Kappa"
 
 Misconception:
 "If we do event sourcing, we are doing Kappa."
@@ -1129,9 +1129,9 @@ How would you build queryable projections from an event-sourced system? What loo
 
 ---
 
-## [DEEP DIVE] Consistency and isolation: what do readers see?
+##  Consistency and isolation: what do readers see?
 
-### [CHALLENGE] Scenario
+###  Scenario
 Your dashboard queries a materialized view while it is being rebuilt.
 
 Interactive question:
@@ -1162,9 +1162,9 @@ What is your rollback plan if v2 looks wrong after cutover?
 
 ---
 
-## [OPERATIONS] Observability: how do you know you are right?
+##  Observability: how do you know you are right?
 
-### [CHALLENGE] Scenario
+###  Scenario
 Your pipeline outputs "revenue per minute".
 
 You need to detect:
@@ -1205,7 +1205,7 @@ What is your reconciliation source of truth (payments DB, ledger, warehouse snap
 
 ---
 
-## [GAME] Quiz: Identify the architecture from symptoms
+##  Quiz: Identify the architecture from symptoms
 
 Symptom set 1
 - Two codebases for the same metric
@@ -1230,9 +1230,9 @@ What symptom would indicate you are accidentally building a third, undocumented 
 
 ---
 
-## [DEEP DIVE] When Lambda still wins (pragmatically)
+##  When Lambda still wins (pragmatically)
 
-### [CHALLENGE] Scenario
+###  Scenario
 You run complex ML feature extraction over a year of data.
 
 - Requires heavy joins across datasets
@@ -1258,9 +1258,9 @@ Name a computation that is hard to make incremental and why.
 
 ---
 
-## [DEEP DIVE] When Kappa wins (pragmatically)
+##  When Kappa wins (pragmatically)
 
-### [CHALLENGE] Scenario
+###  Scenario
 You have many derived views and frequent logic changes.
 
 - Maintaining two pipelines is causing drift
@@ -1287,9 +1287,9 @@ What is your plan for replaying without impacting real-time SLAs (separate clust
 
 ---
 
-## [PATTERN] Kappa + snapshots (a common hybrid)
+##  Kappa + snapshots (a common hybrid)
 
-### [CHALLENGE] Scenario
+###  Scenario
 Pure replay from day 0 is too expensive.
 
 Pattern:
@@ -1325,9 +1325,9 @@ What is the correctness risk of starting from a snapshot (snapshot corruption, v
 
 ---
 
-## [DEEP DIVE] Security and compliance: immutable logs meet deletion requests
+##  Security and compliance: immutable logs meet deletion requests
 
-### [CHALLENGE] Scenario
+###  Scenario
 You must delete a user's data within 7 days.
 
 But your event log is immutable and retained for 180 days.
@@ -1360,9 +1360,9 @@ If you crypto-shred, how do you ensure projections and serving stores also purge
 
 ---
 
-## [GAME] Final decision game: Which architecture should you choose?
+##  Final decision game: Which architecture should you choose?
 
-### [CHALLENGE] Scenario
+###  Scenario
 Choose between Lambda and Kappa for each case.
 
 Case A: Ad analytics at massive scale
@@ -1406,9 +1406,9 @@ For each case, what is the primary on-call nightmare (semantic drift, replay ove
 
 ---
 
-## [SYNTHESIS] Design your own pipeline
+##  Design your own pipeline
 
-### [CHALLENGE] Scenario
+###  Scenario
 You ingest events for a ride-sharing app:
 
 - TripRequested, DriverAssigned, TripStarted, TripEnded, PaymentCaptured

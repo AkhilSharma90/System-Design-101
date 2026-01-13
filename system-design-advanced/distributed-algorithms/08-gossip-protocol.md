@@ -11,13 +11,13 @@ premium: false
 
 
 
-# Gossip Protocol (Epidemic Dissemination) — An Interactive Deep Dive for Distributed Systems
+# Gossip Protocol (Epidemic Dissemination)
 
 > Audience: advanced distributed systems engineers
 
 ---
 
-[CHALLENGE] Your cluster needs “word of mouth” communication
+ Your cluster needs “word of mouth” communication
 
 You are on call for a service running 10,000 nodes across multiple regions. Membership is dynamic: nodes come and go, networks partition, and failures are messy.
 
@@ -41,7 +41,7 @@ Gossip protocols trade strong consistency for scalability and resilience: inform
 
 ---
 
-## [SECTION] 0 — Network + failure model assumptions (state them explicitly)
+##  0 — Network + failure model assumptions (state them explicitly)
 
 Gossip designs are only “correct” relative to assumptions. For this article we assume:
 
@@ -54,7 +54,7 @@ If you violate these (e.g., adversarial nodes, permanent partitions), you must a
 
 ---
 
-## [SECTION] 1 — What is Gossip, really?
+##  1 — What is Gossip, really?
 
 ### Scenario
 
@@ -96,7 +96,7 @@ If gossip spreads exponentially early on, why does it not melt your network at 1
 
 ---
 
-## [SECTION] 2 — The core promise: scalable dissemination with bounded cost
+## 2 — The core promise: scalable dissemination with bounded cost
 
 ### Scenario
 
@@ -136,7 +136,7 @@ In real systems, “bounded per node” requires explicit limits:
 
 ---
 
-## [SECTION] 3 — Three gossip flavors: push, pull, push-pull
+##  3 — Three gossip flavors: push, pull, push-pull
 
 ### Scenario
 
@@ -170,7 +170,7 @@ Pause and think.
 | Pull | Nodes ask peers for what they are missing | Late (many informed) | Slow early if nobody knows anything |
 | Push-Pull | Exchange summaries plus missing updates | Broadly good | More complex; bigger exchanges |
 
-### [IMAGE] Push vs Pull vs Push-Pull (ASCII)
+###  Push vs Pull vs Push-Pull (ASCII)
 
 ```
 Legend:  [I] informed   [U] uninformed
@@ -191,7 +191,7 @@ Push is broadcasting, pull is subscribing, push-pull is syncing. The best choice
 
 ---
 
-## [SECTION] 4 — What exactly is being gossiped? State, deltas, and summaries
+## 4 — What exactly is being gossiped? State, deltas, and summaries
 
 ### Scenario
 
@@ -243,7 +243,7 @@ This is why production systems typically combine rumor mongering (deltas) with a
 
 ---
 
-## [SECTION] 5 — Membership gossip: failure detection and cluster view
+## 5 — Membership gossip: failure detection and cluster view
 
 ### Scenario
 
@@ -291,7 +291,7 @@ Gossip membership typically answers “reachable enough to communicate,” not �
 
 ---
 
-## [SECTION] 6 — SWIM-style gossip: probe, indirect probe, suspicion
+## 6 — SWIM-style gossip: probe, indirect probe, suspicion
 
 ### Scenario
 
@@ -353,7 +353,7 @@ Mitigations:
 
 ---
 
-## [SECTION] 7 — Failure scenarios: partitions, churn, and correlated loss
+##  7 — Failure scenarios: partitions, churn, and correlated loss
 
 ### Scenario
 
@@ -446,7 +446,7 @@ Most systems choose availability and accept that membership is a hint that may b
 
 ---
 
-## [SECTION] 9 — Decision game: When should you use gossip?
+## 9 — Decision game: When should you use gossip?
 
 ### Scenario
 
@@ -491,7 +491,7 @@ Gossip shines when eventual is acceptable, scale is high, and failures are routi
 
 ---
 
-## [SECTION] 10 — Convergence math intuition (without drowning in equations)
+##  10 — Convergence math intuition (without drowning in equations)
 
 ### Scenario
 
@@ -523,7 +523,7 @@ This is why production systems use push-pull and anti-entropy.
 
 ---
 
-## [SECTION] 11 — Versioning: timestamps, incarnation numbers, and rumor resurrection
+##  11 — Versioning: timestamps, incarnation numbers, and rumor resurrection
 
 ### Scenario
 
@@ -566,7 +566,7 @@ Use monotonic versioning (incarnation/epoch) to make gossip conflict resolution 
 
 ---
 
-## [SECTION] 12 — Rumor mongering vs anti-entropy
+## 12 — Rumor mongering vs anti-entropy
 
 ### Scenario
 
@@ -606,7 +606,7 @@ Under an operational assumption like “partition heals within 5 minutes” and 
 
 ---
 
-## [SECTION] 13 — Real-world usage patterns
+##  13 — Real-world usage patterns
 
 Gossip often carries control-plane information, not the main data plane.
 
@@ -622,7 +622,7 @@ Gossip is a versatile control-plane mechanism: discovery, liveness hints, config
 
 ---
 
-## [SECTION] 14 — Trade-offs: consistency, overhead, and tail latency
+##  14 — Trade-offs: consistency, overhead, and tail latency
 
 ### Scenario
 
@@ -656,7 +656,7 @@ Gossip optimizes for system-level robustness over per-message determinism.
 
 ---
 
-## [SECTION] 15 — Hybrid designs: gossip plus something stronger
+##  15 — Hybrid designs: gossip plus something stronger
 
 You often want:
 
@@ -703,7 +703,7 @@ You must decide policy: fail open vs fail closed (see Section 22).
 
 ---
 
-## [SECTION] 16 — Tuning knobs: interval, fanout, suspicion timeouts
+##  16 — Tuning knobs: interval, fanout, suspicion timeouts
 
 Key knobs:
 
@@ -741,7 +741,7 @@ Mitigations:
 
 ---
 
-## [SECTION] 17 — Security and adversarial considerations
+##  17 — Security and adversarial considerations
 
 ### Scenario
 
@@ -781,7 +781,7 @@ Gossip protocols are typically designed for crash-fault tolerance, not Byzantine
 
 ---
 
-## [SECTION] 18 — Implementation sketch: a minimal gossip membership loop (corrected)
+##  18 — Implementation sketch: a minimal gossip membership loop (corrected)
 
 This section intentionally stays “minimal,” but the code must still be correct about:
 
@@ -1098,7 +1098,7 @@ Often you can compress this (hashes, bloom filters), but conceptually you need e
 
 ---
 
-## [SECTION] 19 — Observability: how do you know gossip is working?
+## 19 — Observability: how do you know gossip is working?
 
 ### Scenario
 
@@ -1147,7 +1147,7 @@ Traffic routing correctness depends on who each load balancer believes is health
 
 ---
 
-## [SECTION] 20 — Common misconceptions roundup
+##  20 — Common misconceptions roundup
 
 ### Common Misconception #1
 
@@ -1178,7 +1178,7 @@ Gossip is a powerful primitive, but it is not a substitute for designing around 
 
 ---
 
-## [SECTION] 21 — Interactive synthesis: design a gossip-based membership service
+##  21 — Interactive synthesis: design a gossip-based membership service
 
 ### Scenario
 
@@ -1239,7 +1239,7 @@ A brand-new node with no peers needs:
 
 ---
 
-## [SECTION] 22 — Final synthesis challenge (hard mode)
+##  22 — Final synthesis challenge (hard mode)
 
 ### Scenario
 
@@ -1304,16 +1304,6 @@ Explain your choice in terms of safety, availability, and business risk.
 - Tune failure detection carefully (timeouts, suspicion)
 - Instrument divergence and convergence
 - Consider security assumptions (authN/authZ, rate limits)
-
-### Where to add visuals and code
-
-- [IMAGE: push/pull/push-pull diagram]
-- [IMAGE: SWIM sequence diagram]
-- [IMAGE: partition convergence and healing timeline]
-- [IMAGE: dashboard for convergence/divergence]
-- [IMAGE: hybrid architecture for hard/soft state]
-
----
 
 ### [CODE] Python: convergence simulation (push gossip)
 

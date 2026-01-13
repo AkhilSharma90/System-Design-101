@@ -17,7 +17,7 @@ premium: false
 
 ---
 
-## [CHALLENGE] Two managers, one restaurant, and a cut phone line
+## Two managers, one restaurant, and a cut phone line
 
 **Scenario.** You run a busy restaurant with two floor managers: **A** and **B**. They coordinate by phone: who seats parties, who comps meals, who closes the register.
 
@@ -50,7 +50,7 @@ Hold your answer — we will come back to it when we discuss CAP trade-offs and 
 
 ---
 
-## [COLLAB] What "split brain" really means (and what it does not)
+##  What "split brain" really means (and what it does not)
 
 ### Scenario
 You have a 5-node cluster. A network partition splits it into groups of 2 and 3.
@@ -88,7 +88,7 @@ In your system today, what mechanism decides "who is leader" and "who is allowed
 
 ---
 
-## [ALERT] Why split brain is so destructive (the "double spend" of state)
+##  Why split brain is so destructive (the "double spend" of state)
 
 ### Scenario
 You run a primary-replica database. Two primaries accept writes during a partition.
@@ -133,7 +133,7 @@ List one invariant in your system that would be catastrophic to violate (e.g., "
 
 ---
 
-## [INSPECT] The mechanics — how split brain happens in clusters
+##  The mechanics — how split brain happens in clusters
 
 ### Scenario
 A typical leader-based cluster uses:
@@ -171,7 +171,7 @@ Does your leader election require a majority (quorum) of current membership? Or 
 
 ---
 
-## [GAME] Decision Game: Which statement is true?
+##  Decision Game: Which statement is true?
 
 Choose exactly two that are true.
 
@@ -201,7 +201,7 @@ False:
 
 ---
 
-## [FLOW] CAP trade-off framing (availability vs safety)
+##  CAP trade-off framing (availability vs safety)
 
 ### Scenario
 You operate a 3-node cluster across 2 availability zones.
@@ -238,7 +238,7 @@ Name one operation that must be "never wrong" (payments) and one that can be "ev
 
 ---
 
-## [INSPECT] Failure scenarios that trigger split brain (beyond obvious partitions)
+##  Failure scenarios that trigger split brain (beyond obvious partitions)
 
 ### 1) Classic network partition
 - Switch failure, misconfigured ACL, BGP flap.
@@ -294,7 +294,7 @@ What are your heartbeat timeouts? Are they tuned for your worst-case GC pause / 
 
 ---
 
-## [COLLAB] The core mitigation families (overview)
+##  The core mitigation families (overview)
 
 We will group mitigations into four families:
 
@@ -314,7 +314,7 @@ Which quadrant is your system in: single-writer with strict invariants, or multi
 
 ---
 
-## [MISCONCEPTION] "Just increase timeouts"
+##  "Just increase timeouts"
 
 ### Scenario
 An incident occurs: two leaders appear during a period of high latency. Someone says: "Let's double the election timeout."
@@ -340,7 +340,7 @@ What is your maximum tolerated failover time? How does it relate to your timeout
 
 ---
 
-## [INSPECT] Quorum and majority — the "only one side can be right" rule
+##  Quorum and majority — the "only one side can be right" rule
 
 ### Scenario
 You have N nodes. A quorum is typically `floor(N/2) + 1`.
@@ -387,7 +387,7 @@ Why do many consensus clusters prefer odd numbers of voters?
 
 ---
 
-## [PUZZLE] Deep dive — how consensus protocols prevent split brain
+##  Deep dive — how consensus protocols prevent split brain
 
 ### Scenario
 You are using Raft (or Paxos-family). How does it stop two leaders?
@@ -476,7 +476,7 @@ In your system, do clients treat "leader accepted write" as success, or "quorum 
 
 ---
 
-## [MISCONCEPTION] "Leader election alone prevents split brain"
+##  "Leader election alone prevents split brain"
 
 ### Scenario
 A system has leader election but replication is asynchronous and commits are local.
@@ -509,7 +509,7 @@ What is your replication mode: async, semi-sync, quorum commit? What does "ACK" 
 
 ---
 
-## [INSPECT] Fencing — when you cannot trust membership, block the loser from acting
+##  Fencing — when you cannot trust membership, block the loser from acting
 
 ### Scenario
 You have an active-passive setup with shared storage (SAN, EBS, NFS). Two nodes might mount and write to the same volume during a partition.
@@ -551,7 +551,7 @@ What side effects in your system are irreversible (emails, payments, disk writes
 
 ---
 
-## [PUZZLE] Leases — time-bounded leadership (and where they go wrong)
+##  Leases — time-bounded leadership (and where they go wrong)
 
 ### Scenario
 You implement leader leases:
@@ -668,7 +668,7 @@ Is your lock provider CP (quorum/consensus) or AP (eventual)? What does it guara
 
 ---
 
-## [INSPECT] Witnesses, tie-breakers, and arbitrators (when you cannot afford a full quorum)
+##  Witnesses, tie-breakers, and arbitrators (when you cannot afford a full quorum)
 
 ### Scenario
 You have 2 data centers (DC1, DC2) and want active-passive DB.
@@ -708,7 +708,7 @@ Where would you place a witness to minimize correlated failures (power, network 
 
 ---
 
-## [PUZZLE] Application-level fencing — idempotency keys, tokens, and monotonic epochs
+##  Application-level fencing — idempotency keys, tokens, and monotonic epochs
 
 ### Scenario
 Even with consensus, you may still have:
@@ -778,7 +778,7 @@ Pick one irreversible side effect in your system. How would you make it idempote
 
 ---
 
-## [INSPECT] When multi-writer is okay — CRDTs and convergent design
+##  When multi-writer is okay — CRDTs and convergent design
 
 ### Scenario
 You run a globally distributed cache of "likes" counts.
@@ -822,7 +822,7 @@ Could any part of your system be redesigned as convergent data (CRDT) to reduce 
 
 ---
 
-## [COLLAB] Real-world systems and how they handle split brain
+##  Real-world systems and how they handle split brain
 
 ### ZooKeeper / etcd / Consul (CP coordination)
 - Use quorum consensus.
@@ -852,7 +852,7 @@ Which component in your stack is the source of truth? Is it protected by quorum?
 
 ---
 
-## [MISCONCEPTION] "Split brain only happens during failover"
+##  "Split brain only happens during failover"
 
 ### Scenario
 You do a rolling upgrade.
@@ -884,7 +884,7 @@ Do you have a change freeze policy for quorum components? Do you upgrade them on
 
 ---
 
-## [INSPECT] Observability — how to detect split brain early
+##  Observability — how to detect split brain early
 
 ### Scenario
 You suspect split brain but logs are noisy.
@@ -923,7 +923,7 @@ Do you log leader epoch with every write request? If not, can you add it?
 
 ---
 
-## [PUZZLE] Runbooks — what to do during a suspected split brain
+##  Runbooks — what to do during a suspected split brain
 
 ### Scenario
 Pager goes off: "Two primaries detected."
@@ -961,7 +961,7 @@ Do you have a big red button to make a partition read-only? Who is authorized to
 
 ---
 
-## [GAME] Pick a mitigation for each system
+##  Pick a mitigation for each system
 
 ### Scenario
 You have three systems:
@@ -993,7 +993,7 @@ What category is your system closest to, and why?
 
 ---
 
-## [INSPECT] Configuration pitfalls that reintroduce split brain
+##  Configuration pitfalls that reintroduce split brain
 
 ### Scenario
 You deploy a consensus cluster but misconfigure it.
@@ -1022,7 +1022,7 @@ Which of the checklist items is currently the weakest in your environment?
 
 ---
 
-## [PUZZLE] Designing client behavior to survive leadership changes
+##  Designing client behavior to survive leadership changes
 
 ### Scenario
 Even if the cluster is safe, clients can amplify split brain symptoms.
@@ -1086,7 +1086,7 @@ Do your write APIs support idempotency keys? If not, which endpoint should be fi
 
 ---
 
-## [FLOW] Trade-offs cheat sheet (comparison table)
+##  Trade-offs cheat sheet (comparison table)
 
 | Mitigation | Prevents dual leaders? | Prevents wrong side effects? | Availability under partition | Complexity | Typical use |
 |---|---:|---:|---|---:|---|
@@ -1106,7 +1106,7 @@ Which row matches your current approach, and what risk are you accepting?
 
 ---
 
-## [INSPECT] Progressive case study — a split brain incident timeline
+##  Progressive case study — a split brain incident timeline
 
 ### Scenario
 A 3-node cluster: A, B, C. Quorum=2.
@@ -1138,7 +1138,7 @@ Do your write handlers check "leadership plus quorum" or only "leadership flag"?
 
 ---
 
-## [PUZZLE] Designing degraded mode instead of full outage
+##  Designing degraded mode instead of full outage
 
 ### Scenario
 You want safety but also want some availability.
@@ -1167,7 +1167,7 @@ Can your product tolerate read-only mode during partitions? If not, what data ty
 
 ---
 
-## [WAVE] Final Synthesis Challenge: Design your split-brain strategy
+##  Final Synthesis Challenge: Design your split-brain strategy
 
 ### Scenario
 You are designing a globally deployed service with:

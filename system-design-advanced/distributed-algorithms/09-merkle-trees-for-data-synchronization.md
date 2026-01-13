@@ -10,9 +10,9 @@ premium: false
 
 
 
-# Merkle Trees for Data Synchronization (Distributed Systems, Interactive)
+# Merkle Trees for Data Synchronization
 
-[TARGET] **Challenge: Two replicas, one truth… but whose?**
+ **Challenge: Two replicas, one truth… but whose?**
 
 You run a globally distributed service: user profiles stored in multiple regions. A network partition hits. Region A accepts updates for 20 minutes, Region B accepts different updates. When the partition heals, you need to **synchronize** the datasets.
 
@@ -36,7 +36,7 @@ This is where **Merkle trees** show up: a compact way to summarize large sets so
 
 ---
 
-## [HANDSHAKE] Section 1 — The Coffee Shop Receipt Problem (Why Merkle Trees exist)
+##  Section 1 — The Coffee Shop Receipt Problem (Why Merkle Trees exist)
 
 - **Scenario or challenge**
 
@@ -65,7 +65,7 @@ Merkle trees are like taking the ledger, splitting it into pages, hashing each p
 - **Blockchains** use Merkle trees to summarize transactions.
 - **Dynamo-style databases** use Merkle trees for replica synchronization (anti-entropy/repair).
 
-- **Key insight box**
+- **  **
 
 > **Key insight:** A Merkle tree lets you answer: “Do we match?” and if not, “Where do we differ?” with minimal data transfer.
 
@@ -79,7 +79,7 @@ If you only compare a single top-level hash, what *important capability* do you 
 
 ---
 
-## [ALERT] Section 2 — Common Misconception: “Merkle Trees Solve Consistency”
+##  Section 2 — Common Misconception: “Merkle Trees Solve Consistency”
 
 - **Scenario or challenge**
 
@@ -120,7 +120,7 @@ C) Merkle trees prevent split-brain.
 
 [ANSWER] **B**.
 
-- **Key insight box**
+- **  **
 
 > **Key insight:** Merkle trees are about **efficient diff discovery**, not about **conflict semantics**.
 
@@ -134,7 +134,7 @@ Name one mechanism you’d pair with Merkle-tree-based sync to resolve concurren
 
 ---
 
-## [MAGNIFY] Section 3 — Mental Model: “A Tree of Receipts”
+##  Section 3 — Mental Model: “A Tree of Receipts”
 
 - **Scenario or challenge**
 
@@ -172,7 +172,7 @@ If two replicas have the same root hash, they (almost certainly) have the same d
 
 [IMAGE: A Merkle tree diagram showing leaves as key ranges (e.g., 0-99, 100-199, etc.), internal nodes hashing children, and a root hash. Two replicas shown side-by-side; one subtree differs, highlighted.]
 
-- **Key insight box**
+- **  **
 
 > **Key insight:** Merkle trees enable **progressive refinement**: compare coarse summaries first, then zoom in.
 
@@ -186,7 +186,7 @@ What property must the hashing process have so that two replicas compute the sam
 
 ---
 
-## [PUZZLE] Section 4 — What Exactly Are We Hashing? (Keys, Values, and Ordering)
+##  Section 4 — What Exactly Are We Hashing? (Keys, Values, and Ordering)
 
 - **Scenario or challenge**
 
@@ -256,7 +256,7 @@ if __name__ == "__main__":
     print(leaf_hash(a).hex())
 ```
 
-- **Key insight box**
+- **  **
 
 > **Key insight:** Merkle trees require **deterministic partitioning and hashing** or you’ll detect “differences” that aren’t real.
 
@@ -270,7 +270,7 @@ If values are large blobs (e.g., images), do you hash the whole blob at leaves? 
 
 ---
 
-## [GAME] Section 5 — Decision Game: Choose Your Merkle Tree Shape
+##  Section 5 — Decision Game: Choose Your Merkle Tree Shape
 
 - **Scenario or challenge**
 
@@ -310,7 +310,7 @@ Which statement is true?
 | Leaves per key | Precise diffs | Huge tree | Small datasets or very small ranges |
 | Leaves per range/page | Compact | Less precise diffs | Big datasets, LSM/B-tree pages |
 
-- **Key insight box**
+- **  **
 
 > **Key insight:** Merkle trees are a **tunable index** over differences: you trade maintenance cost for diff precision.
 
@@ -324,7 +324,7 @@ If your network RTT is high (cross-region), which might matter more: tree depth 
 
 ---
 
-## [FAUCET] Section 6 — How Anti-Entropy Actually Runs (Replica Sync Protocol)
+##  Section 6 — How Anti-Entropy Actually Runs (Replica Sync Protocol)
 
 - **Scenario or challenge**
 
@@ -370,7 +370,7 @@ A typical exchange:
 
 [IMAGE: Sequence diagram of Merkle sync: root compare, child compare, descend, leaf exchange.]
 
-- **Key insight box**
+- **  **
 
 > **Key insight:** Merkle sync is a **guided search** over the keyspace: hashes steer you to the minimal set of data to exchange.
 
@@ -384,7 +384,7 @@ What happens if the dataset changes while you’re mid-sync? How could you make 
 
 ---
 
-## [MAGNIFY] Section 7 — Consistent Snapshots: The “Moving Target” Problem
+##  Section 7 — Consistent Snapshots: The “Moving Target” Problem
 
 - **Scenario or challenge**
 
@@ -423,7 +423,7 @@ If A builds a Merkle tree at time T1 and B compares against its current state at
 | Incremental maintenance | Lower rebuild cost | Complexity; correctness bugs; needs careful locking/versioning |
 | Fuzzy continuous | Simple, robust | More bandwidth/CPU; slower convergence under high write rates |
 
-- **Key insight box**
+- **  **
 
 > **Key insight:** In distributed systems, “compare states” often means “compare **versions of states**.” Merkle trees need a stable reference point.
 
@@ -437,7 +437,7 @@ If you can’t take snapshots, what’s one practical mitigation to avoid infini
 
 ---
 
-## [HANDSHAKE] Section 8 — Failure Scenarios: When the Network Lies
+## Section 8 — Failure Scenarios: When the Network Lies
 
 - **Scenario or challenge**
 
@@ -513,7 +513,7 @@ if __name__ == "__main__":
     print(msg)
 ```
 
-- **Key insight box**
+- **  **
 
 > **Key insight:** The protocol must be **versioned**: hashes are only meaningful relative to the dataset snapshot they summarize.
 
@@ -527,7 +527,7 @@ What’s the simplest safe behavior if a peer can’t provide a consistent snaps
 
 ---
 
-## [ALERT] Section 9 — Common Misconception: “Hash Collisions Will Break Sync”
+##  Section 9 — Common Misconception: “Hash Collisions Will Break Sync”
 
 - **Scenario or challenge**
 
@@ -559,7 +559,7 @@ If your system is exposed to untrusted clients (multi-tenant), is a fast non-cry
 
 [ANSWER] Often **no**. An adversary might craft collisions to hide differences or force pathological behavior. Use a cryptographic hash or a keyed hash (HMAC) depending on threat model.
 
-- **Key insight box**
+- **  **
 
 > **Key insight:** Collisions are rarely the practical problem; **determinism and adversarial robustness** are.
 
@@ -573,7 +573,7 @@ Name one reason to prefer BLAKE3 over SHA-256 in high-throughput Merkle maintena
 
 ---
 
-## [PUZZLE] Section 10 — Leaves as Ranges: The Dynamo-Style Pattern
+##  Section 10 — Leaves as Ranges: The Dynamo-Style Pattern
 
 - **Scenario or challenge**
 
@@ -618,7 +618,7 @@ D) The smallest summarized chunk; points to actual keys/versions.
 
 [IMAGE: Consistent hash ring with token ranges; each range has an associated Merkle tree.]
 
-- **Key insight box**
+- **  **
 
 > **Key insight:** In Dynamo-like systems, Merkle trees are often scoped to **token ranges**, aligning synchronization with replication topology.
 
@@ -632,7 +632,7 @@ If a node changes ownership of a range due to rebalancing, what happens to the c
 
 ---
 
-## [MAGNIFY] Section 11 — What Do You Exchange at Leaves? (Versions, Not Just Values)
+##  Section 11 — What Do You Exchange at Leaves? (Versions, Not Just Values)
 
 - **Scenario or challenge**
 
@@ -696,7 +696,7 @@ if __name__ == "__main__":
     print(diff_leaf(A, B))
 ```
 
-- **Key insight box**
+- **  **
 
 > **Key insight:** Merkle trees narrow the search; **per-key metadata** prevents shipping full values unnecessarily.
 
@@ -710,7 +710,7 @@ What if both replicas have different versions for the same key (concurrent write
 
 ---
 
-## [TARGET] Section 12 — Walkthrough: Find One Bad Grain of Rice in a Warehouse
+##  Section 12 — Walkthrough: Find One Bad Grain of Rice in a Warehouse
 
 - **Scenario or challenge**
 
@@ -746,7 +746,7 @@ If you instead had leaves per key, what changes?
 
 [IMAGE: A “zoom-in” diagram showing root mismatch -> two child mismatches -> two leaf ranges highlighted, with counts of hashes exchanged at each step.]
 
-- **Key insight box**
+- **  **
 
 > **Key insight:** The power of Merkle trees is **bandwidth proportional to differences** (plus tree traversal overhead), not dataset size.
 
@@ -760,7 +760,7 @@ What happens to bandwidth if differences are widespread (e.g., after long partit
 
 ---
 
-## [ALERT] Section 13 — When Merkle Trees Don’t Help Much
+##  Section 13 — When Merkle Trees Don’t Help Much
 
 - **Scenario or challenge**
 
@@ -789,7 +789,7 @@ Practical alternatives / complements:
 | Log-based replication | You have durable ordered history | Missing logs, retention limits |
 | Full snapshot transfer | New node bootstrap | Frequent small drifts |
 
-- **Key insight box**
+- **  **
 
 > **Key insight:** Merkle trees are an **anti-entropy** tool, not a universal replication mechanism.
 
@@ -803,7 +803,7 @@ If you have both logs and Merkle trees, when would you prefer Merkle over logs?
 
 ---
 
-## [HANDSHAKE] Section 14 — Incremental Maintenance: Updating Hashes on Writes
+##  Section 14 — Incremental Maintenance: Updating Hashes on Writes
 
 - **Scenario or challenge**
 
@@ -862,7 +862,7 @@ class MerkleRangeState:
 # In production, update_leaf_hash() would be called after scanning storage for range r.
 ```
 
-- **Key insight box**
+- **  **
 
 > **Key insight:** Incremental Merkle maintenance must align with your storage engine’s notion of stable partitions.
 
@@ -876,7 +876,7 @@ If you maintain per-range hashes, how do you handle tombstones (deletes) so repl
 
 ---
 
-## [MAGNIFY] Section 15 — Deletes, Tombstones, and “Phantom Equality”
+##  Section 15 — Deletes, Tombstones, and “Phantom Equality”
 
 - **Scenario or challenge**
 
@@ -902,7 +902,7 @@ In eventually consistent stores, deletes are typically represented as tombstones
 
 In distributed replication, deletes are **events** that must be ordered/merged like writes.
 
-- **Key insight box**
+- **  **
 
 > **Key insight:** Merkle sync must include **tombstones** (or equivalent delete markers) in the hashed state until safe to purge.
 
@@ -916,7 +916,7 @@ What condition must hold before a tombstone can be safely garbage-collected in a
 
 ---
 
-## [GAME] Section 16 — Quorum, Read Repair, and Merkle Trees: Who Does What?
+##  Section 16 — Quorum, Read Repair, and Merkle Trees: Who Does What?
 
 - **Scenario or challenge**
 
@@ -950,7 +950,7 @@ C) Read repair guarantees full convergence without anti-entropy.
 | Merkle anti-entropy | Background schedule | Whole dataset/range | Complete coverage, higher background cost |
 | Hinted handoff | Failure recovery | Missed writes | Fast catch-up, limited retention |
 
-- **Key insight box**
+- **  **
 
 > **Key insight:** Merkle trees are your “night shift inventory audit,” while read repair is “fix it when a customer complains.”
 
@@ -964,7 +964,7 @@ If your workload has many cold keys never read, which mechanism becomes essentia
 
 ---
 
-## [FAUCET] Section 17 — Security and Multi-Tenancy: Don’t Leak Your Dataset
+##  Section 17 — Security and Multi-Tenancy: Don’t Leak Your Dataset
 
 - **Scenario or challenge**
 
@@ -986,7 +986,7 @@ Mitigations:
 - Increase leaf granularity to reduce inference.
 - Consider privacy-preserving set reconciliation if threat model requires (more complex).
 
-- **Key insight box**
+- **  **
 
 > **Key insight:** Merkle trees are compact summaries—but summaries can still leak structure. Choose hashes and granularity with your threat model.
 
@@ -1000,7 +1000,7 @@ When would you use HMAC-based Merkle hashing instead of plain SHA-256?
 
 ---
 
-## [PUZZLE] Section 18 — Real-World Usage Patterns
+##  Section 18 — Real-World Usage Patterns
 
 - **Scenario or challenge**
 
@@ -1026,7 +1026,7 @@ Why are Merkle trees especially compatible with content-addressed storage?
 
 [IMAGE: Example of content-addressed DAG vs Merkle tree; show how hashes name objects and enable sync.]
 
-- **Key insight box**
+- **  **
 
 > **Key insight:** Merkle trees pair naturally with systems that already have stable chunking and hashing.
 
@@ -1040,7 +1040,7 @@ Name one reason a relational database might *not* use Merkle trees for replica s
 
 ---
 
-## [MAGNIFY] Section 19 — Complexity: Bandwidth, CPU, and Memory
+##  Section 19 — Complexity: Bandwidth, CPU, and Memory
 
 - **Scenario or challenge**
 
@@ -1074,7 +1074,7 @@ Trade-offs:
 | Small | Large | High | Low per leaf, but more leaves |
 | Large | Small | Low | High per leaf |
 
-- **Key insight box**
+- **  **
 
 > **Key insight:** Merkle trees shift the problem from “send everything” to “compute smart summaries.” Computation can become the bottleneck.
 
@@ -1088,7 +1088,7 @@ If your bottleneck is disk IO, what Merkle-tree design choice helps most?
 
 ---
 
-## [TARGET] Section 20 — Interactive Lab: Build a Tiny Merkle Sync
+##  Section 20 — Interactive Lab: Build a Tiny Merkle Sync
 
 - **Scenario or challenge**
 
@@ -1157,7 +1157,7 @@ if __name__ == "__main__":
     print("diff path indices", diff_path(A, B))
 ```
 
-- **Key insight box**
+- **  **
 
 > **Key insight:** A single key difference only perturbs O(log n) hashes (along its path), enabling efficient localization.
 
@@ -1171,7 +1171,7 @@ If two keys differ in different halves of the tree, how many internal nodes will
 
 ---
 
-## [ALERT] Section 21 — Operational Gotchas (What Breaks in Production)
+##  Section 21 — Operational Gotchas (What Breaks in Production)
 
 - **Scenario or challenge**
 
@@ -1206,7 +1206,7 @@ Observability (production-grade):
 - Per-node: CPU, disk read IOPS, compaction backlog, p99 latency during repair.
 - Protocol: retries, timeouts, snapshot/version mismatch counts.
 
-- **Key insight box**
+- **  **
 
 > **Key insight:** Merkle sync is a background protocol; in production, **resource governance** matters as much as correctness.
 
@@ -1220,7 +1220,7 @@ How would you detect that repair is causing user-visible latency regressions?
 
 ---
 
-## [PUZZLE] Section 22 — Synthesis: Merkle Trees in the Bigger Consistency Story
+##  Section 22 — Synthesis: Merkle Trees in the Bigger Consistency Story
 
 - **Scenario or challenge**
 
@@ -1255,13 +1255,13 @@ C) Vector clocks (or CRDTs) + Merkle-tree anti-entropy + rate-limited repair
 
 [ANSWER] **C** is the robust design pattern.
 
-- **Key insight box**
+- **  **
 
 > **Key insight:** Merkle trees make *finding* divergence cheap; versioning makes *resolving* divergence correct.
 
 ---
 
-## [WAVE] Final Synthesis Challenge — Design a Repair Strategy
+##  Final Synthesis Challenge — Design a Repair Strategy
 
 [TARGET] **Challenge scenario**
 
@@ -1299,17 +1299,3 @@ If you could only implement *one* improvement to make Merkle-based repair safer 
 [ANSWER] Version/snapshot IDs end-to-end (and restart-on-mismatch). It prevents incorrect comparisons and “repairing the wrong thing” under concurrent writes/topology churn.
 
 ---
-
-## Appendix — Markers for Visuals and Code (Index)
-
-- [IMAGE: Merkle tree side-by-side diff highlight]
-- [IMAGE: Sequence diagram for sync protocol]
-- [IMAGE: Consistent hash ring + per-range Merkle trees]
-- [IMAGE: Zoom-in bandwidth illustration]
-- [IMAGE: Content-addressed DAG vs Merkle tree]
-
-- [CODE: Python, deterministic leaf hashing with canonical JSON]
-- [CODE: Python, protocol structs with snapshotID/requestID]
-- [CODE: Python, leaf diff with (key, version, valueHash)]
-- [CODE: Python, incremental maintenance via dirty-range marking]
-- [CODE: Python, build tree and diff path]

@@ -16,7 +16,7 @@ premium: false
 
 ---
 
-## [CHALLENGE] The Coffee Chain That Can’t Agree on Your Order
+##  The Coffee Chain That Can’t Agree on Your Order
 
 You run a coffee chain with **N = 5** stores in the same neighborhood. Every store keeps a copy of the menu and your customer’s loyalty balance.
 
@@ -41,7 +41,7 @@ This is the core tension: **consistency vs availability** under partitions.
 
 ---
 
-## [SECTION] Quorum 101 — The “Enough People Signed” Rule
+##  Quorum 101 — The “Enough People Signed” Rule
 
 ### Scenario
 You have replicated data across **N replicas**. For each operation:
@@ -64,7 +64,7 @@ If the set of managers you call always includes at least one manager who signed 
 
 That’s the overlap rule.
 
-### [MENTAL MODEL] “Overlapping majorities”
+###  “Overlapping majorities”
 A classic quorum condition for **single-key** replication:
 
 - If **R + W > N**, then every read quorum intersects every write quorum.
@@ -82,7 +82,7 @@ For **N = 5**, examples that satisfy **R + W > 5**:
 
 ---
 
-## [MISCONCEPTION] “R + W > N Means Linearizability”
+##  “R + W > N Means Linearizability”
 
 ### Misconception
 If R + W > N, then the system is linearizable.
@@ -105,7 +105,7 @@ If R + W > N, then the system is linearizable.
 
 ---
 
-## [DECISION GAME] Which Statement Is True?
+##  Which Statement Is True?
 
 Choose one. (Pause and decide before revealing.)
 
@@ -126,7 +126,7 @@ Choose one. (Pause and decide before revealing.)
 
 ---
 
-## [SECTION] Quorum Reads and Writes in Practice
+##  Quorum Reads and Writes in Practice
 
 ### Scenario
 You’re implementing a key-value store with replication.
@@ -229,7 +229,7 @@ class Coordinator:
 
 ---
 
-## [EXERCISE] Matching Exercise: Pick R/W for a Goal
+##  Matching Exercise: Pick R/W for a Goal
 
 Match each goal to a plausible (R, W) choice for **N=5**.
 
@@ -259,7 +259,7 @@ What about **d)**? R=4, W=1 gives strong reads but very weak writes; often a poo
 
 ---
 
-## [CHALLENGE] When Quorum Isn’t Enough — The Partition Problem
+##  When Quorum Isn’t Enough — The Partition Problem
 
 ### Scenario
 Network partition splits replicas into two groups.
@@ -283,7 +283,7 @@ This is where **sloppy quorum** enters.
 
 ---
 
-## [SECTION] Sloppy Quorum — “Any Nearby Store Can Take Your Order”
+##  Sloppy Quorum — “Any Nearby Store Can Take Your Order”
 
 ### Scenario
 Some replicas for a key are down/unreachable. But you still want to accept writes.
@@ -316,7 +316,7 @@ Real systems bound sloppiness to avoid unbounded “temporary replica set expans
 
 ---
 
-## [MISCONCEPTION] “Sloppy Quorum Means Anything Goes”
+##  “Sloppy Quorum Means Anything Goes”
 
 ### Misconception
 Sloppy quorum is just writing to random nodes; consistency becomes meaningless.
@@ -334,7 +334,7 @@ It’s not chaos; it’s controlled degradation.
 
 ---
 
-## [SECTION] Hinted Handoff — The Delivery Receipt You Keep
+##  Hinted Handoff — The Delivery Receipt You Keep
 
 ### Scenario
 Replica R2 is down. Coordinator writes the update to fallback node F.
@@ -435,7 +435,7 @@ async function handoffLoop(hints, targetId, host, port) {
 
 ---
 
-## [DECISION GAME] Quorum vs Sloppy Quorum Under Failure
+##  Quorum vs Sloppy Quorum Under Failure
 
 ### Setup
 Replication factor N=3, W=2.
@@ -459,7 +459,7 @@ Statements:
 
 ---
 
-## [SECTION] What “Quorum” Means Depends on the Replication Model
+##  What “Quorum” Means Depends on the Replication Model
 
 ### Scenario
 You hear “quorum” and assume “majority vote.” But systems use quorums in different replication models:
@@ -484,7 +484,7 @@ Reads/writes are constrained by the leader and the committed log, not by arbitra
 
 ---
 
-## [SECTION] Failure Scenarios You Must Be Able to Reason About
+##  Failure Scenarios You Must Be Able to Reason About
 
 We’ll walk through failure cases and ask “what does quorum guarantee?”
 
@@ -525,7 +525,7 @@ You now have divergent versions across {A,D} and {B,C}. Repair must reconcile.
 
 ---
 
-## [SECTION] Comparison Table: Classic vs Sloppy Quorum
+##  Comparison Table: Classic vs Sloppy Quorum
 
 | Property | Classic Quorum | Sloppy Quorum |
 |---|---|---|
@@ -540,7 +540,7 @@ You now have divergent versions across {A,D} and {B,C}. Repair must reconcile.
 
 ---
 
-## [SECTION] Tuning Knobs and Trade-offs (N, R, W)
+##  Tuning Knobs and Trade-offs (N, R, W)
 
 ### Scenario
 You’re choosing replication parameters for a user profile service.
@@ -573,7 +573,7 @@ But if you need stronger reads (less staleness), choose R=2, W=2 at a latency/av
 
 ---
 
-## [SECTION] Versioning and Conflict Resolution (Because Quorum Isn’t Magic)
+##  Versioning and Conflict Resolution (Because Quorum Isn’t Magic)
 
 ### Scenario
 Two clients write concurrently:
@@ -593,7 +593,7 @@ It might see **X from A** and **Y from C**. The coordinator must decide:
 - return both (siblings) and force application-level merge
 - merge automatically (CRDT)
 
-### [MENTAL MODEL] “Quorum gives you evidence, not truth”
+###  “Quorum gives you evidence, not truth”
 A quorum read gives you a sample of replicas. If they disagree, you need a merge rule.
 
 > **Key insight:** In leaderless systems, correctness is a combination of **quorum + versioning + reconciliation**.
@@ -630,7 +630,7 @@ def compare(a: VC, b: VC) -> str:
 
 ---
 
-## [MISCONCEPTION] “Read Repair Fixes Everything Immediately”
+##  “Read Repair Fixes Everything Immediately”
 
 ### Misconception
 If you do read repair, replicas will quickly become consistent.
@@ -647,7 +647,7 @@ Cold keys can remain inconsistent for a long time unless you run:
 
 ---
 
-## [SECTION] Anti-Entropy and Merkle Trees (Why Repair Scales)
+##  Anti-Entropy and Merkle Trees (Why Repair Scales)
 
 ### Scenario
 Two replicas may diverge across millions of keys. You can’t compare everything key-by-key each time.
@@ -670,7 +670,7 @@ Because you transfer **O(changed ranges)** metadata instead of **O(total keys)**
 
 ---
 
-## [DECISION GAME] Pick the Best Strategy
+##  Pick the Best Strategy
 
 ### Scenario
 You operate a multi-region store with occasional inter-region partitions.
@@ -696,7 +696,7 @@ You must choose one:
 
 ---
 
-## [SECTION] Concrete Walkthrough — N=3, W=2, R=2 With and Without Sloppiness
+##  Concrete Walkthrough — N=3, W=2, R=2 With and Without Sloppiness
 
 ### Setup
 Replicas for key K: A, B, C.
@@ -732,7 +732,7 @@ A and D have v3; B and C may have v2 or v1. Repair must move v3 to B and C and p
 
 ---
 
-## [EXERCISE] Trace the Read Path
+##  Trace the Read Path
 
 ### Problem
 N=3, R=2, sloppy quorum enabled.
@@ -761,7 +761,7 @@ Coordinator returns A’s value (newest version) and triggers read repair to B.
 
 ---
 
-## [SECTION] Sloppy Reads? (Yes, Sometimes)
+##  Sloppy Reads? (Yes, Sometimes)
 
 ### Scenario
 Some systems also allow reads to be served from fallback nodes if primaries are unavailable.
@@ -782,7 +782,7 @@ You might read a value that:
 
 ---
 
-## [SECTION] The Subtle Part — What Does “W Acks” Mean?
+##  The Subtle Part — What Does “W Acks” Mean?
 
 ### Scenario
 Replica receives a write.
@@ -807,7 +807,7 @@ You need at least **(2)** or **(3)**, depending on how you define durability.
 
 ---
 
-## [SECTION] Real-World Usage Patterns
+##  Real-World Usage Patterns
 
 ### Dynamo-style systems (Riak, Cassandra-inspired designs)
 - Leaderless replication
@@ -830,7 +830,7 @@ To avoid WAN latency and partitions affecting availability. You get stronger con
 
 ---
 
-## [MISCONCEPTION] “Quorum Writes Prevent Lost Updates”
+##  “Quorum Writes Prevent Lost Updates”
 
 ### Misconception
 If W is a quorum, updates can’t be lost.
@@ -852,7 +852,7 @@ Preventing lost updates requires:
 
 ---
 
-## [QUIZ] Clock Skew and LWW
+##  Clock Skew and LWW
 
 ### Question
 In a leaderless quorum system using **LWW timestamps**, two clients write concurrently:
@@ -875,7 +875,7 @@ Mitigations:
 
 ---
 
-## [SECTION] Designing With Quorums — A Checklist
+##  Designing With Quorums — A Checklist
 
 When you say “we use quorum,” you must specify:
 
@@ -892,7 +892,7 @@ When you say “we use quorum,” you must specify:
 
 ---
 
-## [FINAL SYNTHESIS CHALLENGE] Run the Neighborhood Coffee Chain
+##  Run the Neighborhood Coffee Chain
 
 ### The game
 You operate a 5-node cluster (N=5) storing loyalty points.
@@ -953,7 +953,7 @@ When partition heals, how do you ensure:
 
 ---
 
-## [CLOSING] What You Should Be Able to Explain After This Article
+##  What You Should Be Able to Explain After This Article
 
 - Why **R + W > N** creates intersection, and what assumptions it hides
 - How leaderless quorum systems differ from consensus-based quorums

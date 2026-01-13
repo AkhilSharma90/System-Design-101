@@ -13,7 +13,7 @@ premium: false
 
 ---
 
-## [CHALLENGE] Who edited the order first?
+##  Who edited the order first?
 
 You run a food-delivery platform.
 
@@ -49,7 +49,7 @@ Production insight:
 
 ---
 
-## [MENTAL MODEL] What "ordering" really means (partial order vs total order)
+##  What "ordering" really means (partial order vs total order)
 
 ### Scenario
 Imagine three baristas in a coffee shop taking orders on separate tablets. Orders sync to the kitchen over Wi-Fi. Wi-Fi sometimes drops.
@@ -103,7 +103,7 @@ Production answers you should expect:
 
 ---
 
-## [CHALLENGE] The happened-before relation (Lamport's foundation)
+##  The happened-before relation (Lamport's foundation)
 
 ### Scenario
 You operate three microservices:
@@ -155,7 +155,7 @@ Clarification (important):
 
 ---
 
-## [HOW IT WORKS] Lamport timestamps - numbering events to respect causality
+##  Lamport timestamps - numbering events to respect causality
 
 ### Scenario
 You run a restaurant with a paper ticket system.
@@ -283,7 +283,7 @@ Production insight:
 
 ---
 
-## [DECISION GAME] Which log order is safe?
+##  Which log order is safe?
 
 ### Scenario
 Two services update a shared key status:
@@ -331,7 +331,7 @@ Examples:
 
 ---
 
-## [HOW IT WORKS] Vector clocks - receipts of what you have seen
+##  Vector clocks - receipts of what you have seen
 
 ### Scenario
 Now imagine each barista keeps not just a local counter, but a small notebook:
@@ -500,7 +500,7 @@ Answer:
 
 ---
 
-## [EXERCISE] Matching: Lamport vs Vector clocks
+##  Matching: Lamport vs Vector clocks
 
 ### Scenario
 You are designing a replicated key-value store. You need to choose a timestamping scheme.
@@ -545,7 +545,7 @@ Production strategies:
 
 ---
 
-## [FAILURES] Partitions, retries, duplicates, and reordering
+##  Partitions, retries, duplicates, and reordering
 
 ### Scenario
 Your system uses asynchronous messaging. Network behavior:
@@ -605,7 +605,7 @@ Answer:
 
 ---
 
-## [TRADE-OFFS] What you pay for
+##  What you pay for
 
 ### Scenario
 You are choosing between:
@@ -660,7 +660,7 @@ Examples:
 
 ---
 
-## [REAL WORLD] Usage patterns
+##  Usage patterns
 
 ### Pattern 1: Causal consistency and conflict detection (vector clocks)
 Used when you want to know whether two versions are concurrent.
@@ -704,7 +704,7 @@ Challenge question:
 
 ---
 
-## [QUIZ] Reading causality from vectors
+##  Reading causality from vectors
 
 ### Scenario
 Three processes: A, B, C.
@@ -743,7 +743,7 @@ Clarification:
 
 ---
 
-## [SUBTLETIES] Identity, membership, and compression
+##  Identity, membership, and compression
 
 ### Scenario
 Your cluster autoscaled from 20 to 2000 nodes. Vector clocks now look impossible.
@@ -802,7 +802,7 @@ Answer:
 
 ---
 
-## [CONFLICTS] Using clocks for conflict resolution (what clocks do not do)
+##  Using clocks for conflict resolution (what clocks do not do)
 
 ### Scenario
 Two concurrent updates to the same user profile field:
@@ -847,7 +847,7 @@ Good answers:
 
 ---
 
-## [PUTTING IT TOGETHER] When to choose which
+##  When to choose which
 
 ### Scenario
 You are building three components:
@@ -892,7 +892,7 @@ Answer:
 
 ---
 
-## [GOTCHAS] Edge cases and real deployments
+##  Edge cases and real deployments
 
 ### Scenario
 You implement vector clocks but see weird results:
@@ -945,7 +945,7 @@ Production guidance:
 
 ---
 
-## [PROGRESSIVE EXERCISE] Compute clocks by hand
+##  Compute clocks by hand
 
 ### Scenario
 Two processes P1 and P2.
@@ -1003,7 +1003,7 @@ Answer:
 
 ---
 
-## [FINAL SYNTHESIS] Build a causality-aware order update system
+##  Build a causality-aware order update system
 
 ### Synthesis challenge
 Return to the food-delivery platform.

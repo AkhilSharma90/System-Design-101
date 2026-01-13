@@ -73,7 +73,7 @@ B) Avoid going to the storeroom for negatives.
 
 If you can cheaply determine definitely not in stock, you save the expensive trip. That is exactly what a Bloom filter gives you: a fast probabilistic membership test.
 
-### Key insight box
+###
 > A Bloom filter is a negative-lookup accelerator: it is best when most queries are for keys that are absent and the backing lookup is expensive.
 
 ### Visual
@@ -111,7 +111,7 @@ Pause and think.
 ### Explanation with analogy
 The laminated sheet is made by punching holes (setting bits). You cannot un-punch a hole without knowing whether that hole was also needed for some other item.
 
-### Key insight box
+###
 > Bloom filters trade certainty for speed and compactness: definitely not is reliable; maybe yes is a hint.
 
 ### Visual
@@ -155,7 +155,7 @@ In practice you rarely compute k independent hashes. You use double hashing:
 
 This is standard, fast, and has good empirical behavior.
 
-### Key insight box
+###
 > Bloom filters work because absence is easy to prove: one missing bit disproves membership.
 
 ### Challenge question
@@ -210,7 +210,7 @@ So:
 Optimal hashes:
 - k_opt = b * ln(2) is about 9.59 * 0.693 = 6.64, about 7 hashes
 
-### Key insight box
+###
 > Bloom filters are often shockingly small: about 10 bits/element buys you about 1% false positives.
 
 ### Performance consideration
@@ -246,7 +246,7 @@ Pause and think.
 - C is true under strict conditions: same parameters and hash functions; OR corresponds to set union.
 - D is false for a correctly built filter representing a superset of inserted keys. Definitely not is the point.
 
-### Key insight box
+###
 > Bloom filters are probabilistic accelerators, not correctness mechanisms (except for the definitely-not guarantee under invariants).
 
 ### Visual
@@ -267,7 +267,7 @@ Reality: A Bloom filter does not store values, only a probabilistic set membersh
 
 Failure mode: treating a Bloom filter hit as authoritative and returning found without verifying.
 
-Key insight box
+
 > Always treat maybe present as go check the source of truth.
 
 ### Misconception 2: False positives are harmless
@@ -280,7 +280,7 @@ If your system is designed so that filter says maybe triggers:
 
 then false positives can be expensive.
 
-Key insight box
+
 > Choose p by pricing the cost of a false positive vs the memory/CPU budget.
 
 ### Misconception 3: Bloom filters never have false negatives
@@ -293,13 +293,13 @@ You can introduce false negatives via:
 - hash mismatch across versions,
 - corrupted bitsets (bad serialization, truncation, bit rot).
 
-Key insight box
+
 > The no-false-negatives property is conditional on operational invariants.
 
 ### Misconception 4: Just pick k=10; more hashes is better
 Reality: too many hashes can increase false positives for a fixed m and n (more bit setting -> faster saturation) and wastes CPU.
 
-Key insight box
+
 > Use k_opt = (m/n) * ln(2) as a starting point, then benchmark.
 
 ### Visual
@@ -331,7 +331,7 @@ Use case: prevent requests for missing objects from reaching origin.
 
 Trade-off: staleness can cause system-level false negatives if you treat "no" as authoritative.
 
-Key insight box
+
 > Edge Bloom filters are powerful but require careful update semantics to preserve correctness.
 
 ### Pattern 2: Per-shard Bloom filters in a sharded DB
@@ -438,7 +438,7 @@ Because the alternative is far worse: without Bloom filters you may do many disk
 ### Compaction note
 If compaction rewrites SSTables, their Bloom filters are rebuilt for the new files. This is one reason SSTable filters are operationally safe: the filter lifecycle is tied to immutable file creation.
 
-### Key insight box
+###
 > Bloom filters are a primary tool to reduce read amplification in LSM trees.
 
 ---
@@ -907,7 +907,7 @@ Approaches:
 | Scalability | Easy to shard/merge (OR) | Parameter coordination required | Versioning across fleets is hard |
 | Security | Can shed invalid traffic | Can be abused if adversarial | Keyed hashes/rate limiting may be needed |
 
-Key insight box
+
 > Bloom filters are a systems trade: memory+CPU to save IO and cross-service work.
 
 ---

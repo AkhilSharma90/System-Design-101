@@ -22,7 +22,7 @@ We will build intuition using coffee-shop analogies, decision games, and progres
 
 ---
 
-## (HANDSHAKE) Section 1 - The Coffee Shop Ledger: Why Crashes Are Not the Whole Story
+## Section 1 - The Coffee Shop Ledger: Why Crashes Are Not the Whole Story
 
 - Scenario / challenge
 - Interactive question
@@ -81,7 +81,7 @@ Challenge question: What is the minimum extra assumption you would want to add t
 
 ---
 
-## (CHALLENGE) Section 2 - What Exactly Is a Byzantine Fault?
+##  Section 2 - What Exactly Is a Byzantine Fault?
 
 ### Scenario
 Your distributed system has 7 replicas. You are told "up to 2 may be Byzantine." What does that include?
@@ -127,7 +127,7 @@ Challenge question: If you assume "nodes can lie," what must you assume about id
 
 ---
 
-## (ALERT) Section 3 - The Core BFT Problem: Replicated State Machine Under Adversary
+##  Section 3 - The Core BFT Problem: Replicated State Machine Under Adversary
 
 ### Scenario
 You want a replicated key-value store. Clients send commands like:
@@ -176,7 +176,7 @@ Challenge question: Why is GET tricky in BFT if different replicas might be at d
 
 ---
 
-## (MAGNIFY) Section 4 - Quorums and the Famous 3f + 1 Requirement
+##  Section 4 - Quorums and the Famous 3f + 1 Requirement
 
 ### Scenario
 You are designing a cluster. You want to tolerate up to f Byzantine replicas.
@@ -238,7 +238,7 @@ Answer: f = floor((n-1)/3) = floor(9/3) = 3.
 
 ---
 
-## (PUZZLE) Section 5 - The Adversary's Superpower: Equivocation
+##  Section 5 - The Adversary's Superpower: Equivocation
 
 ### Scenario
 A leader proposes value v. A Byzantine leader proposes v to half the nodes and v' to the other half.
@@ -280,7 +280,7 @@ Answer: signatures (or MACs in a fixed membership setting). Hashing helps bind p
 
 ---
 
-## (FAUCET) Section 6 - Timing Assumptions: FLP, Partial Synchrony, and Why Liveness Is Conditional
+##  Section 6 - Timing Assumptions: FLP, Partial Synchrony, and Why Liveness Is Conditional
 
 ### Scenario
 You deploy BFT across regions. Sometimes the network is slow. Sometimes packets reorder. Sometimes a node is overloaded.
@@ -321,7 +321,7 @@ Challenge question: If a Byzantine node can delay messages (or the network delay
 
 ---
 
-## (GAME) Section 7 - Decision Game: What Does It Mean to "Commit" in BFT?
+##  Section 7 - Decision Game: What Does It Mean to "Commit" in BFT?
 
 ### Scenario
 You are reading a BFT protocol description. It says:
@@ -357,7 +357,7 @@ Answer: at least (2f+1) - f = f+1 honest votes.
 
 ---
 
-## (MAGNIFY) Section 8 - PBFT, Explained Like a Busy Cafe (Pre-Prepare / Prepare / Commit)
+##  Section 8 - PBFT, Explained Like a Busy Cafe (Pre-Prepare / Prepare / Commit)
 
 ### Scenario
 A cafe has a head barista (leader) who calls out orders, and multiple baristas (replicas) who must all make drinks in the same order.
@@ -422,7 +422,7 @@ Challenge question: In PBFT, why does the client typically wait for f+1 matching
 
 ---
 
-## (ALERT) Section 9 - Common Misconception: "BFT Is Just Paxos With Signatures"
+##  Section 9 - Common Misconception: "BFT Is Just Paxos With Signatures"
 
 ### Misconception
 > "If I add signatures to Raft/Paxos messages, I get BFT."
@@ -462,7 +462,7 @@ Challenge question: Which part is harder to adapt from crash-fault to Byzantine:
 
 ---
 
-## (HANDSHAKE) Section 10 - View Change: Replacing a Potentially Malicious Leader
+##  Section 10 - View Change: Replacing a Potentially Malicious Leader
 
 ### Scenario
 Your current leader is slow - or maliciously stalling progress. Replicas need to switch leaders without breaking safety.
@@ -501,7 +501,7 @@ Answer: with only f+1, the set could be dominated by Byzantine nodes and omit th
 
 ---
 
-## (MAGNIFY) Section 11 - Modern BFT: From PBFT to HotStuff (Why People Changed the Design)
+##  Section 11 - Modern BFT: From PBFT to HotStuff (Why People Changed the Design)
 
 ### Scenario
 PBFT works, but engineers complain:
@@ -573,7 +573,7 @@ Challenge question: Why might threshold signatures be attractive in BFT (bandwid
 
 ---
 
-## (FAUCET) Section 12 - Failure Scenarios: What BFT Handles (and What It Does Not)
+##  Section 12 - Failure Scenarios: What BFT Handles (and What It Does Not)
 
 ### Scenario
 You are asked: "If we use BFT, are we safe against everything?"
@@ -619,7 +619,7 @@ Challenge question: In your system, what is the most realistic way an attacker m
 
 ---
 
-## (PUZZLE) Section 13 - Trade-offs: The Cost of Being Byzantine-Resilient
+##  Section 13 - Trade-offs: The Cost of Being Byzantine-Resilient
 
 ### Scenario
 Your team debates whether to use BFT or crash-fault replication.
@@ -664,7 +664,7 @@ Challenge question: If you control all machines in one cloud account, is BFT sti
 
 ---
 
-## (GAME) Section 14 - Interactive Exercise: Compute Quorums and Client Wait Conditions
+##  Section 14 - Interactive Exercise: Compute Quorums and Client Wait Conditions
 
 ### Scenario
 You run a BFT cluster with n replicas.
@@ -711,7 +711,7 @@ Challenge question: In a read-heavy system, how would you design a BFT "read" pa
 
 ---
 
-## (MAGNIFY) Section 15 - Reads Are Hard: Linearizability, Fast Reads, and Proof-Carrying Data
+##  Section 15 - Reads Are Hard: Linearizability, Fast Reads, and Proof-Carrying Data
 
 ### Scenario
 A client asks GET(x) right after another client did PUT(x=1).
@@ -762,7 +762,7 @@ Challenge question: If clients can verify commit proofs, what does that do to th
 
 ---
 
-## (ALERT) Section 16 - Common Misconception: "BFT Means Stronger Consistency Than CFT"
+##  Section 16 - Common Misconception: "BFT Means Stronger Consistency Than CFT"
 
 ### Misconception
 > "If it is Byzantine fault tolerant, it must be 'more consistent' than Raft."
@@ -787,7 +787,7 @@ Answer: yes - e.g., a geo-replicated system might accept weaker semantics for av
 
 ---
 
-## (HANDSHAKE) Section 17 - Membership and Key Management: The Operational Reality
+##  Section 17 - Membership and Key Management: The Operational Reality
 
 ### Scenario
 You want to add/remove replicas. In BFT, this is not just autoscaling - membership defines who is allowed to vote.
@@ -825,7 +825,7 @@ Challenge question: If you rotate keys for a replica, how do you prevent a Byzan
 
 ---
 
-## (MAGNIFY) Section 18 - Real-World Usage: Where BFT Shows Up (and Why)
+##  Section 18 - Real-World Usage: Where BFT Shows Up (and Why)
 
 ### Scenario
 You are deciding whether BFT is worth it. Where is it actually used?
@@ -865,7 +865,7 @@ Challenge question: What is your system's "Byzantine story"? Who might cheat, an
 
 ---
 
-## (PUZZLE) Section 19 - Implementation Notes: Message Authentication, Digests, and State Transfer
+##  Section 19 - Implementation Notes: Message Authentication, Digests, and State Transfer
 
 ### Scenario
 You are implementing a BFT protocol. What are the practical building blocks?
@@ -940,7 +940,7 @@ Answer: you can get consensus splits where different replicas believe they signe
 
 ---
 
-## (GAME) Section 20 - Quiz: Spot the BFT Bug
+##  Section 20 - Quiz: Spot the BFT Bug
 
 ### Scenario
 A teammate proposes a simplified commit rule:
@@ -976,7 +976,7 @@ Example sketch:
 
 ---
 
-## (MAGNIFY) Section 21 - Performance Engineering: Where the Time Goes
+##  Section 21 - Performance Engineering: Where the Time Goes
 
 ### Scenario
 Your BFT prototype is correct but slow.
@@ -1006,7 +1006,7 @@ Answer: roughly 3 RTTs ~= 150ms (plus crypto + queuing). In practice, cross-regi
 
 ---
 
-## (ALERT) Section 22 - Threat Modeling: When BFT Assumptions Fail
+##  Section 22 - Threat Modeling: When BFT Assumptions Fail
 
 ### Scenario
 You built for f Byzantine faults. What if reality is worse?
@@ -1045,7 +1045,7 @@ Challenge question: What operational practices would you adopt to make "independ
 
 ---
 
-## (PUZZLE) Section 23 - Design Patterns: Choosing Between CFT, BFT, and Hybrid Approaches
+##  Section 23 - Design Patterns: Choosing Between CFT, BFT, and Hybrid Approaches
 
 ### Scenario
 You need a replicated control plane for a platform.
@@ -1078,7 +1078,7 @@ Challenge question: Identify one action in your system that would benefit most f
 
 ---
 
-## (WAVE) Section 24 - Final Synthesis Challenge: Design a BFT Service You Would Actually Ship
+##  Section 24 - Final Synthesis Challenge: Design a BFT Service You Would Actually Ship
 
 (CHALLENGE) Synthesis scenario
 You are building a multi-organization configuration registry for critical infrastructure. Three companies jointly operate it. They do not fully trust each other. The registry stores:

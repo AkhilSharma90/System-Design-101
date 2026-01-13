@@ -16,7 +16,7 @@ premium: false
 
 ---
 
-## [CHALLENGE] You’re running a “single” system… on five machines
+##  You’re running a “single” system… on five machines
 
 **Scenario:** You operate a payment service. Product insists: “there must be exactly one current ledger head.” Ops insists: “it must survive machine failures.” Compliance insists: “no split-brain.”
 
@@ -38,7 +38,7 @@ Hold that thought - we’ll return to it when we talk about **safety vs availabi
 
 ---
 
-## [SECTION] What consensus is (and what it is not)
+##  What consensus is (and what it is not)
 
 ### Scenario
 You’re at a coffee shop with 5 baristas. Customers line up. The shop must maintain a single queue order and a single “next order to prepare.” If two baristas both start the same order or skip someone, chaos.
@@ -79,7 +79,7 @@ A restaurant kitchen ticket rail: tickets (commands) must be processed in order.
 
 ---
 
-## [WARNING] The contract - Safety first, then liveness
+##  The contract - Safety first, then liveness
 
 ### Scenario
 A delivery company must assign **exactly one driver** to each package. If two drivers deliver the same package, you have fraud and chargebacks.
@@ -118,7 +118,7 @@ No. In the presence of partitions, you must choose: **consistency** or **availab
 
 ---
 
-## [SECTION] Failure model - what can go wrong in a distributed environment
+##  Failure model - what can go wrong in a distributed environment
 
 ### Scenario
 Your baristas communicate via walkie-talkies. Sometimes the walkie-talkie cuts out for 30 seconds. Sometimes a barista disappears (crash). Sometimes two baristas hear different things.
@@ -151,7 +151,7 @@ These protocols assume:
 
 ---
 
-## [CHALLENGE] The core idea - Quorums and majorities
+##  The core idea - Quorums and majorities
 
 ### Scenario
 A committee of 5 decides the “official menu of the day.” You require at least **3** signatures to declare it official.
@@ -191,7 +191,7 @@ A bank vault requiring 3-of-5 keys: any two sets of 3 share at least one keyhold
 
 ---
 
-## [SECTION] Replicated State Machine (RSM) in one picture
+##  Replicated State Machine (RSM) in one picture
 
 [IMAGE: Replicated State Machine diagram. Clients send commands to a leader. Leader appends to a replicated log. Followers replicate entries. Commit index advances once a quorum acknowledges. State machines apply committed commands in order. Annotate: crash of follower, leader crash, partition (majority continues, minority stalls). Label: log index, term/ballot, commitIndex, appliedIndex.]
 
@@ -223,7 +223,7 @@ Consensus gives you (1) and (2). Your application must provide (3) or handle non
 
 ---
 
-## [GAME] Decision game - Do you need consensus here?
+##  Decision game - Do you need consensus here?
 
 ### Scenario
 You’re building:
@@ -258,7 +258,7 @@ Cache invalidation often fails not because of ordering, but because of **loss** 
 
 # Part I - Paxos: the minimal, misunderstood foundation
 
-## [CHALLENGE] Paxos in a coffee shop - picking today’s special
+##  Paxos in a coffee shop - picking today’s special
 
 ### Scenario
 Five baristas must agree on **today’s special drink**. They can’t all meet at once. Some are on break. Walkie-talkies drop.
@@ -287,7 +287,7 @@ To get a log, you run Paxos for each slot (Multi-Paxos).
 
 ---
 
-## [SECTION] Paxos roles - Proposer, Acceptor, Learner
+##  Paxos roles - Proposer, Acceptor, Learner
 
 ### Scenario
 - **Proposers** suggest the special.
@@ -318,7 +318,7 @@ If acceptors lose this state (disk loss), safety can be violated unless you trea
 
 ---
 
-## [WARNING] Paxos safety rule - “Promises” prevent contradictions
+##  Paxos safety rule - “Promises” prevent contradictions
 
 ### Scenario
 Two baristas propose different specials. We must avoid choosing both.
@@ -360,7 +360,7 @@ This avoids collisions and ensures global ordering.
 
 ---
 
-## [SECTION] Paxos walk-through (single slot)
+##  Paxos walk-through (single slot)
 
 ### Scenario
 Cluster: A1..A5 acceptors. Quorum=3. Two proposers: P and Q.
@@ -396,7 +396,7 @@ A value can be **chosen** even if no learner has learned it yet. Learners learn 
 
 ---
 
-## [SECTION] Multi-Paxos - turn Paxos into a log
+##  Multi-Paxos - turn Paxos into a log
 
 ### Scenario
 Your coffee shop needs not one decision, but a sequence: specials for Monday, Tuesday, Wednesday…
@@ -430,7 +430,7 @@ Leader changes correlate with latency spikes because:
 
 ---
 
-## [WARNING] Paxos failure scenarios - what breaks, what pauses
+##  Paxos failure scenarios - what breaks, what pauses
 
 ### Scenario set
 You run a 5-acceptor Multi-Paxos cluster.
@@ -461,7 +461,7 @@ Pause and think.
 
 # Part II - Raft: consensus designed for humans
 
-## [CHALLENGE] Why Raft exists - “understandability” as a feature
+##  Why Raft exists - “understandability” as a feature
 
 ### Scenario
 You inherit a Paxos-based system. It works, but nobody can confidently modify it. Incidents happen because engineers fear touching the consensus layer.
@@ -491,7 +491,7 @@ Raft decomposes the problem into:
 
 ---
 
-## [SECTION] Raft roles and terms - Follower, Candidate, Leader
+##  Raft roles and terms - Follower, Candidate, Leader
 
 ### Scenario
 A restaurant has:
@@ -529,7 +529,7 @@ If you don’t, a reboot can cause a node to “forget” it voted and violate e
 
 ---
 
-## [WARNING] Raft leader election - random timeouts to avoid dueling leaders
+##  Raft leader election - random timeouts to avoid dueling leaders
 
 ### Scenario
 If everyone tries to become head chef at once, you get chaos. Raft uses randomized election timeouts.
@@ -563,7 +563,7 @@ If two candidates each get 2 votes in a 5-node cluster, nobody wins; they time o
 
 ---
 
-## [SECTION] Raft log replication - AppendEntries and the log matching property
+##  Raft log replication - AppendEntries and the log matching property
 
 ### Scenario
 The head chef writes tickets in order and ensures each station has the same ticket list.
@@ -600,7 +600,7 @@ Naively decrementing `nextIndex` one-by-one can be expensive. Production Raft im
 
 ---
 
-## [SECTION] Commit index and applying to the state machine
+##  Commit index and applying to the state machine
 
 ### Scenario
 A ticket is not “official” until enough stations have it.
@@ -632,7 +632,7 @@ A leader only uses “count replicas” to advance commitIndex for entries from 
 
 ---
 
-## [WARNING] Raft failure scenarios - partition, crash, slow disk
+##  Raft failure scenarios - partition, crash, slow disk
 
 ### Scenario 1: Partition 3-2
 - Majority side elects/keeps leader -> continues committing.
@@ -669,7 +669,7 @@ Mitigations:
 
 ---
 
-## [SECTION] Raft configuration changes - changing the committee without chaos
+##  Raft configuration changes - changing the committee without chaos
 
 ### Scenario
 Your coffee shop hires a new barista (add node) or someone quits (remove node). You must change membership without creating two different majorities.
@@ -695,7 +695,7 @@ Correct implementations persist the joint configuration as a log entry. After cr
 
 # Part III - ZooKeeper: consensus as a coordination service
 
-## [CHALLENGE] ZooKeeper’s promise - “a small, consistent brain” for your cluster
+##  ZooKeeper’s promise - “a small, consistent brain” for your cluster
 
 ### Scenario
 You run a fleet of services that need:
@@ -732,7 +732,7 @@ ZooKeeper is often a shared dependency; treat it like critical infrastructure:
 
 ---
 
-## [SECTION] ZooKeeper’s consensus core - ZAB (and how it relates)
+##  ZooKeeper’s consensus core - ZAB (and how it relates)
 
 ### Scenario
 ZooKeeper needs all servers to agree on the order of updates to the znode tree.
@@ -759,7 +759,7 @@ ZAB ensures a total order of updates and that followers apply them consistently.
 
 ---
 
-## [WARNING] ZooKeeper data model - znodes, ephemeral nodes, watches
+##  ZooKeeper data model - znodes, ephemeral nodes, watches
 
 ### Scenario
 You want leader election for a service “orders.” Each instance registers itself. When the leader dies, another should take over.
@@ -794,7 +794,7 @@ Correct recipes always re-read state after a watch fires.
 
 ---
 
-## [SECTION] Interactive pattern - Leader election with ephemeral sequential znodes
+##  Interactive pattern - Leader election with ephemeral sequential znodes
 
 ### Scenario
 Each service instance creates `/election/c_` as an **ephemeral sequential** znode.
@@ -937,7 +937,7 @@ async function elect(clientId, host = '127.0.0.1', port = 21810, path = '/electi
 
 ---
 
-## [WARNING] ZooKeeper consistency guarantees - what you get (and what you don’t)
+##  ZooKeeper consistency guarantees - what you get (and what you don’t)
 
 ### Scenario
 You store configuration in ZooKeeper. You want every service to see updates in a consistent order.
@@ -975,7 +975,7 @@ Pause.
 
 # Part IV - Compare Paxos vs Raft vs ZooKeeper (and when to use what)
 
-## [SECTION] Comparison table - concepts and trade-offs
+##  Comparison table - concepts and trade-offs
 
 [IMAGE: Three-column comparison infographic: Paxos, Raft, ZooKeeper. Rows: primary goal, core abstraction, leader model, typical use, complexity, operational concerns, client API style, read semantics.]
 
@@ -999,7 +999,7 @@ Pause.
 
 ---
 
-## [GAME] Matching exercise - use case -> best fit
+##  Matching exercise - use case -> best fit
 
 Match each use case to the best option (Paxos/Multi-Paxos, Raft, ZooKeeper):
 
@@ -1018,7 +1018,7 @@ Match each use case to the best option (Paxos/Multi-Paxos, Raft, ZooKeeper):
 
 # Part V - The hard parts engineers actually trip over
 
-## [WARNING] Linearizability vs serializability vs “it seems consistent”
+##  Linearizability vs serializability vs “it seems consistent”
 
 ### Scenario
 A client writes `x=1`, then reads `x`. They expect 1.
@@ -1046,7 +1046,7 @@ Consensus orders operations; your **client read path** determines whether you ge
 
 ---
 
-## [SECTION] Log compaction and snapshots - keeping the notebook from exploding
+##  Log compaction and snapshots - keeping the notebook from exploding
 
 ### Scenario
 Your replicated log grows forever. Disk fills. Restart time becomes hours.
@@ -1160,7 +1160,7 @@ async function installSnapshot(followerHost, followerPort, data, lastIdx, lastTe
 
 ---
 
-## [WARNING] The client problem - how do clients know who the leader is?
+##  The client problem - how do clients know who the leader is?
 
 ### Scenario
 A client wants to write. It contacts node A, but A is a follower.
@@ -1189,7 +1189,7 @@ Broadcasting writes is expensive and can amplify failures.
 
 ---
 
-## [WARNING] Timeouts, heartbeats, and the latency/availability trade-off
+##  Timeouts, heartbeats, and the latency/availability trade-off
 
 ### Scenario
 You set election timeout to 1s to avoid spurious elections. But failover now takes seconds.
@@ -1217,7 +1217,7 @@ If too high, recovery is slow.
 
 # Part VI - Putting it all together: a progressive synthesis
 
-## [SECTION] Build a mental model that predicts behavior
+##  Build a mental model that predicts behavior
 
 ### Mental model: “The log is the truth, the leader is the coordinator”
 
@@ -1234,7 +1234,7 @@ If too high, recovery is slow.
 
 ---
 
-## [GAME] Synthesis decision game - Which system behavior is correct?
+##  Synthesis decision game - Which system behavior is correct?
 
 ### Scenario
 You have a 5-node Raft cluster: A,B,C,D,E.
@@ -1265,7 +1265,7 @@ When the partition heals, the majority side’s leader will force log convergenc
 
 ---
 
-## [CHALLENGE] Final synthesis challenge: Design a coordination layer for a microservice fleet
+##  Final synthesis challenge: Design a coordination layer for a microservice fleet
 
 ### Scenario
 You operate 200 microservices. They need:

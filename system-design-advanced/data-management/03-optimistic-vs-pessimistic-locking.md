@@ -57,7 +57,7 @@ Distributed locking discussions get misleading unless we state assumptions:
 
   In distributed systems, we need a way to ensure that **concurrent operations** don’t violate invariants.
 
-- Key insight box
+-
   **Key insight:** Locking is about protecting invariants under concurrency. The “right” strategy depends on contention, latency, failure modes, and what you can tolerate: blocking, retries, or occasional aborts.
 
 - Challenge question
@@ -90,7 +90,7 @@ Distributed locking discussions get misleading unless we state assumptions:
   - Pessimistic: restaurant host puts a “reserved” sign on a table.
   - Optimistic: two groups walk toward the same table; whoever sits first wins, the other relocates.
 
-- Key insight box
+-
   **Key insight:** Pessimistic trades **waiting** for **certainty**. Optimistic trades **retries/aborts** for **parallelism**.
 
 - Challenge question
@@ -131,7 +131,7 @@ Distributed locking discussions get misleading unless we state assumptions:
 
   If the warehouse can’t pick, charging is a bad customer experience.
 
-- Key insight box
+-
   **Key insight:** In distributed systems, “locking” is not just a DB feature - it can be a **protocol** spanning services.
 
 - Challenge question
@@ -157,7 +157,7 @@ Distributed locking discussions get misleading unless we state assumptions:
 - Real-world parallel
   Two people can both fill out the last reservation form, but the host accepts only the one with the latest ticket/sequence.
 
-- Key insight box
+-
   **Key insight:** Optimistic locking avoids **long-held locks**, not **all synchronization**.
 
 - Challenge question
@@ -184,7 +184,7 @@ Distributed locking discussions get misleading unless we state assumptions:
 - Real-world parallel
   A restaurant’s reservation book must be authoritative. If two hosts keep separate books that don’t sync reliably, you’ll double-book tables.
 
-- Key insight box
+-
   **Key insight:** Distributed pessimistic locking requires a strongly consistent coordinator (or an equivalent single-writer mechanism).
 
 - Challenge question
@@ -219,7 +219,7 @@ Distributed locking discussions get misleading unless we state assumptions:
 - Real-world parallel
   A restaurant holds your table for **10 minutes**. If you don’t show up, they give it away.
 
-- Key insight box
+-
   **Key insight:** Pessimistic locks in distributed systems must be time-bounded to tolerate crashes and partitions.
 
 - Challenge question
@@ -252,7 +252,7 @@ Distributed locking discussions get misleading unless we state assumptions:
 - Real-world parallel
   A single host controlling a waitlist reduces double-booking but can create a long line.
 
-- Key insight box
+-
   **Key insight:** Pessimistic locking often trades throughput for predictable correctness - but not necessarily predictable latency.
 
 - Challenge question
@@ -279,7 +279,7 @@ Distributed locking discussions get misleading unless we state assumptions:
 - Real-world parallel
   Two customers fill out a form; the system accepts the first one that reaches the clerk and rejects the stale one.
 
-- Key insight box
+-
   **Key insight:** Optimistic locking is “validate on write.” Pessimistic locking is “block before write.”
 
 - Challenge question
@@ -305,7 +305,7 @@ Distributed locking discussions get misleading unless we state assumptions:
 - Real-world parallel
   A delivery app updates your address only if you are editing the latest version of the order.
 
-- Key insight box
+-
   **Key insight:** Optimistic concurrency is a protocol pattern, not a DB feature.
 
 - Challenge question
@@ -340,7 +340,7 @@ Distributed locking discussions get misleading unless we state assumptions:
 - Real-world parallel
   It’s like telling everyone, “Just walk to the counter and if the croissant is gone, go back and try again.” The crowd blocks the entrance.
 
-- Key insight box
+-
   **Key insight:** Optimistic locking shifts contention from waiting to wasted work.
 
 - Challenge question
@@ -394,7 +394,7 @@ Distributed locking discussions get misleading unless we state assumptions:
 - Real-world parallel
   It’s like a host holding the only table while you step outside to call your friend to decide what to order.
 
-- Key insight box
+-
   **Key insight:** In distributed systems, time is the enemy of locks.
 
 - Challenge question
@@ -418,7 +418,7 @@ Distributed locking discussions get misleading unless we state assumptions:
 - Real-world parallel
   A single clerk handles one customer at a time for a specific ticket.
 
-- Key insight box
+-
   **Key insight:** Keep pessimistic critical sections short; do not call external systems while holding locks.
 
 > **Important clarification:** the following TCP lock server is a *teaching demo* to illustrate blocking waiters. It is **not** a correct distributed lock implementation (no persistence, no fencing, no quorum, no crash recovery).
@@ -477,7 +477,7 @@ def handle(conn: socket.socket):
 - Real-world parallel
   A reservation form is accepted only if the table is still free.
 
-- Key insight box
+-
   **Key insight:** Optimistic locking needs a retry policy (backoff, jitter, max attempts) and good UX for conflict errors.
 
 ```javascript
@@ -528,7 +528,7 @@ async function decrementWithOptimism(id, n, maxAttempts = 5) {
 - Real-world parallel
   The host checks the reservation book at the moment of writing your name, not 2 minutes earlier.
 
-- Key insight box
+-
   **Key insight:** If your store supports transactional compare (e.g., etcd Txn), you can avoid extra coordination round trips.
 
 > **Important clarification:** the following single-threaded server demonstrates the *API shape* of CAS. Real CAS correctness in distributed systems requires a strongly consistent store (single leader/quorum) or a linearizable primitive.
@@ -602,7 +602,7 @@ def serve(host="127.0.0.1", port=6060):
 - Real-world parallel
   A reservation ticket expires; you can’t show up later and claim the table.
 
-- Key insight box
+-
   **Key insight:** Leases prevent deadlocks; fencing tokens prevent stale owners from corrupting state.
 
 ```python
@@ -668,7 +668,7 @@ class LeaseLock:
 - Real-world parallel
   Two restaurant hosts on opposite sides of a building with no communication: do they keep seating (availability) or stop seating to avoid double-booking (consistency)?
 
-- Key insight box
+-
   **Key insight:** Locking is coordination, and coordination is where distributed systems pay latency and availability costs.
 
 - Challenge question
@@ -700,7 +700,7 @@ class LeaseLock:
 - Real-world parallel
   Letting everyone walk up to the counter works if the store is empty; it fails if it’s a stampede.
 
-- Key insight box
+-
   **Key insight:** Optimistic locking is a bet: “conflicts are rare enough that retries are cheaper than waiting.”
 
 - Challenge question
@@ -741,7 +741,7 @@ class LeaseLock:
   - Collaborative editing: you need merge semantics.
   - Rate limits: approximate/sharded is often acceptable.
 
-- Key insight box
+-
   **Key insight:** The “best” approach depends on whether you can merge, retry, wait, or approximate.
 
 - Challenge question
@@ -768,7 +768,7 @@ class LeaseLock:
 - Real-world parallel
   You place a delivery order; your phone loses signal after you hit “Pay.” You try again. Without an idempotency key, you might pay twice.
 
-- Key insight box
+-
   **Key insight:** Locking controls concurrency, but idempotency controls retries under uncertainty.
 
 - Challenge question
@@ -793,7 +793,7 @@ class LeaseLock:
 - Real-world parallel
   One host uses the reservation book; the other seats walk-ins without checking it.
 
-- Key insight box
+-
   **Key insight:** Locks are coordination agreements with failure modes.
 
 - Challenge question
@@ -820,7 +820,7 @@ class LeaseLock:
 - Real-world parallel
   A restaurant gives numbered tickets. Only the highest ticket number is allowed to claim the reservation.
 
-- Key insight box
+-
   **Key insight:** Leases prevent deadlocks, but fencing tokens prevent stale owners from causing damage.
 
 - Challenge question
@@ -854,7 +854,7 @@ class LeaseLock:
 - Real-world parallel
   One store manager controls the last-item decisions; other branches forward requests.
 
-- Key insight box
+-
   **Key insight:** For counters and decrements, you often end up with single-writer or reservation tokens rather than pure optimistic multi-writer.
 
 - Challenge question
@@ -892,7 +892,7 @@ class LeaseLock:
 - Real-world parallel
   A restaurant uses walk-in seating (optimistic) on quiet days and a reservation list (pessimistic) on busy nights.
 
-- Key insight box
+-
   **Key insight:** The best systems minimize the scope and duration of coordination.
 
 - Challenge question
@@ -936,7 +936,7 @@ class LeaseLock:
 - Real-world parallel
   Hand out 10,000 numbered wristbands at the door; only wristband holders can buy.
 
-- Key insight box
+-
   **Key insight:** When contention is extreme, neither naive pessimistic nor naive optimistic locking scales well. You redesign the invariant.
 
 - Challenge question
@@ -973,7 +973,7 @@ class LeaseLock:
   - Pessimistic: watch how long people wait in line.
   - Optimistic: watch how many people get turned away and come back.
 
-- Key insight box
+-
   **Key insight:** Your locking strategy is a control loop: measure contention, tune backoff/leases, and redesign hotspots.
 
 - Challenge question
@@ -996,7 +996,7 @@ class LeaseLock:
 - Real-world parallel
   In a narrow hallway, two people keep stepping aside in the same direction repeatedly.
 
-- Key insight box
+-
   **Key insight:** Pessimistic -> deadlock risk. Optimistic -> livelock/retry storm risk.
 
 - Challenge question
@@ -1027,7 +1027,7 @@ class LeaseLock:
 - Real-world parallel
   Reserving a table doesn’t automatically reserve a taxi and charge your card; you still need coordination across parties.
 
-- Key insight box
+-
   **Key insight:** Locking is about concurrency. Transactions are about atomicity. They overlap but aren’t the same.
 
 - Challenge question
@@ -1083,7 +1083,7 @@ def withdraw(acct: str, amount: int, idem_key: str):
 - Real-world parallel
   A customer calls twice because the line cut out; without a “same order” identifier, you charge twice.
 
-- Key insight box
+-
   **Key insight:** Optimistic locking protects against concurrent writers, not duplicate requests or multi-entity invariants.
 
 - Challenge question
@@ -1115,7 +1115,7 @@ def withdraw(acct: str, amount: int, idem_key: str):
   - let them try and sometimes bounce (optimistic),
   - or change the process (tokens/merge).
 
-- Key insight box
+-
   **Key insight:** Pick the strategy that fails in the way you can tolerate.
 
 - Challenge question
@@ -1159,7 +1159,7 @@ def withdraw(acct: str, amount: int, idem_key: str):
 - Real-world parallel
   A shared dry-erase board in a meeting room: people can write simultaneously, but you need conventions for overwriting and erasing.
 
-- Key insight box
+-
   **Key insight:** The most scalable “locking” strategy is often: don’t lock - change the data type and semantics so concurrent updates can safely merge.
 
 - Final challenge question

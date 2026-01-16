@@ -364,7 +364,7 @@ A cafe has a head barista (leader) who calls out orders, and multiple baristas (
 
 If the head barista is malicious, they might call different orders to different baristas.
 
-[IMAGE: Sequence diagram of PBFT phases showing client request -> leader pre-prepare -> replicas prepare -> replicas commit -> reply to client, with quorum sizes labeled (2f+1).]
+![img0](https://res.cloudinary.com/dretwg3dy/image/upload/v1768463013/164_hovdde.png)
 
 ### Interactive walk-through
 Assume n = 3f + 1 replicas. Let f = 1, so n = 4.
@@ -490,7 +490,7 @@ So view change protocols must ensure:
 ### Analogy
 A new manager takes over mid-shift. They must reconcile which orders were actually confirmed and paid for, not just what one cashier claims.
 
-[IMAGE: View change diagram showing replicas sending view-change messages containing prepared/committed certificates; new leader collects 2f+1 and broadcasts new-view.]
+![img1](https://res.cloudinary.com/dretwg3dy/image/upload/v1768463013/163_sdtktr.png)
 
 ### Key insight
 > View change is "state transfer of safety evidence." It is not just picking a new leader; it is picking a leader who can prove what is safe to continue.
@@ -751,7 +751,9 @@ So BFT systems often use one of these approaches:
    - replica returns value + a QC / commit proof
    - client verifies proof without trusting the replica
 
-[IMAGE: Diagram showing read strategies: (a) quorum read, (b) leader read with verification, (c) proof-carrying read with QC.]
+
+![img2](https://res.cloudinary.com/dretwg3dy/image/upload/v1768463013/165_uggszh.png)
+
 
 ### Key insight
 > In BFT, a "fast read" usually requires either multiple replicas or a cryptographic proof that binds the read to the committed log.
@@ -814,7 +816,9 @@ If keys are stolen:
 - rotation without breaking quorum assumptions
 - threshold signature setup (distributed key generation)
 
-[IMAGE: Diagram of trust bootstrap: root CA -> replica certs -> signed protocol messages; show what happens if CA is compromised.]
+
+![img3](https://res.cloudinary.com/dretwg3dy/image/upload/v1768463013/166_wfkoym.png)
+
 
 ### Key insight
 > In BFT, "who can sign" is part of the correctness argument. Operations and security engineering are inseparable.
@@ -995,7 +999,9 @@ Your BFT prototype is correct but slow.
 - Hardware acceleration: HSMs, crypto offload.
 - Careful networking: UDP + retransmit vs TCP; kernel bypass in some designs.
 
-[IMAGE: Latency breakdown chart: network RTT per phase + crypto verification time + batching delay.]
+![img4](https://res.cloudinary.com/dretwg3dy/image/upload/v1768464380/bft_performance_engineering_ugj50b.png)
+
+
 
 ### Key insight
 > BFT performance is dominated by "phases x RTT" and "signatures x n." Most optimizations target one of those multipliers.
@@ -1158,10 +1164,6 @@ If you had to explain to an auditor why your system remains safe with one malici
 
 ---
 
-## Appendix B - Suggested Visuals and Code Expansions
-
-- [IMAGE: Quorum intersection Venn diagram for n=3f+1 showing two 2f+1 quorums intersecting in at least f+1 nodes, at least 1 honest.]
-- [IMAGE: Timeline showing partial synchrony: unknown GST, before GST delays unbounded, after GST bounded; show safety vs liveness.]
 
 ```python
 # Implementing toy simulation of Byzantine equivocation vs naive majority (threaded)

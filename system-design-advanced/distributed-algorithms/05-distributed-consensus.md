@@ -193,7 +193,8 @@ A bank vault requiring 3-of-5 keys: any two sets of 3 share at least one keyhold
 
 ##  Replicated State Machine (RSM) in one picture
 
-[IMAGE: Replicated State Machine diagram. Clients send commands to a leader. Leader appends to a replicated log. Followers replicate entries. Commit index advances once a quorum acknowledges. State machines apply committed commands in order. Annotate: crash of follower, leader crash, partition (majority continues, minority stalls). Label: log index, term/ballot, commitIndex, appliedIndex.]
+![img0](https://res.cloudinary.com/dretwg3dy/image/upload/v1768533094/170_iq1xkw.png)
+
 
 ### Scenario
 You want your key-value store to behave like one machine.
@@ -682,7 +683,11 @@ Why can’t you just switch configs instantly?
 ### Answer
 Because you could create a moment where two different majorities exist (old set and new set) that don’t intersect, risking split brain.
 
-[IMAGE: Two-phase membership change diagram. Phase 1: old config. Phase 2: joint config requiring quorum of old AND new. Phase 3: new config. Label quorum intersection across time; annotate leader crash mid-transition recovery.]
+
+![img1](https://res.cloudinary.com/dretwg3dy/image/upload/v1768533094/171_zhyasg.png)
+
+
+
 
 **Key insight**
 
@@ -809,7 +814,8 @@ You risk the **herd effect**: everyone wakes up on leader change.
 
 Better: each node watches its **predecessor** (the znode with the next smaller sequence). Only one node wakes up when predecessor disappears.
 
-[IMAGE: Leader election with ephemeral sequential znodes. Show nodes creating c_0001..c_0010. Smallest is leader. Each node watches predecessor. Annotate herd effect avoided.]
+![img2](https://res.cloudinary.com/dretwg3dy/image/upload/v1768533093/172_eoqwcz.png)
+
 
 ### Code (toy demo)
 The following code is **not real ZooKeeper**; it’s a TCP-style demo of the *recipe*. Production ZooKeeper clients use the official libraries and handle session events.
@@ -977,7 +983,9 @@ Pause.
 
 ##  Comparison table - concepts and trade-offs
 
-[IMAGE: Three-column comparison infographic: Paxos, Raft, ZooKeeper. Rows: primary goal, core abstraction, leader model, typical use, complexity, operational concerns, client API style, read semantics.]
+![img3](https://res.cloudinary.com/dretwg3dy/image/upload/v1768533094/173_zdnkss.png)
+
+
 
 | Dimension | Paxos / Multi-Paxos | Raft | ZooKeeper |
 |---|---|---|---|
@@ -1064,7 +1072,7 @@ Because you must ensure that:
 - Followers install snapshots safely
 - Membership/config changes remain consistent across snapshots
 
-[IMAGE: Snapshot install diagram. Leader sends InstallSnapshot chunks with offset+checksum. Follower writes to temp file, fsyncs, atomically swaps, updates lastIncludedIndex/Term, truncates log prefix, updates commitIndex/appliedIndex.]
+![img4](https://res.cloudinary.com/dretwg3dy/image/upload/v1768533093/174_lr2tfy.png)
 
 ### Code (correctness fixes)
 Below is a toy illustration. Key fixes vs common mistakes:
@@ -1226,7 +1234,8 @@ If too high, recovery is slow.
 3. Quorums ensure that committed history survives failures.
 4. Under partition, only the side with a quorum can move the commit point.
 
-[IMAGE: Timeline diagram with terms (t1, t2, t3), leader changes, log entries, commitIndex movement, and a partition showing minority unable to commit. Label: committed prefix vs uncommitted tail.]
+
+![img5](https://res.cloudinary.com/dretwg3dy/image/upload/v1768533094/175_dq31ud.png)
 
 **Key insight**
 

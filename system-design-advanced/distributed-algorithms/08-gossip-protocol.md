@@ -172,19 +172,7 @@ Pause and think.
 
 ###  Push vs Pull vs Push-Pull (ASCII)
 
-```
-Legend:  [I] informed   [U] uninformed
-
-Push:
-  A[I]  --->  B[U]
-
-Pull:
-  B[U]  --->  A[I]   (request)
-  A[I]  --->  B[U]   (response)
-
-Push-Pull:
-  A[I]  <-->  B[U]   (both exchange digests + missing updates)
-```
+![img0](https://res.cloudinary.com/dretwg3dy/image/upload/v1768537575/180_t7bw7o.png)
 
 [KEY INSIGHT]
 Push is broadcasting, pull is subscribing, push-pull is syncing. The best choice depends on what fraction of nodes already have the info.
@@ -303,22 +291,9 @@ You run a buddy check system in the cafe:
 
 That is the shape of SWIM (Scalable Weakly-consistent Infection-style Membership).
 
-### [IMAGE] SWIM probe sequence (ASCII)
+### SWIM probe sequence
 
-```
-A (prober)        B (target)        H1/H2 (helpers)
-
-PING  ---------------------->
-      (timeout)
-PING-REQ(B) ------------------------------> H1
-PING-REQ(B) ------------------------------> H2
-                    H1: PING -------------> B
-                    H2: PING -------------> B
-                    H1/H2: ACK <----------- B
-ACK (via helper) <------------------------- H1/H2
-
-If no ACK: A marks B as SUSPECT and gossips that suspicion.
-```
+![img1](https://res.cloudinary.com/dretwg3dy/image/upload/v1768537579/181_uweba8.png)
 
 ### Interactive decision game
 
@@ -383,17 +358,11 @@ Independent loss slows convergence but does not fundamentally break connectivity
 [KEY INSIGHT]
 Gossip needs a connected communication graph over time. Partitions create divergent truths that only reconcile after healing.
 
-### [IMAGE] Partition + healing timeline (ASCII)
+### Partition + healing timeline
 
-```
-Time --------------------------------------------------------->
 
-Region A view:  A,B,C alive | partition | B,C suspect/dead | heal | reconcile
-Region B view:  A,B,C alive | partition | A suspect/dead   | heal | reconcile
+![img2](https://res.cloudinary.com/dretwg3dy/image/upload/v1768537577/182_pdfjgs.png)
 
-Key: during partition, each side converges internally.
-After heal, anti-entropy + versioning prevents stale resurrection.
-```
 
 ### Production insight: correlated peer selection matters
 
@@ -406,7 +375,7 @@ Mitigation: topology-aware randomization (e.g., choose peers across racks/AZs wi
 
 ---
 
-## [SECTION] 8 — Mental model: Gossip as anti-entropy + probabilistic broadcast
+## 8 — Mental model: Gossip as anti-entropy + probabilistic broadcast
 
 ### Scenario
 
@@ -758,15 +727,10 @@ Gossip assumes mostly honest participants. In adversarial settings you need:
 - rate limiting
 - Sybil resistance (hard)
 
-### [IMAGE] Threat model (ASCII)
+### Threat model (ASCII)
 
-```
-Attacker node --injects--> Gossip overlay
-   |  bogus SUSPECT/DEAD
-   |  high-rate spam
-   v
-Mitigations: authN (mTLS/sign), authZ (claims), rate limits, admission control
-```
+
+![img3](https://res.cloudinary.com/dretwg3dy/image/upload/v1768537577/183_inzjze.png)
 
 ### Operational risk introduced by signing
 
@@ -797,14 +761,9 @@ This section intentionally stays “minimal,” but the code must still be corre
 - Exchange digests and reconcile (push-pull)
 - (Optional) separate SWIM probing from anti-entropy; here we focus on dissemination.
 
-### [IMAGE] Digest + delta exchange (ASCII)
+### Digest + delta exchange
 
-```
-A                         B
-|--- DIGEST(versions) --->|
-|<-- DELTA(missing) ------|
-|--- DELTA(missing) ----->|   (optional symmetric repair)
-```
+![img4](https://res.cloudinary.com/dretwg3dy/image/upload/v1768537578/184_vixysw.png)
 
 ### Status precedence
 
@@ -1112,16 +1071,11 @@ What should you monitor?
 - Message volume: bytes per second per node
 - Membership divergence: pairwise view differences (sampled)
 
-### [IMAGE] Dashboard sketch (ASCII)
+### Dashboard
 
-```
-[Convergence lag p50/p95/p99]   [Suspicion rate]   [Bytes/sec per node]
+![img5](https://res.cloudinary.com/dretwg3dy/image/upload/v1768537578/185_slofct.png)
 
-[Divergence heatmap (sampled LBs vs membership)]
-LB1  ##...
-LB2  ###..
-LB3  #....
-```
+
 
 ### Interactive decision game
 
@@ -1264,25 +1218,9 @@ Constraints:
   - enforcement: local denylist updated from authoritative stream; gossip never overrides authoritative state
 - Repair: nodes periodically reconcile hard-state version with authority (anti-entropy against the source of truth), not just peers.
 
-### [IMAGE] Hybrid architecture (ASCII)
+###  Hybrid architecture
 
-```
-          +------------------------------+
-          |  Authoritative store (CP)    |
-          |  (consensus-backed)          |
-          +---------------+--------------+
-                          |
-                    stream/pubsub
-                          |
-        +-----------------+-----------------+
-        |                                   |
-   Edge/LB nodes                        Service nodes
-        |                                   |
-        +----------- gossip overlay ---------+
-             (soft state + hints only)
-
-Rule: gossip can accelerate distribution, but cannot override authority for hard state.
-```
+![img6](https://res.cloudinary.com/dretwg3dy/image/upload/v1768537579/186_wpubnl.png)
 
 ### Final challenge question
 

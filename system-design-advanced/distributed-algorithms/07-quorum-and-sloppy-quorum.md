@@ -154,7 +154,7 @@ If versions are comparable (e.g., LWW timestamps), coordinator selects the max.
 
 > **Key insight:** Quorum reads often work by **(1) fetch multiple versions -> (2) pick winner/merge -> (3) optionally repair lagging replicas**.
 
-[IMAGE: Diagram showing coordinator sending write to 3 replicas, waiting for 2 acks (W=2), then a read querying 2 replicas (R=2), comparing versions, and performing read-repair on stale replica.]
+![img0](https://res.cloudinary.com/dretwg3dy/image/upload/v1768535465/176_kpqka6.png)
 
 ### Code: quorum coordinator read/write with versioning + read-repair (toy)
 
@@ -306,7 +306,8 @@ So you need extra mechanisms to converge:
 
 > **Key insight:** Sloppy quorum buys **availability** by relaxing *membership*, then relies on **repair** to restore intended placement.
 
-[IMAGE: Ring-based consistent hashing with a key assigned to 3 primary replicas; one is down so write is stored on a fallback node with a “hint” to hand off later.]
+![img1](https://res.cloudinary.com/dretwg3dy/image/upload/v1768535466/177_spep51.png)
+
 
 ### Production insight: sloppy quorum is bounded
 Real systems bound sloppiness to avoid unbounded “temporary replica set expansion”:
@@ -480,7 +481,8 @@ Reads/writes are constrained by the leader and the committed log, not by arbitra
 
 > **Key insight:** In leader-based consensus, quorum ensures a **single history**. In leaderless quorum systems, quorum ensures **overlap for reconciliation**.
 
-[IMAGE: Comparison diagram: Raft leader commits log with majority vs Dynamo coordinator doing quorum read/write with version reconciliation.]
+
+![img2](https://res.cloudinary.com/dretwg3dy/image/upload/v1768535466/178_qln3tp.png)
 
 ---
 
@@ -666,7 +668,8 @@ Because you transfer **O(changed ranges)** metadata instead of **O(total keys)**
 
 > **Key insight:** Sloppy quorum needs scalable repair; Merkle trees make divergence detection efficient.
 
-[IMAGE: Merkle tree comparison between two replicas; mismatched subtree highlighted leading to targeted sync of a key range.]
+![img3](https://res.cloudinary.com/dretwg3dy/image/upload/v1768535466/179_hdciyj.png)
+
 
 ---
 

@@ -2,7 +2,7 @@
 
 **149 articles** covering everything from DNS resolution to designing payment systems at scale. Free and open source.
 
-> **Learn interactively** — structured courses, progress tracking, and hands-on exercises at **[algoroq.com](https://algoroq.com)**
+> **Learn interactively** — structured courses, progress tracking, and hands-on exercises at **[algoroq.io](https://algoroq.io)**
 
 ---
 
@@ -134,7 +134,7 @@ Fundamentals every engineer needs before diving into distributed systems.
 | [Storage Fundamentals](introduction-to-system-design/storage-fundamentals/) | Where your data lives · Disk vs memory · Hot/warm/cold data |
 | [Basics of Computing](introduction-to-system-design/basics-of-computing/) | How computers work · Binary system · Memory · CPU basics |
 
-> **Take the full interactive Introduction course → [algoroq.com/courses/introduction-to-system-design](https://algoroq.com)**
+> **Take the full interactive Introduction course → [algoroq.io/courses/introduction-to-system-design](https://algoroq.io)**
 
 ---
 
@@ -154,7 +154,7 @@ Patterns and techniques for building scalable, reliable systems.
 | [Software Testing](system-design-intermediate/fundamentals-of-software-testing/) | Smoke · Functional · Integration · API · System · E2E · Stress · Chaos testing |
 | [Monitoring & Observability](system-design-intermediate/software-monitoring%20-and-observibility/) | Logging · Observability · Health checks & heartbeats |
 
-> **Take the full interactive Intermediate course → [algoroq.com/courses/system-design-intermediate](https://algoroq.com)**
+> **Take the full interactive Intermediate course → [algoroq.io/courses/system-design-intermediate](https://algoroq.io)**
 
 ---
 
@@ -173,7 +173,7 @@ Deep distributed systems theory and real-world system design problems.
 | [Reliability & Resilience](system-design-advanced/reliability-and-resilience/) | Game days & DIRT testing · Blast radius & failure domain isolation · SLIs/SLOs/error budgets · Multi-region active-active · Global load balancing · Cascading failure prevention |
 | [**System Design Problems**](system-design-advanced/system-design-problems/) | See below |
 
-> **Take the full interactive Advanced course → [algoroq.com/courses/system-design-advanced](https://algoroq.com)**
+> **Take the full interactive Advanced course → [algoroq.io/courses/system-design-advanced](https://algoroq.io)**
 
 ---
 
@@ -307,7 +307,7 @@ This content is open source. See the repository license for details.
 <p align="center">
   <strong>Found this useful? Give it a star — it helps others find it too.</strong>
   <br><br>
-  Continue learning interactively at <a href="https://algoroq.com"><strong>algoroq.com</strong></a>
+  Continue learning interactively at <a href="https://algoroq.io"><strong>algoroq.io</strong></a>
   <br>
   Structured courses · Progress tracking · Hands-on exercises
 </p>

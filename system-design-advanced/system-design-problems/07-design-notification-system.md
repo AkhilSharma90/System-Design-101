@@ -167,7 +167,7 @@ APNs/FCM responses:
 POST https://api.sendgrid.com/v3/mail/send
 {
   "to": [{"email": "user@example.com"}],
-  "from": {"email": "hello@algoroq.com"},
+  "from": {"email": "hello@algoroq.io"},
   "subject": "Payment received",
   "html": "<p>You received $50 from Alice</p>",
   "custom_args": { "notification_id": "notif_abc" }
@@ -248,7 +248,7 @@ Template "payment_received" (email):
   Subject: "💸 You received {{amount}} from {{sender_name}}"
   Body:    "Hi {{user_first_name}},
             {{sender_name}} sent you {{formatted_amount}}.
-            View your balance at algoroq.com/wallet.
+            View your balance at algoroq.io/wallet.
             ..."
 
 Rendering at send time:

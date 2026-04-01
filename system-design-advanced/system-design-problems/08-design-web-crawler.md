@@ -112,7 +112,7 @@ The URL Frontier manages the queue of URLs to be crawled. It must solve two prob
                  │    Queue per hostname:      │
                  │    google.com   [url1, url2]│
                  │    amazon.com   [url3, url4]│
-                 │    algoroq.com  [url5]      │
+                 │    algoroq.io  [url5]      │
                  │           │                 │
                  │  Crawler Worker             │
                  │  picks from politeness queue│
@@ -364,4 +364,4 @@ Detecting changes:
 ---
 
 
-*Continue your learning at [algoroq.com](https://algoroq.com) with interactive lessons, progress tracking, and structured learning paths.*
+*Continue your learning at [algoroq.io](https://algoroq.io) with interactive lessons, progress tracking, and structured learning paths.*

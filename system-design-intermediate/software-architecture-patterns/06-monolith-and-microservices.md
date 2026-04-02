@@ -483,3 +483,14 @@ Problem: Not real microservices!
 Each service owns its data!
 
 ![img8](https://res.cloudinary.com/dretwg3dy/image/upload/v1766489218/299_lmzouw.png)
+
+
+---
+
+## Key Takeaways
+
+1. **Monoliths are simpler to develop, deploy, and debug** — the right choice for most early-stage products and small teams
+2. **Microservices enable independent deployment and scaling** — but add complexity in networking, data consistency, and observability
+3. **Don't start with microservices** — extract services from a monolith when you have clear bounded contexts and team scaling needs
+4. **The Strangler Fig pattern migrates from monolith to microservices incrementally** — replacing one component at a time, not a full rewrite
+5. **Conway's Law applies** — your system architecture will mirror your team communication structure

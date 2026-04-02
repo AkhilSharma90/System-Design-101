@@ -355,3 +355,14 @@ Note: Only reach Stage 4 after building confidence in Stages 1-3!
 * 🏭 **Production testing:** Test in real environment
 * 🔬 **Hypothesis-driven:** Scientific approach
 * 🛡️ **Build resilience:** Expose weaknesses before real failures
+
+
+---
+
+## Key Takeaways
+
+1. **Chaos testing deliberately injects failures to test system resilience** — kill processes, introduce network latency, fill disks
+2. **Netflix pioneered chaos engineering with Chaos Monkey** — randomly terminating production instances to prove the system recovers
+3. **Start chaos testing in non-production environments** — build confidence before injecting failures in production
+4. **Define steady-state behavior first** — you need to know what "healthy" looks like before you can detect when chaos breaks it
+5. **Chaos testing builds confidence in your redundancy and failover mechanisms** — untested failover is not real failover

@@ -394,3 +394,13 @@ The Pattern:
 2. Validate on server (Security)
 
 3. Never trust client alone!
+
+
+---
+
+## Key Takeaways
+
+1. **Client-server separates concerns between the requester and provider** — clients handle UI, servers handle data and business logic
+2. **This is the foundation of all web architecture** — browsers (clients) communicate with web servers via HTTP
+3. **Thin clients push logic to the server, thick clients push logic to the client** — the spectrum between them drives many architectural decisions
+4. **Stateless servers are easier to scale** — each request is self-contained, enabling horizontal scaling behind a load balancer

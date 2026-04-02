@@ -166,3 +166,13 @@ All steps work from UI → API → Database → Email ✅
 * 🔍 **One feature at a time:** Isolated testing
 
 * 📊 **Many test cases:** Cover positive, negative, edge cases
+
+
+---
+
+## Key Takeaways
+
+1. **Functional tests verify that features work according to requirements** — testing what the system does, not how it does it
+2. **Test cases should cover happy paths, edge cases, and error scenarios** — don't just test the expected input
+3. **Functional tests should be independent and repeatable** — each test sets up its own state and cleans up after itself
+4. **Automate functional tests in CI/CD** — manual testing doesn't scale and misses regressions

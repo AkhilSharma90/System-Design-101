@@ -411,3 +411,13 @@ Layer 5: Alerts
 Tool: PagerDuty, OpsGenie
 
 ---
+
+
+---
+
+## Key Takeaways
+
+1. **Health checks verify a service is running and can serve requests** — load balancers and orchestrators use them to route traffic
+2. **Liveness checks detect if a process is alive, readiness checks detect if it can accept traffic** — Kubernetes uses both
+3. **Deep health checks verify dependencies** — database connectivity, downstream service availability, disk space
+4. **Heartbeats are periodic signals that prove a service is still running** — absence of heartbeats triggers failover

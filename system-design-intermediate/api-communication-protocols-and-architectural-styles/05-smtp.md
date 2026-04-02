@@ -554,3 +554,13 @@ Now that you understand SMTP, you're ready to explore:
 * **Email Client Development:** Building your own email app
 
 **Next recommended read:** "DNS: The Internet's Phone Book" to understand how email servers find each other!
+
+
+---
+
+## Key Takeaways
+
+1. **SMTP is the protocol for sending email** — it handles delivery between mail servers, not retrieval (that's IMAP/POP3)
+2. **Email delivery involves multiple hops** — sender's client → sender's SMTP server → recipient's SMTP server → recipient's mailbox
+3. **SPF, DKIM, and DMARC prevent email spoofing** — these DNS records authenticate that an email actually came from the claimed sender
+4. **Most applications use email APIs (SendGrid, SES) rather than running SMTP servers** — they handle deliverability, bounces, and compliance

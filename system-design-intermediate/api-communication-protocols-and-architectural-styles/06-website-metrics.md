@@ -605,3 +605,13 @@ Ideal relationships:
 - LCP \< 3 × FCP
 
 - Load \< 2 × LCP
+
+
+---
+
+## Key Takeaways
+
+1. **Core Web Vitals measure real user experience** — LCP (loading), FID/INP (interactivity), and CLS (visual stability)
+2. **Time to First Byte (TTFB) measures server response speed** — optimize with caching, CDNs, and database query performance
+3. **Apdex score summarizes user satisfaction in a single number** — based on response time thresholds (satisfied, tolerating, frustrated)
+4. **Monitor both synthetic and real user metrics** — synthetic catches regressions in CI, RUM captures actual user experience

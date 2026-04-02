@@ -205,3 +205,13 @@ Development Pipeline:
 * 🎯 **Critical path only:** Test what matters most
 * 🚨 **First line of defense:** Catch obvious breaks
 * 🔄 **Run frequently:** After every build/deploy
+
+
+---
+
+## Key Takeaways
+
+1. **Smoke tests verify basic functionality after a build or deployment** — a quick sanity check that the system starts and core features work
+2. **Smoke tests should run fast (under 5 minutes)** — they gate deployments, so speed matters more than coverage
+3. **A failing smoke test means the build is fundamentally broken** — stop deployment immediately and investigate
+4. **Keep smoke tests focused on critical paths** — login, homepage load, primary API health check, database connectivity

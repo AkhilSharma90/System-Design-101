@@ -980,3 +980,13 @@ Real-World Implementations:
 * Real-time notification systems
 
 * IoT data processing pipelines
+
+
+---
+
+## Key Takeaways
+
+1. **Pub-sub decouples publishers from subscribers** — publishers send messages to a topic without knowing who consumes them
+2. **Topics provide logical channels for different event types** — subscribers choose which topics to listen to based on their needs
+3. **Fan-out delivers each message to all subscribers** — enabling multiple systems to react to the same event independently
+4. **Pub-sub enables event-driven architectures** — services communicate through events rather than direct API calls, reducing coupling

@@ -977,3 +977,13 @@ Real-World Case Studies:
 * Netflix's gRPC adoption journey
 * Migrating from REST to gRPC patterns
 * Building polyglot microservices with gRPC
+
+
+---
+
+## Key Takeaways
+
+1. **gRPC uses HTTP/2 and protobuf for high-performance service communication** — 5-10x faster than REST+JSON for internal services
+2. **Four communication patterns** — unary (request-response), server streaming, client streaming, and bidirectional streaming
+3. **gRPC is ideal for internal microservice communication** — not suitable for browser clients without a proxy (grpc-web)
+4. **Service definitions in .proto files generate client and server code** — ensuring type safety and reducing boilerplate

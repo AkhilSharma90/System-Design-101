@@ -793,3 +793,13 @@ Real-World Case Studies:
 - GitHub's database architecture
 - Instagram's replica lag handling
 - Twitter's database evolution
+
+
+---
+
+## Key Takeaways
+
+1. **Master-slave architecture routes all writes to one master and reads to replicas** — simple and effective for read-heavy workloads
+2. **The master is a single point of failure** — automated failover with leader election is essential for production systems
+3. **Replica lag means reads may return stale data** — acceptable for most use cases but not for operations like checking account balance after a transfer
+4. **Semi-synchronous replication balances consistency and performance** — at least one replica confirms before the master commits

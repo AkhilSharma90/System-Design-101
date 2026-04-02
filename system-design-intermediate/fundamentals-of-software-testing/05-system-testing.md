@@ -222,3 +222,13 @@ As close to production as possible!
 * 🌍 **Production-like environment:** Realistic infrastructure
 * 📋 **Requirements verification:** Does it meet all specs?
 * 🔄 **Multiple user workflows:** Real usage scenarios
+
+
+---
+
+## Key Takeaways
+
+1. **System testing validates the entire integrated system end-to-end** — testing the full stack as a user would experience it
+2. **System tests run in a production-like environment** — same infrastructure, configuration, and data characteristics
+3. **These tests are slow and expensive** — run them less frequently than unit or integration tests (nightly, not on every commit)
+4. **System tests catch environment-specific issues** — configuration errors, network policies, and resource limits that unit tests miss

@@ -649,3 +649,14 @@ Now that you understand proxies, you're ready to explore:
 * **Use Burp Suite:** Learn about proxies for security testing
 
 **Next recommended read:** "Load Balancer Types (L4 vs L7)" - to understand how reverse proxies make routing decisions!
+
+
+---
+
+## Key Takeaways
+
+1. **Forward proxies sit in front of clients** — controlling, filtering, and anonymizing outbound requests
+2. **Reverse proxies sit in front of servers** — handling load balancing, SSL termination, caching, and security
+3. **Nginx and HAProxy are the most common reverse proxies** — often the first component in a production web architecture
+4. **A reverse proxy hides backend server details from clients** — clients only see the proxy's IP address, improving security
+5. **CDNs are essentially globally distributed reverse proxies** — caching content at edge locations worldwide

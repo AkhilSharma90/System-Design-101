@@ -830,3 +830,13 @@ Real-World Case Studies:
 - Discord's database scaling
 - Dropbox's migration to distributed storage
 - How Stripe handles distributed transactions
+
+
+---
+
+## Key Takeaways
+
+1. **Distributed databases spread data across multiple nodes and regions** — enabling horizontal scalability beyond a single machine
+2. **CAP theorem constrains distributed database design** — you must choose between consistency and availability during network partitions
+3. **Consensus protocols (Raft, Paxos) keep distributed nodes in agreement** — at the cost of latency for cross-node coordination
+4. **CockroachDB, Spanner, and YugabyteDB offer distributed SQL** — combining the scalability of NoSQL with SQL's transactional guarantees

@@ -825,3 +825,14 @@ Real-World Case Studies:
 - Netflix's multi-region database strategy
 - Stripe's approach to financial data replication
 - Facebook's MySQL replication at scale
+
+
+---
+
+## Key Takeaways
+
+1. **Replication copies data across multiple nodes for availability and read scaling** — if the primary fails, a replica takes over
+2. **Synchronous replication guarantees consistency but adds latency** — the primary waits for replicas to acknowledge before confirming writes
+3. **Asynchronous replication is faster but risks data loss** — the primary doesn't wait, so recent writes may be lost if it crashes
+4. **Replication lag causes stale reads from replicas** — read-after-write consistency requires routing reads to the primary after writes
+5. **Leader election handles primary failover** — but split-brain scenarios can occur if two nodes both think they're the leader

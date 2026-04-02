@@ -166,3 +166,13 @@ stream = es.read_stream_events_forward(stream_id, from_version=5)
 | **Kinesis** | Managed toll road | AWS-native applications with minimal ops |
 | **Pulsar** | Modern transit system | Advanced multi-tenant, geo-distributed needs |
 | **Event Store** | Specialized vehicle | Event sourcing and audit-heavy applications |
+
+
+---
+
+## Key Takeaways
+
+1. **Kafka, Pulsar, and Kinesis are the major event streaming platforms** — each with different strengths in throughput, latency, and operational complexity
+2. **Kafka dominates the market due to its mature ecosystem** — Kafka Connect, Kafka Streams, and Schema Registry provide end-to-end streaming infrastructure
+3. **Pulsar separates compute from storage** — enabling independent scaling and multi-tenancy, but adds operational complexity
+4. **Kinesis is the simplest choice on AWS** — fully managed with no infrastructure to operate, but limited customization and locked to AWS

@@ -295,3 +295,13 @@ Now that you understand Event Streams, explore these advanced topics:
 - Real-time analytics pipelines
 - Stream processing at scale
 - CQRS in production environments
+
+
+---
+
+## Key Takeaways
+
+1. **Stream processing handles data continuously as it arrives** — as opposed to batch processing which waits for all data to accumulate
+2. **Windowing groups events by time for aggregation** — tumbling (fixed), sliding (overlapping), and session (gap-based) windows serve different needs
+3. **Exactly-once semantics is the holy grail** — Kafka Streams and Flink achieve it through idempotent producers and transactional state
+4. **Stateful stream processing requires checkpointing** — saving intermediate state so processing can resume after failures without data loss

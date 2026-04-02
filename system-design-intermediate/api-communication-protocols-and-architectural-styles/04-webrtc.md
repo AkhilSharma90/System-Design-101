@@ -775,3 +775,13 @@ Real-World Implementations:
 * Live streaming (Twitch low-latency)
 * Gaming (real-time multiplayer state sync)
 * File sharing (peer-to-peer transfer apps)
+
+
+---
+
+## Key Takeaways
+
+1. **WebRTC enables peer-to-peer audio, video, and data communication in browsers** — no plugins or server relay required for media
+2. **Signaling establishes the connection** — peers exchange SDP offers/answers and ICE candidates through a signaling server
+3. **STUN/TURN servers handle NAT traversal** — STUN discovers public IPs, TURN relays traffic when direct connection fails
+4. **WebRTC is used by Google Meet, Discord, and most video calling apps** — the standard for real-time communication in the browser

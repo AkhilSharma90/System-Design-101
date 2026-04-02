@@ -211,3 +211,13 @@ Result: Request fails! 💥
 * 🎭 **Can use mocks/stubs:** Replace some components during testing
 * 🐛 **Catches integration bugs:** Finds issues unit tests miss
 * ⚙️ **API contracts:** Verifies services speak same language
+
+
+---
+
+## Key Takeaways
+
+1. **Integration tests verify that components work together correctly** — testing the boundaries between services, databases, and APIs
+2. **Use real dependencies when possible** — testcontainers and Docker make it easy to spin up real databases and services in tests
+3. **Integration tests are slower than unit tests but catch different bugs** — connection issues, serialization problems, and query errors
+4. **Test at the API boundary** — send real HTTP requests to your service and verify the full response

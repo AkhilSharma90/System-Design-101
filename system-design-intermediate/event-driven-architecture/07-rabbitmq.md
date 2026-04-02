@@ -888,3 +888,13 @@ Real-World Implementations:
 * CQRS with RabbitMQ
 
 * Saga patterns for distributed transactions
+
+
+---
+
+## Key Takeaways
+
+1. **RabbitMQ is a traditional message broker with flexible routing** — supports direct, topic, fanout, and headers exchange types
+2. **Messages are removed after acknowledgment** — unlike Kafka, consumed messages don't persist for replay
+3. **RabbitMQ excels at complex routing patterns** — routing keys and exchange types enable sophisticated message filtering
+4. **Use RabbitMQ for task queues and RPC-style messaging** — where message acknowledgment and complex routing matter more than replay

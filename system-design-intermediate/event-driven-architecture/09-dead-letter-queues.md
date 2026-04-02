@@ -761,3 +761,13 @@ Real-World Implementations:
 - Uber's DLQ monitoring system
 - Netflix's message recovery patterns
 - E-commerce order processing DLQs
+
+
+---
+
+## Key Takeaways
+
+1. **Dead letter queues capture messages that fail processing** — preventing poison messages from blocking the main queue
+2. **Set a maximum retry count before sending to the DLQ** — typically 3-5 retries with exponential backoff
+3. **Monitor DLQ depth as a health signal** — a growing DLQ indicates a systemic processing issue that needs investigation
+4. **DLQ messages should be reprocessable** — design your system to replay DLQ messages once the underlying issue is fixed

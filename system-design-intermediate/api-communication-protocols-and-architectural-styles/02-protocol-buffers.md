@@ -986,3 +986,13 @@ Real-World Usage:
 * Netflix microservices communication
 * Kubernetes API objects
 * Mobile app client-server communication
+
+
+---
+
+## Key Takeaways
+
+1. **Protocol Buffers (protobuf) are a binary serialization format** — much smaller and faster than JSON for structured data
+2. **Schema is defined in .proto files** — code is auto-generated for any language, ensuring type safety across services
+3. **Field numbers enable backward compatibility** — you can add new fields without breaking existing code
+4. **Protobuf is the default serialization for gRPC** — combining efficient encoding with strongly typed service definitions

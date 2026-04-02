@@ -246,3 +246,13 @@ Popular Tools:
 * 📊 **Multiple scenarios:** Happy path, errors, edge cases
 * 🔒 **Security crucial:** Authentication, authorization, injection
 * ⚡ **Performance matters:** Response time, throughput
+
+
+---
+
+## Key Takeaways
+
+1. **API tests validate request/response contracts** — ensuring endpoints return correct status codes, headers, and body formats
+2. **Test all HTTP methods and status codes for each endpoint** — GET, POST, PUT, DELETE with 200, 400, 401, 404, 500 scenarios
+3. **Use tools like Postman, REST Client, or pytest for API testing** — automate them in CI to catch regressions
+4. **Contract testing ensures API changes don't break consumers** — tools like Pact verify both producer and consumer expectations

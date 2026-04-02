@@ -1085,3 +1085,14 @@ Real-World Case Studies:
 * Shopify's API evolution to GraphQL
 
 * Airbnb's GraphQL adoption story
+
+
+---
+
+## Key Takeaways
+
+1. **GraphQL lets clients request exactly the data they need** — no over-fetching or under-fetching like REST
+2. **A single endpoint handles all queries and mutations** — unlike REST which has multiple endpoints per resource
+3. **The schema defines the API contract** — strongly typed, self-documenting, and introspectable
+4. **N+1 query problems are common in GraphQL** — use DataLoader or similar batching to avoid excessive database queries
+5. **GraphQL adds complexity over REST** — use it when your clients have diverse data needs, not as a default choice

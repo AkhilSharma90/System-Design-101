@@ -265,3 +265,13 @@ Solutions:
 * 🖱️ **Browser automation:** Selenium, Playwright, Cypress
 * 🐌 **Slowest tests:** Takes longest to run
 * 🎯 **High confidence:** If E2E passes, system truly works
+
+
+---
+
+## Key Takeaways
+
+1. **E2E tests simulate real user workflows through the UI** — login, navigate, perform actions, verify results
+2. **Tools like Cypress, Playwright, and Selenium automate browser interactions** — clicking, typing, and asserting on visible elements
+3. **E2E tests are the most brittle and slowest test type** — keep them focused on critical user journeys, not edge cases
+4. **Flaky E2E tests erode team confidence** — invest in reliable selectors, proper waits, and test isolation

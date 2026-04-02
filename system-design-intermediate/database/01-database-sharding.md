@@ -787,3 +787,14 @@ Real-World Case Studies:
 - Uber's sharding evolution
 - Pinterest's sharding journey
 - Shopify's multi-tenant sharding
+
+
+---
+
+## Key Takeaways
+
+1. **Sharding splits data horizontally across multiple databases** — each shard holds a subset of the data and operates independently
+2. **Choose shard keys carefully** — a bad key causes hotspots; a good key distributes load evenly and avoids cross-shard queries
+3. **Range-based sharding enables range queries but risks hotspots** — hash-based sharding distributes evenly but loses ordering
+4. **Cross-shard queries are expensive** — design your data model to keep related data on the same shard whenever possible
+5. **Resharding is painful** — plan your sharding strategy for growth, because migrating data between shards causes downtime

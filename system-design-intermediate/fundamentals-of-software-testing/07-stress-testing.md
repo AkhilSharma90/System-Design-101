@@ -269,3 +269,13 @@ Example k6 script:
 * 🔍 **Find breaking points:** Where does it fail?
 * 📊 **Performance metrics:** Response time, throughput, errors
 * 🎯 **Capacity planning:** Know your limits
+
+
+---
+
+## Key Takeaways
+
+1. **Stress testing pushes the system beyond normal load to find breaking points** — how does the system behave when overwhelmed?
+2. **Identify the point where performance degrades** — response times spike, error rates increase, or the system crashes entirely
+3. **Tools like k6, Locust, and Gatling simulate concurrent users** — gradually increasing load to find the ceiling
+4. **Stress testing reveals bottlenecks** — database connection limits, thread pool exhaustion, and memory leaks under sustained load

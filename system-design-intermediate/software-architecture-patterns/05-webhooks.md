@@ -750,3 +750,14 @@ Real-World Implementations:
 * GitHub's webhook events catalog
 * Twilio's webhook security guide
 * Building webhook infrastructure at scale
+
+
+---
+
+## Key Takeaways
+
+1. **Webhooks are HTTP callbacks triggered by events** — the server pushes data to your URL instead of you polling for changes
+2. **Webhooks invert the polling pattern** — instead of asking "is there new data?" every N seconds, you get notified when data changes
+3. **Always verify webhook signatures** — use HMAC to ensure the request actually came from the expected sender
+4. **Design webhook handlers to be idempotent** — the same webhook may be delivered multiple times due to retries
+5. **Respond with 200 quickly, then process async** — slow webhook handlers cause timeouts and retries from the sender

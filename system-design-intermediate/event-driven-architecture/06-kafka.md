@@ -832,3 +832,14 @@ Real-World Patterns:
 * Change Data Capture (CDC) with Kafka
 
 * Building real-time data pipelines
+
+
+---
+
+## Key Takeaways
+
+1. **Kafka is a distributed commit log, not just a message queue** — messages are persisted and can be replayed by any consumer
+2. **Partitions are the unit of parallelism** — more partitions enable more concurrent consumers for higher throughput
+3. **Consumer groups enable parallel consumption** — each partition is assigned to exactly one consumer in a group
+4. **Kafka guarantees ordering within a partition** — use the same partition key for messages that must be processed in order
+5. **Retention is time or size based** — messages aren't deleted after consumption, enabling replay and multiple consumer patterns

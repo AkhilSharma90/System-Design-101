@@ -614,3 +614,14 @@ Yearly cost: $201.60
 Worth it for debugging? YES! ✓
 
 ---
+
+
+---
+
+## Key Takeaways
+
+1. **Structured logging (JSON) is essential for searchability** — key-value pairs are parseable by log aggregation tools, free-text is not
+2. **Use log levels consistently** — DEBUG for development, INFO for normal operations, WARN for recoverable issues, ERROR for failures
+3. **Centralize logs with tools like ELK, Loki, or Datadog** — searching across distributed services requires a unified log store
+4. **Include correlation IDs in every log line** — tracing a request across multiple services is impossible without them
+5. **Don't log sensitive data** — passwords, tokens, PII, and credit card numbers should never appear in logs

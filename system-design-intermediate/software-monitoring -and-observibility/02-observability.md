@@ -291,3 +291,13 @@ Use for: Log-heavy applications
 Use for: Quick setup needed
 
 ---
+
+
+---
+
+## Key Takeaways
+
+1. **Observability is the ability to understand system behavior from external outputs** — metrics, logs, and traces are the three pillars
+2. **Metrics tell you what is happening, logs tell you why, traces tell you where** — you need all three for complete observability
+3. **Dashboards should answer questions at a glance** — RED (Rate, Errors, Duration) for services, USE (Utilization, Saturation, Errors) for resources
+4. **Alert on symptoms, not causes** — alert on "error rate > 1%" not "CPU > 90%" because high CPU might be normal

@@ -408,3 +408,14 @@ After responding to user:
 **Synchronous:** **When you NEED the result to continue (payment processing, auth checks)**
 
 **Asynchronous:** **When the task can happen later (emails, analytics, notifications)**
+
+
+---
+
+## Key Takeaways
+
+1. **Synchronous communication blocks the caller until the response arrives** — simple but creates tight coupling and cascading failures
+2. **Asynchronous communication returns immediately and processes later** — using message queues, events, or callbacks
+3. **Use sync for operations where the client needs an immediate response** — authentication, reads, and user-facing API calls
+4. **Use async for operations that can be processed later** — email sending, report generation, and non-critical updates
+5. **Async communication improves resilience** — if a downstream service is down, messages queue up instead of failing

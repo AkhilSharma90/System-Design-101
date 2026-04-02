@@ -24,7 +24,7 @@ Option A: Wrap each item in bubble wrap, put in a big box with packing peanuts, 
 
 Pause and think: Which option is faster to pack, smaller, and easier for machines to process?
 
-The Answer: Protocol Buffers (Protobuf) is Option B for data\! Instead of verbose JSON or XML (the bubble wrap approach), Protobuf uses:
+The Answer: Protocol Buffers (Protobuf) is Option B for data! Instead of verbose JSON or XML (the bubble wrap approach), Protobuf uses:
 
 ✅ Binary format (compact)
 
@@ -36,7 +36,7 @@ The Answer: Protocol Buffers (Protobuf) is Option B for data\! Instead of verbos
 
 ✅ Fast serialization/deserialization (machines read it quickly)
 
-Key Insight: Protobuf is 3-10x smaller and 20-100x faster than JSON for structured data\!
+Key Insight: Protobuf is 3-10x smaller and 20-100x faster than JSON for structured data!
 
 📦 Interactive Exercise: The Data Bloat Comparison
 
@@ -65,16 +65,16 @@ Machine-efficient: ❌ NO (lots of redundant characters)
 
 Protocol Buffers (The Efficient Way):
 
-\[Binary data that looks like gibberish to humans\]
+[Binary data that looks like gibberish to humans]
 10 0d 41 6c 69 63 65 20 4a 6f 68 6e 73 6f 6e 18 39 30 22 13 61 6c ...
 
 Size: \~35 bytes (no field names, binary encoding)
 
 Human-readable: ❌ NO (binary format)
 
-Machine-efficient: ✅ YES (tiny and fast to parse\!)
+Machine-efficient: ✅ YES (tiny and fast to parse!)
 
-Real-world parallel: JSON is like writing a letter with full sentences. Protobuf is like filling out a form with checkboxes and short codes. The form is faster and smaller, but you need the template (schema) to understand it\!
+Real-world parallel: JSON is like writing a letter with full sentences. Protobuf is like filling out a form with checkboxes and short codes. The form is faster and smaller, but you need the template (schema) to understand it!
 
  The Schema (The Template):
  ```proto
@@ -91,11 +91,11 @@ Real-world parallel: JSON is like writing a letter with full sentences. Protobuf
  }
  ```
 
-Key Insight: The schema is shared between sender and receiver. Both know what field "1" means (name), so we don't need to write "name" in every message\!
+Key Insight: The schema is shared between sender and receiver. Both know what field "1" means (name), so we don't need to write "name" in every message!
 
 🔍 Investigation: The Field Number Secret
 
-Question: Why do fields have numbers (= 1, \= 2, \= 3\) instead of just names?
+Question: Why do fields have numbers (= 1, \= 2, \= 3) instead of just names?
 
 Look at the binary encoding:
 
@@ -109,7 +109,7 @@ For a message with 20 fields:
 JSON: 20 field names × \~6 bytes \= 120 bytes overhead
 Protobuf: 20 field numbers × 1 byte \= 20 bytes overhead
 
-Savings: 100 bytes per message\! 🎉
+Savings: 100 bytes per message! 🎉
 
 The Magic of Field Numbers:
 
@@ -128,9 +128,9 @@ Binary encoding:
  Field number  Field number Field number
 
 
-Real-world parallel: Like using airport codes (LAX, JFK) instead of full city names. "LAX" is shorter than "Los Angeles International Airport" but everyone who knows the code understands\!
+Real-world parallel: Like using airport codes (LAX, JFK) instead of full city names. "LAX" is shorter than "Los Angeles International Airport" but everyone who knows the code understands!
 
-Important Rule: NEVER change field numbers\!
+Important Rule: NEVER change field numbers!
 
 // ❌ WRONG: Changing field numbers breaks compatibility
 
@@ -158,7 +158,7 @@ message User {
 ````
 
 
-Mental model: Field numbers are like social security numbers \- assigned once, never changed\!
+Mental model: Field numbers are like social security numbers - assigned once, never changed!
 
 🎮 Decision Game: Which Data Type?
 
@@ -168,19 +168,19 @@ Match the right Protobuf type:
 
 Data                           Type
 
-\----                           \----
+----                           ----
 
-A. Product name                1\. int32
+A. Product name                1. int32
 
-B. Quantity                    2\. string
+B. Quantity                    2. string
 
-C. Price (with decimals)       3\. double
+C. Price (with decimals)       3. double
 
-D. Is item on sale?            4\. bool
+D. Is item on sale?            4. bool
 
-E. Product ID                  5\. repeated string
+E. Product ID                  5. repeated string
 
-F. Tags (multiple values)      6\. int64
+F. Tags (multiple values)      6. int64
 
 Think about it... What's the most efficient type for each?
 
@@ -248,7 +248,7 @@ Real-world parallel: Like choosing the right size box for shipping. Small item? 
 
 You might worry: "If Protobuf is binary, how do I see what's in the message during development?"
 
-The Solution: Protobuf Tools\!
+The Solution: Protobuf Tools!
 
 ```proto
 name: "Alice Johnson"
@@ -303,7 +303,7 @@ print(f"Binary size: {len(binary_data)} bytes")
 
 
 
-Mental model: Protobuf is like a .zip file. Compressed for efficiency, but you can always unzip to inspect contents\!
+Mental model: Protobuf is like a .zip file. Compressed for efficiency, but you can always unzip to inspect contents!
 
 Best practice: Use text format in development, binary in production.
 
@@ -413,7 +413,7 @@ print(f"Order {received_order.order_id} has {len(received_order.items)} items")
 
 
 
-Real-world parallel: The .proto file is like an architectural blueprint. You design it once, then use code generators to build implementations in every language\!
+Real-world parallel: The .proto file is like an architectural blueprint. You design it once, then use code generators to build implementations in every language!
 
 🔄 The Compatibility Superpower
 
@@ -441,7 +441,7 @@ class User {
 
 
 
-Result: 💥 All old clients break\! Rolling deployment nightmare\!
+Result: 💥 All old clients break! Rolling deployment nightmare!
 
 Protobuf approach:
 
@@ -462,7 +462,7 @@ message User {
 ````
 
 
-Result: ✅ Old clients ignore field 3\! Everything works\!
+Result: ✅ Old clients ignore field 3! Everything works!
 
 The Magic Rules:
 
@@ -475,37 +475,37 @@ Visualizing compatibility:
 
 Old Client (only knows fields 1, 2):
 
-Receives: \[1:"Alice"\]\[2:12345\]\[3:"555-1234"\]
+Receives: [1:"Alice"][2:12345][3:"555-1234"]
 
-Reads:    \[1:"Alice"\]\[2:12345\]\[3: ??? ignores\!\]
+Reads:    [1:"Alice"][2:12345][3: ??? ignores!]
 
-Result:   ✅ Works\! Ignores field 3
+Result:   ✅ Works! Ignores field 3
 
 New Client (knows fields 1, 2, 3):
 
-Receives: \[1:"Alice"\]\[2:12345\]
+Receives: [1:"Alice"][2:12345]
 
-Reads:    \[1:"Alice"\]\[2:12345\]\[3: "" defaults\!\]
+Reads:    [1:"Alice"][2:12345][3: "" defaults!]
 
-Result:   ✅ Works\! Uses default for field 3
+Result:   ✅ Works! Uses default for field 3
 
-Mental model: Like a form where some sections are optional. Old forms don't have the new section, but people can still process them. New forms have extra sections that old processors simply skip\!
+Mental model: Like a form where some sections are optional. Old forms don't have the new section, but people can still process them. New forms have extra sections that old processors simply skip!
 
 Safe Changes:
 
  ✅ Add new fields (use new field numbers)
 
-✅ Delete obsolete fields (but reserve the number\!)
+✅ Delete obsolete fields (but reserve the number!)
 
  ✅ Change repeated to/from scalar (with care)
 
 Dangerous Changes:
 
-❌ Change field numbers (breaks everything\!)
+❌ Change field numbers (breaks everything!)
 
-❌ Change field types (data corruption\!)
+❌ Change field types (data corruption!)
 
-❌ Reuse deleted field numbers (ambiguity\!)
+❌ Reuse deleted field numbers (ambiguity!)
 
 Code snippet (Handling missing fields):
 
@@ -555,7 +555,7 @@ JSON:
 
 XML:
 
-├── Size: 800 KB (most verbose\!)
+├── Size: 800 KB (most verbose!)
 
 ├── Parse time: 35ms
 
@@ -568,9 +568,9 @@ XML:
 └── Browser support: ✅ Native
 
 Protocol Buffers:
-├── Size: 150 KB (70% smaller than JSON\!)
+├── Size: 150 KB (70% smaller than JSON!)
 
-├── Parse time: 2ms (10x faster\!)
+├── Parse time: 2ms (10x faster!)
 
 ├── Human-readable: ❌ NO (binary)
 
@@ -701,7 +701,7 @@ message Money {
 
 
 
-Real-world parallel: Like importing libraries in code. Don't reinvent the wheel \- reuse common definitions\!
+Real-world parallel: Like importing libraries in code. Don't reinvent the wheel - reuse common definitions!
 
 Well-Known Types (Google's Common Types):
 
@@ -748,7 +748,7 @@ Binary breakdown:
 
 
 
-Only 2 bytes for the entire field\!
+Only 2 bytes for the entire field!
 
 Variable-Length Encoding (Varints):
 
@@ -763,7 +763,7 @@ Here's the properly formatted table:
 | 128      | 2 bytes      | 10000000 00000001             |
 | 16,384   | 3 bytes      | 10000000 10000000 00000001    |
 
-Benefit: Common small numbers (IDs, counts) stay tiny\!
+Benefit: Common small numbers (IDs, counts) stay tiny!
 
 String Encoding:
 
@@ -887,7 +887,7 @@ Best Practices Checklist:
 
 ✅ Reserve deleted field numbers
 
-✅ Use enums for predefined options (default must be 0\)
+✅ Use enums for predefined options (default must be 0)
 
 ✅ Use repeated for arrays/lists
 
@@ -901,7 +901,7 @@ Best Practices Checklist:
 
 Anti-patterns to avoid:
 
-❌ Reusing field numbers (NEVER\!)
+❌ Reusing field numbers (NEVER!)
 
 ❌ Changing field types (breaks compatibility)
 
@@ -950,7 +950,7 @@ This is why:
 * gRPC uses Protobuf by default (performance)
 * Large-scale systems use Protobuf (evolution support)
 
-Protobuf transforms data serialization from an afterthought into a competitive advantage\!
+Protobuf transforms data serialization from an afterthought into a competitive advantage!
 
 🎯 Quick Recap: Test Your Understanding Without looking back, can you explain:
 
@@ -959,7 +959,7 @@ Protobuf transforms data serialization from an afterthought into a competitive a
 3. When should you use Protobuf vs JSON?
 4. What happens if you change a field number?
 
-Mental check: If you can answer these clearly, you've mastered Protobuf fundamentals\!
+Mental check: If you can answer these clearly, you've mastered Protobuf fundamentals!
 
 🚀 Your Next Learning Adventure Now that you understand Protocol Buffers, explore:
 
@@ -979,7 +979,7 @@ Related Technologies:
 
 Real-World Usage:
 
-* Google's internal architecture (everything uses Protobuf\!)
+* Google's internal architecture (everything uses Protobuf!)
 * Netflix microservices communication
 * Kubernetes API objects
 * Mobile app client-server communication

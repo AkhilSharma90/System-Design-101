@@ -28,7 +28,7 @@ Each event needs to reach multiple systems:
 
 Pause and think: How do you reliably deliver 1 million messages per second to multiple consumers without losing data or overwhelming systems?
 
-The Answer: Apache Kafka acts as a distributed, fault-tolerant message highway\! It's like a super-efficient postal service that:
+The Answer: Apache Kafka acts as a distributed, fault-tolerant message highway! It's like a super-efficient postal service that:
 
 ✅ Handles millions of messages per second (high throughput)
 
@@ -38,9 +38,9 @@ The Answer: Apache Kafka acts as a distributed, fault-tolerant message highway\!
 
 ✅ Scales horizontally (add more servers)
 
-✅ Replays historical data (time travel for events\!)
+✅ Replays historical data (time travel for events!)
 
-Key Insight: Kafka isn't just a message queue \- it's a distributed commit log that stores all your events in order, forever\!
+Key Insight: Kafka isn't just a message queue - it's a distributed commit log that stores all your events in order, forever!
 
 🎬 Interactive Exercise: The Newspaper Analogy
 
@@ -73,7 +73,7 @@ Messages are stored \= Multiple consumers can read
 Each consumer tracks their own reading position
 Messages persist (configurable retention)
 
-Real-world parallel: Traditional queues are like a to-do list where you cross off tasks. Kafka is like a diary where you write everything down and can re-read it anytime\!
+Real-world parallel: Traditional queues are like a to-do list where you cross off tasks. Kafka is like a diary where you write everything down and can re-read it anytime!
 
 The Kafka Advantage:
 
@@ -87,18 +87,18 @@ Producer → Queue → Consumer A (message deleted)
 
 Kafka:
 
-Producer → Topic → Consumer A (reads at offset 0\)
+Producer → Topic → Consumer A (reads at offset 0)
 
-                 → Consumer B (reads at offset 0\)
+                 → Consumer B (reads at offset 0)
 
-                 → Consumer C (reads at offset 0\)
+                 → Consumer C (reads at offset 0)
 
-                 → New Consumer D (can read from beginning\!)
+                 → New Consumer D (can read from beginning!)
 
 ![img1](https://res.cloudinary.com/dretwg3dy/image/upload/v1766746637/355_jcunyk.png)
 
 
-All consumers can read the same data\!
+All consumers can read the same data!
 
 🏗️ Core Concepts: Topics, Partitions, and Offsets
 
@@ -126,11 +126,11 @@ Topic: "payments"
 
 Think of topics as different newspapers:
 
-\- Sports topic \= Sports section
+- Sports topic \= Sports section
 
-\- News topic \= News section
+- News topic \= News section
 
-\- Business topic \= Business section
+- Business topic \= Business section
 
 2. Partitions (The Parallelism):
 
@@ -160,17 +160,17 @@ Partition 0:
 
 Each consumer tracks its own offset:
 
-\- Consumer A: "I've read up to offset 2"
+- Consumer A: "I've read up to offset 2"
 
-\- Consumer B: "I've read up to offset 4"
+- Consumer B: "I've read up to offset 4"
 
-\- New Consumer: "Start from offset 0"
+- New Consumer: "Start from offset 0"
 
 Real-world parallel:
 
 * Topic \= Book series (Harry Potter)
 
-* Partition \= Different volumes (Vol 1, 2, 3\)
+* Partition \= Different volumes (Vol 1, 2, 3)
 
 * Offset \= Page number (your bookmark)
 
@@ -203,12 +203,12 @@ C. Payment transactions → 3-10 partitions (2)
 D. IoT sensor data → 100+ partitions (4)
    Reason: Extremely high volume, maximum parallelism
 
-Key Insight: More partitions \= more parallelism, but also more complexity. Choose based on throughput needs\!
+Key Insight: More partitions \= more parallelism, but also more complexity. Choose based on throughput needs!
 
 Partition Key Strategy:
 
 // Partition by user ID (same user always same partition)
-producer.send(new ProducerRecord\<\>(
+producer.send(new ProducerRecord\<>(
     "user-clicks",
     userId,        // Key determines partition
     clickData      // Value (the actual message)
@@ -255,7 +255,7 @@ Visual Comparison:
 
 ![img5](https://res.cloudinary.com/dretwg3dy/image/upload/v1766746633/360_gpbb4c.png)
 
-Messages stay\! Multiple consumers can read\!
+Messages stay! Multiple consumers can read!
 
 When to use what:
 
@@ -295,7 +295,7 @@ Producer: 10,000 msgs/sec
 
 Consumer: 1,000 msgs/sec
 
-Result: Consumer falls behind\! 💀
+Result: Consumer falls behind! 💀
 
 The Solution: Consumer Groups
 
@@ -303,8 +303,8 @@ Topic: "user-clicks" (3 partitions)
 
 ![img6](https://res.cloudinary.com/dretwg3dy/image/upload/v1766746630/354_jmmos7.png)
 
-Each consumer in the group reads from one partition\!
-Load is distributed automatically\!
+Each consumer in the group reads from one partition!
+Load is distributed automatically!
 
 Rules of Consumer Groups:
 
@@ -314,7 +314,7 @@ Rule 2: More consumers than partitions \= Some idle
 
 Rule 3: Different groups \= Independent reading
 
-Both groups read ALL data independently\!
+Both groups read ALL data independently!
 
 ![img7](https://res.cloudinary.com/dretwg3dy/image/upload/v1766746634/357_ltjvcb.png)
 
@@ -344,7 +344,7 @@ while (true) {
 }
 ```
 
-Real-world parallel: Consumer groups are like assembly line workers. Each worker (consumer) handles one station (partition), and together they process all items (messages) efficiently\!
+Real-world parallel: Consumer groups are like assembly line workers. Each worker (consumer) handles one station (partition), and together they process all items (messages) efficiently!
 
 ⚖️ Rebalancing: When Consumers Join or Leave
 
@@ -358,7 +358,7 @@ Partition 1 → Consumer B
 
 Partition 2 → Consumer C
 
-Consumer B crashes\! 💥
+Consumer B crashes! 💥
 
 Rebalancing happens...
 
@@ -366,23 +366,23 @@ After (2 consumers, 3 partitions):
 
 Partition 0 → Consumer A
 
-Partition 1 → Consumer A  (took over\!)
+Partition 1 → Consumer A  (took over!)
 
 Partition 2 → Consumer C
 
-Load redistributed automatically\!
+Load redistributed automatically!
 
 The Rebalancing Process:
 
-1\. Group Coordinator detects consumer failure
+1. Group Coordinator detects consumer failure
 
-   "Consumer B hasn't sent heartbeat\!"
+   "Consumer B hasn't sent heartbeat!"
 
-2\. Trigger rebalance
+2. Trigger rebalance
 
    "Stop processing, redistribute partitions"
 
-3\. Assign partitions to remaining consumers
+3. Assign partitions to remaining consumers
 
    Partition 0 → Consumer A
 
@@ -390,7 +390,7 @@ The Rebalancing Process:
 
    Partition 2 → Consumer C
 
-4\. Resume processing
+4. Resume processing
 
    "Continue from last committed offset"
 
@@ -404,7 +404,7 @@ Partition 1 → Consumer A
 
 Partition 2 → Consumer C
 
-New Consumer D joins\! 🎉
+New Consumer D joins! 🎉
 
 After (3 consumers, 3 partitions):
 
@@ -414,9 +414,9 @@ Partition 1 → Consumer D  (newly assigned)
 
 Partition 2 → Consumer C
 
-Better load distribution\!
+Better load distribution!
 
-Real-world parallel: Rebalancing is like a restaurant redistributing tables when servers clock in/out. Work is automatically redistributed for even load\!
+Real-world parallel: Rebalancing is like a restaurant redistributing tables when servers clock in/out. Work is automatically redistributed for even load!
 
 📨 Producing Messages: Getting Data Into Kafka
 
@@ -529,7 +529,7 @@ producer.send(new ProducerRecord<>("topic", "user123", "message"));
 Partition = hash(key) % num_partitions
 ```
 
-Same key → Always same partition\!
+Same key → Always same partition!
 
 user123 → Partition 1 (always)
 
@@ -573,7 +573,7 @@ props.put("auto.commit.interval.ms", "1000");
 ```
 
 Consumer automatically commits offset every 1 second
-Easy, but can lose messages if consumer crashes\!
+Easy, but can lose messages if consumer crashes!
 
 Manual Offset Commit (Safer):
 
@@ -661,25 +661,25 @@ Replication for Fault Tolerance:
 
 Normal Operation:
 
-Leader (Broker 1): \[msg1\]\[msg2\]\[msg3\]
+Leader (Broker 1): [msg1][msg2][msg3]
 
-Follower (Broker 2): \[msg1\]\[msg2\]\[msg3\] ✓ In sync
+Follower (Broker 2): [msg1][msg2][msg3] ✓ In sync
 
-Follower (Broker 3): \[msg1\]\[msg2\]\[msg3\] ✓ In sync
+Follower (Broker 3): [msg1][msg2][msg3] ✓ In sync
 
-Leader Fails\! 💥
+Leader Fails! 💥
 
-ZooKeeper: "Broker 1 is down\!"
+ZooKeeper: "Broker 1 is down!"
 
-Election: "Broker 2 is now the leader\!"
+Election: "Broker 2 is now the leader!"
 
-New Leader (Broker 2): \[msg1\]\[msg2\]\[msg3\] ← Now serves clients
+New Leader (Broker 2): [msg1][msg2][msg3] ← Now serves clients
 
-Follower (Broker 3): \[msg1\]\[msg2\]\[msg3\] ← Still replicating
+Follower (Broker 3): [msg1][msg2][msg3] ← Still replicating
 
-No data lost\! Clients continue seamlessly\!
+No data lost! Clients continue seamlessly!
 
-Real-world parallel: Kafka cluster is like a library system with multiple branches. Each book (partition) has copies at different branches (replicas). If one branch burns down, others have the same books\!
+Real-world parallel: Kafka cluster is like a library system with multiple branches. Each book (partition) has copies at different branches (replicas). If one branch burns down, others have the same books!
 
 🎪 Real-World Use Cases
 
@@ -719,15 +719,15 @@ location)            metrics)                analytics)
 
 Commands → Kafka (Event Log)
 
-           \[OrderCreated\]
+           [OrderCreated]
 
-           \[PaymentProcessed\]
+           [PaymentProcessed]
 
-           \[OrderShipped\]
+           [OrderShipped]
 
-           \[OrderDelivered\]
+           [OrderDelivered]
 
-Can rebuild state by replaying events\!
+Can rebuild state by replaying events!
 
 💡 Final Synthesis Challenge: The Data Highway
 
@@ -765,7 +765,7 @@ The Complete Picture: Kafka is like a never-ending highway where every event is 
 
 This is why:
 
-* LinkedIn uses Kafka for activity tracking (where it was invented\!)
+* LinkedIn uses Kafka for activity tracking (where it was invented!)
 
 * Netflix uses Kafka for log aggregation (monitoring billions of events)
 
@@ -773,7 +773,7 @@ This is why:
 
 * Airbnb uses Kafka for stream processing (real-time analytics)
 
-Kafka transforms data from point-in-time snapshots into continuous event streams\!
+Kafka transforms data from point-in-time snapshots into continuous event streams!
 
 🎯 Quick Recap: Test Your Understanding Without looking back, can you explain:
 
@@ -785,7 +785,7 @@ Kafka transforms data from point-in-time snapshots into continuous event streams
 
 4. When would you use Kafka vs a traditional message queue?
 
-Mental check: If you can answer these clearly, you've mastered Kafka fundamentals\!
+Mental check: If you can answer these clearly, you've mastered Kafka fundamentals!
 
 🚀 Your Next Learning Adventure Now that you understand Kafka basics, explore:
 

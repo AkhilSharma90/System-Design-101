@@ -65,7 +65,7 @@ Just like testing a car requires multiple approaches, software testing has diffe
 
 "Can it survive disasters?"
 
-**Key Insight:** No single test type is enough\! You need a testing strategy that combines different approaches at different stages\!
+**Key Insight:** No single test type is enough! You need a testing strategy that combines different approaches at different stages!
 
 ---
 
@@ -91,7 +91,7 @@ Before diving into each type, understand how they relate:
 
 Smoke testing (aka sanity testing) is the **quickest, most basic check** to verify the software isn't fundamentally broken.
 
-**Origin of the name:** When hardware engineers power on a circuit board, they check if smoke comes out. No smoke \= safe to proceed with more tests\!
+**Origin of the name:** When hardware engineers power on a circuit board, they check if smoke comes out. No smoke \= safe to proceed with more tests!
 
 ![img2](https://res.cloudinary.com/dretwg3dy/image/upload/v1764819905/274_zlzbo5.png)
 
@@ -115,7 +115,7 @@ Show the house
 
 If NO →
 
-Fix critical issues first\!
+Fix critical issues first!
 
 ### **Smoke Test Examples:**
 
@@ -123,7 +123,7 @@ Fix critical issues first\!
 
 Smoke Test Suite (runs in 2 minutes):
 
-1\. Can user load homepage?
+1. Can user load homepage?
 
 
 ```bash
@@ -133,7 +133,7 @@ Smoke Test Suite (runs in 2 minutes):
 
 ```
 
-2\. Can user log in?
+2. Can user log in?
 
 ```bash
   POST /login with valid credentials
@@ -141,7 +141,7 @@ Smoke Test Suite (runs in 2 minutes):
   Expected: Redirect to dashboard ✅
   ```
 
-3\. Can user see their data?
+3. Can user see their data?
 
 ```bash
  GET /api/user/profile
@@ -149,7 +149,7 @@ Smoke Test Suite (runs in 2 minutes):
  Expected: Returns user JSON ✅
 ```
 
-4\. Is database responding?
+4. Is database responding?
 ```bash
 
   Simple query: SELECT 1
@@ -159,7 +159,7 @@ Smoke Test Suite (runs in 2 minutes):
 ```
 
 If ALL pass → Deploy to QA environment
-If ANY fail → Roll back immediately\!
+If ANY fail → Roll back immediately!
 
 #### **E-commerce Platform:**
 
@@ -175,7 +175,7 @@ Critical path smoke tests:
 
 □ Checkout button appears
 
-If these fail, nothing else matters\!
+If these fail, nothing else matters!
 
 ### **When to Run Smoke Tests:**
 
@@ -195,7 +195,7 @@ Development Pipeline:
 
     ↓
 
-5) Notify developer immediately\!
+5) Notify developer immediately!
 
 6) Don't waste time on broken build
 

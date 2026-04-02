@@ -26,11 +26,11 @@ The Old Way:
 
 Terminals: Just keyboards and screens
 
-\- No processing power
+- No processing power
 
-\- No storage
+- No storage
 
-\- Just display what mainframe sends
+- Just display what mainframe sends
 
 Problem:
 
@@ -72,37 +72,37 @@ What Clients Do:
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
-1\. User Interface
+1. User Interface
 
-   \- Display information
+   - Display information
 
-   \- Accept user input
+   - Accept user input
 
-   \- Validate forms
+   - Validate forms
 
-2\. Request Making
+2. Request Making
 
-   \- Send requests to server
+   - Send requests to server
 
-   \- Handle responses
+   - Handle responses
 
-   \- Manage errors
+   - Manage errors
 
-3\. Local Processing
+3. Local Processing
 
-   \- Format data for display
+   - Format data for display
 
-   \- Client-side validation
+   - Client-side validation
 
-   \- Caching for speed
+   - Caching for speed
 
-4\. State Management
+4. State Management
 
-   \- Remember user preferences
+   - Remember user preferences
 
-   \- Track session
+   - Track session
 
-   \- Store temporary data
+   - Store temporary data
 
 Example: Your Web Browser
 ![img3](https://res.cloudinary.com/dretwg3dy/image/upload/v1766544684/310_jt32bo.png)
@@ -115,37 +115,37 @@ What Servers Do:
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
-1\. Data Management
+1. Data Management
 
-   \- Store in database
+   - Store in database
 
-   \- Retrieve data
+   - Retrieve data
 
-   \- Update records
+   - Update records
 
-2\. Business Logic
+2. Business Logic
 
-   \- Process payments
+   - Process payments
 
-   \- Validate rules
+   - Validate rules
 
-   \- Calculate results
+   - Calculate results
 
-3\. Security
+3. Security
 
-   \- Authentication
+   - Authentication
 
-   \- Authorization
+   - Authorization
 
-   \- Encryption
+   - Encryption
 
-4\. Coordination
+4. Coordination
 
-   \- Handle multiple clients
+   - Handle multiple clients
 
-   \- Manage concurrency
+   - Manage concurrency
 
-   \- Ensure consistency
+   - Ensure consistency
 
 Example: Facebook's Server
 
@@ -163,15 +163,15 @@ Thin Client Architecture:
 
 User clicks "Send Email":
 
-1\. Browser: "POST /send" → Server
+1. Browser: "POST /send" → Server
 
-2\. Server: Validates email, sends it, updates database
+2. Server: Validates email, sends it, updates database
 
-3\. Server: Generates new HTML
+3. Server: Generates new HTML
 
-4\. Browser: Displays new HTML
+4. Browser: Displays new HTML
 
-Almost everything happens on server\!
+Almost everything happens on server!
 
 **Flavor 2: Thick Client (Desktop Apps)**
 
@@ -186,15 +186,15 @@ Example: Microsoft Word with OneDrive
 
 User types document:
 
-1\. Word: Processes locally (spell check, formatting)
+1. Word: Processes locally (spell check, formatting)
 
-2\. Word: Auto-saves to local disk
+2. Word: Auto-saves to local disk
 
-3\. Word: Syncs to OneDrive every few minutes
+3. Word: Syncs to OneDrive every few minutes
 
-4\. Server: Just stores the file
+4. Server: Just stores the file
 
-Most work happens on client\!
+Most work happens on client!
 
 **Flavor 3: Hybrid (Modern Web Apps/SPAs)**
 
@@ -210,19 +210,19 @@ Example: Modern Gmail
 
 User clicks "Send Email":
 
-1\. React app: Validates form locally ✓
+1. React app: Validates form locally ✓
 
-2\. React app: Shows "Sending..." immediately
+2. React app: Shows "Sending..." immediately
 
-3\. React app: POST /api/send → Server
+3. React app: POST /api/send → Server
 
-4\. Server: Actually sends email, updates DB
+4. Server: Actually sends email, updates DB
 
-5\. Server: Returns JSON {success: true}
+5. Server: Returns JSON {success: true}
 
-6\. React app: Updates UI (smooth transition)
+6. React app: Updates UI (smooth transition)
 
-Work split intelligently between client and server\!
+Work split intelligently between client and server!
 
 ### **Real-World Example: Netflix**
 
@@ -234,19 +234,19 @@ The Flow:
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
-1\. Client (TV): "Show me action movies"
+1. Client (TV): "Show me action movies"
    → Server: Returns personalized list
 
-2\. Client: User clicks "Play"
+2. Client: User clicks "Play"
    → Server: "Here's the video URL"
 
-3\. Client: Connects to nearby CDN
+3. Client: Connects to nearby CDN
    ← CDN: Streams video chunks
 
-4\. Client: Handles playback, buffering, quality
-   (Smart client does a lot\!)
+4. Client: Handles playback, buffering, quality
+   (Smart client does a lot!)
 
-5\. Client: Periodically reports back
+5. Client: Periodically reports back
    → Server: "User watching minute 24"
    (For "Continue Watching" feature)
 
@@ -266,7 +266,7 @@ Client blocks waiting for response
 
 **Connection to Our Previous Topics:**
 
-* This is **synchronous communication** (we covered this earlier\!)
+* This is **synchronous communication** (we covered this earlier!)
 
 * Uses **HTTP methods** (GET in this example)
 
@@ -292,7 +292,7 @@ Real-Time Chat:
 ![img11](https://res.cloudinary.com/dretwg3dy/image/upload/v1766546133/web_sockets_oykqms.png)
 
 Persistent connection, messages flow both ways
-No request-response limitation\!
+No request-response limitation!
 
 **Pattern 4: Server-Sent Events (SSE)**
 
@@ -320,9 +320,9 @@ Bad Example (Trusting Client):
 
 Client: "I'm paying $10 for this $100 item"
 
-Server: "Okay\!" ❌
+Server: "Okay!" ❌
 
-Result: Business loses money\!
+Result: Business loses money!
 
 Good Example (Validate on Server):
 
@@ -336,7 +336,7 @@ Server: "That's $100"
 
 Server: Validates payment for $100 ✓
 
-Result: Business is protected\!
+Result: Business is protected!
 
 **Validation Rules:**
 
@@ -346,18 +346,18 @@ Client-Side Validation:
 
 Purpose: User experience
 
-\- Immediate feedback
+- Immediate feedback
 
-\- Prevent typos
+- Prevent typos
 
 
-\- Guide user
+- Guide user
 
 Example:
 "Email must contain @"
 "Password needs 8 characters"
 
-BUT: Can be bypassed\!
+BUT: Can be bypassed!
 
 Server-Side Validation:
 
@@ -365,11 +365,11 @@ Server-Side Validation:
 
 Purpose: Security & data integrity
 
-\- Enforce business rules
+- Enforce business rules
 
-\- Prevent attacks
+- Prevent attacks
 
-\- Ensure data quality
+- Ensure data quality
 
 Example:
 
@@ -379,15 +379,15 @@ Verify password against hash
 
 Validate payment with bank
 
-REQUIRED: Cannot be bypassed\!
+REQUIRED: Cannot be bypassed!
 
 
 The Pattern:
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
-1\. Validate on client (UX)
+1. Validate on client (UX)
 
-2\. Validate on server (Security)
+2. Validate on server (Security)
 
-3\. Never trust client alone\!
+3. Never trust client alone!

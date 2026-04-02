@@ -14,7 +14,7 @@ Simple definition: A protocol is a set of rules that allows two parties to commu
 
 Think of it like a language. If we both speak English, we can understand each other. If I speak English and you speak Mandarin, we're stuck. Protocols are the "language" computers use to talk to each other. Follow the same rules \= communication works. Different rules \= chaos.
 
-## **Property \#1: Data Format**
+## **Property #1: Data Format**
 
 How is your data actually encoded when it travels across the network? Two main options:
 
@@ -22,7 +22,7 @@ How is your data actually encoded when it travels across the network? Two main o
 - Binary: Readable by machines not meant for humans (HTTP/2 Protocol Buffers Redis RESP)
 - A restaurant menu can be in plain words (“Pasta”) or just icons only the chef understands. Similarly, data can be **text-based (JSON/XML)** or **binary (Protocol Buffers)**.
 
-## **Property \#2: Transfer Mode**
+## **Property #2: Transfer Mode**
 
 How does data flow? Does it come in discrete chunks (messages) or as a continuous stream?
 
@@ -30,7 +30,7 @@ How does data flow? Does it come in discrete chunks (messages) or as a continuou
 - Stream-Based: Just a continuous flow of bytes. No clear boundaries like a river of data (TCP/ RTP (real-time protocol))
 - Postcards come in neat chunks with clear boundaries — like **message-based (UDP)** communication. A live phone call is a flowing stream, just like **stream-based (TCP)**.
 
-## **Property \#3: Addressing System**
+## **Property #3: Addressing System**
 
 Where is this data going? How do we identify the destination (and source)?
 
@@ -39,16 +39,16 @@ Where is this data going? How do we identify the destination (and source)?
 - IP Address 172.168.2.1
 - MAC Address : 00:1A:2B:3C
 
-## **Property \#4: Directionality**
+## **Property #4: Directionality**
 
 Can both parties send at the same time? Or does it have to take turns?
 
 Walkie-talkies force you to say “over” and wait — that’s **half-duplex**. A video call lets both people talk at once — that’s **full-duplex**.
 
-- Full Duplex : Both can send simultaneously\! (whatsapp messages)
+- Full Duplex : Both can send simultaneously! (whatsapp messages)
 - Half Duplex: Take turns only one can send at a time (walkie-talkie)
 
-## **Property \#5: Protocol State**
+## **Property #5: Protocol State**
 
 Does the protocol remember previous interactions, or is each message independent?
 
@@ -56,13 +56,13 @@ Does the protocol remember previous interactions, or is each message independent
 - Stateless Protocols: The server doesn’t remember you from the last request
 - Stateful: Both server client remember conversation state.
 
-## **Property \#6: Routing**
+## **Property #6: Routing**
 
 How does your protocol work with gateways, proxies, and intermediate hops?
 
 - A parcel might pass through several post offices before reaching you. On the internet, that’s how **routers, gateways, and proxies** forward packets across networks.
 
-## **Property \#7: Flow & Congestion Control**
+## **Property #7: Flow & Congestion Control**
 
 Does your protocol manage data flow rates? Does it guarantee delivery?
 
@@ -78,9 +78,9 @@ A careful waiter pours water slowly to avoid spilling — like **TCP adjusting f
 
 - ❌ No Flow Control: Sends at whatever rate
 - ❌ No Congestion Control: Doesn't care about network
-- ❌ No Reliability: Lost? Too bad\!
+- ❌ No Reliability: Lost? Too bad!
 
-## **Property \#8: Error Management**
+## **Property #8: Error Management**
 
 What happens when things go wrong? How does the protocol handle errors?
 
@@ -120,9 +120,9 @@ Imagine if your app had to know whether it's running on:
 - Ethernet (electrical signals)
 - Fiber (light signals)
 - LTE (radio waves)
-- Satellite (space radio\!)
+- Satellite (space radio!)
 
-You'd need **different versions of your app for each medium**. That's insane\!
+You'd need **different versions of your app for each medium**. That's insane!
 
 **How the OSI model saves you:** Each layer handles ONE responsibility. Your app doesn't care about WiFi vs Ethernet because Layer 1 (Physical) handles that. You just say "send this data" and the layers below figure out the rest.
 
@@ -176,7 +176,7 @@ Your network card (NIC) handles all of this automatically. You write code that s
 ### **🏠 Imagine an apartment building (your local network):**
 
 - Each apartment has a number: 101, 102, 103 (these are like MAC addresses)
-- The building has a street address: 123 Main St (this is the IP address, Layer 3\)
+- The building has a street address: 123 Main St (this is the IP address, Layer 3)
 - Mail carrier delivers to the building, then apartment manager delivers to the right apartment
 
 **Layer 2 is the apartment manager.** They only care about apartment numbers within the building, not street addresses.
@@ -191,7 +191,7 @@ MAC Address example: `00:1A:2B:3C:4D:5E`
 
 1. **Your computer** wants to send data to another device on the same network
 2. **ARP (Address Resolution Protocol)** asks: "Who has IP 192.168.1.5? What's your MAC address?"
-3. **Target responds:** "That's me\! My MAC is 00:1A:2B:3C:4D:5E"
+3. **Target responds:** "That's me! My MAC is 00:1A:2B:3C:4D:5E"
 4. **Frame created** with source MAC, destination MAC, and the data payload
 5. **Switch reads MAC addresses** and forwards frame to the correct port
 
@@ -214,8 +214,8 @@ MAC Address example: `00:1A:2B:3C:4D:5E`
 
 ### **🌍** **Layer 3 is the international postal service.**
 
-- **MAC address (Layer 2\)** \= Apartment number (only matters inside the building)
-- **IP address (Layer 3\)** \= Full street address (works globally)
+- **MAC address (Layer 2)** \= Apartment number (only matters inside the building)
+- **IP address (Layer 3)** \= Full street address (works globally)
 
 When you mail a letter from New York to Tokyo:
 
@@ -255,7 +255,7 @@ IP Address example: `192.168.1.1` or `2001:0db8::1`
 - Routers look at IP addresses to route packets
 - Every router asks: "Is this packet for me? If not, where should I forward it?"
 
-**Important:** The destination IP stays the same end-to-end, but MAC addresses change at every hop\!
+**Important:** The destination IP stays the same end-to-end, but MAC addresses change at every hop!
 
 ---
 
@@ -265,14 +265,14 @@ IP Address example: `192.168.1.1` or `2001:0db8::1`
 
 ### **🏢 Your server is like an office building**:
 
-- **IP address** \= Building's street address (Layer 3\)
-- **Ports** \= Specific office room numbers (Layer 4\)
+- **IP address** \= Building's street address (Layer 3)
+- **Ports** \= Specific office room numbers (Layer 4)
   - Room 80 \= HTTP department
   - Room 443 \= HTTPS department
   - Room 22 \= SSH department
   - Room 3306 \= MySQL department
 
-The postal service (Layer 3\) delivers mail to the building. But which office inside should get it? That's what ports do—they route to the correct application.
+The postal service (Layer 3) delivers mail to the building. But which office inside should get it? That's what ports do—they route to the correct application.
 
 ### **TCP vs UDP: The Courier Analogy**
 
@@ -299,9 +299,9 @@ The postal service (Layer 3\) delivers mail to the building. But which office in
 **How TCP Works:**
 
 1. **3-Way Handshake** (establish connection):
-   - The client which is usually a browser/phone/tablet or anything sends the "SYN \- Can we talk?"
-   - The server then seds the "SYN-ACK \- Yes, I'm ready\!"
-   - Client: "ACK \- Let's go\!"
+   - The client which is usually a browser/phone/tablet or anything sends the "SYN - Can we talk?"
+   - The server then seds the "SYN-ACK - Yes, I'm ready!"
+   - Client: "ACK - Let's go!"
 2. **Data Transfer** with guarantees:
    - Each segment has a sequence number
    - Receiver sends ACKs (acknowledgments)
@@ -349,9 +349,9 @@ The postal service (Layer 3\) delivers mail to the building. But which office in
 
 ### **Why This Matters:**
 
-When you write server code listening on port 8080, you're working at Layer 4\. The operating system routes incoming segments to your process based on the port number.
+When you write server code listening on port 8080, you're working at Layer 4. The operating system routes incoming segments to your process based on the port number.
 
-**As a backend engineer, you live here (Layer 4\) and Layer 7\.**
+**As a backend engineer, you live here (Layer 4) and Layer 7.**
 
 ---
 
@@ -376,10 +376,10 @@ When you write server code listening on port 8080, you're working at Layer 4\. T
 
 This is where:
 
-- **TCP 3-way handshake happens** (SYN, SYN-ACK, ACK) \- "Dialing and answering"
-- **TLS encryption is negotiated** \- "Setting up secure line"
-- **Connection state is maintained** \- "Keeping the line open"
-- **Sessions are established and torn down** \- "Calling and hanging up"![img8](https://res.cloudinary.com/dretwg3dy/image/upload/v1762395693/9_ol2tux.png)
+- **TCP 3-way handshake happens** (SYN, SYN-ACK, ACK) - "Dialing and answering"
+- **TLS encryption is negotiated** - "Setting up secure line"
+- **Connection state is maintained** - "Keeping the line open"
+- **Sessions are established and torn down** - "Calling and hanging up"![img8](https://res.cloudinary.com/dretwg3dy/image/upload/v1762395693/9_ol2tux.png)
 
 ### **Why This Layer Exists:**
 
@@ -403,7 +403,7 @@ This is where:
 
 **What lives here:** Some proxies like Linkerd (connection pooling)
 
-**Controversial:** Many people say "really, a whole layer just for sessions?" But it matters for understanding where connection logic lives\!
+**Controversial:** Many people say "really, a whole layer just for sessions?" But it matters for understanding where connection logic lives!
 
 ---
 
@@ -413,7 +413,7 @@ This is where:
 
 ### **🌍 The Universal Translator**
 
-Imagine you speak English, your friend speaks Japanese. You need a translator (Layer 6\) to convert between languages.
+Imagine you speak English, your friend speaks Japanese. You need a translator (Layer 6) to convert between languages.
 
 **Layer 6 is the translator between your application and the network:**
 
@@ -483,4 +483,4 @@ Content-Type: application/json
 
 ## **🎎 The Matryoshka Doll Model**
 
-Each layer wraps the previous one. To read data, you unwrap layer by layer\!![img12](https://res.cloudinary.com/dretwg3dy/image/upload/v1762395693/10_bnqlhf.png)
+Each layer wraps the previous one. To read data, you unwrap layer by layer!![img12](https://res.cloudinary.com/dretwg3dy/image/upload/v1762395693/10_bnqlhf.png)

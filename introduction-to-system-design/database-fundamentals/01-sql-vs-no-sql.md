@@ -5,7 +5,7 @@ readTime: 10 min
 orderIndex: 1
 premium: false
 ---
-# **🗄️ SQL vs NoSQL \- The Great Database Divide**
+# **🗄️ SQL vs NoSQL - The Great Database Divide**
 
 ### **🎯 Challenge 1: The Library Dilemma**
 
@@ -48,7 +48,7 @@ premium: false
 * Perfect for flexible, rapidly changing data
 * Examples: MongoDB, Cassandra, Redis, DynamoDB
 
-**Key Insight:** The choice isn't about "better" \- it's about the right tool for your specific problem\!
+**Key Insight:** The choice isn't about "better" - it's about the right tool for your specific problem!
 
 ---
 
@@ -94,20 +94,20 @@ Document Storage:
 **Scenario 1: You're building a banking app**
 
 * Need to track: account numbers, balances, transactions
-* Must be 100% accurate (no money lost\!)
+* Must be 100% accurate (no money lost!)
 * Accounts always have the same fields
 * Need to see transaction history and account relationships
 
 **Your choice?** Think about it...
 
-**Answer: SQL Database\! ✓**
+**Answer: SQL Database! ✓**
 
 **Why?**
 
-* Banking needs ACID guarantees (we'll explore this next\!)
+* Banking needs ACID guarantees (we'll explore this next!)
 * Fixed structure works perfectly (all accounts have same fields)
 * Relationships are crucial (accounts → transactions → customers)
-* Accuracy \> flexibility
+* Accuracy > flexibility
 
 ---
 
@@ -121,22 +121,22 @@ Document Storage:
 
 **Your choice?** Think about it...
 
-**Answer: NoSQL Database\! ✓**
+**Answer: NoSQL Database! ✓**
 
 **Why?**
 
-* Every post can have different fields (flexible\!)
+* Every post can have different fields (flexible!)
 * Easy to add new features without restructuring
 * Scales horizontally (add more servers easily)
 * Optimized for fast reads at massive scale
 
 ---
 
-### **🚨 Common Misconception: "NoSQL Means No Structure\!"**
+### **🚨 Common Misconception: "NoSQL Means No Structure!"**
 
-**You might think:** "NoSQL \= chaos, just dump data randomly\!"
+**You might think:** "NoSQL \= chaos, just dump data randomly!"
 
-**The truth:** NoSQL still has structure, just flexible structure\!
+**The truth:** NoSQL still has structure, just flexible structure!
 
 | Bad NoSQL approach:// Chaos
 ! Hard to work with
@@ -144,12 +144,12 @@ Document Storage:
 ```json
 { "user": "alice", "data": "some stuff" }{ "person": "bob", "info": 123 }{ "x": "y", "random": true }
 ```
-Good NoSQL approach:// Flexible but consistent\!
+Good NoSQL approach:// Flexible but consistent!
 ```json
 {  "user_id": "alice123",  "post_type": "image",  "content": "...",  "created_at": "2025-10-15",  "tags": ["travel", "sunset"]}{  "user_id": "bob456",  "post_type": "video",  "content": "...",  "created_at": "2025-10-15",  "duration": 45,  "thumbnail": "..."  // Different fields, but still organized}
 
 ```
-**Mental model:** Think of SQL as a strict form you must fill out completely, and NoSQL as a flexible journal where each entry can be different but still meaningful\!
+**Mental model:** Think of SQL as a strict form you must fill out completely, and NoSQL as a flexible journal where each entry can be different but still meaningful!
 
 ---
 
@@ -166,5 +166,5 @@ Good NoSQL approach:// Flexible but consistent\!
 
 **Real-world analogy:**
 
-* **SQL:** Like a meticulous accountant \- precise, structured, perfect for financial records
-* **NoSQL:** Like a creative scrapbook \- flexible, fast, perfect for diverse content
+* **SQL:** Like a meticulous accountant - precise, structured, perfect for financial records
+* **NoSQL:** Like a creative scrapbook - flexible, fast, perfect for diverse content

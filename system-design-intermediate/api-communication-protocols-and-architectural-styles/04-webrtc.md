@@ -17,12 +17,12 @@ The problem:
 
 * Your video travels 10,000 miles to California
 * Then travels another 5,000 miles to Tokyo
-* Total: 15,000 miles for two people who might be 100 miles apart\!
+* Total: 15,000 miles for two people who might be 100 miles apart!
 * Plus: Server delay, bandwidth costs, and privacy concerns
 
 Pause and think: What if your browser could talk DIRECTLY to your friend's browser, peer-to-peer, no server middleman?
 
-The Answer: WebRTC (Web Real-Time Communication) allows browsers to connect directly\! It's like:
+The Answer: WebRTC (Web Real-Time Communication) allows browsers to connect directly! It's like:
 
 * Traditional: You → Post Office → Friend (slow, monitored)
 
@@ -30,7 +30,7 @@ The Answer: WebRTC (Web Real-Time Communication) allows browsers to connect dire
 
 * WebRTC: You → → → Friend (direct, fast, private)
 
-Add Headings (Format \> Paragraph styles) and they will appear in your table of contents.
+Add Headings (Format > Paragraph styles) and they will appear in your table of contents.
 
 Key Features:
 
@@ -40,11 +40,11 @@ Key Features:
 
  ✅ Data channels (send any data, not just video)
 
- ✅ Built into browsers (no plugins needed\!)
+ ✅ Built into browsers (no plugins needed!)
 
  ✅ Encrypted by default (secure)
 
-Key Insight: WebRTC turns every browser into a communication endpoint, eliminating the need for expensive media servers\!
+Key Insight: WebRTC turns every browser into a communication endpoint, eliminating the need for expensive media servers!
 
 🎥 Interactive Exercise: The Video Call Setup Dance Scenario: You want to video call a friend. Think about what needs to happen:
 
@@ -58,23 +58,23 @@ WebRTC (Peer-to-peer):
 
 You:    "Hey server, how do I reach Alice?"
 Server: "Alice is at IP 123.45.67.89, here's the connection info"
-You:    \[Establish direct connection to Alice\]
+You:    [Establish direct connection to Alice]
 
-        \[Your video\] → → → Alice  (DIRECT\!)
+        [Your video] → → → Alice  (DIRECT!)
 
-        \[Alice's video\] → → → You  (DIRECT\!)
+        [Alice's video] → → → You  (DIRECT!)
 
 ![img3](https://res.cloudinary.com/dretwg3dy/image/upload/v1765892832/288_nkjx1y.png)
 
 
 Server: "What are you two talking about?"
-You:    "None of your business\! 😎" (encrypted\!)
+You:    "None of your business! 😎" (encrypted!)
 
-Real-world parallel: WebRTC is like getting someone's phone number from a directory (server), but then calling them directly. The directory doesn't listen to your conversation\!
+Real-world parallel: WebRTC is like getting someone's phone number from a directory (server), but then calling them directly. The directory doesn't listen to your conversation!
 
-But wait... there's a catch\! (The NAT Problem)
+But wait... there's a catch! (The NAT Problem)
 
-🚨 Common Misconception: "Direct Connection Means Simple... Right?" You might think: "If it's peer-to-peer, I just need my friend's IP address and we connect\!"
+🚨 Common Misconception: "Direct Connection Means Simple... Right?" You might think: "If it's peer-to-peer, I just need my friend's IP address and we connect!"
 
 The NAT Problem (Network Address Translation):
 
@@ -82,17 +82,17 @@ The Internet Reality:
 
 ![img4](https://res.cloudinary.com/dretwg3dy/image/upload/v1765895566/turn_ivejd6.png)
 
-Problem: You can't directly call 192.168.1.50\!
-That's your friend's PRIVATE address behind their router\!
-Your packets don't know how to reach it\!
+Problem: You can't directly call 192.168.1.50!
+That's your friend's PRIVATE address behind their router!
+Your packets don't know how to reach it!
 
-Mental model: It's like apartment buildings. Your friend lives in "Apartment 50" but you need the building's street address first. "Apartment 50" means nothing without the building address\!
+Mental model: It's like apartment buildings. Your friend lives in "Apartment 50" but you need the building's street address first. "Apartment 50" means nothing without the building address!
 
 The WebRTC Solution: ICE (Interactive Connectivity Establishment) WebRTC tries multiple connection strategies:
 
 1. STUN: "Hey router, what's my public IP?" (NAT discovery)
 2. TURN: "Can't connect directly? Relay through this server" (fallback)
-3. ICE: "Try all methods and pick the best one\!" (smart coordinator)
+3. ICE: "Try all methods and pick the best one!" (smart coordinator)
 
 The Connection Process:
 
@@ -103,11 +103,11 @@ STUN → You: "You're reachable at 98.76.54.32:5000"
 Step 2: ICE Candidate Gathering
 You gather all possible ways to reach you:
 
-\- Direct: 192.168.1.100:5000 (local network)
+- Direct: 192.168.1.100:5000 (local network)
 
-\- STUN: 98.76.54.32:5000 (public IP)
+- STUN: 98.76.54.32:5000 (public IP)
 
-\- TURN: relay.server.com:3478 (backup relay)
+- TURN: relay.server.com:3478 (backup relay)
 
 Step 3: Exchange Candidates (via signaling server)
 
@@ -119,8 +119,8 @@ Step 4: ICE Tries Connections
 
 ICE: "Can I reach 192.168.1.50 directly?" → ❌ Failed
 
-ICE: "Can I reach 123.45.67.89:5000?" → ✅ SUCCESS\!
-     (Hole punching through NAT worked\!)
+ICE: "Can I reach 123.45.67.89:5000?" → ✅ SUCCESS!
+     (Hole punching through NAT worked!)
 
 If all else fails:
 
@@ -136,21 +136,21 @@ Real-world parallel: Like trying to deliver a package:
 
 🤝 The Signaling Dance: How Peers Find Each Other
 
-The Setup Paradox: To connect peer-to-peer, you first need to... not be peer-to-peer\! 😅
+The Setup Paradox: To connect peer-to-peer, you first need to... not be peer-to-peer! 😅
 
 The Handshake Process (SDP Exchange):
 
 You and Friend need to exchange:
 
-\- Media capabilities ("I can do H.264 video, Opus audio")
+- Media capabilities ("I can do H.264 video, Opus audio")
 
-\- Network information (ICE candidates)
+- Network information (ICE candidates)
 
-\- Security keys (encryption)
+- Security keys (encryption)
 
 This exchange happens via a Signaling Server:
 
-1\. You Create an Offer (SDP):
+1. You Create an Offer (SDP):
 
 
 ┌─────────────────────────────────────┐
@@ -167,14 +167,14 @@ This exchange happens via a Signaling Server:
 
 └─────────────────────────────────────┘
 
-2\. Send offer via Signaling Server:
+2. Send offer via Signaling Server:
 You → WebSocket/HTTP → Signaling Server → Friend
 
-3\. Friend Creates an Answer:
+3. Friend Creates an Answer:
 
 ┌─────────────────────────────────────┐
 
-│ "I accept\! Here's my info:"         │
+│ "I accept! Here's my info:"         │
 
 │ "I'll use H.264 at 720p too"        │
 
@@ -184,17 +184,17 @@ You → WebSocket/HTTP → Signaling Server → Friend
 
 └─────────────────────────────────────┘
 
-4\. Send answer back:
+4. Send answer back:
 Friend → Signaling Server → You
 
-5\. Exchange ICE Candidates:
-Both: "Found new way to reach me\!"
+5. Exchange ICE Candidates:
+Both: "Found new way to reach me!"
       → Signaling Server →
       Other person
 
-6\. Finally, Direct Connection Established\! 🎉
-You ←──────\[Encrypted Media\]──────→ Friend
-(Signaling server no longer involved\!)
+6. Finally, Direct Connection Established! 🎉
+You ←──────[Encrypted Media]──────→ Friend
+(Signaling server no longer involved!)
 
 ```js
 // Step 1: Create peer connection
@@ -233,9 +233,9 @@ pc.onicecandidate = (event) => {
 Real-world parallel: Like two people planning to meet:
 
 1. You: "Want to meet at the park at 3pm?" (offer)
-2. Friend: "Yes\! I'll bring snacks\!" (answer)
+2. Friend: "Yes! I'll bring snacks!" (answer)
 3. Exchange details via text/email (signaling)
-4. Meet directly at the park (peer connection) The phone/text was just for coordination, not the actual meeting\!
+4. Meet directly at the park (peer connection) The phone/text was just for coordination, not the actual meeting!
 
 🎮 Decision Game: What Gets Sent Where?
 
@@ -244,11 +244,11 @@ Context: You're video chatting with WebRTC. Which data goes through which path?
 Match the data to the path:
 
 Data Type                    Path
-\---------                    \----
-A. Your video stream         1\. Signaling Server
-B. Call setup info           2\. Peer-to-peer
-C. Text chat messages        3\. STUN Server
-D. ICE candidates            4\. TURN Server (if needed)
+---------                    ----
+A. Your video stream         1. Signaling Server
+B. Call setup info           2. Peer-to-peer
+C. Text chat messages        3. STUN Server
+D. ICE candidates            4. TURN Server (if needed)
 E. Your actual face pixels
 F. Connection coordinates
 G. Media encryption keys
@@ -259,33 +259,33 @@ Answers:
 
 Through Signaling Server:
 
-\- B. Call setup info (SDP offer/answer)
+- B. Call setup info (SDP offer/answer)
 
-\- D. ICE candidates (connection coordinates)
+- D. ICE candidates (connection coordinates)
 
-\- F. Connection coordinates
+- F. Connection coordinates
 
 Through STUN Server:
 
-\- Request for public IP discovery
+- Request for public IP discovery
 
 (One-time request, not continuous)
 
 Through Peer-to-Peer Connection:
 
-\- A. Your video stream 🎥
+- A. Your video stream 🎥
 
-\- C. Text chat messages 💬
+- C. Text chat messages 💬
 
-\- E. Your actual face pixels 😊
+- E. Your actual face pixels 😊
 
-\- G. Media encryption keys (via DTLS)
+- G. Media encryption keys (via DTLS)
 
 Through TURN Server (Fallback):
-\- Everything that would go peer-to-peer
-(Only if direct connection fails\!)
+- Everything that would go peer-to-peer
+(Only if direct connection fails!)
 
-Key Insight: Signaling server coordinates the handshake, but media flows directly peer-to-peer\! The server NEVER sees your video/audio in successful WebRTC calls\!
+Key Insight: Signaling server coordinates the handshake, but media flows directly peer-to-peer! The server NEVER sees your video/audio in successful WebRTC calls!
 
 🎪 The Three Connection Types: Unicast, Multicast, SFU
 
@@ -305,17 +305,17 @@ Cons: Only works for 2 people
    ↗ ↑ ↖
  A   B   C
 
-Everyone connects to everyone\!
+Everyone connects to everyone!
 
-For 4 people \= 6 connections\!
+For 4 people \= 6 connections!
 
-For 10 people \= 45 connections\! 😱
+For 10 people \= 45 connections! 😱
 
 Perfect for: Small team meetings (\< 5 people)
 Pros: No server needed, low latency
 Cons: Upload bandwidth kills you (must send video to everyone)
 
-3. Large Group (SFU \- Selective Forwarding Unit):
+3. Large Group (SFU - Selective Forwarding Unit):
 
        SFU Server
       ↗  |  |  ↖
@@ -395,17 +395,17 @@ stream.getTracks().forEach(track => {
 
 What happens behind the scenes:
 
-1\. Browser: "Website wants camera access\!"
-   User: \[Clicks Allow\] ✅
+1. Browser: "Website wants camera access!"
+   User: [Clicks Allow] ✅
 
-2\. Browser opens hardware:
+2. Browser opens hardware:
    Camera → Captures frames → Video Track
    Microphone → Captures audio → Audio Track
 
-3\. MediaStream object created:
+3. MediaStream object created:
    Stream \= { videoTrack, audioTrack }
 
-4\. Send to peer connection:
+4. Send to peer connection:
    Tracks → Encoder → Network → Friend's Decoder → Friend's speakers/screen
 
 Real-world parallel: Like setting up a live TV broadcast:
@@ -456,7 +456,7 @@ Layer 3: SCTP (for data channels)
 
          └── Encrypted arbitrary data
 
-Result: End-to-end encryption, mandatory\!
+Result: End-to-end encryption, mandatory!
 
 The Security Flow:
 
@@ -466,21 +466,21 @@ Friend: "My certificate fingerprint: XYZ789..."
 
 Step 2: DTLS handshake
 Browser: "Prove you're the person with fingerprint ABC123"
-Friend: \[Provides certificate\]
-Browser: "Verified\! ✅ Establishing encrypted channel..."
+Friend: [Provides certificate]
+Browser: "Verified! ✅ Establishing encrypted channel..."
 
 Step 3: All media encrypted
 
-Your pixels → \[Encrypted\] → → → \[Decrypted\] → Friend's screen
+Your pixels → [Encrypted] → → → [Decrypted] → Friend's screen
 
 
 Even if someone intercepts packets:
 
-Attacker: \[Captures encrypted data\]
+Attacker: [Captures encrypted data]
 
-Attacker: "All I see is: $\#&@\!\*\#@$\#\*&@..." 🤷
+Attacker: "All I see is: $#&@!*#@$#*&@..." 🤷
 
-Mental model: Like sending a locked box where only your friend has the key. The postal service (network) can't open it even if they tried\!
+Mental model: Like sending a locked box where only your friend has the key. The postal service (network) can't open it even if they tried!
 
 Why this matters:
 
@@ -495,7 +495,7 @@ Real-world parallel: Like using a courier vs. mailing a postcard:
 
 🚰 Adaptive Bitrate: Handling Bad Networks
 
-The Challenge: Internet speed fluctuates\!
+The Challenge: Internet speed fluctuates!
 
 Perfect WiFi:   ▓▓▓▓▓▓▓▓▓▓ (High quality video)
 
@@ -529,27 +529,27 @@ Network Terrible (200 kbps available):
 
   ├── Video paused/frozen
 
-  └── Call continues\! 🎯
+  └── Call continues! 🎯
 
 How it works:
 
-1\. Monitor connection:
+1. Monitor connection:
 
    RTCPeerConnection detects:
 
-   \- Packet loss percentage
+   - Packet loss percentage
 
-   \- Round-trip time (latency)
+   - Round-trip time (latency)
 
-   \- Available bandwidth
+   - Available bandwidth
 
-2\. Adjust encoding:
+2. Adjust encoding:
 
    High bandwidth → videoTrack.bitrate \= 2500000
 
    Low bandwidth  → videoTrack.bitrate \= 500000
 
-3\. Switch codecs if needed:
+3. Switch codecs if needed:
 
    VP8 (high quality) ←→ H.264 (efficient) ←→ VP9 (adaptive)
 
@@ -578,17 +578,17 @@ Code snippet:
 
 
 
-Real-world parallel: Like a car's automatic transmission. Uphill? Lower gear. Highway? High gear. WebRTC automatically shifts quality based on network conditions\!
+Real-world parallel: Like a car's automatic transmission. Uphill? Lower gear. Highway? High gear. WebRTC automatically shifts quality based on network conditions!
 
 📊 Data Channels: Beyond Audio and Video
 
-Surprise\! WebRTC isn't just for video calls\!
+Surprise! WebRTC isn't just for video calls!
 
-Data Channels \= Send ANY data peer-to-peer\!
+Data Channels \= Send ANY data peer-to-peer!
 
 Use cases:
 
-├── File sharing (no server middleman\!)
+├── File sharing (no server middleman!)
 
 ├── Gaming (low-latency game state)
 
@@ -596,7 +596,7 @@ Use cases:
 
 ├── Screen sharing annotations
 
-└── Chat messages (encrypted\!)
+└── Chat messages (encrypted!)
 
 Creating a Data Channel:
 
@@ -651,7 +651,7 @@ function sendFile(file) {
 
 
 
-Real-world parallel: Data channels are like having a private encrypted tunnel between you and your friend. Send files, messages, game moves—anything\!—without a server seeing it.
+Real-world parallel: Data channels are like having a private encrypted tunnel between you and your friend. Send files, messages, game moves—anything!—without a server seeing it.
 
 Configuration options:
 
@@ -675,7 +675,7 @@ The Timeline:
 
 0ms:    User clicks "Call"
 
-10ms:   getUserMedia() \- Get camera/mic
+10ms:   getUserMedia() - Get camera/mic
 
 200ms:  Create RTCPeerConnection
 
@@ -697,11 +697,11 @@ The Timeline:
 
 1200ms: ICE connectivity checks
 
-1500ms: 🎉 Direct connection established\!
+1500ms: 🎉 Direct connection established!
 
 1510ms: Media starts flowing
 
-Total time to connect: \~1.5 seconds\!
+Total time to connect: \~1.5 seconds!
 
 💡 Final Synthesis Challenge: The Revolution Comparison
 
@@ -720,9 +720,9 @@ The Complete Picture: WebRTC is like having a direct video wire from your house 
 
 ✅ Initial setup requires asking neighbors for directions (signaling server)
 
- ✅ Once found, you connect directly \- no middleman (peer-to-peer)
+ ✅ Once found, you connect directly - no middleman (peer-to-peer)
 
- ✅ The wire is encrypted \- only you and friend can understand signals (DTLS/SRTP)
+ ✅ The wire is encrypted - only you and friend can understand signals (DTLS/SRTP)
 
  ✅ Adjusts picture quality based on wire capacity (adaptive bitrate)
 
@@ -739,7 +739,7 @@ This is why:
 * Costs are lower (no server bandwidth charges)
 * Quality adapts to your connection automatically
 
-WebRTC makes real-time, secure, peer-to-peer communication accessible to any web developer\!
+WebRTC makes real-time, secure, peer-to-peer communication accessible to any web developer!
 
 🎯 Quick Recap: Test Your Understanding Without looking back, can you explain:
 
@@ -748,7 +748,7 @@ WebRTC makes real-time, secure, peer-to-peer communication accessible to any web
 3. When would you use TURN instead of direct P2P?
 4. What's the difference between mesh and SFU architectures?
 
-Mental check: If you can answer these clearly, you've mastered WebRTC fundamentals\!
+Mental check: If you can answer these clearly, you've mastered WebRTC fundamentals!
 
 🚀 Your Next Learning Adventure Now that you understand WebRTC, explore:
 

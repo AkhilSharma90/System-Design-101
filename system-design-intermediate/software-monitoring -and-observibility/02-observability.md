@@ -22,13 +22,13 @@ Monitoring (The Known Unknowns):
 
 Examples:
 
-\- Is the server up? ✓/❌
+- Is the server up? ✓/❌
 
-\- Is CPU usage \<80%? ✓/❌
+- Is CPU usage \<80%? ✓/❌
 
-\- Is disk space \>20%? ✓/❌
+- Is disk space >20%? ✓/❌
 
-\- Are errors \<1%? ✓/❌
+- Are errors \<1%? ✓/❌
 
 Like a car dashboard:
 
@@ -38,7 +38,7 @@ Like a car dashboard:
 
 ⚠️ Check engine: Off
 
-Problem: Only shows what you expected to check\!
+Problem: Only shows what you expected to check!
 
 Observability (The Unknown Unknowns):
 
@@ -48,13 +48,13 @@ Observability (The Unknown Unknowns):
 
 Examples:
 
-\- Why is THIS specific user seeing errors?
+- Why is THIS specific user seeing errors?
 
-\- What happened in the 5 minutes before the crash?
+- What happened in the 5 minutes before the crash?
 
-\- Which code path led to this slow request?
+- Which code path led to this slow request?
 
-\- How are these services interacting?
+- How are these services interacting?
 
 Like a flight recorder:
 
@@ -66,7 +66,7 @@ Like a flight recorder:
 
 ⏱️ Every timestamp
 
-You can investigate ANYTHING after the fact\!
+You can investigate ANYTHING after the fact!
 
 ### **The Three Pillars of Observability**
 
@@ -90,7 +90,7 @@ The Story:
 
 Logs tell you THE STORY of what happened.
 
-**Connection to Previous Section:** This is why we learned log levels\! Logs are the foundation of observability.
+**Connection to Previous Section:** This is why we learned log levels! Logs are the foundation of observability.
 
 **Pillar 2: Metrics (How much/many)**
 
@@ -112,7 +112,7 @@ active\_users: 10,543
 
 Metrics tell you QUANTITATIVE data.
 
-Time-series data you can graph\!
+Time-series data you can graph!
 
 **Pillar 3: Traces (The journey)**
 
@@ -136,7 +136,7 @@ User Request → API Gateway (20ms)
 
     └→ Payment Service (200ms)
 
-        └→ External API (180ms) ← SLOW\!
+        └→ External API (180ms) ← SLOW!
 
     └→ Return Response
 
@@ -146,7 +146,7 @@ Traces show you THE PATH through your system.
 
 ### **Real-World Observability Example**
 
-Problem Report: "Checkout is slow\!"
+Problem Report: "Checkout is slow!"
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
@@ -156,11 +156,11 @@ Step 1: Check Metrics (Is it slow?)
 
 Average checkout time:
 
-\- Yesterday: 500ms ✓
+- Yesterday: 500ms ✓
 
-\- Today: 3000ms ❌
+- Today: 3000ms ❌
 
-Confirmed\! 6x slower\!
+Confirmed! 6x slower!
 
 Step 2: Check Logs (What's happening?)
 
@@ -174,7 +174,7 @@ Filter: service=checkout, time=last_hour
 
 [WARN] Payment service timeout (2000ms exceeded)... 127 more warnings |
 
-Pattern found\! Payment service timing out\!
+Pattern found! Payment service timing out!
 
 Step 3: Check Traces (Where exactly?)
 
@@ -198,7 +198,7 @@ Checkout Request (total: 3200ms)
 
     └─ Retry logic (100ms)
 
-Found it ! Stripe API is slowing down\!
+Found it ! Stripe API is slowing down!
 
 Step 4: Check External Service Status
 
@@ -222,11 +222,11 @@ B. Switch to backup payment processor ✓
 C. Show better error message ✓
 
 Implemented:
-\- Failover to backup processor
+- Failover to backup processor
 
-\- Better timeout handling (1000ms instead of 3000ms)
+- Better timeout handling (1000ms instead of 3000ms)
 
-\- User-friendly error: "Payment processing slow, trying backup..."
+- User-friendly error: "Payment processing slow, trying backup..."
 
 Result: Checkout time back to 600ms ✓
 
@@ -234,7 +234,7 @@ Result: Checkout time back to 600ms ✓
 
 **Popular Observability Platforms:**
 
-1\. DataDog
+1. DataDog
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
@@ -248,11 +248,11 @@ Result: Checkout time back to 600ms ✓
 
 Use for: Production systems
 
-2\. Prometheus \+ Grafana
+2. Prometheus \+ Grafana
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
-✓ Open source (free\!)
+✓ Open source (free!)
 
 ✓ Powerful querying
 
@@ -262,7 +262,7 @@ Use for: Production systems
 
 Use for: Cost-conscious startups
 
-3\. ELK Stack (Elasticsearch, Logstash, Kibana)
+3. ELK Stack (Elasticsearch, Logstash, Kibana)
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
@@ -276,7 +276,7 @@ Use for: Cost-conscious startups
 
 Use for: Log-heavy applications
 
-4\. New Relic
+4. New Relic
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 

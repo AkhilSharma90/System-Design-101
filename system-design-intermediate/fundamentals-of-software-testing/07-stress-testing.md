@@ -33,14 +33,14 @@ Stress test:
 
   ✓ 250 cars → Bridge sagging ⚠️
 
-  ✗ 300 cars → Bridge collapses\! 💥
+  ✗ 300 cars → Bridge collapses! 💥
 
 Now you know: Safety limit is 250 cars
 Can post warning signs at 200 cars
 
 ### **Types of Stress Testing:**
 
-#### **1\. Load Testing (Sustained)**
+#### **1. Load Testing (Sustained)**
 
 Gradually increase load:
 
@@ -57,13 +57,13 @@ Hour 5: 30,000 users  →  Response time: 2000ms ❌
 
 Breaking point: \~25,000 concurrent users
 
-#### **2\. Spike Testing (Sudden)**
+#### **2. Spike Testing (Sudden)**
 
 Sudden traffic spike:
 
 Normal:   1,000 users
   ↓
-Spike:   50,000 users (in 10 seconds\!)
+Spike:   50,000 users (in 10 seconds!)
   ↓
 Observe: How does system handle sudden surge?
 
@@ -75,7 +75,7 @@ Scenarios:
 
 ❌ Bad: System crashes, needs manual restart
 
-#### **3\. Endurance Testing (Soak)**
+#### **3. Endurance Testing (Soak)**
 
 Sustained load over long period:
 
@@ -99,7 +99,7 @@ Hour 1:  Memory usage: 2GB
 
 Hour 12: Memory usage: 4GB
 
-Hour 24: Memory usage: 6GB ⚠️ Memory leak detected\!
+Hour 24: Memory usage: 6GB ⚠️ Memory leak detected!
 
 ### **Stress Test Example: News Website**
 
@@ -114,37 +114,37 @@ Tool: Apache JMeter or Gatling or k6
 Test Script:
 // Ramp up to peak load
 
-\- Start: 10,000 virtual users
+- Start: 10,000 virtual users
 
-\- Every minute: Add 20,000 users
+- Every minute: Add 20,000 users
 
-\- Peak: 200,000 users
+- Peak: 200,000 users
 
-\- Duration: 30 minutes at peak
+- Duration: 30 minutes at peak
 
-\- Ramp down: Gradual decrease
+- Ramp down: Gradual decrease
 
 User Behavior:
 
-1\. Load homepage (80% of requests)
+1. Load homepage (80% of requests)
 
-2\. Read article (15% of requests)
+2. Read article (15% of requests)
 
-3\. Post comment (5% of requests)
+3. Post comment (5% of requests)
 
 Metrics to Monitor:
 
 Performance:
-\- Response time (p50, p95, p99)
-\- Throughput (requests/second)
-\- Error rate (%)
+- Response time (p50, p95, p99)
+- Throughput (requests/second)
+- Error rate (%)
 
 Resources:
-\- CPU usage (%)
-\- Memory usage (GB)
-\- Disk I/O
-\- Network bandwidth
-\- Database connections
+- CPU usage (%)
+- Memory usage (GB)
+- Disk I/O
+- Network bandwidth
+- Database connections
 
 Results:
 
@@ -177,10 +177,10 @@ Phase 3: 100,000-150,000 users
 
   Errors: 2% ❌
 
-  Database: Connection pool exhausted\! 💥
+  Database: Connection pool exhausted! 💥
 
 Phase 4: 150,000+ users
-  Response time: \>5000ms or timeout ❌
+  Response time: >5000ms or timeout ❌
 
   CPU: 100% (maxed) ❌
 
@@ -194,13 +194,13 @@ Finding: System breaks at \~120,000 concurrent users
 
 Bottlenecks Identified:
 
-1\. Database connection pool too small (max 100 connections)
+1. Database connection pool too small (max 100 connections)
 
-2\. Application servers CPU-bound
+2. Application servers CPU-bound
 
-3\. No caching layer for homepage
+3. No caching layer for homepage
 
-4\. No rate limiting
+4. No rate limiting
 
 Recommendations:
 
@@ -215,29 +215,29 @@ Recommendations:
 ✅ Add rate limiting (100 req/min per IP)
 
 After fixes, re-test:
-New capacity: 300,000 concurrent users\! ✅
+New capacity: 300,000 concurrent users! ✅
 
 ### **Stress Testing Tools:**
 
-1\. Apache JMeter
-   \- GUI-based test design
-   \- Extensive protocols support
-   \- Distributed testing
+1. Apache JMeter
+   - GUI-based test design
+   - Extensive protocols support
+   - Distributed testing
 
-2\. Gatling
-   \- Code-based (Scala)
-   \- Excellent reporting
-   \- Real-time monitoring
+2. Gatling
+   - Code-based (Scala)
+   - Excellent reporting
+   - Real-time monitoring
 
-3\. k6 (by Grafana)
-   \- JavaScript-based scripts
-   \- Developer-friendly
-   \- CI/CD integration
+3. k6 (by Grafana)
+   - JavaScript-based scripts
+   - Developer-friendly
+   - CI/CD integration
 
-4\. Locust (Python)
-   \- Python scripts
-   \- Distributed load generation
-   \- Web UI
+4. Locust (Python)
+   - Python scripts
+   - Distributed load generation
+   - Web UI
 
 Example k6 script:
 

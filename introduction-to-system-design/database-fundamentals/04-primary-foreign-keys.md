@@ -8,7 +8,7 @@ premium: false
 
 
 
-## **Primary Key vs Foreign Key \- The Relationship Builders**
+## **Primary Key vs Foreign Key - The Relationship Builders**
 
 ### **🎯 Challenge 4: The Student ID Mystery**
 
@@ -21,7 +21,7 @@ premium: false
 
 **Think about it:** What system would you use to identify and connect students?
 
-### **The Answer: Keys\!**
+### **The Answer: Keys!**
 
 ---
 
@@ -45,7 +45,7 @@ premium: false
  CREATE TABLE students (  student_id INT PRIMARY KEY,   first_name VARCHAR(50),  last_name VARCHAR(50),  email VARCHAR(100),  birth_date DATE)
 
 ```
-\-- Sample data:
+-- Sample data:
 
 ![img1](https://res.cloudinary.com/dretwg3dy/image/upload/v1764427380/208_uykzxc.png)
 
@@ -61,7 +61,7 @@ premium: false
 * ❌ **Name:** Not unique (many "John Smith"s exist)
 * ❌ **Email:** Could change when student graduates
 * ❌ **Phone number:** Can change
-* ❌ **Age:** Definitely changes\!
+* ❌ **Age:** Definitely changes!
 
 ---
 
@@ -83,13 +83,13 @@ student_id INT, course_id INT, enrollment_date DATE,  grade VARCHAR(2), FOREIGN 
 
 ![img2](https://res.cloudinary.com/dretwg3dy/image/upload/v1764427379/207_xje9pv.png)
 
-Alice (student\_id: 1001\) is enrolled in:
-  → CS101 (via enrollment\_id 1\)
-  → MATH200 (via enrollment\_id 2\)
+Alice (student\_id: 1001) is enrolled in:
+  → CS101 (via enrollment\_id 1)
+  → MATH200 (via enrollment\_id 2)
 
 CS101 has these students:
-  → Alice (student\_id: 1001\)
-  → Bob (student\_id: 1002\)
+  → Alice (student\_id: 1001)
+  → Bob (student\_id: 1002)
 
 ---
 
@@ -108,10 +108,10 @@ CS101 has these students:
 
 **Answers:**
 
-1. **Primary Key** \- Uniquely identifies each person
-2. **Foreign Key** \- Links order to a customer
-3. **Primary Key** \- Uniquely identifies each order
-4. **Foreign Key** \- Links order item to a product
+1. **Primary Key** - Uniquely identifies each person
+2. **Foreign Key** - Links order to a customer
+3. **Primary Key** - Uniquely identifies each order
+4. **Foreign Key** - Links order item to a product
 
 ---
 
@@ -126,22 +126,22 @@ CS101 has these students:
  INSERT INTO enrollments (student_id, course_id) VALUES (9999, 'CS101');
 
  ```
- \-- Student 9999 doesn't exist\!\-- Result: ❌ ERROR: Foreign key constraint violated\!\-- Database says: "Can't enroll a student that doesn't exist\!
+ -- Student 9999 doesn't exist!-- Result: ❌ ERROR: Foreign key constraint violated!-- Database says: "Can't enroll a student that doesn't exist!
 
  Scenario 2: Broken References
- \-- Try to delete a student who has enrollments
+ -- Try to delete a student who has enrollments
  ```sql
 
  DELETE FROM students WHERE student_id = 1001;
  ```
 
- \-- Result: ❌ ERROR: Foreign key constraint violated
+ -- Result: ❌ ERROR: Foreign key constraint violated
 
- \-- Database says: "Can't delete student with existing enrollments\!"
+ -- Database says: "Can't delete student with existing enrollments!"
 
- \-- (You'd have orphaned enrollments pointing to non-existent student)Options for handling deletions:
+ -- (You'd have orphaned enrollments pointing to non-existent student)Options for handling deletions:
 
- \-- CASCADE: Delete enrollments when student is deleted
+ -- CASCADE: Delete enrollments when student is deleted
 
 
  FOREIGN KEY (student_id)
@@ -149,13 +149,13 @@ CS101 has these students:
  SET NULL: Set student_id to NULL in enrollments
  FOREIGN KEY (student_id) REFERENCES students(student_id)
  ON DELETE SET NULL;
- \-- RESTRICT: Prevent deletion (default)
+ -- RESTRICT: Prevent deletion (default)
  FOREIGN KEY (student_id) REFERENCES students(student_id)  ON DELETE RESTRICT;
 
 
 
 
-**Mental model:** Foreign keys are like safety ropes in mountain climbing. They ensure you can't fall off a cliff (create invalid references) and keep everything connected safely\!
+**Mental model:** Foreign keys are like safety ropes in mountain climbing. They ensure you can't fall off a cliff (create invalid references) and keep everything connected safely!
 
 ---
 

@@ -11,7 +11,7 @@ premium: false
 
 # **💓 Health Checks and Heartbeats: Is Your System Alive?**
 
-Imagine if your heart stopped beating and nobody noticed for an hour. Terrifying\! That's why we have health checks and heartbeats.
+Imagine if your heart stopped beating and nobody noticed for an hour. Terrifying! That's why we have health checks and heartbeats.
 
 ### **Health Checks: The Wellness Checkup**
 
@@ -22,13 +22,13 @@ The Doctor Visit Analogy:
 
 Doctor asks:
 
-\- Are you breathing? (Process running?)
+- Are you breathing? (Process running?)
 
-\- Is your heart beating? (Database connected?)
+- Is your heart beating? (Database connected?)
 
-\- Can you walk? (APIs responding?)
+- Can you walk? (APIs responding?)
 
-\- Do you feel okay? (Error rate normal?)
+- Do you feel okay? (Error rate normal?)
 
 If all answers are "yes" → Healthy ✓
 
@@ -53,7 +53,7 @@ It returns the status of the server in json format
 
 **Types of Health Checks:**
 
-**1\. Shallow Health Check (Quick Check)**
+**1. Shallow Health Check (Quick Check)**
 
 Purpose: "Is the server responding?"
 
@@ -73,17 +73,17 @@ Example:
  ```
 Use case:
 
-\- Load balancer health check
+- Load balancer health check
 
-\- Called every 5 seconds
+- Called every 5 seconds
 
-\- Must be FAST
+- Must be FAST
 
 Pro: Fast, low overhead
 
 Con: Doesn't check dependencies
 
-**2\. Deep Health Check (Thorough Check)**
+**2. Deep Health Check (Thorough Check)**
 
 Purpose: "Is everything working?"
 
@@ -111,11 +111,11 @@ Purpose: "Is everything working?"
  ```
 
 Use case:
-\- Deep health check is used for manual debugging
+- Deep health check is used for manual debugging
 
-\- It can be used to provide detailed monitoring
+- It can be used to provide detailed monitoring
 
-\- Called less frequently
+- Called less frequently
 
 Pro: It is a more comprehensive form of health check
 Con: Slower, more resource intensive
@@ -183,7 +183,7 @@ Server 3: GET /health → 200 OK ✓
 Traffic: Back to 33% / 33% / 33%
 ```
 
-**Connection to Previous Topics:** This eliminates SPOF\! If one server fails, load balancer detects it via health checks and routes traffic to healthy servers.
+**Connection to Previous Topics:** This eliminates SPOF! If one server fails, load balancer detects it via health checks and routes traffic to healthy servers.
 
 ### **Heartbeats: The Continuous Pulse**
 
@@ -194,7 +194,7 @@ The Difference:
 
 Health Check (Pull):
 
-    Monitor ────────\> Server
+    Monitor ────────> Server
 
     "Are you alive?"
 
@@ -202,9 +202,9 @@ Health Check (Pull):
 
 Heartbeat (Push):
 
-    Server ────────\> Monitor
+    Server ────────> Monitor
 
-    "I'm alive\!"
+    "I'm alive!"
 
     Server sends regularly
 
@@ -272,7 +272,7 @@ timestamp: 1697712345000
 ```
 
 
-Monitor knows: What worker is doing right now\!
+Monitor knows: What worker is doing right now!
 
 Pattern 3: Dead Man's Switch
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━

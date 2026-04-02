@@ -28,15 +28,15 @@ Result: Unsolvable ❌
 With logs (Cameras everywhere):
 Detective: "Let me review the footage..."
 Evidence:
-\- 2:34 PM: Person A entered
+- 2:34 PM: Person A entered
 
-\- 2:37 PM: Person B entered
+- 2:37 PM: Person B entered
 
-\- 2:40 PM: Loud noise
+- 2:40 PM: Loud noise
 
-\- 2:41 PM: Person B exited quickly
+- 2:41 PM: Person B exited quickly
 
-Result: Solvable\! ✓
+Result: Solvable! ✓
 
 Same with your app:
 
@@ -52,21 +52,21 @@ With logs:
 
 "Let me check what happened..."
 
-03:00:01 \- User 12345 placed order
+03:00:01 - User 12345 placed order
 
-03:00:02 \- Payment processing started
+03:00:02 - Payment processing started
 
-03:00:03 \- ERROR: Database connection timeout
+03:00:03 - ERROR: Database connection timeout
 
-03:00:04 \- System crashed
+03:00:04 - System crashed
 
-Result: Found the problem\! ✓
+Result: Found the problem! ✓
 
 ### **The Five Log Levels Explained**
 
 Think of log levels like severity levels in a hospital:
 
-**1\. DEBUG \- The Detailed Diary**
+**1. DEBUG - The Detailed Diary**
 
 Hospital Analogy: Recording vitals of the patients every 5 minutes
 
@@ -147,9 +147,9 @@ Authentication completed successfully
 
 * Understanding code flow
 
-* **Never in production** (too much data involved \!)
+* **Never in production** (too much data involved !)
 
-**2\. INFO \- The Normal Operations Log**
+**2. INFO - The Normal Operations Log**
 
 Hospital Analogy: Recording routine events about the patients
 
@@ -209,7 +209,7 @@ Output:[INFO] 2025-10-19 14:30:01 - User 12345 logged in successfully [INFO]
 * Keep audit trail
 * Normal operations
 
-**3\. WARN \- The Concerning But Not Critical**
+**3. WARN - The Concerning But Not Critical**
 
 Hospital Analogy: Potential problems
 
@@ -281,20 +281,20 @@ Scenario: E-commerce site
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
-| 14:00 \- [INFO\] Server started
+| 14:00 - [INFO] Server started
 
-14:15 \- \[INFO\] 100 requests/minute (normal)
+14:15 - [INFO] 100 requests/minute (normal)
 
-14:30 \- \[WARN\] 300 requests/minute (unusual spike)
+14:30 - [WARN] 300 requests/minute (unusual spike)
 
-14:45 \- \[WARN\] 500 requests/minute (concerning)
+14:45 - [WARN] 500 requests/minute (concerning)
 
-15:00 \- \[ERROR\] 1000 requests/minute \- Server overloaded\! |
+15:00 - [ERROR] 1000 requests/minute - Server overloaded! |
 
-The WARNs gave you 30 minutes to act\!
-Could have scaled up servers before ERROR\!
+The WARNs gave you 30 minutes to act!
+Could have scaled up servers before ERROR!
 
-**4\. ERROR \- The Problem Log**
+**4. ERROR - The Problem Log**
 
 Hospital Analogy: Medical emergencies
 
@@ -304,7 +304,7 @@ Hospital Analogy: Medical emergencies
 "Medication allergy detected"
 "Patient fell out of bed"
 
-Status: Immediate attention required\!
+Status: Immediate attention required!
 Action: Doctors respond now
 
 Code Example:
@@ -363,7 +363,7 @@ WARN vs ERROR:
 | WARN:
 "Payment took 5 seconds (slow but succeeded)" ⚠️
 
-ERROR: "Payment failed \- user got error message" ❌
+ERROR: "Payment failed - user got error message" ❌
 
 WARN: "Database query slow (800ms)" ⚠️
 
@@ -371,20 +371,20 @@ ERROR: "Database connection lost" ❌
 
 WARN: "Disk 85% full" ⚠️
 
-ERROR: "Disk 100% full \- can't write files" ❌
+ERROR: "Disk 100% full - can't write files" ❌
 
 WARN: Things still work, but concerning
 
 ERROR: Things broke, user impacted
 
 
-**5\. FATAL/CRITICAL \- The System Killer**
+**5. FATAL/CRITICAL - The System Killer**
 
 Hospital Analogy: Code Blue
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
-"Patient cardiac arrest\!"
+"Patient cardiac arrest!"
 
 "Critical system failure"
 
@@ -479,7 +479,7 @@ Output (JSON):
 
 Benefits:
 
-✓ Easy to search: "Show all orders \> $100"
+✓ Easy to search: "Show all orders > $100"
 
 ✓ Easy to aggregate: "Total revenue today?"
 
@@ -489,7 +489,7 @@ Benefits:
 
 **Real-World Debugging Example:**
 
-Problem: "Some users can't checkout\!"
+Problem: "Some users can't checkout!"
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
@@ -553,7 +553,7 @@ payment_declined errors →
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
-❌ Passwords (NEVER\!)
+❌ Passwords (NEVER!)
 
 ❌ Credit card numbers
 
@@ -570,7 +570,7 @@ Example of what NOT to do:
 logger.info(\`User logged in with  password: ${password}\`); ❌❌❌
 
 
-THIS IS A SECURITY BREACH\!
+THIS IS A SECURITY BREACH!
 
 **Log Retention:**
 
@@ -611,6 +611,6 @@ Monthly cost: $16.80
 
 Yearly cost: $201.60
 
-Worth it for debugging? YES\! ✓
+Worth it for debugging? YES! ✓
 
 ---

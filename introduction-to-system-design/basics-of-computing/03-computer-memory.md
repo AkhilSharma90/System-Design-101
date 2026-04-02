@@ -7,7 +7,7 @@ premium: false
 ---
 
 
-## **💾 3: Memory Hierarchy \- The Speed Pyramid**
+## **💾 3: Memory Hierarchy - The Speed Pyramid**
 
 You’ll learn more about storage in the “Storage Fundamentals”**section of the content in following
 
@@ -37,9 +37,9 @@ Which do you use?
 
 **The Answer:**
 
-ALL OF THEM\! You use different storage based on frequency of access and size\!
+ALL OF THEM! You use different storage based on frequency of access and size!
 
-**This is exactly how computer memory works\!**
+**This is exactly how computer memory works!**
 
 ---
 
@@ -72,7 +72,7 @@ SSD:          4 days       (fly to Europe)
 
 HDD:          1 year       (travel to Saturn)
 
-The difference is MASSIVE\!
+The difference is MASSIVE!
 
 ---
 
@@ -80,7 +80,7 @@ The difference is MASSIVE\!
 
 #### **Level 1: CPU Registers**
 
-🎯 REGISTERS \- The Brain's Scratchpad
+🎯 REGISTERS - The Brain's Scratchpad
 
 Location: Inside the CPU itself
 
@@ -107,7 +107,7 @@ Think of it as: Calculator display showing current number
 
 #### **Level 2: L1 Cache**
 
-🚀 L1 CACHE \- The CPU's Immediate Memory
+🚀 L1 CACHE - The CPU's Immediate Memory
 
 Location: On the CPU chip, closest to cores
 Size: 32-64 KB per core
@@ -128,7 +128,7 @@ Think of it as: Items on your desk within arm's reach
 
 #### **Level 3: L2 Cache**
 
-💨 L2 CACHE \- The CPU's Short-term Memory
+💨 L2 CACHE - The CPU's Short-term Memory
 
 Location: On CPU chip, still very close
 Size: 256-512 KB per core
@@ -152,7 +152,7 @@ Think of it as: Drawer under your desk
 
 #### **Level 4: L3 Cache**
 
-⚡ L3 CACHE \- Shared CPU Memory
+⚡ L3 CACHE - Shared CPU Memory
 
 Location: On CPU chip, shared by all cores
 Size: 8-64 MB (entire chip)
@@ -176,7 +176,7 @@ Think of it as: Bookshelf in your office (shared)
 
 #### **Level 5: RAM (Random Access Memory)**
 
-💾 RAM \- Main System Memory
+💾 RAM - Main System Memory
 
 Location: Separate chips on motherboard
 Size: 8-128 GB (typical systems)
@@ -214,11 +214,11 @@ Think of it as: Your desk workspace
 
 #### **Level 6: SSD (Solid State Drive)**
 
-💿 SSD \- Fast Persistent Storage
+💿 SSD - Fast Persistent Storage
 
 Location: Connected via SATA/NVMe
 
-Size: 256 GB \- 4 TB
+Size: 256 GB - 4 TB
 
 Speed: 100 microseconds (100,000 nanoseconds)
 
@@ -252,7 +252,7 @@ Think of it as: Filing cabinet with instant-access drawers
 
 #### **Level 7: HDD (Hard Disk Drive)**
 
-💽 HDD \- Slow Mechanical Storage
+💽 HDD - Slow Mechanical Storage
 
 Location: Connected via SATA
 Size: 1-20 TB
@@ -265,7 +265,7 @@ Characteristics:
 
 ✓ Persistent
 
-✓ Very slow (moving parts\!)
+✓ Very slow (moving parts!)
 
 ✓ 100,000x slower than RAM
 
@@ -275,7 +275,7 @@ Characteristics:
 
 ✓ Makes noise, uses power
 
-✓ Fragile (hates drops\!)
+✓ Fragile (hates drops!)
 
 Think of it as: Warehouse storage (takes time to retrieve)
 
@@ -292,28 +292,28 @@ CPU needs value at memory address 0x1234:
 Step 1: Check L1 Cache
 ────────────────────────
 CPU: "Is address 0x1234 in L1?"
-L1: "Checking... NO\!" ❌
+L1: "Checking... NO!" ❌
 Time wasted: 1 nanosecond
 Status: L1 CACHE MISS
 
 Step 2: Check L2 Cache
 ────────────────────────
 CPU: "Is address 0x1234 in L2?"
-L2: "Checking... NO\!" ❌
+L2: "Checking... NO!" ❌
 Time wasted: 3 nanoseconds (total: 4ns)
 Status: L2 CACHE MISS
 
 Step 3: Check L3 Cache
 ────────────────────────
 CPU: "Is address 0x1234 in L3?"
-L3: "Checking... NO\!" ❌
+L3: "Checking... NO!" ❌
 Time wasted: 15 nanoseconds (total: 19ns)
 Status: L3 CACHE MISS
 
 Step 4: Check RAM
 ────────────────────────
 CPU: "Is address 0x1234 in RAM?"
-RAM: "Found it\! Here's the value: 42" ✓
+RAM: "Found it! Here's the value: 42" ✓
 Time taken: 100 nanoseconds (total: 119ns)
 Status: RAM HIT
 
@@ -326,10 +326,10 @@ Copy value to L1: Address 0x1234 \= 42
 Next time CPU needs 0x1234:
 ────────────────────────
 CPU: "Is address 0x1234 in L1?"
-L1: "YES\! Value \= 42" ✓
+L1: "YES! Value \= 42" ✓
 Time taken: 1 nanosecond
 
-119x faster the second time\! 🚀
+119x faster the second time! 🚀
 
 ---
 
@@ -357,20 +357,20 @@ Example with 1000 memory accesses:
   \= 1000 ns
 
 Total: 2,385 ns for 1000 accesses
-Average: 2.4 ns per access\!
+Average: 2.4 ns per access!
 
 Without caches (all from RAM):
 1000 × 100 ns \= 100,000 ns
 
-CACHE MAKES IT 42x FASTER\! 🚀
+CACHE MAKES IT 42x FASTER! 🚀
 
 ---
 
 ### **🚨 Common Misconception: "More Cache Always Better"**
 
-**You might think:** "I want 1GB of L1 cache\!"
+**You might think:** "I want 1GB of L1 cache!"
 
-**The Reality:** Cache size is a careful balance\!
+**The Reality:** Cache size is a careful balance!
 
 ❌ WHY YOU CAN'T HAVE HUGE CACHES:
 
@@ -388,12 +388,12 @@ Problem 2: SPEED TRADEOFF
 
 ├─ More area \= longer wires
 
-└─ Longer wires \= SLOWER access\!
+└─ Longer wires \= SLOWER access!
 
 Problem 3: COST
 ├─ Cache memory is extremely expensive
-├─ L1 cache: $1000+ per MB\!
-└─ RAM: $5 per GB (200,000x cheaper\!)
+├─ L1 cache: $1000+ per MB!
+└─ RAM: $5 per GB (200,000x cheaper!)
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
@@ -409,7 +409,7 @@ L3: 8-64 MB (larger, shared, still fast)
 
 RAM: 8-128 GB (huge, slower)
 
-Each level is the sweet spot for its purpose\!
+Each level is the sweet spot for its purpose!
 
 **The Engineering Tradeoff:**
 
@@ -419,7 +419,7 @@ Hypothetical 1MB L1 Cache:
 
 ✓ More data stored
 
-✗ 10x slower access (defeats the purpose\!)
+✗ 10x slower access (defeats the purpose!)
 
 ✗ Takes up space for 2 CPU cores
 
@@ -435,7 +435,7 @@ Actual 32KB L1 Cache:
 
 ✓ High enough hit rate (95%)
 
-Result: Small but fast beats large but slow\!
+Result: Small but fast beats large but slow!
 
 ---
 
@@ -463,7 +463,7 @@ Why this hierarchy exists:
 
    ↕️ HDD: Very slow, massive
 
-The Principle: Keep frequently used data close\!
+The Principle: Keep frequently used data close!
 
 LOCALITY OF REFERENCE:
 
@@ -478,4 +478,4 @@ Spatial locality:
 
 → Load whole cache lines (64 bytes at a time)
 
-This is why caches work so well\!
+This is why caches work so well!

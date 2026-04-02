@@ -26,7 +26,7 @@ Old API:
  ```
 
 
-One day, you realize "Wait\! We need separate first and last names\!" So you change it to:
+One day, you realize "Wait! We need separate first and last names!" So you change it to:
 
 New API:
 ```bash
@@ -38,7 +38,7 @@ New API:
 
 **What happens?**
 
-All 1000 apps crash instantly\! They're expecting `name`, but now there's `first_name` and `last_name`. Their code breaks:
+All 1000 apps crash instantly! They're expecting `name`, but now there's `first_name` and `last_name`. Their code breaks:
 
 // Old app code
 ```javascript
@@ -46,7 +46,7 @@ All 1000 apps crash instantly\! They're expecting `name`, but now there's `first
 console.log(user.name)  // undefined\! The field doesn't exist anymore\!
 ```
 
-This is called a **breaking change**, and it's a disaster\!
+This is called a **breaking change**, and it's a disaster!
 
 ### **The Solution: API Versioning**
 
@@ -208,7 +208,7 @@ Client → Server
 
 ```
 
-Same URL, different version\!
+Same URL, different version!
 
 Pros:
 
@@ -313,7 +313,7 @@ More flexible, OK\
 
 v1: Returns wrong calculation
 
-v1.1: Returns correct calculation  ← Same format, OK\! |
+v1.1: Returns correct calculation  ← Same format, OK! |
 
 ### **Real Example: Stripe's API**
 
@@ -333,14 +333,14 @@ Stripe-Version: 2023-10-16
 
 Stripe has DATED versions:
 
-\- 2023-10-16
+- 2023-10-16
 
-\- 2024-01-15
+- 2024-01-15
 
-\- 2024-06-20
+- 2024-06-20
 
 When you create an account, you're locked to that version.
-You can upgrade when ready\!
+You can upgrade when ready!
 
 ### **The Deprecation Dance**
 
@@ -359,7 +359,7 @@ Warning: API v1 is deprecated. It will be removed on 2026-10-19.
 
 Please migrate to v2:
 
-https://docs.myapi.com/v2\-migration
+https://docs.myapi.com/v2-migration
 
 Step 2: Remind users (6 months ahead)
 

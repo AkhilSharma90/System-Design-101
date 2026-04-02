@@ -6,19 +6,19 @@ orderIndex: 2
 premium: false
 ---
 
-# **Back of the Envelope Calculations \- The Estimation Game**
+# **Back of the Envelope Calculations - The Estimation Game**
 
 ### **🎯 Challenge 2: The Impossible Interview Question**
 
 **Interviewer asks:** "Design a system that can handle WhatsApp-scale messaging. How much storage do you need?"
 
-**Your first reaction:** "Umm... a lot? Maybe... 100 terabytes? Or is it petabytes? I have no idea\! 😰"
+**Your first reaction:** "Umm... a lot? Maybe... 100 terabytes? Or is it petabytes? I have no idea! 😰"
 
 **Pause and think:** How can you go from complete confusion to a reasonable estimate in 2 minutes?
 
-**The Answer:** Back of the envelope calculations\! These are quick, rough estimates that get you in the right ballpark.
+**The Answer:** Back of the envelope calculations! These are quick, rough estimates that get you in the right ballpark.
 
-**Key Insight:** You don't need exact numbers. Being within 10x is often good enough for design decisions\!
+**Key Insight:** You don't need exact numbers. Being within 10x is often good enough for design decisions!
 
 ---
 
@@ -42,11 +42,11 @@ Trillion    \=        10¹²          \= 1 TB
 
 ──────────────────────────────────────
 
-1 day       \= 86,400 seconds   ≈ 100K seconds (rounded\!)
+1 day       \= 86,400 seconds   ≈ 100K seconds (rounded!)
 
 1 month     ≈ 2.5 million seconds
 
-1 year      ≈ 31 million seconds (remember: π × 10⁷ seconds\!)
+1 year      ≈ 31 million seconds (remember: π × 10⁷ seconds!)
 
 
 💾 DATA SIZES (rough estimates)
@@ -65,7 +65,7 @@ High-res photo \= 2 MB
 
 Movie (1080p, 2hrs) \= 4 GB
 
-**Mental Model:** These rounded numbers make math easy\! 86,400 seconds/day becomes 100K seconds. Close enough for estimates\!
+**Mental Model:** These rounded numbers make math easy! 86,400 seconds/day becomes 100K seconds. Close enough for estimates!
 
 ---
 
@@ -89,9 +89,9 @@ What data does Twitter store?
 
 ✓ User profiles
 
-Let's estimate each\!
+Let's estimate each!
 
-📝 STEP 2: Make assumptions (and state them\!)
+📝 STEP 2: Make assumptions (and state them!)
 
 ──────────────────────────────────────
 
@@ -140,7 +140,7 @@ Add 20% for replication and backups:
 
 **Final Answer:** "Twitter needs approximately **150-200 petabytes** of storage per year."
 
-**Reality check:** Twitter's actual numbers are in this ballpark\! You got it right with just napkin math\! 🎉
+**Reality check:** Twitter's actual numbers are in this ballpark! You got it right with just napkin math! 🎉
 
 ---
 
@@ -184,14 +184,14 @@ Bandwidth needed:
 
 ──────────────────────────────────────
 
-Netflix actually uses 100-200 Tbps during peak hours\!
-Our estimate was spot on\! 🎯
+Netflix actually uses 100-200 Tbps during peak hours!
+Our estimate was spot on! 🎯
 
 **Mental Model:** Don't aim for perfection. Aim for "right order of magnitude."
 
 If your answer is:
 
-* ✅ 100-200 Tbps → Excellent estimate\!
+* ✅ 100-200 Tbps → Excellent estimate!
 * ✅ 50-500 Tbps → Good ballpark
 * ❌ 1 Tbps or 10,000 Tbps → Off by too much
 
@@ -215,7 +215,7 @@ STEP 2: 📝 STATE ASSUMPTIONS
 
 └─ Data sizes
 
-└─ Write them down\!
+└─ Write them down!
 
 STEP 3: 🧮 CALCULATE IN CHUNKS
 
@@ -243,7 +243,7 @@ STEP 5: 🎁 ADD BUFFERS
 
 ---
 
-### **🎮 Practice Game: Quick Estimates\!**
+### **🎮 Practice Game: Quick Estimates!**
 
 **Try these yourself before looking at answers:**
 
@@ -263,11 +263,11 @@ STEP 5: 🎁 ADD BUFFERS
 
 Assumptions:
 
-\- Google users worldwide: 4 billion
+- Google users worldwide: 4 billion
 
-\- Searches per person per day: 3
+- Searches per person per day: 3
 
-\- Peak traffic: 2x average
+- Peak traffic: 2x average
 
 Calculation:
 
@@ -286,11 +286,11 @@ Reality: Google handles \~100,000 QPS average, \~200,000 peak ✓
 
 Assumptions:
 
-\- Daily meeting hours: 3 billion minutes
+- Daily meeting hours: 3 billion minutes
 
-\- Video bitrate: 2 Mbps
+- Video bitrate: 2 Mbps
 
-\- Storage with compression: 1 MB/minute
+- Storage with compression: 1 MB/minute
 
 Calculation:
 
@@ -304,11 +304,11 @@ Answer: \~1 exabyte per year
 
 Assumptions:
 
-\- Photos uploaded per day: 100 million
+- Photos uploaded per day: 100 million
 
-\- Upload takes 2 seconds per photo
+- Upload takes 2 seconds per photo
 
-\- Server handles 1000 req/sec
+- Server handles 1000 req/sec
 
 Calculation:
 
@@ -334,7 +334,7 @@ Answer: \~5,000 servers for uploads
 
 └─ "It's exactly 247,394 requests per second"
 
-└─ Fix: Round\! "About 250K requests/second"
+└─ Fix: Round! "About 250K requests/second"
 
 ❌ PITFALL 2: Forgetting peak vs. average
 
@@ -352,13 +352,13 @@ Answer: \~5,000 servers for uploads
 
 └─ Calculating you need 1 million servers
 
-└─ Fix: "Wait, that's more than Google. Recheck\!"
+└─ Fix: "Wait, that's more than Google. Recheck!"
 
 ❌ PITFALL 5: Analysis paralysis
 
 └─ Spending 20 minutes on perfect numbers
 
-└─ Fix: 2-5 minutes max. Rough is good enough\!
+└─ Fix: 2-5 minutes max. Rough is good enough!
 
 ---
 
@@ -382,7 +382,7 @@ COMMON BENCHMARKS TO REMEMBER
 
    RAM: 16-64 GB
 
-   Disk: 500 GB \- 2 TB
+   Disk: 500 GB - 2 TB
 
 🌐 Web page load:
 
@@ -499,7 +499,7 @@ Servers needed: 500K ÷ 144 \= 3,500 encoding servers
 
 Storage: 200 PB new per year (+ historical data)
 
-Bandwidth: \~2,000 Tbps (petabits per second\!)
+Bandwidth: \~2,000 Tbps (petabits per second!)
 
 Encoding servers: \~4,000
 
@@ -507,4 +507,4 @@ Streaming servers: \~50,000 (estimated separately)
 
 Reality: YouTube stores \~1 exabyte total, uses \~1,000 Tbps
 
-Our estimates are in the right ballpark\! 🎉
+Our estimates are in the right ballpark! 🎉

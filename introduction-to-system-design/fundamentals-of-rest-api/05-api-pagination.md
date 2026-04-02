@@ -8,19 +8,19 @@ premium: false
 
 #  Pagination: Handling Large Request Resources Like a Pro
 
-Okay, imagine someone asked you to send them a list of every person in your city. You'd probably say "That's impossible\! There are too many\!"
+Okay, imagine someone asked you to send them a list of every person in your city. You'd probably say "That's impossible! There are too many!"
 
 That's exactly the problem pagination solves.
 
 ### **The Phone Book Story**
 
-Remember old phone books?  Phone books had thousands of listings. Did they print one giant list? No\! They:
+Remember old phone books?  Phone books had thousands of listings. Did they print one giant list? No! They:
 
 1. Organized alphabetically
 2. Added page numbers
 3. Let you jump to sections (A-D, E-H, etc.)
 
-**That's pagination\!**
+**That's pagination!**
 
 ### **Why Do We Need Pagination?**
 
@@ -54,7 +54,7 @@ Problems:
 
 ❌ Costs you thousands in bandwidth fees
 
-**Solution: Only send a small "page" at a time\!**
+**Solution: Only send a small "page" at a time!**
 
 ### **Method 1: Offset Pagination (The Page Number System)**
 
@@ -79,7 +79,7 @@ Request for Page 1:
  ```
  Server thinks:"Page 1, limit 10... let me calculate:
 
- Offset \= (page \- 1\) × limit \= (1 \- 1\) × 10 \= 0
+ Offset \= (page - 1) × limit \= (1 - 1) × 10 \= 0
 
  So, fetch items from position 0 to 9"
 
@@ -105,7 +105,7 @@ Request for Page 2:
 
 Server calculates:
 
-Offset \= (2 \- 1) × 10 \= 10
+Offset \= (2 - 1) × 10 \= 10
 
 So, fetch items from position 10 to 19
 
@@ -154,13 +154,13 @@ Let’s see why this method has issues. Imagine you're on page 5, looking at pos
 
 Page 5 shows posts 41-50
 
-While you're reading, someone deletes post \#35
+While you're reading, someone deletes post #35
 
 Now:
 
-Post \#41 becomes post \#40
+Post #41 becomes post #40
 
-Post \#42 becomes post \#41
+Post #42 becomes post #41
 
 
 When you click "Next" to page 6:
@@ -173,9 +173,9 @@ GET /posts?page=6\&limit=10
 
 (Expecting to see posts 51-60)
 
-But now you see posts 50-59\!
+But now you see posts 50-59!
 
-You MISSED post \#50 because everything shifted\!
+You MISSED post #50 because everything shifted!
 
 This is called the "shifting data problem."
 
@@ -237,7 +237,7 @@ GET /posts?cursor=eyJpZCI6MTEwfQ==
 Server: "Give me items AFTER ID 110"
 
 Result: You still get items 111-120
-Nothing shifted because you're using absolute identifiers\!
+Nothing shifted because you're using absolute identifiers!
 
 ### **Real-World Example: Social Media Feed**
 
@@ -272,11 +272,11 @@ GET /feed?limit=20\&cursor=post\_980
 Server: "Show 20 posts AFTER post\_980"
 
 Even if:
-\- New posts are added
-\- Posts are deleted
-\- Posts are edited
+- New posts are added
+- Posts are deleted
+- Posts are edited
 
-You'll never see duplicates or miss posts\!
+You'll never see duplicates or miss posts!
 
 ### **Which Pagination Method Should You Use?**
 

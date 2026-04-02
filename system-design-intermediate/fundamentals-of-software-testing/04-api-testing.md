@@ -13,7 +13,7 @@ API testing verifies that **endpoints return correct responses** for various inp
 
 What API Testing Checks:
 
-✓ Correct HTTP status codes (200, 404, 500\)
+✓ Correct HTTP status codes (200, 404, 500)
 
 ✓ Response format (JSON structure)
 
@@ -45,7 +45,7 @@ Customer: (no payment)
 
 Window: "Payment required" ✅
 
-Test the window interface thoroughly\!
+Test the window interface thoroughly!
 
 ### **API Test Example: User Management API**
 
@@ -109,7 +109,7 @@ Body: { "error": "Invalid user ID format",    "code": "INVALID_FORMAT"  }
 
 ### **API Testing Types:**
 
-#### **1\. Contract Testing**
+#### **1. Contract Testing**
 
 Verify API matches documented contract:
 
@@ -133,9 +133,9 @@ Test:
 
 ✗ Request missing required field → 400 Bad Request?
 
-Contract must match reality\!
+Contract must match reality!
 
-#### **2\. Security Testing**
+#### **2. Security Testing**
 
 Endpoint: DELETE /api/users/{id}
 
@@ -159,7 +159,7 @@ DELETE /api/users/1' OR '1' ='1 → Blocked
 
 ✓ XSS attempt:
 
-POST /api/users {name: "\<script\>alert('xss')\</script\>"} → Sanitized
+POST /api/users {name: "\<script>alert('xss')\</script>"} → Sanitized
 
 
 ✓ Rate limiting: 1000 requests in 1 second →
@@ -169,7 +169,7 @@ POST /api/users {name: "\<script\>alert('xss')\</script\>"} → Sanitized
 
 
 
-#### **3\. Performance Testing**
+#### **3. Performance Testing**
 
 Endpoint: GET /api/products
 
@@ -195,17 +195,17 @@ Tests:
 
 Popular Tools:
 
-1\. Postman
+1. Postman
 
-   \- GUI interface
+   - GUI interface
 
-   \- Collection runner
+   - Collection runner
 
-   \- Environment variables
+   - Environment variables
 
-   \- Automated testing
+   - Automated testing
 
-2\. curl (Command line)
+2. curl (Command line)
 
 ```bash
    curl \-X POST  https://api.example.com/users  \
@@ -213,7 +213,7 @@ Popular Tools:
 -d '{"name":"John","email":"john@example.com"}'
 ```
 
-3\. REST Assured (Java)
+3. REST Assured (Java)
 
 
 ```java
@@ -227,7 +227,7 @@ Popular Tools:
 ```
 
 
-4\. Pytest \+ Requests (Python)
+4. Pytest \+ Requests (Python)
 
 ```python
   def test_get_user():

@@ -13,17 +13,17 @@ Option A (Polling): You check the door every 30 seconds for an hour
 * Check... nothing
 * Check... nothing
 * Check... nothing (getting tired...)
-* Check... PIZZA IS HERE\! (finally\!)
+* Check... PIZZA IS HERE! (finally!)
 
 Option B (Webhooks): Pizza place calls you when it arrives
 
 * You go about your day
-* *Ring ring* "Pizza's at your door\!"
+* *Ring ring* "Pizza's at your door!"
 * You open the door immediately
 
 Pause and think: Which option wastes less energy and gives you instant notification?
 
-The Answer: Webhooks are Option B\! Instead of constantly asking "Is it ready yet?" (polling), the server proactively tells you when something happens (push notification).
+The Answer: Webhooks are Option B! Instead of constantly asking "Is it ready yet?" (polling), the server proactively tells you when something happens (push notification).
 
 Traditional API (Polling):
 
@@ -35,16 +35,16 @@ You → Server: "Any updates?"
 Server → You: "No, not yet"
 
 You → Server: "Any updates?"
-Server → You: "Yes\! Here's the data\!"
+Server → You: "Yes! Here's the data!"
 
 Webhook (Event-Driven):
 
-\[Time passes... you do other work...\]
+[Time passes... you do other work...]
 
-Server → You: "HEY\! Something happened\! Here's the data\!"
-You: "Thanks\! I'll process it right away"
+Server → You: "HEY! Something happened! Here's the data!"
+You: "Thanks! I'll process it right away"
 
-Key Insight: Webhooks reverse the communication pattern \- the server becomes the client, calling YOUR endpoint when events occur\!
+Key Insight: Webhooks reverse the communication pattern - the server becomes the client, calling YOUR endpoint when events occur!
 
 🎬 Interactive Exercise: The Movie Theater Analogy
 
@@ -65,41 +65,41 @@ Theater: "No"
 
 30 minutes later...
 You: Walk to theater → "Tickets available?"
-Theater: "Yes\! Just became available\!"
+Theater: "Yes! Just became available!"
 
 Problem:
-\- Wasted trips ⛽
-\- Delayed notification ⏰
-\- Theater answers same question repeatedly 😤
+- Wasted trips ⛽
+- Delayed notification ⏰
+- Theater answers same question repeatedly 😤
 
 Webhook Approach:
 
 You: "Here's my phone number. Call me when tickets are available"
-Theater: "Got it\! We'll let you know"
+Theater: "Got it! We'll let you know"
 
-\[You go about your day...\]
+[You go about your day...]
 
-Theater: \*Calls you\* "Tickets are available\!"
+Theater: *Calls you* "Tickets are available!"
 You: Rush to theater and buy immediately
 
 Benefits:
-\- No wasted trips ✅
-\- Instant notification 🔔
-\- Theater only calls when needed 🎯
+- No wasted trips ✅
+- Instant notification 🔔
+- Theater only calls when needed 🎯
 
-Real-world parallel: Webhooks are like signing up for notifications instead of constantly refreshing a page\!
+Real-world parallel: Webhooks are like signing up for notifications instead of constantly refreshing a page!
 
 🔌 How Webhooks Work: The Anatomy
 
 The Setup Phase:
 
-1\. You provide an endpoint (webhook URL):
+1. You provide an endpoint (webhook URL):
    "Call me at: https://myapp.com/webhook"
 
-2\. You register for events:
+2. You register for events:
    "Tell me about: payment.succeeded, payment.failed"
 
-3\. Server stores your preferences:
+3. Server stores your preferences:
 
 ```json
 {
@@ -111,7 +111,7 @@ The Setup Phase:
 
 
 
-Setup complete\! ✅
+Setup complete! ✅
 
 The Event Flow:
 
@@ -149,7 +149,7 @@ Real-world parallel: Webhooks are like having a doorbell. When someone arrives (
 
 You might think: "Isn't this just a normal API?"
 
-The KEY difference: WHO initiates the call\!
+The KEY difference: WHO initiates the call!
 
 Traditional API (You control timing):
 You decide WHEN to ask
@@ -277,24 +277,24 @@ and not a malicious actor trying to trick you?
 Solution 1: Webhook Signatures (HMAC)
 
 How it works:
-1\. Provider gives you a secret key: "sk\_live\_abc123xyz"
+1. Provider gives you a secret key: "sk\_live\_abc123xyz"
 
-2\. Provider computes signature:
+2. Provider computes signature:
 
 
 |   signature \= HMAC-SHA256(request\_body, secret\_key)   signature \= "a1b2c3d4e5f6..." |
 | :---- |
 
-3\. Provider sends webhook with header:
+3. Provider sends webhook with header:
 
 
 |  X-Signature: sha256=a1b2c3d4e5f6... |
 | :---- |
 
-4\. You verify:
+4. You verify:
 
 
-|  computed \= HMAC-SHA256(request\_body, "sk\_live\_abc123xyz")   if (computed \=== received\_signature):     ✅ Authentic\!   else:     ❌ Reject\! Possible attack\! |
+|  computed \= HMAC-SHA256(request\_body, "sk\_live\_abc123xyz")   if (computed \=== received\_signature):     ✅ Authentic!   else:     ❌ Reject! Possible attack! |
 | :---- |
 
 Code snippet (Verification):
@@ -388,7 +388,7 @@ Security Best Practices:
 
 ✅ ALWAYS verify webhook signatures
 
-✅ Use HTTPS endpoints (never HTTP\!)
+✅ Use HTTPS endpoints (never HTTP!)
 
 ✅ Keep webhook secrets in environment variables
 
@@ -431,7 +431,7 @@ Attempt 3 (6min later):    ❌ Failed
 
 Wait 15 minutes
 
-Attempt 4 (21min later):   ✅ SUCCESS\!
+Attempt 4 (21min later):   ✅ SUCCESS!
 
 Common retry patterns:
 
@@ -473,15 +473,15 @@ app.post('/webhook', async (req, res) => {
 Idempotency: The Duplicate Problem
 
 Scenario: Your server was slow, so provider retried.
-You receive the same webhook TWICE\!
+You receive the same webhook TWICE!
 
 Webhook 1: "Payment of $100 succeeded"
-\[Process: Add $100 to user account\]
+[Process: Add $100 to user account]
 
-Webhook 2: "Payment of $100 succeeded" (DUPLICATE\!)
-\[Process: Add $100 AGAIN?\!\] ← DISASTER\!
+Webhook 2: "Payment of $100 succeeded" (DUPLICATE!)
+[Process: Add $100 AGAIN?!] ← DISASTER!
 
-User gets $200 instead of $100\! 💸
+User gets $200 instead of $100! 💸
 
 Solution: Idempotency Keys
 ```js
@@ -509,7 +509,7 @@ app.post('/webhook', (req, res) => {
 ````
 
 
-Real-world parallel: Idempotency is like having a ticket stub at an event. Try to enter twice with the same stub? Security says "You already entered\!"
+Real-world parallel: Idempotency is like having a ticket stub at an event. Try to enter twice with the same stub? Security says "You already entered!"
 
 Status Code Guide:
 Here's the properly formatted table:
@@ -714,7 +714,7 @@ This is why:
 * Monitoring services use webhooks (instant alerts)
 * E-commerce platforms use webhooks (order status updates)
 
-Webhooks transform polling nightmares into elegant event-driven architectures\!
+Webhooks transform polling nightmares into elegant event-driven architectures!
 
 🎯 Quick Recap: Test Your Understanding Without looking back, can you explain:
 
@@ -723,7 +723,7 @@ Webhooks transform polling nightmares into elegant event-driven architectures\!
 3. What is idempotency and why does it matter?
 4. When should you use webhooks vs. polling?
 
-Mental check: If you can answer these clearly, you've mastered webhook fundamentals\!
+Mental check: If you can answer these clearly, you've mastered webhook fundamentals!
 
 🚀 Your Next Learning Adventure Now that you understand Webhooks, explore:
 

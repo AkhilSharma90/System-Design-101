@@ -20,7 +20,7 @@ Now imagine: What if that function lived on a server in California, but you're i
 
 Pause and think: How can we make calling a remote function feel as natural as calling a local one?
 
-The Answer: gRPC (gRPC Remote Procedure Call) makes remote functions feel local\! It's like having a magic telephone that makes distant functions feel like they're right next to you.
+The Answer: gRPC (gRPC Remote Procedure Call) makes remote functions feel local! It's like having a magic telephone that makes distant functions feel like they're right next to you.
 
 Key Features:
 
@@ -32,12 +32,12 @@ Key Features:
 
 ✅ Language-agnostic (Java calls Python calls Go...)
 
-✅ Built-in streaming (not just request-response\!)
+✅ Built-in streaming (not just request-response!)
 
 ✅ Production-grade (load balancing, auth, tracing)
 
 
-Key Insight: gRPC treats network calls as if they were function calls in your codebase\!
+Key Insight: gRPC treats network calls as if they were function calls in your codebase!
 
 🎬 Interactive Exercise: The Local vs Remote Call
 
@@ -64,13 +64,13 @@ print(f"Tax: ${result}")  # Tax: $8.0
 
 What happens:
 
-1\. Function call happens in same process
+1. Function call happens in same process
 
-2\. Parameters passed via memory
+2. Parameters passed via memory
 
-3\. Result returned immediately
+3. Result returned immediately
 
-4\. Type-safe (Python knows parameter types)
+4. Type-safe (Python knows parameter types)
 
 Timeline: \< 0.001ms
 
@@ -97,17 +97,17 @@ REST API Approach (Traditional Remote):
 
 What happens:
 
-1\. Construct HTTP request manually
+1. Construct HTTP request manually
 
-2\. Serialize data to JSON (string)
+2. Serialize data to JSON (string)
 
-3\. Send over network
+3. Send over network
 
-4\. Parse JSON response
+4. Parse JSON response
 
-5\. No type safety (could send anything\!)
+5. No type safety (could send anything!)
 
-6\. Manual error handling
+6. Manual error handling
 
 Timeline: 50-200ms (network latency)
 Boilerplate: High
@@ -115,7 +115,7 @@ Type safety: None
 
 gRPC Approach (Modern Remote):
 
-\# Client code \- looks almost like local call\!
+# Client code - looks almost like local call!
 ```python
 import calculator_pb2
 import calculator_pb2_grpc
@@ -136,17 +136,17 @@ print(f"Tax: ${response.tax}")
 
 
 
-1\. Call looks like local function
+1. Call looks like local function
 
-2\. Protocol Buffers serialization (binary, fast)
+2. Protocol Buffers serialization (binary, fast)
 
-3\. HTTP/2 multiplexing (efficient)
+3. HTTP/2 multiplexing (efficient)
 
-4\. Automatic deserialization
+4. Automatic deserialization
 
-5\. Full type safety (compiler checks\!)
+5. Full type safety (compiler checks!)
 
-6\. Built-in error handling
+6. Built-in error handling
 
 Timeline: 50-200ms (same network, but faster processing)
 Boilerplate: Low
@@ -157,7 +157,7 @@ Real-world parallel:
 * REST API \= Writing a formal letter to make a request
 * gRPC \= Picking up a phone and calling a function directly
 
-The magic: gRPC generates client code that makes remote calls feel local\!
+The magic: gRPC generates client code that makes remote calls feel local!
 
 🏗️ Building Your First gRPC Service
 
@@ -218,7 +218,7 @@ python -m grpc_tools.protoc \
 ```
 
 
-\# server.py
+# server.py
 ```python
 import grpc
 from concurrent import futures
@@ -331,14 +331,14 @@ Client:  ←──── Product 3    Server
 
 Client:  ←──── Product N    Server
 
-Client:  ←──── \[Stream ends\] Server
+Client:  ←──── [Stream ends] Server
 
 Usage: Large datasets, real-time updates
 Example: Stock price feed, log streaming, search results
 
 Code example:
 
-\# Server
+# Server
 ```python
 # Server
 def ListProducts(self, request, context):
@@ -375,7 +375,7 @@ Client:  Image 2 ────→ Server
 
 Client:  Image 3 ────→ Server
 
-Client:  \[Done sending\] ────→ Server
+Client:  [Done sending] ────→ Server
 
 Client:  ←──── "Uploaded 3 images" Server
 
@@ -390,11 +390,11 @@ Flow:
 
 Client:  "Hello" ────→ Server
 
-Client:  ←──── "Hi there\!" Server
+Client:  ←──── "Hi there!" Server
 
 Client:  "How are you?" ────→ Server
 
-Client:  ←──── "I'm good\!" Server
+Client:  ←──── "I'm good!" Server
 
 (continues both ways simultaneously)
 
@@ -494,11 +494,11 @@ HTTP/1.1 (REST APIs):
 
 └── Large headers (repeated on every request)
 
-Client → Server: \[Request 1\] Wait... \[Request 2\] Wait...
+Client → Server: [Request 1] Wait... [Request 2] Wait...
 
 HTTP/2 (gRPC):
 
-├── Multiple requests on one connection (multiplexing\!)
+├── Multiple requests on one connection (multiplexing!)
 
 ├── Binary protocol (efficient)
 
@@ -506,7 +506,7 @@ HTTP/2 (gRPC):
 
 └── Server push capability
 
-Client → Server: \[Req1\]\[Req2\]\[Req3\] all at once\!
+Client → Server: [Req1][Req2][Req3] all at once!
 
 Layer 2: Protocol Buffers (Binary Encoding)
 
@@ -516,15 +516,15 @@ Size: 55 bytes
 
 Protobuf (gRPC):
 
-\[Binary data\]
+[Binary data]
 
-Size: \~20 bytes (64% smaller\!)
+Size: \~20 bytes (64% smaller!)
 
 Speed comparison:
 
 JSON serialization:   100 microseconds
 
-Protobuf serialization: 10 microseconds (10x faster\!)
+Protobuf serialization: 10 microseconds (10x faster!)
 
 Layer 3: Multiplexing Magic
 
@@ -555,7 +555,7 @@ REST (Multiple HTTP/1.1 connections):
 
 
 
-Overhead: 3 TCP connections\!
+Overhead: 3 TCP connections!
 
 gRPC (Single HTTP/2 connection):
 
@@ -568,7 +568,7 @@ gRPC (Single HTTP/2 connection):
 │              │────→│Req C│
 
 └──────────────┘
-Overhead: Just 1 TCP connection\!
+Overhead: Just 1 TCP connection!
 
 Real-world performance:
 
@@ -586,11 +586,11 @@ REST (JSON over HTTP/1.1):
 
 gRPC (Protobuf over HTTP/2):
 
-├── Total time: 0.8 seconds (6.5x faster\!)
+├── Total time: 0.8 seconds (6.5x faster!)
 
 ├── Connections: 1
 
-├── Data transferred: 0.6 MB (76% less\!)
+├── Data transferred: 0.6 MB (76% less!)
 
 └── CPU usage: Low (binary parsing)
 
@@ -602,7 +602,7 @@ Built-in Security Options:
 
 1. TLS/SSL (Transport Security)
 
-\# Server with TLS
+# Server with TLS
 ```python
 
 import grpc
@@ -622,7 +622,7 @@ server.add_secure_port('[::]:50051', server_credentials)
 
 2. Token-based Authentication
 
-\# Client sends token with each request
+# Client sends token with each request
 
 ```python
 class AuthInterceptor(grpc.UnaryUnaryClientInterceptor):
@@ -644,7 +644,7 @@ stub = calculator_pb2_grpc.CalculatorStub(channel)
 
 3. Server-side Authentication Check
 
-| \# Server validates token
+| # Server validates token
 
 ```python
 
@@ -701,7 +701,7 @@ Here's the properly formatted gRPC status codes:
 
 Handling errors:
 
-| \# Server raises error
+| # Server raises error
 ```python
 # Server
 def GetUser(self, request, context):
@@ -741,7 +741,7 @@ Real-world parallel: Like HTTP status codes, but more specific to RPC scenarios.
 
 1. Deadlines & Timeouts
 
-| \# Client sets deadline
+| # Client sets deadline
 ```python
 # Client with timeout
 response = stub.CalculateTax(
@@ -764,7 +764,7 @@ def SlowOperation(self, request, context):
 
 2. Metadata (Custom Headers)
 
-| \# Client sends metadata
+| # Client sends metadata
 ```python
 # Client sends metadata
 metadata = [
@@ -791,7 +791,7 @@ def CalculateTax(self, request, context):
 
 3. Interceptors (Middleware)
 
-\# Logging interceptor
+# Logging interceptor
 ```python
 class LoggingInterceptor(grpc.ServerInterceptor):
     def intercept_service(self, continuation, handler_call_details):
@@ -807,7 +807,7 @@ server = grpc.server(
 
 4. Load Balancing
 
-| \# Client-side load balancing
+| # Client-side load balancing
 ```python
 
 channel = grpc.insecure_channel(
@@ -934,7 +934,7 @@ This is why:
 * Uber uses gRPC for high-performance features
 * Square uses gRPC for payment processing services
 
-gRPC transforms network calls from HTTP requests into typed function calls, making distributed systems feel like local codebases\!
+gRPC transforms network calls from HTTP requests into typed function calls, making distributed systems feel like local codebases!
 
 🎯 Quick Recap: Test Your Understanding Without looking back, can you explain:
 
@@ -943,7 +943,7 @@ gRPC transforms network calls from HTTP requests into typed function calls, maki
 3. How does gRPC maintain type safety?
 4. What's the difference between gRPC and REST for API design?
 
-Mental check: If you can answer these clearly, you've mastered gRPC fundamentals\!
+Mental check: If you can answer these clearly, you've mastered gRPC fundamentals!
 
 🚀 Your Next Learning Adventure Now that you understand gRPC, explore:
 

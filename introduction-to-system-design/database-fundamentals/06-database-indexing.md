@@ -10,7 +10,7 @@ premium: false
 
 
 
-## **Database Indexing \- The Library Card Catalog**
+## **Database Indexing - The Library Card Catalog**
 
 ### **🎯 Challenge 3: The Phonebook Problem**
 
@@ -18,7 +18,7 @@ premium: false
 
 **Method A:** Start at page 1, check every single name until you find John Smith
 
-* Time: Could take 50,000 comparisons on average\! 😰
+* Time: Could take 50,000 comparisons on average! 😰
 
 **Method B:** Use alphabetical organization:
 
@@ -26,11 +26,11 @@ premium: false
 * Too far? Go left
 * Not far enough? Go right
 * Repeat until found
-* Time: About 17 comparisons\! ⚡
+* Time: About 17 comparisons! ⚡
 
 **Question:** How is Method B so much faster?
 
-### **The Answer: Indexing\!**
+### **The Answer: Indexing!**
 
 **A database without indexes** \= Reading every single row to find what you need
 
@@ -52,7 +52,7 @@ premium: false
 
 Walk through EVERY aisle
 Check EVERY book title
-Found it after searching 50,000 books\! ⏰ 2 hours
+Found it after searching 50,000 books! ⏰ 2 hours
 
 **With Index (Card Catalog):**
 
@@ -72,9 +72,9 @@ Row 1: alice@example.com ❌
 Row 2: charlie@example.com ❌
 Row 3: david@example.com ❌
 ...
-Row 50,000: bob@example.com ✓ FOUND\!
+Row 50,000: bob@example.com ✓ FOUND!
 
-Time: Scanned 50,000 rows (SLOW\! 😰)
+Time: Scanned 50,000 rows (SLOW! 😰)
 
 **Same table WITH index on email:**
 
@@ -86,11 +86,11 @@ david@example.com    → Row 3
 ...
 
 Database uses index:
-1\. Binary search in index (fast\!)
-2\. Index points to Row 50,000
-3\. Jump directly to that row
+1. Binary search in index (fast!)
+2. Index points to Row 50,000
+3. Jump directly to that row
 
-Time: Scanned \~17 entries (FAST\! ⚡)
+Time: Scanned \~17 entries (FAST! ⚡)
 
 ---
 
@@ -159,7 +159,7 @@ Time: Scanned \~17 entries (FAST\! ⚡)
 * ⏱️ Slower INSERT/UPDATE/DELETE (must update indexes too)
 * 🔧 Maintenance overhead
 
-**Mental model:** Think of indexes like shortcuts in a video game. They get you places faster, but they take time to build and maintain\!
+**Mental model:** Think of indexes like shortcuts in a video game. They get you places faster, but they take time to build and maintain!
 
 ---
 
@@ -236,7 +236,7 @@ Execution time: 0.003 seconds
 
 ⚡ Rows examined: 50 (via index)
 
-**Speed improvement: 2,667x faster\!**
+**Speed improvement: 2,667x faster!**
 
 **Visual analogy:**
 
@@ -248,13 +248,13 @@ Execution time: 0.003 seconds
 
 ### **The Complete Picture: Building a Library System**
 
-Let's apply everything we've learned\!
+Let's apply everything we've learned!
 
 **1️⃣ Database Choice:**
 
 * Need structured data (books, members, loans)
 * Need relationships (members ←→ loans ←→ books)
-* Need accuracy (can't lose loan records\!)
+* Need accuracy (can't lose loan records!)
 * **Choice: SQL Database with ACID properties** ✓
 
 | 2️⃣ Table Design with Keys
@@ -331,7 +331,7 @@ UPDATE books SET available = false WHERE book_id = 42;
 
 COMMIT;
 ```
-\-- All or nothing\!**
+-- All or nothing!**
 
 ---
 
@@ -345,4 +345,4 @@ COMMIT;
 4. **What's the difference between a Primary Key and a Foreign Key?**
 5. **What do the letters in CRUD stand for?**
 
-**Mental check:** If you can answer these clearly, you've mastered database fundamentals\! 🎓
+**Mental check:** If you can answer these clearly, you've mastered database fundamentals! 🎓

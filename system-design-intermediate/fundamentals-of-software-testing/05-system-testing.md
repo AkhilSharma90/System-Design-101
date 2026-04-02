@@ -38,31 +38,31 @@ System Testing: Complete airplane test
 
 ✓ Can it handle turbulence?
 
-Test the COMPLETE system as passengers will experience it\!
+Test the COMPLETE system as passengers will experience it!
 
 ### **System Test Example: Banking Application**
 
 System Under Test:
 
-\- Web frontend (React)
+- Web frontend (React)
 
-\- Mobile app (iOS/Android)
+- Mobile app (iOS/Android)
 
-\- API gateway
+- API gateway
 
-\- Authentication service
+- Authentication service
 
-\- Account service
+- Account service
 
-\- Transaction service
+- Transaction service
 
-\- Notification service
+- Notification service
 
-\- Database cluster
+- Database cluster
 
-\- Message queue
+- Message queue
 
-\- External payment gateway
+- External payment gateway
 
 
 System Test Scenario: "Fund Transfer"
@@ -79,19 +79,19 @@ Prerequisites:
 
 Test Steps:
 
-1\. User logs in via web app
+1. User logs in via web app
 
    Verify: ✓ Session created
 
    Verify: ✓ Dashboard loads with account balance
 
-2\. User navigates to transfer page
+2. User navigates to transfer page
 
    Verify: ✓ Account list populated
 
    Verify: ✓ Available balance correct
 
-3\. User initiates transfer ($500)
+3. User initiates transfer ($500)
 
    Input: Recipient account, amount, note
 
@@ -99,7 +99,7 @@ Test Steps:
 
    Verify: ✓ Confirmation screen shown
 
-4\. User confirms transfer
+4. User confirms transfer
 
    Verify: ✓ Transaction processes
 
@@ -109,7 +109,7 @@ Test Steps:
 
    Verify: ✓ Transaction logged in database
 
-5\. System sends notifications
+5. System sends notifications
 
    Verify: ✓ SMS sent to sender
 
@@ -117,7 +117,7 @@ Test Steps:
 
    Verify: ✓ Push notification to mobile app
 
-6\. User checks mobile app
+6. User checks mobile app
 
    Verify: ✓ Transaction appears in history
 
@@ -125,7 +125,7 @@ Test Steps:
 
    Verify: ✓ Transaction details correct
 
-7\. System processes batch jobs (overnight)
+7. System processes batch jobs (overnight)
 
    Verify: ✓ Daily summary generated
 
@@ -133,45 +133,45 @@ Test Steps:
 
    Verify: ✓ Compliance reports generated
 
-All components working together in complete system\! ✅
+All components working together in complete system! ✅
 
 ### **Types of System Testing:**
 
-#### **1\. Functional System Testing**
+#### **1. Functional System Testing**
 
 Test: Complete business workflows
 
-\- User registration flow
+- User registration flow
 
-\- Purchase flow
+- Purchase flow
 
-\- Refund flow
+- Refund flow
 
-\- Account closure flow
+- Account closure flow
 
 Each flow touches multiple subsystems
 
-#### **2\. Non-Functional System Testing**
+#### **2. Non-Functional System Testing**
 
 Test: System qualities
 
-\- Performance (response times under load)
+- Performance (response times under load)
 
-\- Security (penetration testing)
+- Security (penetration testing)
 
-\- Usability (can users navigate easily?)
+- Usability (can users navigate easily?)
 
-\- Reliability (uptime, error rates)
+- Reliability (uptime, error rates)
 
-\- Scalability (handles growth?)
+- Scalability (handles growth?)
 
-#### **3\. Recovery Testing**
+#### **3. Recovery Testing**
 
 Test: System recovery from failures
 
 Simulate failures:
 
-1\. Kill database mid-transaction
+1. Kill database mid-transaction
 
    Expected: ✓ Transaction rolled back
 
@@ -179,13 +179,13 @@ Simulate failures:
 
    Expected: ✓ System remains stable
 
-2\. Restart application server
+2. Restart application server
 
    Expected: ✓ In-flight requests handled gracefully
 
    Expected: ✓ New requests succeed after restart
 
-3\. Network partition
+3. Network partition
 
    Expected: ✓ System detects partition
 
@@ -196,25 +196,25 @@ Simulate failures:
 Production-like "Staging" Environment:
 
 
-\[Load Balancer\] (Same config as prod)
+[Load Balancer] (Same config as prod)
 
        ↓
-\[App Servers\] (Same scale as prod)
+[App Servers] (Same scale as prod)
 
        ↓
-\[Databases\] (Replicated setup)
+[Databases] (Replicated setup)
 
        ↓
-\[Cache Layer\] (Redis cluster)
+[Cache Layer] (Redis cluster)
 
        ↓
-\[Message Queue\] (RabbitMQ/Kafka)
+[Message Queue] (RabbitMQ/Kafka)
 
        ↓
-\[External APIs\] (Sandbox/mocked)
+[External APIs] (Sandbox/mocked)
 
 
-As close to production as possible\!
+As close to production as possible!
 
 **Key characteristics:**
 

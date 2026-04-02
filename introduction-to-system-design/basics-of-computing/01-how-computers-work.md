@@ -47,7 +47,7 @@ A COMPUTER \= A BUSTLING CITY
    \= Roads connecting everything
    Pathways for information to flow
 
-**Key Insight:** Just like a city needs government, workspace, archives, citizens, and roads to function, your computer needs all these components working together\!
+**Key Insight:** Just like a city needs government, workspace, archives, citizens, and roads to function, your computer needs all these components working together!
 
 ---
 
@@ -57,7 +57,7 @@ A COMPUTER \= A BUSTLING CITY
 
 ---
 
-#### **a. THE CPU \- The Brain (Decision Maker)**
+#### **a. THE CPU - The Brain (Decision Maker)**
 
 🧠 WHAT THE CPU DOES:
 
@@ -66,7 +66,7 @@ Think of it as a chef in a kitchen:
 
 Your request: "Make a sandwich"
 
-CPU's job: \-
+CPU's job: -
 
   **Step 1. Read the recipe  (fetch instruction)**
 
@@ -78,7 +78,7 @@ CPU's job: \-
 
   **Step 5: Serve the sandwich (output result)**
 
-The CPU does this BILLIONS of times per second\!
+The CPU does this BILLIONS of times per second!
 
 Modern CPU (2025):
 ![img1](https://res.cloudinary.com/dretwg3dy/image/upload/v1762354297/21_siflv3.png)
@@ -91,7 +91,7 @@ Modern CPU (2025):
 
 ---
 
-#### **b. RAM \- The Workspace (Active Memory)**
+#### **b. RAM - The Workspace (Active Memory)**
 
 💾 WHAT RAM DOES:
 
@@ -117,11 +117,11 @@ Close Chrome (2GB freed):
 * 💰 Expensive: Costs more per GB than storage
 * 📏 Limited: 8GB, 16GB, 32GB typical sizes
 
-**Mental model:** RAM is like a desk \- fast to access, but cleared when you leave\!
+**Mental model:** RAM is like a desk - fast to access, but cleared when you leave!
 
 ---
 
-#### **c. STORAGE \- The Library (Long-term Memory)**
+#### **c. STORAGE - The Library (Long-term Memory)**
 
 💿 WHAT STORAGE DOES:
 
@@ -151,11 +151,11 @@ RAM: ❌ Loses everything
 * 💵 Cheaper: Much more GB per dollar
 * 📦 Large: 512GB, 1TB, 2TB+ common
 
-**Mental model:** Storage is like a warehouse \- holds lots of stuff, but takes time to retrieve\!
+**Mental model:** Storage is like a warehouse - holds lots of stuff, but takes time to retrieve!
 
 ---
 
-#### **d. INPUT/OUTPUT \- The Communication System**
+#### **d. INPUT/OUTPUT - The Communication System**
 
 🔄 HOW YOU INTERACT WITH THE COMPUTER:
 
@@ -166,23 +166,23 @@ RAM: ❌ Loses everything
 
 Example: Opening a photo
 
-1\. INPUT:
+1. INPUT:
    You: Double-click photo.jpg (mouse input)
 
-2\. PROCESSING:
+2. PROCESSING:
    CPU: "Open photo.jpg command received"
    Storage: Reads photo.jpg (10 MB)
    RAM: Loads photo into memory
    CPU: Decodes JPEG format
 
-3\. OUTPUT:
-   Monitor: Displays the beautiful image\!
+3. OUTPUT:
+   Monitor: Displays the beautiful image!
 
 ![img9](https://res.cloudinary.com/dretwg3dy/image/upload/v1762355306/page34_tnyzcv.png)
 
 
 Total time: \~100 milliseconds
-(Feels instant to you\!)
+(Feels instant to you!)
 
 ---
 
@@ -196,52 +196,52 @@ STEP-BY-STEP DATA JOURNEY:
 📍 STEP 1: You click "Play"
    Input: Mouse → CPU
 
-   \[Mouse\] → \[CPU receives click event\]
+   [Mouse] → [CPU receives click event]
 
 📍 STEP 2: CPU processes request
    CPU: "User wants to play video"
    CPU: "Check if Netflix is in RAM"
 
-   \[CPU checks\] → \[RAM has Netflix app ✓\]
+   [CPU checks] → [RAM has Netflix app ✓]
 
 📍 STEP 3: CPU requests video data
    CPU → Internet → Netflix servers
 
-   \[CPU\] → \[Network card\] → \[Internet\] → 🌐
+   [CPU] → [Network card] → [Internet] → 🌐
 
 📍 STEP 4: Video data arrives
    Network → RAM (buffering)
 
-   🌐 → \[RAM buffer: 00000000 Loading... 10 MB\]
+   🌐 → [RAM buffer: 00000000 Loading... 10 MB]
 
 📍 STEP 5: CPU decodes video
    RAM → CPU → Processes compressed video
    CPU: Decompresses, decodes frames
 
-   \[Compressed data\] → \[CPU\] → \[Raw video frames\]
+   [Compressed data] → [CPU] → [Raw video frames]
 
 📍 STEP 6: Play audio
    CPU → Sound Card → Speakers
 
-   \[Audio data\] → \[Audio processing\] → \[Speakers 🔊\]
+   [Audio data] → [Audio processing] → [Speakers 🔊]
 
-ALL OF THIS HAPPENS 60 TIMES PER SECOND\! 🤯
+ALL OF THIS HAPPENS 60 TIMES PER SECOND! 🤯
 (That's 60 frames per second for smooth video)
 
 ![img10](https://res.cloudinary.com/dretwg3dy/image/upload/v1768101443/basics_of_computing_kiwmm3.png)
 
-**Mental Model:** It's like a relay race where data is the baton, passed between different parts of the system\!
+**Mental Model:** It's like a relay race where data is the baton, passed between different parts of the system!
 
 ---
 
 ### **🚨 Common Misconception: "More RAM \= Faster Computer"**
 
-**You might think:** "I'll just add more RAM and everything will be faster\!"
+**You might think:** "I'll just add more RAM and everything will be faster!"
 
-**The Reality:** It's more nuanced\!
+**The Reality:** It's more nuanced!
 
 ❌ WRONG UNDERSTANDING:
-"32GB RAM will make my computer 2x faster than 16GB\!"
+"32GB RAM will make my computer 2x faster than 16GB!"
 
 
 ✅ CORRECT UNDERSTANDING:
@@ -255,7 +255,7 @@ i) Your RAM is 95% full
 
  ii) Computer uses slow disk swap
 
- iii) Result: VERY SLOW\! 🐌
+ iii) Result: VERY SLOW! 🐌
 
 
 
@@ -265,7 +265,7 @@ i) Now your RAM is 47% full
 
 ii) Everything fits in RAM
 
-iii) Result: MUCH FASTER\! 🚀
+iii) Result: MUCH FASTER! 🚀
 
 **Scenario B: You have 16GB RAM, use 8GB**
 
@@ -290,7 +290,7 @@ More RAM does nothing IF you already have enough.**
 **Better analogy:**
 
 * RAM \= Desk size
-* Too small desk \= Papers fall off, you work on floor (slow\!)
+* Too small desk \= Papers fall off, you work on floor (slow!)
 * Right size desk \= Everything fits, you work efficiently
 * Huge desk \= Extra space sits empty, doesn't make you faster
 
@@ -326,17 +326,17 @@ THE COMPUTER ORCHESTRA
 
 **ANSWERS:**
 
-A → 3 (Storage) \- Permanent photo storage
+A → 3 (Storage) - Permanent photo storage
 
-B → 1 (CPU) \- Performs calculations
+B → 1 (CPU) - Performs calculations
 
-C → 2 (RAM) \- Active apps live here
+C → 2 (RAM) - Active apps live here
 
-D → 5 (Output Device \- Monitor)
+D → 5 (Output Device - Monitor)
 
-E → 4 (Input Device \- Keyboard)
+E → 4 (Input Device - Keyboard)
 
-F → 6 (Motherboard) \- The circuit board connecting everything
+F → 6 (Motherboard) - The circuit board connecting everything
 
 
 ---

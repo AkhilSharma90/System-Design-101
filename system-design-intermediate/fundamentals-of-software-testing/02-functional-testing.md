@@ -18,17 +18,17 @@ Feature: User Login
 
 Test Cases:
 
-1\. Valid username \+ valid password → Success ✅
+1. Valid username \+ valid password → Success ✅
 
-2\. Valid username \+ wrong password → Error message ✅
+2. Valid username \+ wrong password → Error message ✅
 
-3\. Invalid username → Error message ✅
+3. Invalid username → Error message ✅
 
-4\. Empty fields → Validation error ✅
+4. Empty fields → Validation error ✅
 
-5\. Password with special chars → Success ✅
+5. Password with special chars → Success ✅
 
-6\. SQL injection attempt → Blocked ✅
+6. SQL injection attempt → Blocked ✅
 
 ### **Real-World Analogy:**
 
@@ -54,21 +54,21 @@ Oven:
 
   ✓ Does auto-shutoff work?
 
-Each appliance tested independently\!
+Each appliance tested independently!
 
 ### **Functional Testing Example: Password Reset Feature**
 
 Feature Requirements:
 
-\- User enters email
+- User enters email
 
-\- System sends reset link
+- System sends reset link
 
-\- Link expires in 24 hours
+- Link expires in 24 hours
 
-\- User sets new password
+- User sets new password
 
-\- Old password no longer works
+- Old password no longer works
 
 Test Cases:
 
@@ -88,7 +88,7 @@ Input: notindb@email.com
 
 Expected:
 
-  ✅ Generic success message (security \- don't reveal if email exists)
+  ✅ Generic success message (security - don't reveal if email exists)
 
   ✅ No email sent
 
@@ -143,17 +143,17 @@ Functional Testing (User perspective):
 
 "Can the user actually reset their password?"
 
-1\. User enters email
+1. User enters email
 
-2\. Clicks submit
+2. Clicks submit
 
-3\. Checks email inbox
+3. Checks email inbox
 
-4\. Clicks link
+4. Clicks link
 
-5\. Enters new password
+5. Enters new password
 
-6\. Logs in with new password
+6. Logs in with new password
 
 All steps work from UI → API → Database → Email ✅
 

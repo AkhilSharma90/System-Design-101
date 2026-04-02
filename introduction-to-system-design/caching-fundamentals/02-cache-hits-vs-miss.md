@@ -6,23 +6,23 @@ orderIndex: 2
 premium: false
 ---
 
-# Cache Hit vs Cache Miss \- The Performance Game
+# Cache Hit vs Cache Miss - The Performance Game
 
 ### **🎯 Challenge 2: The Book Detective**
 
 **Scenario:** You're looking for a book in a library:
 
-**Situation A:** You check the front desk → Book is there\! → Take it (10 seconds)
+**Situation A:** You check the front desk → Book is there! → Take it (10 seconds)
 
 **Situation B:** You check the front desk → Book is NOT there → Go to storage room → Search shelves → Find it → Bring to front (15 minutes)
 
 **Question:** Which situation is faster? What's the speed difference?
 
-### **The Answer: Cache Hit vs Cache Miss\!**
+### **The Answer: Cache Hit vs Cache Miss!**
 
-**Cache Hit:** Data found in cache (Situation A) \- Fast\! ⚡
+**Cache Hit:** Data found in cache (Situation A) - Fast! ⚡
 
-**Cache Miss:** Data not in cache, must fetch from source (Situation B) \- Slow\! ⏱️
+**Cache Miss:** Data not in cache, must fetch from source (Situation B) - Slow! ⏱️
 
 ---
 
@@ -57,39 +57,39 @@ The diagram shows how video is fetched from the original server and then stored 
 **Cache Hit Ratio \= Cache Hits / Total Requests × 100%**
 
 Example:
-\- 1000 requests
-\- 850 cache hits
-\- 150 cache misses
+- 1000 requests
+- 850 cache hits
+- 150 cache misses
 
 Hit Ratio \= 850/1000 \= 85%
 
 **What different ratios mean:**
 
-95-99% Hit Ratio: 🌟 Excellent\!
-    \- Most requests served from cache
-    \- Minimal database load
-    \- Great user experience
+95-99% Hit Ratio: 🌟 Excellent!
+    - Most requests served from cache
+    - Minimal database load
+    - Great user experience
 
 80-94% Hit Ratio: ✅ Good
-    \- Decent caching effectiveness
-    \- Room for improvement
-    \- Database still moderately busy
+    - Decent caching effectiveness
+    - Room for improvement
+    - Database still moderately busy
 
 50-79% Hit Ratio: ⚠️ Needs Work
-    \- Half requests hitting database
-    \- Cache strategy needs review
-    \- High database load
+    - Half requests hitting database
+    - Cache strategy needs review
+    - High database load
 
 Below 50% Hit Ratio: ❌ Poor
-    \- Cache not effective
-    \- Might be caching wrong data
-    \- Consider removing cache (overhead without benefit)
+    - Cache not effective
+    - Might be caching wrong data
+    - Consider removing cache (overhead without benefit)
 
 ---
 
 ### **🔍 Why Cache Misses Happen**
 
-**1\. Cold Start (Empty Cache)**
+**1. Cold Start (Empty Cache)**
 
 **In our netflix example for “stranger things “ the application had  just started**
 **Cache was empty**
@@ -102,25 +102,25 @@ Request 2 (Product A): Hit ✅ → From cache
 Request 3 (Product B): Miss ❌ → Load from DB
 Request 4 (Product B): Hit ✅ → From cache
 
-**2\. Cache Expiration (TTL)**
+**2. Cache Expiration (TTL)**
 
 **Say a phone on amazon has a bumper offer on Christmas but just for 5 minutes**
 
 Price data cached at 10:00 AM (TTL: 5 minutes)
 Request at 10:04 AM: Hit ✅
-Request at 10:06 AM: Miss ❌ (Expired\!)
+Request at 10:06 AM: Miss ❌ (Expired!)
                       → Refresh from database
 
-**3\. Cache Eviction (Full Cache)**
+**3. Cache Eviction (Full Cache)**
 
 **Say we have a current cache size of 100 items and all of them get filled up**
 
 Cache capacity: 100 items
-Currently: 100 items (full\!)
+Currently: 100 items (full!)
 New item requested: Must remove old item
                     → Miss for the evicted item
 
-**4\. Cache Invalidation (Data Changed)**
+**4. Cache Invalidation (Data Changed)**
 
 Product price changes in database
 Cache entry invalidated (removed)
@@ -208,7 +208,7 @@ The homepage (popular):
 
 Product page (100 different products):
   Let us say each product is  requested 50 times
-  Total requests: 5,000 (100 \* 50\)
+  Total requests: 5,000 (100 * 50)
    First request  for every  product  is a cache miss since its not being fetched yet  (100 misses)
   Subsequent requests: Hits (4,900 hits)
 
@@ -232,7 +232,7 @@ Total Requests: 15,899 \+ 1,101 \= 17,000
 
 Hit Ratio \= 15,899 / 17,000 \= 93.52% 🌟
 
-This is excellent\! Homepage caching is very effective.
+This is excellent! Homepage caching is very effective.
 
 ---
 
@@ -299,7 +299,7 @@ cache.set(`user:${id}`, data, { ttl: 86400 * 30 });
 
 Say a  user views product A (a phone)
 Now he/she is very likely to view related Products B (phone cover), C (tempered glass), D (charging brick)
-So products B,C,D could be pre-fetched and cached\!
+So products B,C,D could be pre-fetched and cached!
 
 ```js
 async function cacheRelatedProducts(productId) {

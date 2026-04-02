@@ -21,7 +21,7 @@ Imagine you need to transport 100 people from City A to City B:
 Use a Ferrari:
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
-Speed: 200 mph (VERY FAST\!)
+Speed: 200 mph (VERY FAST!)
 Seats: 2 people per trip
 
 Trip 1: Drive 2 people (30 minutes)
@@ -35,8 +35,8 @@ Trip 50: Drive last 2 people (30 minutes)
 
 Total time: 25 hours
 
-First person arrives: After 30 minutes ✓ (Low latency\!)
-Last person arrives: After 25 hours ❌ (Low throughput\!)
+First person arrives: After 30 minutes ✓ (Low latency!)
+Last person arrives: After 25 hours ❌ (Low throughput!)
 
 **Latency:**
 
@@ -63,10 +63,10 @@ Trip 2: Drive 50 people (1 hour)
 
 Total time: 2 hours
 
-First person arrives: After 1 hour ❌ (Higher latency\!)
+First person arrives: After 1 hour ❌ (Higher latency!)
 
 
-Last person arrives: After 2 hours ✓ (High throughput\!)
+Last person arrives: After 2 hours ✓ (High throughput!)
 
 **Latency:** How long ONE person takes to arrive (1 hour)
 
@@ -91,7 +91,7 @@ Server A: Optimized for Low Latency
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
-Response time per request: 10ms (FAST\!)
+Response time per request: 10ms (FAST!)
 Concurrent requests: 100
 Requests per second: 100 ÷ 0.01 \= 10,000/sec
 
@@ -109,7 +109,7 @@ Requests per second: 10,000 ÷ 0.1 \= 100,000/sec
 Great for: Batch processing, data pipelines
 Use case: Analytics, video encoding
 
-**Connection to TCP:** Remember TCP's flow control with sliding windows? That's managing throughput\! TCP adjusts how much data flows based on network capacity. But each individual packet still has latency (round-trip time). TCP optimizes for reliable throughput, not necessarily lowest latency.
+**Connection to TCP:** Remember TCP's flow control with sliding windows? That's managing throughput! TCP adjusts how much data flows based on network capacity. But each individual packet still has latency (round-trip time). TCP optimizes for reliable throughput, not necessarily lowest latency.
 
 **Example 2: Database Query Design**
 
@@ -133,7 +133,7 @@ for (let i = 0; i < 1000000; i++) {
 
 Latency per user: 5ms (2ms query \+ 1ms process \+ 2ms network)
 Throughput: 1,000,000 users ÷ 5ms \= 200 users/second
-Total time: 5,000 seconds (83 minutes\!) ❌
+Total time: 5,000 seconds (83 minutes!) ❌
 
 Approach B: High Throughput (Batches)
 
@@ -153,16 +153,16 @@ for (let offset = 0; offset < 1000000; offset += BATCH_SIZE) {
 
 
 
-Latency for first batch: 100ms (slower per user\!)
+Latency for first batch: 100ms (slower per user!)
 Throughput: 10,000 users/batch × 10 batches/sec \= 100,000 users/sec
-Total time: 10 seconds (Much better\!) ✓
+Total time: 10 seconds (Much better!) ✓
 
 **The Tradeoff:**
 
 Individual user latency INCREASED (5ms → 100ms)
-But overall throughput INCREASED 500x\!
+But overall throughput INCREASED 500x!
 
-Sometimes you sacrifice latency for throughput\!
+Sometimes you sacrifice latency for throughput!
 
 ### **The Water Pipe Analogy**
 
@@ -190,8 +190,8 @@ Thick pipe: Slow flow (high latency), more volume (high throughput)
 You can have:
 Option A: Thin pipe with high pressure → Low latency, low throughput
 Option B: Thick pipe with normal pressure → Higher latency, high throughput
-Option C: Thick pipe with high pressure → Low latency AND high throughput\!
-          (But this is expensive\! 💰)
+Option C: Thick pipe with high pressure → Low latency AND high throughput!
+          (But this is expensive! 💰)
 
 ### **Real-World Optimization Examples**
 
@@ -208,21 +208,21 @@ Their Solution:
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 Latency Optimization:
-\- CDN edge servers near users (low latency to start stream)
+- CDN edge servers near users (low latency to start stream)
 
-\- First few seconds: High priority, low latency
+- First few seconds: High priority, low latency
 
-\- User sees video in \<1 second ✓
+- User sees video in \<1 second ✓
 
 Throughput Optimization:
 
-\- Pre-encode videos in multiple qualities
+- Pre-encode videos in multiple qualities
 
-\- Stream large chunks (not individual frames)
+- Stream large chunks (not individual frames)
 
-\- Massive bandwidth pipes
+- Massive bandwidth pipes
 
-\- Serves 250 million users simultaneously ✓
+- Serves 250 million users simultaneously ✓
 
 Result: Fast start (low latency) \+ sustained streaming (high throughput)
 
@@ -234,21 +234,21 @@ Google's Approach:
 
 Latency Focus:
 
-\- Search results in \<100ms
+- Search results in \<100ms
 
-\- Users see results almost instantly
+- Users see results almost instantly
 
-\- Distributed data centers worldwide
+- Distributed data centers worldwide
 
-\- Aggressive caching
+- Aggressive caching
 
 Throughput:
 
-\- Handles 8.5 billion searches/day
+- Handles 8.5 billion searches/day
 
-\- 100,000 queries/second
+- 100,000 queries/second
 
-\- Scales horizontally
+- Scales horizontally
 
 They optimize for BOTH:
 Fast individual results \+ massive query volume
@@ -312,26 +312,26 @@ B. Unlimited
 ❌ Wrong thinking:
 "My API is slow, so I'll add more servers"
 
-Problem: If latency is the issue, more servers might not help\!
+Problem: If latency is the issue, more servers might not help!
 
 Example:
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 Current: 1 server, 500ms per request
-Add: 10 servers, still 500ms per request\!
+Add: 10 servers, still 500ms per request!
 
 You increased throughput (10x more requests)
 But latency didn't improve (still 500ms each)
 
 ✓ Correct approach for latency:
 
-\- Optimize the slow code
+- Optimize the slow code
 
-\- Add caching
+- Add caching
 
-\- Use faster database queries
+- Use faster database queries
 
-\- Reduce network hops
+- Reduce network hops
 
 **Mistake 2: Optimizing the Wrong Thing**
 
@@ -340,14 +340,14 @@ Scenario: Batch Email System
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 Current: Sends 100,000 emails in 1 hour
-Request: "Make it faster\!"
+Request: "Make it faster!"
 
-Engineer A: "I'll reduce latency\!"
+Engineer A: "I'll reduce latency!"
 Result: Each email sends in 10ms instead of 36ms
 Total time: Still \~50 minutes (minor improvement)
 
-Engineer B: "I'll increase throughput\!"
+Engineer B: "I'll increase throughput!"
 Result: Process 10 emails in parallel instead of 1
-Total time: 6 minutes\! (10x improvement\!) ✓
+Total time: 6 minutes! (10x improvement!) ✓
 
-For batch jobs: Throughput \> Latency
+For batch jobs: Throughput > Latency

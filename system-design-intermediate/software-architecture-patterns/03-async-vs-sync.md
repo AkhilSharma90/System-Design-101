@@ -13,37 +13,37 @@ Imagine you're planning a dinner party. You need to invite 10 friends. Let’s s
 
 **Approach 1: The Phone Call Method (Synchronous)**
 
-You pick up the phone and call Friend \#1:
+You pick up the phone and call Friend #1:
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 You: "Hey, can you come to dinner Friday at 7 PM?"
 
-\[You wait... ring ring...\]
+[You wait... ring ring...]
 
 Friend 1: "Let me check my calendar..."
 
-\[You wait... 30 seconds pass...\]
+[You wait... 30 seconds pass...]
 
-Friend 1: "Yes\! I'll be there\!"
+Friend 1: "Yes! I'll be there!"
 
-You: "Great\!"
+You: "Great!"
 
-\[Call ends \- Total time: 2 minutes\]
+[Call ends - Total time: 2 minutes]
 
-Now you call Friend \#2:
+Now you call Friend #2:
 
-\[You wait for them to answer... 1 minute\]
+[You wait for them to answer... 1 minute]
 
 Friend 2: "Can't come, sorry"
 
-\[Call ends \- Total time: 1 minute\]
+[Call ends - Total time: 1 minute]
 
 Continue for all 10 friends...
 
 Total time: \~20 minutes
 
-Your evening: BLOCKED \- you can't do anything else while calling
+Your evening: BLOCKED - you can't do anything else while calling
 
 
 ![img1](https://res.cloudinary.com/dretwg3dy/image/upload/v1766633105/333_nvaide.png)
@@ -58,28 +58,28 @@ You send one message to group chat:
 
 You: "Dinner at my place Friday 7 PM, who's in?"
 
-\[Message sent \- Time: 10 seconds\]
+[Message sent - Time: 10 seconds]
 
 Now you go do other things:
 
-\- Cook dinner
+- Cook dinner
 
-\- Watch TV
+- Watch TV
 
-\- Read a book
+- Read a book
 
 Responses come in over the next few hours:
 
-Friend 1 (5 min later): "I'm in\! 🎉"
+Friend 1 (5 min later): "I'm in! 🎉"
 
 Friend 2 (20 min later): "Can't make it 😢"
 
-Friend 3 (1 hour later): "Yes\!"
+Friend 3 (1 hour later): "Yes!"
 ...
 
 Total time: 10 seconds of YOUR time
 
-Your evening: FREE \- you're not blocked waiting
+Your evening: FREE - you're not blocked waiting
 
 ![img2](https://res.cloudinary.com/dretwg3dy/image/upload/v1766633105/330_exc0ig.png)
 
@@ -132,9 +132,9 @@ Step 6: Browser displays orders
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 Total time: 250ms
 
-Server was BLOCKED for 200ms doing nothing but waiting\!
+Server was BLOCKED for 200ms doing nothing but waiting!
 
-**Connection to TCP:** Remember the TCP article? When your application makes a synchronous HTTP request, it's using TCP underneath. The TCP 3-way handshake happens, data flows, acknowledgments are sent—all synchronously\! Your code waits for each step to complete.
+**Connection to TCP:** Remember the TCP article? When your application makes a synchronous HTTP request, it's using TCP underneath. The TCP 3-way handshake happens, data flows, acknowledgments are sent—all synchronously! Your code waits for each step to complete.
 
 **The Problem at Scale:**
 
@@ -146,7 +146,7 @@ Synchronous Server:
 
 ![img3](https://res.cloudinary.com/dretwg3dy/image/upload/v1766633105/334_y1uxrb.png)
 
-Result: Server runs out of threads\!
+Result: Server runs out of threads!
 User 1001: "Server unavailable" ❌
 
 ### **Asynchronous to the Rescue**
@@ -164,25 +164,25 @@ Step 2: Your server receives request
         Server thinks: "I need orders, let me ask database"
 
 Step 3: Server → Database (non-blocking)
-        Query: SELECT \* FROM orders WHERE user\_id \= 42
+        Query: SELECT * FROM orders WHERE user\_id \= 42
         Server: "I'll check back later for the result"
 
-        \[Server is FREE\! Handles other requests...\]
+        [Server is FREE! Handles other requests...]
 
         Request from User 2 arrives:
-        Server: "Sure\! Let me handle this too..."
+        Server: "Sure! Let me handle this too..."
 
         Request from User 3 arrives:
-        Server: "No problem\! I can multitask..."
+        Server: "No problem! I can multitask..."
 
 Step 4: Database finishes User 1's query
-        Callback: "Hey Server, User 1's data is ready\!"
+        Callback: "Hey Server, User 1's data is ready!"
 
 Step 5: Server sends response to User 1
         Server → Browser: 200 OK, here are your orders
 
 Total time: Still 250ms for User 1
-But server handled 100+ other requests during that wait\!
+But server handled 100+ other requests during that wait!
 
 ![img4](https://res.cloudinary.com/dretwg3dy/image/upload/v1766633105/332_ck3z2k.png)
 
@@ -215,13 +215,13 @@ Timeline:
 
 0s     Text Friend 3 ► (go do other things)
 
-       \[You're free to do anything\!\]
+       [You're free to do anything!]
 
 2s     Friend 1 responds ◄
 4s     Friend 2 responds ◄
 6s     Friend 3 responds ◄
 
-Total: 0 seconds of YOUR blocked time\!
+Total: 0 seconds of YOUR blocked time!
 
 ### **Real-World System Examples**
 
@@ -229,7 +229,7 @@ Let’s see  where you've seen each pattern:
 
 **Synchronous Communication Examples:**
 
-1\. Traditional REST API Calls
+1. Traditional REST API Calls
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 ```js
@@ -242,7 +242,7 @@ fetch('https://api.example.com/users')
 
 Your code WAITS for the response before continuing.
 
-2\. Database Queries (traditional)
+2. Database Queries (traditional)
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 ```js
@@ -252,7 +252,7 @@ fetch('https://api.example.com/users')
 ```
 
 
-3\. Remote Procedure Calls (RPC)
+3. Remote Procedure Calls (RPC)
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 

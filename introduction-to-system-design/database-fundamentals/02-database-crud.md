@@ -5,7 +5,7 @@ readTime: 15 min
 orderIndex: 2
 premium: false
 ---
-# **CRUD Operations \- The Four Essential Database Actions**
+# **CRUD Operations - The Four Essential Database Actions**
 
 ### **🎯 Challenge 5: The Todo App**
 
@@ -18,7 +18,7 @@ Think about it:
 * How do you mark a task as complete?
 * How do you remove a task?
 
-**Answer: CRUD Operations\!**
+**Answer: CRUD Operations!**
 
 ---
 
@@ -26,10 +26,10 @@ Think about it:
 
 **CRUD \= The four basic operations you can do with data**
 
-* **C**reate \- Add new records
-* **R**ead \- View/retrieve records
-* **U**pdate \- Modify existing records
-* **D**elete \- Remove records
+* **C**reate - Add new records
+* **R**ead - View/retrieve records
+* **U**pdate - Modify existing records
+* **D**elete - Remove records
 
 **Real-world parallel:** Think of a contact list on your phone:
 
@@ -69,7 +69,7 @@ Think about it:
 * 📧 Posting a comment
 * 📅 Creating a calendar event
 
-**Mental model:** INSERT is like writing a new entry in a logbook \- you're adding permanent information\!
+**Mental model:** INSERT is like writing a new entry in a logbook - you're adding permanent information!
 
 ---
 
@@ -125,7 +125,7 @@ SELECT * FROM users WHERE age > 26
 * 🔍 Searching for products
 * 📊 Generating reports
 
-**Mental model:** SELECT is like looking through a filing cabinet with superpowers \- you can view, filter, and organize information instantly\!
+**Mental model:** SELECT is like looking through a filing cabinet with superpowers - you can view, filter, and organize information instantly!
 
 ---
 
@@ -152,16 +152,16 @@ SELECT * FROM users WHERE age > 26
  UPDATE products SET price = price * 0.9   10% discount WHERE category= 'Electronics';
 
 ```
-**⚠️ WARNING: Always use WHERE clause\!**
+**⚠️ WARNING: Always use WHERE clause!**
 
-\-- DANGEROUS\! Updates ALL rows:
+-- DANGEROUS! Updates ALL rows:
 ```sql
  UPDATE users SET age = 50;
  ```
 
-\-- Everyone is now 50\! |
+-- Everyone is now 50! |
 
-\-- SAFE: Updates specific user:
+-- SAFE: Updates specific user:
 
 ```sql
  UPDATE users SET age = 50 WHERE username= 'bob456';
@@ -175,7 +175,7 @@ SELECT * FROM users WHERE age > 26
 * 📊 Updating inventory quantities
 * 🔄 Changing order status
 
-**Mental model:** UPDATE is like using correction fluid and writing over old information \- the record stays, but the content changes\!
+**Mental model:** UPDATE is like using correction fluid and writing over old information - the record stays, but the content changes!
 
 ---
 
@@ -194,7 +194,7 @@ SELECT * FROM users WHERE age > 26
 ![img7](https://res.cloudinary.com/dretwg3dy/image/upload/v1764410155/199_twa33u.png)
 
 
-alice123 is GONE\!
+alice123 is GONE!
 
 **Delete multiple rows:**
 ```sql
@@ -205,14 +205,14 @@ Remove old orders
 
 **⚠️ WARNING: Always use WHERE clause!**
 
- CATASTROPHIC\! Deletes ALL data:
+ CATASTROPHIC! Deletes ALL data:
 ```sql
 DELETE FROM users;
 ```
 
-\-- Table now empty\! 😱
+-- Table now empty! 😱
 
-\-- SAFE: Deletes specific user:
+-- SAFE: Deletes specific user:
 
 ```sql
  DELETE FROM users WHERE id = 2;
@@ -240,7 +240,7 @@ DELETE FROM users;
  SELECT * FROM users WHERE deleted_at IS NULL;
 
  ```
- \-- Only active users
+ -- Only active users
 **Real-world scenarios:**
 
 * 🗑️ Removing items from cart
@@ -248,7 +248,7 @@ DELETE FROM users;
 * 🧹 Cleaning up old data
 * ❌ Canceling an order
 
-**Mental model:** DELETE is like shredding a document \- once it's gone, it's gone (unless you have backups\!)
+**Mental model:** DELETE is like shredding a document - once it's gone, it's gone (unless you have backups!)
 
 ---
 
@@ -287,9 +287,9 @@ DELETE FROM posts WHERE id = 1;
 | CRUD Operation | HTTP Method | Example URL | Action |
 | ----- | ----- | ----- | ----- |
 | **Create** | POST | `POST /api/users` | Create new user |
-| **Read** | GET | `GET /api/users/123` | Get user \#123 |
-| **Update** | PUT/PATCH | `PUT /api/users/123` | Update user \#123 |
-| **Delete** | DELETE | `DELETE /api/users/123` | Delete user \#123 |
+| **Read** | GET | `GET /api/users/123` | Get user #123 |
+| **Update** | PUT/PATCH | `PUT /api/users/123` | Update user #123 |
+| **Delete** | DELETE | `DELETE /api/users/123` | Delete user #123 |
 
 **Example API calls:**
 
@@ -325,4 +325,4 @@ fetch('/api/posts/123', { method: 'DELETE' });
 * Store sensitive data without encryption
 * Forget to back up before bulk operations
 * Expose database directly to users
-* Trust user input (always validate\!)
+* Trust user input (always validate!)

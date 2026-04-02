@@ -21,9 +21,9 @@ Imagine this scenario: You write an email on Gmail and hit send to your friend u
 
 ### **The Answer: SMTP (Simple Mail Transfer Protocol)**
 
-SMTP is like the international postal service agreement that makes mail deliverable worldwide. Just as a letter sent from Japan can reach Brazil because all countries follow universal postal standards, Gmail can email Outlook because they all speak SMTP\!
+SMTP is like the international postal service agreement that makes mail deliverable worldwide. Just as a letter sent from Japan can reach Brazil because all countries follow universal postal standards, Gmail can email Outlook because they all speak SMTP!
 
-**Key Insight:** SMTP is the universal language that allows ANY email system to talk to ANY other email system\!
+**Key Insight:** SMTP is the universal language that allows ANY email system to talk to ANY other email system!
 
 ---
 
@@ -84,11 +84,11 @@ Think about it:
 
 * You say goodbye
 
-**SMTP does exactly this\!** Here's a real SMTP conversation:
+**SMTP does exactly this!** Here's a real SMTP conversation:
 
 ![img2](https://res.cloudinary.com/dretwg3dy/image/upload/v1765942753/294_o3tk38.png)
 
-**Mental model:** SMTP is like two postal workers having a professional conversation, confirming every step before handing off the mail\!
+**Mental model:** SMTP is like two postal workers having a professional conversation, confirming every step before handing off the mail!
 
 ---
 
@@ -97,7 +97,7 @@ Think about it:
 You might think: "When I send an email, it flies directly from my computer to my friend's computer, right?"
 
 
-**The reality:** Your email takes a multi-hop journey through several servers\!
+**The reality:** Your email takes a multi-hop journey through several servers!
 
 ### **The Complete Email Journey:**
 
@@ -172,7 +172,7 @@ What happens?
 
 ### **Scenario C: Spam Filter Triggered**
 
-Your email contains phrases like "FREE MONEY" and "CLICK HERE NOW\!"
+Your email contains phrases like "FREE MONEY" and "CLICK HERE NOW!"
 
 What happens?
 
@@ -188,48 +188,48 @@ What happens?
 
 ### **Answers Revealed:**
 
-**Scenario A: Answer C** \- Email bounces back\!
+**Scenario A: Answer C** - Email bounces back!
 
-Your Server:     "RCPT TO: \<nobody@fake.com\>"
+Your Server:     "RCPT TO: \<nobody@fake.com>"
 
 Fake Server:     ← "550 No such user"
 
-                 (That mailbox doesn't exist\!)
+                 (That mailbox doesn't exist!)
 
-Your Server:     \[Generates bounce message back to you\]
+Your Server:     [Generates bounce message back to you]
                  "Mail delivery failed: No such user"
 
-**Real-world parallel:** Like mail returned with "Address Unknown" stamped on it\!
+**Real-world parallel:** Like mail returned with "Address Unknown" stamped on it!
 
-**Scenario B: Answer C** \- Rejected with bounce\!
+**Scenario B: Answer C** - Rejected with bounce!
 
-Your Server:     "RCPT TO: \<friend@outlook.com\>"
+Your Server:     "RCPT TO: \<friend@outlook.com>"
 
 Their Server:    ← "552 Mailbox full"
 
-Your Server:     \[Sends bounce notification\]
+Your Server:     [Sends bounce notification]
                  "Recipient's mailbox is full"
 
-**Mental model:** Like a physical mailbox stuffed with letters \- no room for more\!
+**Mental model:** Like a physical mailbox stuffed with letters - no room for more!
 
-**Scenario C: Answer B** \- Goes to spam folder\!
+**Scenario C: Answer B** - Goes to spam folder!
 
-Their Server:    \[Receives email via SMTP\]
+Their Server:    [Receives email via SMTP]
 
-                 \[Spam filter analyzes content\]
+                 [Spam filter analyzes content]
 
-                 \[Score: 8.5/10 \- Likely spam\]
+                 [Score: 8.5/10 - Likely spam]
 
-                 \[Moves to spam folder, not inbox\]
+                 [Moves to spam folder, not inbox]
 
-**Key insight:** SMTP successfully delivered it, but the receiving server's spam filter moved it before the user saw it\!
+**Key insight:** SMTP successfully delivered it, but the receiving server's spam filter moved it before the user saw it!
 
 
 ---
 
 ## **🔐 Security Challenge: The Envelope Problem**
 
-**Scenario:** You mail a postcard with sensitive information. Anyone handling it can read your message\!
+**Scenario:** You mail a postcard with sensitive information. Anyone handling it can read your message!
 
 **Question:** How do you send something private through the postal system?
 
@@ -237,27 +237,27 @@ Think about it...
 
 ### **The Solution: Envelopes (or Email Encryption)**
 
-**Original SMTP (1982):** Like sending postcards \- completely readable\!
+**Original SMTP (1982):** Like sending postcards - completely readable!
 
-\[Your Message in Plain Text\]
+[Your Message in Plain Text]
 "Hey Bob, my password is: hunter2"
 
     ↓
 
-Anyone intercepting can read it\! 😱
+Anyone intercepting can read it! 😱
 
-**Modern SMTP with TLS/SSL:** Like sending in a locked envelope\!
+**Modern SMTP with TLS/SSL:** Like sending in a locked envelope!
 
-\[Your Message\]
-
-    ↓
-
-\[Encrypted with TLS\]
-"a8f3$jK9\#mL2pQ7@vN4..."
+[Your Message]
 
     ↓
 
-Only the recipient's server can decrypt and read it\! ✅
+[Encrypted with TLS]
+"a8f3$jK9#mL2pQ7@vN4..."
+
+    ↓
+
+Only the recipient's server can decrypt and read it! ✅
 
 ### **How Email Encryption Works:**
 
@@ -272,19 +272,19 @@ Friend's Server
 
 
 Friend's Server: ← "250-STARTTLS"
-                 (Yes\! Let's encrypt)
+                 (Yes! Let's encrypt)
 
 Your Server:     "STARTTLS"                          → Friend's Server
                  (Let's start encryption)
 
 Friend's Server: ← "220 Ready to start TLS"
-                 (Encryption activated\!)
+                 (Encryption activated!)
 
-                 \[Now all communication is encrypted\]
+                 [Now all communication is encrypted]
 
-**Real-world parallel:** Like switching from postcards to sealed envelopes mid-conversation\!
+**Real-world parallel:** Like switching from postcards to sealed envelopes mid-conversation!
 
-**STARTTLS** \= "Start Transport Layer Security" \- Upgrades the connection to encrypted
+**STARTTLS** \= "Start Transport Layer Security" - Upgrades the connection to encrypted
 
 ---
 
@@ -302,26 +302,26 @@ Friend's Server: ← "220 Ready to start TLS"
 
 * Something prevents this?
 
-### **Solution: SMTP Rate Limiting & Authentication\!**
+### **Solution: SMTP Rate Limiting & Authentication!**
 
 Modern SMTP servers have protective mechanisms:
 
-#### **1\. Authentication Required (Like ID Checks)**
+#### **1. Authentication Required (Like ID Checks)**
 
-Spammer:        "MAIL FROM: \<spam@evil.com\>"
+Spammer:        "MAIL FROM: \<spam@evil.com>"
 
 Your Server:    ← "530 Authentication required"
-                (Show me your ID first\!)
+                (Show me your ID first!)
 
-#### **2\. Rate Limiting (Like Speed Limits)**
+#### **2. Rate Limiting (Like Speed Limits)**
 
-Legitimate User: \[Sends 50 emails/hour\] ✅ Allowed
+Legitimate User: [Sends 50 emails/hour] ✅ Allowed
 
-Spammer:         \[Tries 10,000 emails/hour\] ❌ Blocked
+Spammer:         [Tries 10,000 emails/hour] ❌ Blocked
 
-Your Server:     "450 Too many messages, slow down\!"
+Your Server:     "450 Too many messages, slow down!"
 
-#### **3\. SPF/DKIM/DMARC (Like Authentication Seals)**
+#### **3. SPF/DKIM/DMARC (Like Authentication Seals)**
 
 Spammer pretends to be: "amazon@amazon.com"
 
@@ -332,9 +332,9 @@ SPF Record:  "Is this REALLY from Amazon's servers?" ❌ NO
 
 DKIM:        "Is this signed by Amazon?" ❌ NO
 
-DMARC:       "Amazon's policy says reject these\!" ❌ REJECT
+DMARC:       "Amazon's policy says reject these!" ❌ REJECT
 
-Result: Email rejected before delivery\!
+Result: Email rejected before delivery!
 
 **Mental model:**
 
@@ -393,13 +393,13 @@ POP3 (Post Office Protocol v3)
 ### **Real-World Example:**
 
 You send an email on your phone:
-\[Your Phone\] \--SMTP--\> \[Gmail Server\] \--SMTP--\> \[Friend's Server\]
+[Your Phone] --SMTP--> [Gmail Server] --SMTP--> [Friend's Server]
                             ↓
 You check email on your laptop:
-\[Your Laptop\] \<--IMAP-- \[Gmail Server\] (Email stays on server)
+[Your Laptop] \<--IMAP-- [Gmail Server] (Email stays on server)
                             ↓
 You check email on your tablet:
-\[Your Tablet\] \<--IMAP-- \[Gmail Server\] (Same emails appear\!)
+[Your Tablet] \<--IMAP-- [Gmail Server] (Same emails appear!)
 
 **Why IMAP is better than POP3:**
 
@@ -423,13 +423,13 @@ Let's follow an email from creation to reading:
 ### **Step-by-Step Journey:**
 
 1️⃣ YOU COMPOSE EMAIL
-   \[Gmail app on your phone\]
+   [Gmail app on your phone]
    To: friend@outlook.com
    Subject: Dinner tonight?
    Message: Want to grab pizza?
 
 2️⃣ SMTP CLIENT → SERVER (Your outgoing mail)
-   Your App:       \--SMTP--\> Gmail's SMTP Server
+   Your App:       --SMTP--> Gmail's SMTP Server
    Port:           587 (or 465 for SSL)
    Authentication: Your Gmail password/OAuth
 
@@ -438,7 +438,7 @@ Let's follow an email from creation to reading:
    DNS Server:     "outlook.com MX record: outlook-com.mail.protection.outlook.com"
 
 4️⃣ SERVER → SERVER (Inter-server delivery)
-   Gmail SMTP:     \--SMTP--\> Outlook SMTP Server
+   Gmail SMTP:     --SMTP--> Outlook SMTP Server
    Port:           25 (server-to-server)
    Encryption:     TLS (if supported)
 
@@ -454,16 +454,16 @@ Let's follow an email from creation to reading:
    → Deliver to inbox ✅
 
 6️⃣ STORAGE (Mail sits on server)
-   \[Outlook Server stores email in friend@outlook.com's mailbox\]
+   [Outlook Server stores email in friend@outlook.com's mailbox]
 
 7️⃣ RETRIEVAL (Your friend checks email)
    Friend's App:   \<--IMAP-- Outlook's IMAP Server
    Port:           993 (IMAP over SSL)
-   Result:         Email appears in inbox\! 📧
+   Result:         Email appears in inbox! 📧
 
 ![img3](https://res.cloudinary.com/dretwg3dy/image/upload/v1765942752/292_hmb9pu.png)
 
-**Total time:** Usually 1-30 seconds\!
+**Total time:** Usually 1-30 seconds!
 
 **Challenge question:** At which step does encryption protect your email?
 
@@ -479,7 +479,7 @@ Let's follow an email from creation to reading:
 
 ## **🔍 Investigation: Why Email Sometimes Fails**
 
-### **Mystery Cases \- Can You Solve Them?**
+### **Mystery Cases - Can You Solve Them?**
 
 #### **Case 1: The Delayed Email**
 
@@ -489,15 +489,15 @@ Let's follow an email from creation to reading:
 
 **What happens with delays:**
 
-Gmail:          \[Tries to deliver\]
+Gmail:          [Tries to deliver]
 
 Outlook:        ← "450 Try again later" (Greylisting)
 
-Gmail:          \[Waits 15 minutes\]
+Gmail:          [Waits 15 minutes]
 
-Gmail:          \[Tries again\]
+Gmail:          [Tries again]
 
-Outlook:        ← "250 OK" (Now accepted\!)
+Outlook:        ← "250 OK" (Now accepted!)
 
 **Real-world parallel:** Like a delivery driver finding your gate closed, coming back later when it's open.
 
@@ -505,7 +505,7 @@ Outlook:        ← "250 OK" (Now accepted\!)
 
 **Sympt**🌍 Email works worldwide regardless of provider
 
-**SMTP transforms email from a closed system into a universal communication platform\!**
+**SMTP transforms email from a closed system into a universal communication platform!**
 
 ---
 
@@ -519,7 +519,7 @@ Without looking back, can you explain:
 4. **Why might** a legitimate email go to spam?
 5. **What happens** when you send to a non-existent email address?
 
-**Mental check:** If you can answer these clearly, you've mastered SMTP fundamentals\! If not, revisit the relevant sections above.
+**Mental check:** If you can answer these clearly, you've mastered SMTP fundamentals! If not, revisit the relevant sections above.
 
 ---
 
@@ -553,4 +553,4 @@ Now that you understand SMTP, you're ready to explore:
 * **Corporate Email Systems:** Microsoft Exchange, Google Workspace
 * **Email Client Development:** Building your own email app
 
-**Next recommended read:** "DNS: The Internet's Phone Book" to understand how email servers find each other\!
+**Next recommended read:** "DNS: The Internet's Phone Book" to understand how email servers find each other!

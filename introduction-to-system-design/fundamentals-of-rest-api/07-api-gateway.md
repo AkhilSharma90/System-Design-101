@@ -18,7 +18,7 @@ Now, here's the problem: Your customers need to interact with all these departme
 
 **This is what happens without an API Gateway.**
 
-Now, imagine you hire a brilliant receptionist who sits at the front desk. Every call comes to ONE number: (555) 0100\. This receptionist:
+Now, imagine you hire a brilliant receptionist who sits at the front desk. Every call comes to ONE number: (555) 0100. This receptionist:
 
 * Knows which department handles what
 * Checks if the caller is authorized to talk to that department
@@ -26,7 +26,7 @@ Now, imagine you hire a brilliant receptionist who sits at the front desk. Every
 * Keeps track of how many calls each customer makes
 * Can even translate between different languages
 
-**This receptionist IS your API Gateway\!**
+**This receptionist IS your API Gateway!**
 
 ### **What an API Gateway Actually Does**
 
@@ -36,14 +36,14 @@ Without API Gateway (The Chaos):
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
-Mobile App ──────\>
+Mobile App ──────>
 http://users-service.internal:3000/users
 
 
-Web App ──────────\> http://orders-service.internal:4000/orders
+Web App ──────────> http://orders-service.internal:4000/orders
 
 
-Partner API ──────\> http://payments-service.internal:5000/pay
+Partner API ──────> http://payments-service.internal:5000/pay
 
 Problems:
 
@@ -86,7 +86,7 @@ Gateway thinks:
 
 "Okay, I received a request for /orders. Let me check my list..."
 
-1\. Authentication Check:
+1. Authentication Check:
 
    "Does this Bearer token exist and is it valid?"
 
@@ -94,14 +94,14 @@ Gateway thinks:
 
    → Token is valid for user\_id: 12345 ✓
 
-2\. Authorization Check:
+2. Authorization Check:
    "Is this user allowed to access orders?"
 
    → User is logged in ✓
 
    → User has 'customer' role ✓
 
-3\. Rate Limiting Check:
+3. Rate Limiting Check:
 
    "Has this user made too many requests?"
 
@@ -111,7 +111,7 @@ Gateway thinks:
 
    → Allowed to proceed
 
-4\. Routing Decision:
+4. Routing Decision:
 
    "Which internal service handles /orders?"
 
@@ -150,7 +150,7 @@ Notice what changed:
 
 • Added request ID for tracking
 
-• Removed the original Bearer token (security\!)
+• Removed the original Bearer token (security!)
 
 **Step 4: Service Responds**
 
@@ -201,7 +201,7 @@ Client: GET /orders
 
 Gateway: "Let me route this to orders-service..."
 
-         \*tries to connect\*
+         *tries to connect*
 
          "Hmm, orders-service isn't responding"
 
@@ -215,13 +215,13 @@ A. Return a friendly error:
 
 B. Retry with a backup:
 
-   \*tries orders-service-backup\*
+   *tries orders-service-backup*
 
 C. Return cached data:
 
    "Here's your order history from 5 minutes ago"
 
-Without a gateway, the client would just get a connection timeout \- terrible user experience\!
+Without a gateway, the client would just get a connection timeout - terrible user experience!
 
 
 **Scenario 2: Service is Slow**
@@ -230,13 +230,13 @@ Client: GET /orders
 
 Gateway:
 
-        \*waits 1 second\*
+        *waits 1 second*
 
-         \*waits 2 seconds\*
+         *waits 2 seconds*
 
-         \*waits 3 seconds\*
+         *waits 3 seconds*
 
-         "This is taking too long\! I'll timeout now to protect the client."
+         "This is taking too long! I'll timeout now to protect the client."
 
 
 Returns:
@@ -249,25 +249,25 @@ The gateway prevents one slow service from making your entire app feel sluggish.
 
 Let me tell you about the ones you're most likely to use:
 
-**1\. Amazon API Gateway** (AWS)
+**1. Amazon API Gateway** (AWS)
 
 * Great for serverless applications
 * Integrates beautifully with AWS Lambda
 * Example: Your startup uses Lambda functions for everything
 
-**2\. Kong**
+**2. Kong**
 
 * Open source, very powerful
 * Plugin-based architecture
 * Example: Large companies running on-premise
 
-**3\. NGINX**
+**3. NGINX**
 
 * Can be configured as a gateway
 * Extremely fast
 * Example: High-traffic websites
 
-**4\. Express Gateway** (Node.js)
+**4. Express Gateway** (Node.js)
 
 * Built on Express.js
 * Great if your team knows JavaScript

@@ -6,7 +6,7 @@ orderIndex: 7
 premium: false
 ---
 
-##  **Read vs Write Operations \- Understanding the Flow**
+##  **Read vs Write Operations - Understanding the Flow**
 
 ### **🎯 Challenge 2: The Library Rush**
 
@@ -23,7 +23,7 @@ Think about it:
 * Writing requires updating records, checking availability, locking resources
 * Which needs more coordination?
 
-### **The Answer: Writes Are Much More Expensive\!**
+### **The Answer: Writes Are Much More Expensive!**
 
 **The fundamental truth:** Reads are cheap, writes are expensive.
 
@@ -40,11 +40,11 @@ Think about it:
 
 **Behind the scenes:**
 
-1\. Find data location (using index if available) ⚡
+1. Find data location (using index if available) ⚡
 
-2\. Read from disk/memory 📖
+2. Read from disk/memory 📖
 
-3\. Return result ✓
+3. Return result ✓
 
 
 No locks (in most cases)
@@ -55,7 +55,7 @@ No disk writes
 
 Multiple reads can happen simultaneously
 
-**Mental model:** Reading is like looking at a museum painting \- everyone can look at the same time, no one interferes with each other\!
+**Mental model:** Reading is like looking at a museum painting - everyone can look at the same time, no one interferes with each other!
 
 **Types of Reads:**
 
@@ -85,7 +85,7 @@ Multiple reads can happen simultaneously
  UPDATE users SET email = 'new@email.com' WHERE id = 123;
  ```
 
-**Behind the scenes (so much more complex\!):**
+**Behind the scenes (so much more complex!):**
 
 1. BEGIN TRANSACTION 🔄
 
@@ -188,7 +188,7 @@ UPDATE products SET price = 99.99 WHERE category = 'Electronics';
 
 ---
 
-### **📊 The 80/20 Rule (or 95/5 in reality\!)**
+### **📊 The 80/20 Rule (or 95/5 in reality!)**
 
 **Real-world application traffic:**
 
@@ -198,37 +198,37 @@ UPDATE products SET price = 99.99 WHERE category = 'Electronics';
 
 Examples:
 
-\- Social media: 99% reading posts, 1% creating posts
+- Social media: 99% reading posts, 1% creating posts
 
-\- E-commerce: 95% browsing, 5% purchasing
+- E-commerce: 95% browsing, 5% purchasing
 
-\- News sites: 99.9% reading, 0.1% commenting
+- News sites: 99.9% reading, 0.1% commenting
 
 **Why this matters for architecture:**
 
 **Read-Heavy Application (like Twitter):**
 
-Strategy: Optimize for reads\!
+Strategy: Optimize for reads!
 
-\- Use caching heavily (Redis, Memcached)
+- Use caching heavily (Redis, Memcached)
 
-\- Add read replicas
+- Add read replicas
 
-\- Denormalize data for faster reads
+- Denormalize data for faster reads
 
-\- Use CDNs for static content
+- Use CDNs for static content
 
 **Write-Heavy Application (like logging systems):**
 
-Strategy: Optimize for writes\!
+Strategy: Optimize for writes!
 
-\- Batch writes together
+- Batch writes together
 
-\- Use write-optimized databases
+- Use write-optimized databases
 
-\- Async processing
+- Async processing
 
-\- Eventual consistency
+- Eventual consistency
 
 ---
 
@@ -247,13 +247,13 @@ Strategy: Optimize for writes\!
 
 **Answers:**
 
-1. **READ** \- Counting doesn't modify data
+1. **READ** - Counting doesn't modify data
 
-2. **WRITE** \- Modifying data, requires transaction, locks
+2. **WRITE** - Modifying data, requires transaction, locks
 
-3. **READ** \- Just retrieving and sorting data
+3. **READ** - Just retrieving and sorting data
 
-4. **WRITE** \- Adding new data, requires transaction
+4. **WRITE** - Adding new data, requires transaction
 
 ---
 
@@ -286,9 +286,9 @@ Validation: Check constraints, update indexes
 
 **Visual comparison:**
 
-READ:  ⚡ ────✓ (Fast\! One hop)
+READ:  ⚡ ────✓ (Fast! One hop)
 
-Write is 10-25x slower than read\!
+Write is 10-25x slower than read!
 
 
 ![img3](https://res.cloudinary.com/dretwg3dy/image/upload/v1764481458/213_cfax8z.png)
@@ -299,18 +299,18 @@ Write is 10-25x slower than read\!
 
 **For Read-Heavy Systems:**
 
-**1\. Caching (we shall learn more about caching in the upcoming sections)**
+**1. Caching (we shall learn more about caching in the upcoming sections)**
 
 First request:
 User → Database → 50ms ⏱️
 
 With Cache:
 User → Cache → 1ms ⚡
-(50x faster\!)
+(50x faster!)
 
 Only hit database on cache miss
 
-**2\. Read Replicas** (read replicas will be discussed in upcoming lessons as well)
+**2. Read Replicas** (read replicas will be discussed in upcoming lessons as well)
 
 Primary Database (handles writes)
     ↓ (replicates to)
@@ -318,9 +318,9 @@ Read Replica 1  Read Replica 2  Read Replica 3
     ↓               ↓               ↓
 Users          Users           Users
 
-Distribute read load across replicas\!
+Distribute read load across replicas!
 
-**3\. Indexing**
+**3. Indexing**
 
  Without index: Scan 1,000,000 rows ⏱️
 
@@ -340,7 +340,7 @@ CREATE INDEX idx\_email ON users(email);
 
 **For Write-Heavy Systems:**
 
-**1\. Batch Writes**
+**1. Batch Writes**
 
 | // Bad example:
 
@@ -362,12 +362,12 @@ await db.query(  'INSERT INTO logs (message) VALUES (?), (?), ... (all 1000)', 
 ```
 
 
-**2\. Async Processing**
+**2. Async Processing**
 
 User Action (POST /order)
     ↓
 
-Quick Response: "Order received\!" ✅
+Quick Response: "Order received!" ✅
     ↓
 
 Background Job Queue 📋
@@ -375,29 +375,29 @@ Background Job Queue 📋
 
 Process writes asynchronously
 
-**3\. Write-Optimized Storage**
+**3. Write-Optimized Storage**
 
 Traditional Database: Update in place
 
-\- Read old value
+- Read old value
 
-\- Modify
+- Modify
 
-\- Write back
+- Write back
 
-\- Update indexes
+- Update indexes
 
-(Slow\! Many disk seeks)
+(Slow! Many disk seeks)
 
 Log-Structured Storage: Append only
 
-\- Just write new entry at end
+- Just write new entry at end
 
-\- Never modify existing data
+- Never modify existing data
 
-\- Periodically compact
+- Periodically compact
 
-(Fast\! Sequential writes)
+(Fast! Sequential writes)
 
 ---
 
@@ -418,4 +418,4 @@ Log-Structured Storage: Append only
 * Changes need to be saved
 * Slower and more complex
 
-**Key Insight:** Design your application architecture around the read/write ratio\! Most applications are read-heavy, so optimize for reads first.
+**Key Insight:** Design your application architecture around the read/write ratio! Most applications are read-heavy, so optimize for reads first.

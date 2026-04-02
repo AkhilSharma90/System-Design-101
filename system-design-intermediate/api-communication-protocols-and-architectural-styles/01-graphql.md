@@ -14,13 +14,13 @@ Ask for Exactly What You Need (The Data Query Revolution)
 
  🎯 Challenge 1: The Restaurant Menu Problem Imagine this scenario: You go to a restaurant and order a burger. But here's the catch:
 
-Option A (Traditional): You get a burger, but it comes with fries, coleslaw, a drink, and dessert \- even though you only wanted the burger. You pay for everything and throw away what you don't need.
+Option A (Traditional): You get a burger, but it comes with fries, coleslaw, a drink, and dessert - even though you only wanted the burger. You pay for everything and throw away what you don't need.
 
-Option B (Your Choice): You order exactly what you want \- just the burger \- and pay only for that.
+Option B (Your Choice): You order exactly what you want - just the burger - and pay only for that.
 
 Pause and think: Which option lets you get exactly what you need, nothing more, nothing less?
 
-The Answer: GraphQL is Option B\! Traditional REST APIs give you fixed data sets (over-fetching or under-fetching). GraphQL lets you request EXACTLY the data you need\!
+The Answer: GraphQL is Option B! Traditional REST APIs give you fixed data sets (over-fetching or under-fetching). GraphQL lets you request EXACTLY the data you need!
 
 REST API (Fixed Endpoints):
 
@@ -36,7 +36,7 @@ Response: {  "id": 123,  "name": "Alice",  "email
 //   "lastLogin": "...",  // Don't need this  "createdAt": "..."  // Don't need this}
 ```
 
-You only wanted name and email, but got EVERYTHING\!
+You only wanted name and email, but got EVERYTHING!
 
 GraphQL (Query What You Need):
 
@@ -45,9 +45,9 @@ GraphQL (Query What You Need):
  Response: {  "data": {    "user": {      "name": "Alice",      "email": "alice@example.com"    }  }}
 
 ```
-You asked for name and email, you got ONLY name and email\!
+You asked for name and email, you got ONLY name and email!
 
-Key Insight: GraphQL eliminates over-fetching and under-fetching by letting clients specify exactly what data they need\!
+Key Insight: GraphQL eliminates over-fetching and under-fetching by letting clients specify exactly what data they need!
 
 📱 Interactive Exercise: The Mobile App Nightmare
 
@@ -107,7 +107,7 @@ GraphQL Approach (Single Query):
  Network time: 50ms
  Battery drain: Low
 
-Real-world parallel: REST is like making multiple trips to different stores (author info store, comments store, etc.). GraphQL is like Amazon \- one order, everything delivered together\!
+Real-world parallel: REST is like making multiple trips to different stores (author info store, comments store, etc.). GraphQL is like Amazon - one order, everything delivered together!
 
 The JSON Response:
 ```json
@@ -135,7 +135,7 @@ The JSON Response:
 
 ```
 
-Key Insight: GraphQL solves the N+1 query problem by letting you fetch nested related data in a single request\!
+Key Insight: GraphQL solves the N+1 query problem by letting you fetch nested related data in a single request!
 
 🏗️ Building Your First GraphQL API
 
@@ -387,9 +387,9 @@ Real-world parallel: Queries are like asking questions (no side effects). Mutati
 
 🚨 Common Misconception: "GraphQL Replaces REST Completely... Right?"
 
-You might think: "GraphQL is better, so I should use it for everything\!"
+You might think: "GraphQL is better, so I should use it for everything!"
 
-The Reality: They serve different purposes\!
+The Reality: They serve different purposes!
 
 REST Strengths:
 
@@ -473,7 +473,7 @@ Your API Architecture:
 
     └─ For third-party developers
 
-Real-world parallel: GraphQL is like a custom meal (you choose ingredients). REST is like a combo meal (predefined, but simple). Use the right tool for the right job\!
+Real-world parallel: GraphQL is like a custom meal (you choose ingredients). REST is like a combo meal (predefined, but simple). Use the right tool for the right job!
 
 💡 Advanced Features: Beyond Basic Queries
 
@@ -597,7 +597,7 @@ query {
 
 
 
-Real-world parallel: These features are like advanced ordering options at a restaurant \- aliases (order same dish twice), fragments (combo meals you define), variables (substitutions), directives (only if...), pagination (meal courses).
+Real-world parallel: These features are like advanced ordering options at a restaurant - aliases (order same dish twice), fragments (combo meals you define), variables (substitutions), directives (only if...), pagination (meal courses).
 
 ⚡ Performance: The N+1 Problem and DataLoader
 
@@ -655,7 +655,7 @@ const resolvers = {
 
 
 
-Total: 2 database queries\! ✨
+Total: 2 database queries! ✨
 
 How DataLoader Works:
 
@@ -803,13 +803,13 @@ Endpoints:
 
 Problems:
 
-1\. Over-fetching: GET /users/:id returns too much data
+1. Over-fetching: GET /users/:id returns too much data
 
-2\. Under-fetching: Need multiple requests for post \+ comments
+2. Under-fetching: Need multiple requests for post \+ comments
 
-3\. Versioning: /v1/users vs /v2/users
+3. Versioning: /v1/users vs /v2/users
 
-4\. Documentation: Must document each endpoint
+4. Documentation: Must document each endpoint
 
 GraphQL Approach:
 
@@ -850,13 +850,13 @@ type Mutation {
 
 Benefits:
 
-1\. Fetch exactly what you need
+1. Fetch exactly what you need
 
-2\. Single request for nested data
+2. Single request for nested data
 
-3\. No versioning needed (evolve schema)
+3. No versioning needed (evolve schema)
 
-4\. Self-documenting (introspection)
+4. Self-documenting (introspection)
 
 Mobile App Example:
 ```bash

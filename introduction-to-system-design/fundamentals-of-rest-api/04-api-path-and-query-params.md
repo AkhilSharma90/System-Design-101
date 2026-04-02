@@ -91,7 +91,7 @@ Real examples from famous APIs:
 
 GitHub API:
 
-Reading: "Get issue \#123 from the react repo owned by facebook"
+Reading: "Get issue #123 from the react repo owned by facebook"
 
 Twitter API (historical):
 
@@ -110,7 +110,7 @@ Twitter API (historical):
 
 Reading:
 
-"Get tweet \#987654321 from user elonmusk"
+"Get tweet #987654321 from user elonmusk"
 
 ### **Query Parameters: The Filters and Options**
 
@@ -152,7 +152,7 @@ Think of query parameters as answering questions:
 
 ```bash
 
- GET /books/12345          ← WHICH book? \#12345
+ GET /books/12345          ← WHICH book? #12345
 
  ```
 

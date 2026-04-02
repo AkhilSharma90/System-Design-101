@@ -6,7 +6,7 @@ orderIndex: 2
 premium: false
 ---
 
-## **🔢 2\. Binary System \- The Language of Computers**
+## **🔢 2. Binary System - The Language of Computers**
 
 ### **🎯 Challenge 2: The Light Switch Language**
 
@@ -25,7 +25,7 @@ premium: false
 
 ### **💡 The Binary Revelation**
 
-**The Answer:** YES\! Computers do exactly this with electricity:
+**The Answer:** YES! Computers do exactly this with electricity:
 
 BINARY \= The language of ON and OFF
 
@@ -52,9 +52,9 @@ But from these simple 0s and 1s, we get:
 
 ✓ Games
 
-✓ The entire internet\!
+✓ The entire internet!
 
-**Key Insight:** Binary is like Morse code \- simple signals that combine to express complex ideas\!
+**Key Insight:** Binary is like Morse code - simple signals that combine to express complex ideas!
 
 ---
 
@@ -170,15 +170,15 @@ Bit          •                    (one dot)
 
 Byte         ••••••••             (8 dots)
 
-Kilobyte     \[Small paragraph\] ፨
+Kilobyte     [Small paragraph] ፨
 
-Megabyte     \[Entire book\] 📖
+Megabyte     [Entire book] 📖
 
-Gigabyte     \[Bookshelf \- 100 books\]📚
+Gigabyte     [Bookshelf - 100 books]📚
 
-Terabyte     \[Library \- 100 bookshelves\] 🚪🚪🚪🚪🚪🚪
+Terabyte     [Library - 100 bookshelves] 🚪🚪🚪🚪🚪🚪
 
-Petabyte     \[50 Libraries\] 🏫🏫🏫🏫🏫🏫🏫🏫🏫🏫🏫🏫
+Petabyte     [50 Libraries] 🏫🏫🏫🏫🏫🏫🏫🏫🏫🏫🏫🏫
 
 ---
 
@@ -226,7 +226,7 @@ Binary → Decimal:
 
 1000 \= 8
 
-Pattern: Each position doubles\!
+Pattern: Each position doubles!
 
    8  4  2  1
 
@@ -286,16 +286,16 @@ Letter  →  Decimal  →  Binary
 
   0     →     48    →  00110000
 
-  \!     →     33    →  00100001
+  !     →     33    →  00100001
 
 Space   →     32    →  00100000
 
-Example: The word "Hi\!"
+Example: The word "Hi!"
 
-Hi   \!
+Hi   !
 01001000 01101001 00100001
 
-Total: 3 bytes (24 bits) to store "Hi\!"
+Total: 3 bytes (24 bits) to store "Hi!"
 
 **Your name in binary:**
 
@@ -378,11 +378,11 @@ B: 0   (00000000)
 **Black pixel**
 
 Your 1920×1080 monitor:
-\= 2,073,600 pixels × 3 bytes per pixel \= 6,220,800 bytes ≈ 6 MB for ONE FRAME\!
+\= 2,073,600 pixels × 3 bytes per pixel \= 6,220,800 bytes ≈ 6 MB for ONE FRAME!
 
 At 60 FPS:
-6 MB × 60 \= 360 MB per second\!
-(This is why graphics cards need fast memory\!)
+6 MB × 60 \= 360 MB per second!
+(This is why graphics cards need fast memory!)
 
 ---
 
@@ -390,7 +390,7 @@ At 60 FPS:
 
 **You might think:** "1 KB \= 1,000 bytes exactly"
 
-**The Reality:** It's actually 1,024\!
+**The Reality:** It's actually 1,024!
 
 **❌ MARKETING NUMBERS (Decimal):**
 1 KB \= 1,000 bytes
@@ -399,7 +399,7 @@ At 60 FPS:
 
 1 GB \= 1,000 MB \= 1,000,000,000 bytes
 
-(Hard drive manufacturers use this\!)
+(Hard drive manufacturers use this!)
 
 
 **✅ COMPUTER NUMBERS (Binary):**
@@ -410,7 +410,7 @@ At 60 FPS:
 
 1 GB \= 1,024 MB \= 1,073,741,824 bytes (2³⁰)
 
-(Computer systems use this\!)
+(Computer systems use this!)
 
 
 **WHY THE DIFFERENCE?**
@@ -431,12 +431,12 @@ Marketing: 500,000,000,000 bytes
 
 Computer sees: 465 GB
 
-You: "Where did my 35 GB go?\!" 😡
+You: "Where did my 35 GB go?!" 😡
 
 **Reality: Marketing uses 1000, computers use 1024
-That's a 7% difference\!**
+That's a 7% difference!**
 
-**Mental model:** Computer storage is like buying a "1 pound" of coffee that's actually 0.93 pounds because they use different measuring systems\!
+**Mental model:** Computer storage is like buying a "1 pound" of coffee that's actually 0.93 pounds because they use different measuring systems!
 
 ---
 
@@ -480,20 +480,20 @@ Each instruction → number → binary
 
 Everything is just different ways of interpreting
 
-patterns of 0s and 1s\!
+patterns of 0s and 1s!
 
 **Mind-blowing fact:**
 
 This entire article you're reading:
-\- Every letter: 1 byte
+- Every letter: 1 byte
 
-\- Total: \~50,000 characters \= 50 KB
+- Total: \~50,000 characters \= 50 KB
 
-\- In binary: 400,000 bits
+- In binary: 400,000 bits
 
-\- In binary: 400,000 individual 0s and 1s\!
+- In binary: 400,000 individual 0s and 1s!
 
 
-01000001 01110010 01100101... (and so on for 50KB\!)
+01000001 01110010 01100101... (and so on for 50KB!)
 
 ---

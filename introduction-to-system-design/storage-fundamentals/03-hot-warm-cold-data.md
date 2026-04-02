@@ -51,35 +51,35 @@ Examples:
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
-1\. In the case of  E-commerce:
+1. In the case of  E-commerce:
 
-   \- Current product inventory
+   - Current product inventory
 
-   \- Shopping cart contents
+   - Shopping cart contents
 
-   \- Today's orders
+   - Today's orders
 
-   \- Active user sessions
+   - Active user sessions
 
-2\. Social Media:
+2. Social Media:
 
-   \- Recent posts (last 7 days)
+   - Recent posts (last 7 days)
 
-   \- Current trending topics
+   - Current trending topics
 
-   \- Active user profiles
+   - Active user profiles
 
-   \- Real-time notifications
+   - Real-time notifications
 
-3\. Banking:
+3. Banking:
 
-   \- Current account balances
+   - Current account balances
 
-   \- Today's transactions
+   - Today's transactions
 
-   \- Active credit card sessions
+   - Active credit card sessions
 
-   \- Real-time fraud detection data
+   - Real-time fraud detection data
 
 Storage Choice:
 
@@ -91,7 +91,7 @@ Why: Need instant access
 
 Cost: High ($0.10-0.50/GB/month)
 
-Worth it: Users notice any delay\!
+Worth it: Users notice any delay!
 
 **Warm Data: The Middle Ground**
 
@@ -115,35 +115,35 @@ Examples:
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
-1\. E-commerce:
+1. E-commerce:
 
-   \- Order history (last 90 days)
+   - Order history (last 90 days)
 
-   \- Product reviews
+   - Product reviews
 
-   \- Customer support tickets (recent)
+   - Customer support tickets (recent)
 
-   \- Returns/refunds data
+   - Returns/refunds data
 
-2\. Social Media:
+2. Social Media:
 
-   \- Posts from last month
+   - Posts from last month
 
-   \- User activity logs
+   - User activity logs
 
-   \- Analytics data
+   - Analytics data
 
-   \- Older notifications
+   - Older notifications
 
-3\. Banking:
+3. Banking:
 
-   \- Transaction history (3-6 months)
+   - Transaction history (3-6 months)
 
-   \- Archived statements
+   - Archived statements
 
-   \- Historical account data
+   - Historical account data
 
-   \- Completed loan applications
+   - Completed loan applications
 
 Storage Choice:
 
@@ -180,35 +180,35 @@ Examples:
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
-1\. E-commerce:
+1. E-commerce:
 
-   \- Orders from 5 years ago
+   - Orders from 5 years ago
 
-   \- Old product catalogs
+   - Old product catalogs
 
-   \- Deleted account backups
+   - Deleted account backups
 
-   \- Compliance audit logs
+   - Compliance audit logs
 
-2\. Social Media:
+2. Social Media:
 
-   \- Deleted posts (retention policy)
+   - Deleted posts (retention policy)
 
-   \- User data snapshots
+   - User data snapshots
 
-   \- System logs from years ago
+   - System logs from years ago
 
-   \- Legal discovery data
+   - Legal discovery data
 
-3\. Banking:
+3. Banking:
 
-   \- 7-year transaction history
+   - 7-year transaction history
 
-   \- Closed account records
+   - Closed account records
 
-   \- Old audit reports
+   - Old audit reports
 
-   \- Regulatory compliance archives
+   - Regulatory compliance archives
 
 Storage Choice:
 
@@ -220,7 +220,7 @@ Why:  Data is rarely accessed, needs to be cheap
 
 Cost: Very low ($0.001-0.004/GB/month)
 
-Worth it: 20x cheaper\! Storage at scale\!
+Worth it: 20x cheaper! Storage at scale!
 
 ### **Data Temperature Transitions**
 
@@ -344,23 +344,23 @@ Average photo: 2MB
 
 If ALL photos were to be  stored HOT:
 
-\- 2,000 TB uploaded daily
+- 2,000 TB uploaded daily
 
-\- 730,000 TB per year
+- 730,000 TB per year
 
-\- Cost: $365,000/day \= $133M/year 😱
+- Cost: $365,000/day \= $133M/year 😱
 
 With temperature-based storage:
 
-\- Recent (HOT): 14,000 TB × $0.50 \= $7,000/day
+- Recent (HOT): 14,000 TB × $0.50 \= $7,000/day
 
-\- Warm: 100,000 TB × $0.023 \= $2,300/day
+- Warm: 100,000 TB × $0.023 \= $2,300/day
 
-\- Cold: 616,000 TB × $0.001 \= $616/day
+- Cold: 616,000 TB × $0.001 \= $616/day
 
-\- Total: $10,000/day \= $3.6M/year ✓
+- Total: $10,000/day \= $3.6M/year ✓
 
-Savings: $129M/year (97% reduction\!)
+Savings: $129M/year (97% reduction!)
 
 ed on access patterns
 
@@ -372,15 +372,15 @@ Pareto Principle for Data:
 
 Observation:
 
-\- 20% of your data gets 80% of the access
+- 20% of your data gets 80% of the access
 
-\- 80% of your data gets 20% of the access
+- 80% of your data gets 20% of the access
 
 Translation:
 
-\- Keep 20% (hot) on expensive fast storage
+- Keep 20% (hot) on expensive fast storage
 
-\- Keep 80% (cold) on cheap slow storage
+- Keep 80% (cold) on cheap slow storage
 
 Real Numbers:
 
@@ -390,19 +390,19 @@ Total data: 100 TB
 
 Naive approach (all hot storage):
 
-\- 100 TB × $0.10/GB \= $10,000/month
+- 100 TB × $0.10/GB \= $10,000/month
 
 Optimized approach:
 
-\- 20 TB hot × $0.10/GB \= $2,000/month
+- 20 TB hot × $0.10/GB \= $2,000/month
 
-\- 80 TB cold × $0.01/GB \= $800/month
+- 80 TB cold × $0.01/GB \= $800/month
 
-\- Total: $2,800/month
+- Total: $2,800/month
 
-Savings: $7,200/month (72% reduction\!)
+Savings: $7,200/month (72% reduction!)
 
-Same user experience for 99% of requests\!
+Same user experience for 99% of requests!
 
 ### **Decision Framework: Choosing Storage Temperature**
 
@@ -502,11 +502,11 @@ COLD ❄️ (50% of catalog, 1% of views):
 Result:
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-\- 90% of user requests: \<50ms (great UX\!)
+- 90% of user requests: \<50ms (great UX!)
 
-\- Storage costs: 70% lower than all-hot
+- Storage costs: 70% lower than all-hot
 
-\- Users don't notice cold storage delays
+- Users don't notice cold storage delays
 
 **Case Study 2: Healthcare Records**
 
@@ -577,7 +577,7 @@ Savings: $500k/year for mid-size hospital
 
 Let’s see data storage patterns in  a real production system:
 
-Social Media Platform \- Complete Storage Design:
+Social Media Platform - Complete Storage Design:
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
@@ -585,15 +585,15 @@ Layer 1: Cache (HOT 🔥)
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
-\[Redis Cluster\]
+[Redis Cluster]
 
-\- Type: RAM
+- Type: RAM
 
-\- Size: 100 GB
+- Size: 100 GB
 
-\- Latency: 0.1ms
+- Latency: 0.1ms
 
-\- Data:
+- Data:
 
   ✓ User sessions
 
@@ -603,9 +603,9 @@ Layer 1: Cache (HOT 🔥)
 
   ✓ Active user profiles
 
-\- TTL: 1-24 hours
+- TTL: 1-24 hours
 
-\- Cost: $500/month
+- Cost: $500/month
 
 ![img18](https://res.cloudinary.com/dretwg3dy/image/upload/v1762436766/44_lgyzvx.png)
 
@@ -613,15 +613,15 @@ Layer 2: Primary Database (HOT 🔥)
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
-\[PostgreSQL on NVMe SSD\]
+[PostgreSQL on NVMe SSD]
 
-\- Type: Block Storage (EBS)
+- Type: Block Storage (EBS)
 
-\- Size: 2 TB
+- Size: 2 TB
 
-\- Latency: 1ms
+- Latency: 1ms
 
-\- Data:
+- Data:
 
   ✓ User accounts
 
@@ -631,25 +631,25 @@ Layer 2: Primary Database (HOT 🔥)
 
   ✓ Real-time analytics
 
-\- Backup: Hourly
+- Backup: Hourly
 
-\- Cost: $400/month
+- Cost: $400/month
 
 ![img19](https://res.cloudinary.com/dretwg3dy/image/upload/v1762436769/60_xzhrob.png)
 
-Layer 3: Media Storage \- Recent (HOT 🔥)
+Layer 3: Media Storage - Recent (HOT 🔥)
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
-\[S3 Standard \+ CloudFront CDN\]
+[S3 Standard \+ CloudFront CDN]
 
-\- Type: Object Storage
+- Type: Object Storage
 
-\- Size: 50 TB
+- Size: 50 TB
 
-\- Latency: 50ms (CDN) / 200ms (S3)
+- Latency: 50ms (CDN) / 200ms (S3)
 
-\- Data:
+- Data:
 
   ✓ Photos from last 30 days
 
@@ -657,25 +657,25 @@ Layer 3: Media Storage \- Recent (HOT 🔥)
 
   ✓ Profile pictures (active users)
 
-\- Lifecycle: Move to warm after 30 days
+- Lifecycle: Move to warm after 30 days
 
-\- Cost: $1,150/month
+- Cost: $1,150/month
 
 ![img20](https://res.cloudinary.com/dretwg3dy/image/upload/v1762436768/56_xuced2.png)
 
-Layer 4: Media Storage \- Historical (WARM 🌤️)
+Layer 4: Media Storage - Historical (WARM 🌤️)
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
-\[S3 Infrequent Access\]
+[S3 Infrequent Access]
 
-\- Type: Object Storage
+- Type: Object Storage
 
-\- Size: 200 TB
+- Size: 200 TB
 
-\- Latency:300ms
+- Latency:300ms
 
-\- Data:
+- Data:
 
   ✓ Photos 30-365 days old
 
@@ -684,10 +684,10 @@ Layer 4: Media Storage \- Historical (WARM 🌤️)
 
   ✓ Historical user content
 
-\- Lifecycle:
+- Lifecycle:
 Move to cold after 1 year
 
-\- Cost: $2000/month (for 200TB)
+- Cost: $2000/month (for 200TB)
 
 ![img21](https://res.cloudinary.com/dretwg3dy/image/upload/v1762436764/42_uz7dol.png)
 
@@ -695,15 +695,15 @@ Layer 5: Analytics Data (WARM 🌤️)
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
-\[Data Warehouse on HDD\]
+[Data Warehouse on HDD]
 
-\- Type: File Storage / Block Storage
+- Type: File Storage / Block Storage
 
-\- Size: 100 TB
+- Size: 100 TB
 
-\- Latency: 10ms
+- Latency: 10ms
 
-\- Data:
+- Data:
 
   ✓ User behavior logs
 
@@ -713,23 +713,23 @@ Layer 5: Analytics Data (WARM 🌤️)
 
   ✓ Business intelligence data
 
-\- Access: Batch queries, reports
+- Access: Batch queries, reports
 
-\- Cost: $800/month
+- Cost: $800/month
 
 Layer 6: Archives (COLD ❄️)
 
 ![img22](https://res.cloudinary.com/dretwg3dy/image/upload/v1762440179/57_ir8cpn.png)
 
-\[S3 Glacier\]
+[S3 Glacier]
 
-\- Type: Object Storage (Archive)
+- Type: Object Storage (Archive)
 
-\- Size: 500 TB
+- Size: 500 TB
 
-\- Latency: 5 hours
+- Latency: 5 hours
 
-\- Data:
+- Data:
 
   ✓ Old posts (1+ year)
 
@@ -739,23 +739,23 @@ Layer 6: Archives (COLD ❄️)
 
   ✓ Compliance data
 
-\- Lifecycle: Keep for 7 years
+- Lifecycle: Keep for 7 years
 
-\- Cost: $2,000/month
+- Cost: $2,000/month
 
 Layer 7: Deep Archive (FROZEN 🧊)
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
-\[S3 Glacier Deep Archive\]
+[S3 Glacier Deep Archive]
 
-\- Type: Object Storage (Tape-equivalent)
+- Type: Object Storage (Tape-equivalent)
 
-\- Size: 1 PB (1000 TB)
+- Size: 1 PB (1000 TB)
 
-\- Latency: 12-48 hours
+- Latency: 12-48 hours
 
-\- Data:
+- Data:
 
   ✓ Legal discovery data
 
@@ -765,8 +765,8 @@ Layer 7: Deep Archive (FROZEN 🧊)
 
   ✓ Long-term archives
 
-\- Retention: Permanent
-\- Cost: $1,000/month
+- Retention: Permanent
+- Cost: $1,000/month
 
 Total Storage: 1,853 TB
 
@@ -779,7 +779,7 @@ If everything was HOT storage:
 1,853 TB × $0.10/GB \= $185,300/month 😱
 
 Actual cost: $7,850/month ✓
-Savings: $177,450/month (96% reduction\!)
+Savings: $177,450/month (96% reduction!)
 
 **The Request Flow:**
 
@@ -787,43 +787,43 @@ User Views a Post:
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
-1\. Check Redis (Layer 1):
+1. Check Redis (Layer 1):
 
    "Is this post cached?"
 
-   Hit: Return in 0.1ms ⚡ \[95% of requests end here\!\]
+   Hit: Return in 0.1ms ⚡ [95% of requests end here!]
 
    Miss: Continue...
 
-2\. Check PostgreSQL (Layer 2):
+2. Check PostgreSQL (Layer 2):
 
    "Query post from database"
 
-   Found: Return in 5ms ✓ \[4% of requests\]
+   Found: Return in 5ms ✓ [4% of requests]
 
    Not found: Continue...
 
-3\. Check S3 Standard (Layer 3):
+3. Check S3 Standard (Layer 3):
 
    "Fetch from recent media storage"
 
-   Found: Return in 200ms ✓ \[0.9% of requests\]
+   Found: Return in 200ms ✓ [0.9% of requests]
 
    Not found: Continue...
 
-4\. Check S3 IA (Layer 4):
+4. Check S3 IA (Layer 4):
 
    "Fetch from historical storage"
 
-   Found: Return in 300ms ✓ \[0.09% of requests\]
+   Found: Return in 300ms ✓ [0.09% of requests]
 
    Not found: Continue...
 
-5\. Check Glacier (Layer 6):
+5. Check Glacier (Layer 6):
 
    "Initiate restore (5 hours)"
 
-   Found: User gets "This post is being retrieved" \[0.01% of requests\]
+   Found: User gets "This post is being retrieved" [0.01% of requests]
 
 
 
@@ -832,13 +832,13 @@ User Views a Post:
 
 Result:
 
-\- 95% of users: \<1ms (instant\!)
+- 95% of users: \<1ms (instant!)
 
-\- 4% of users: \<10ms (very fast)
+- 4% of users: \<10ms (very fast)
 
-\- 0.99% of users: \<300ms (acceptable)
+- 0.99% of users: \<300ms (acceptable)
 
-\- 0.01% of users: Wait for archive restore (rare\!)
+- 0.01% of users: Wait for archive restore (rare!)
 
 ---
 
@@ -848,21 +848,21 @@ You've mastered storage fundamentals if you can:
 
 **Types of Storage:**
 
-* \[ \] Explain block vs file vs object storage
-* \[ \] Choose the right storage type for a use case
-* \[ \] Understand the tradeoffs of each
+* [ ] Explain block vs file vs object storage
+* [ ] Choose the right storage type for a use case
+* [ ] Understand the tradeoffs of each
 
 **Memory vs Disk:**
 
-* \[ \] Describe the storage hierarchy from CPU to cloud
-* \[ \] Explain volatile vs persistent storage
-* \[ \] Calculate cost/performance tradeoffs
+* [ ] Describe the storage hierarchy from CPU to cloud
+* [ ] Explain volatile vs persistent storage
+* [ ] Calculate cost/performance tradeoffs
 
 **Hot vs Cold Data:**
 
-* \[ \] Identify data temperature based on access patterns
-* \[ \] Design lifecycle policies for data
-* \[ \] Calculate storage cost optimizations
+* [ ] Identify data temperature based on access patterns
+* [ ] Design lifecycle policies for data
+* [ ] Calculate storage cost optimizations
 
 ---
 
@@ -870,11 +870,11 @@ You've mastered storage fundamentals if you can:
 
 **Key Takeaways:**
 
-1. **Storage types serve different purposes** \- Block for performance, File for sharing, Object for scale
-2. **Speed costs money** \- RAM is 1000x faster but 100x more expensive than disk
-3. **Data has temperature** \- Most data is cold, optimize accordingly
-4. **The 80/20 rule** \- 20% of data gets 80% of access
-5. **Lifecycle management** \- Automatically move data based on age/access
+1. **Storage types serve different purposes** - Block for performance, File for sharing, Object for scale
+2. **Speed costs money** - RAM is 1000x faster but 100x more expensive than disk
+3. **Data has temperature** - Most data is cold, optimize accordingly
+4. **The 80/20 rule** - 20% of data gets 80% of access
+5. **Lifecycle management** - Automatically move data based on age/access
 
 **When asked "How would you design storage for this system?"**
 
@@ -908,8 +908,8 @@ Q: "When would you use object storage vs file storage?" A: "Object storage for s
 
 Q: "How would you optimize storage costs?" A: "Implement data lifecycle policies, cache hot data in RAM/SSD, move warm data to standard storage, archive cold data, and delete expired data. Use the 80/20 rule—keep 20% hot, 80% cold."
 
-**You're now ready to design production storage systems\!** 🎉
+**You're now ready to design production storage systems!** 🎉
 
 Remember: The best storage architecture isn't the fastest or the cheapest—it's the one that matches your access patterns. Fast where it matters, cheap where it doesn't.
 
-Keep practicing by analyzing storage in systems you use daily. Ask yourself: "Why did they choose this storage solution?" That's how you develop storage intuition\!
+Keep practicing by analyzing storage in systems you use daily. Ask yourself: "Why did they choose this storage solution?" That's how you develop storage intuition!

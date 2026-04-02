@@ -26,12 +26,12 @@ Monday 9 AM:
 "Bridge closed for repairs"
 
 Result:
-\- No one can get to work
-\- No food deliveries
-\- No emergency services
-\- Town is isolated
+- No one can get to work
+- No food deliveries
+- No emergency services
+- Town is isolated
 
-The entire town stops functioning because of ONE bridge\!
+The entire town stops functioning because of ONE bridge!
 
 This bridge is a **Single Point of Failure (SPOF)**—one component whose failure brings down the entire system.
 
@@ -49,17 +49,17 @@ Your Architecture (Dangerous):
 
 **What happens when the database fails?**
 
-2:00 AM \- Database server crashes
+2:00 AM - Database server crashes
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
-2:00:01 AM \- All 1000 servers can't reach database
+2:00:01 AM - All 1000 servers can't reach database
 
-2:00:02 AM \- Every user request fails
+2:00:02 AM - Every user request fails
 
-2:00:03 AM \- Error alerts flooding your phone
+2:00:03 AM - Error alerts flooding your phone
 
-2:00:05 AM \- Website shows: "Service unavailable"
+2:00:05 AM - Website shows: "Service unavailable"
 
 Impact:
 
@@ -90,21 +90,21 @@ Improved Architecture (Resilient):
 
 All databases sync continuously
 If primary fails → replica takes over
-No downtime\!
+No downtime!
 
 **Now when failure happens:**
 
-2:00 AM \- Primary database crashes
+2:00 AM - Primary database crashes
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
-2:00:01 AM \- Automatic failover detected
+2:00:01 AM - Automatic failover detected
 
-2:00:02 AM \- Replica promoted to primary
+2:00:02 AM - Replica promoted to primary
 
-2:00:03 AM \- Traffic routed to new primary
+2:00:03 AM - Traffic routed to new primary
 
-2:00:05 AM \- Users don't notice anything
+2:00:05 AM - Users don't notice anything
 
 Impact:
 
@@ -122,7 +122,7 @@ Your sleep: Undisturbed 😴
 
 ### **Real-World SPOF Examples (And How to Fix Them)**
 
-**SPOF \#1: Single Load Balancer**
+**SPOF #1: Single Load Balancer**
 
 The Problem:
 
@@ -139,7 +139,7 @@ The Solution:
 
 If LB1 fails → LB2 takes over automatically
 
-**SPOF \#2: Single Internet Connection**
+**SPOF #2: Single Internet Connection**
 
 The Problem:
 
@@ -158,7 +158,7 @@ The Solution:
 
 Multiple ISPs → If one fails, other takes over
 
-**SPOF \#3: Single Payment Provider**
+**SPOF #3: Single Payment Provider**
 
 The Problem:
 
@@ -189,9 +189,9 @@ System Architecture:
 
 **Question: In the diagram above**  How many SPOFs can you identify?
 
-**Answer:** FIVE SPOFs\! Let's see:
+**Answer:** FIVE SPOFs! Let's see:
 
-SPOF \#1: DNS Server
+SPOF #1: DNS Server
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
@@ -201,7 +201,7 @@ Impact: Website unreachable
 
 Fix: Multiple DNS providers (Route53 \+ Cloudflare)
 
-SPOF \#2: Load Balancer
+SPOF #2: Load Balancer
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
@@ -211,7 +211,7 @@ Impact: All servers unreachable
 
 Fix: Active-Active or Active-Standby LB pair
 
-SPOF \#3: The Servers (as a group)
+SPOF #3: The Servers (as a group)
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
@@ -221,7 +221,7 @@ Impact: Data center outage \= total failure
 
 Fix: Multi-region deployment
 
-SPOF \#4: Database
+SPOF #4: Database
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
@@ -231,7 +231,7 @@ Impact: No data access
 
 Fix: Primary-Replica setup with auto-failover
 
-SPOF \#5: File Storage
+SPOF #5: File Storage
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
@@ -273,7 +273,7 @@ Lost revenue: $20
 
 Total cost: $36,020/year
 
-Is the extra $30,000 worth it? Maybe not\!
+Is the extra $30,000 worth it? Maybe not!
 
 Scenario: Large Company ($100M revenue/year)
 
@@ -289,9 +289,9 @@ Option B: Database Cluster
 
 Extra cost: $36,000/year
 
-Savings: $46,000 \- $20 \= $45,980
+Savings: $46,000 - $20 \= $45,980
 
-Now the extra $36,000 is worth it\! ✓
+Now the extra $36,000 is worth it! ✓
 
 **The Decision Framework:**
 
@@ -301,28 +301,28 @@ Should you eliminate this SPOF?
 
 Ask yourself:
 
-1\. What's the probability of failure?
+1. What's the probability of failure?
 
-   \- High (\>1%/year) → Eliminate it
+   - High (>1%/year) → Eliminate it
 
-   \- Low (\<0.1%/year) → Maybe acceptable
+   - Low (\<0.1%/year) → Maybe acceptable
 
-2\. What's the business impact?
+2. What's the business impact?
 
-   \- Critical (losing customers) → Eliminate it
+   - Critical (losing customers) → Eliminate it
 
-   \- Minor (slight inconvenience) → Maybe acceptable
+   - Minor (slight inconvenience) → Maybe acceptable
 
-3\. What's the cost to fix?
+3. What's the cost to fix?
 
-   \- Cheap (2x server cost) → Do it
+   - Cheap (2x server cost) → Do it
 
-   \- Expensive (10x infrastructure) → Evaluate carefully
+   - Expensive (10x infrastructure) → Evaluate carefully
 
-4\. Can users tolerate downtime?
+4. Can users tolerate downtime?
 
-   \- No (healthcare, finance) → Eliminate ALL SPOFs
+   - No (healthcare, finance) → Eliminate ALL SPOFs
 
-   \- Yes (personal blog) → Some SPOFs OK
+   - Yes (personal blog) → Some SPOFs OK
 
 ---

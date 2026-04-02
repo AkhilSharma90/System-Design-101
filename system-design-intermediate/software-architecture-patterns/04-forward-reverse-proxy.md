@@ -23,7 +23,7 @@ Just like those two-way security checkpoints, proxy servers can face two differe
 
 **Forward Proxy:** Sits in front of clients (users), intermediary for outbound requests **Reverse Proxy:** Sits in front of servers, intermediary for inbound requests
 
-**Key Insight:** The direction the proxy "faces" completely changes its purpose and benefits\!
+**Key Insight:** The direction the proxy "faces" completely changes its purpose and benefits!
 
 ---
 
@@ -75,16 +75,16 @@ Office Network Setup:
 
 ![img3](https://res.cloudinary.com/dretwg3dy/image/upload/v1766641268/341_sfmlty.png)
 
-### **How It Works \- Step by Step:**
+### **How It Works - Step by Step:**
 
 Step 1: Employee wants to visit youtube.com
-\[Your Laptop\] → "I want youtube.com"
+[Your Laptop] → "I want youtube.com"
 
 Step 2: Request goes to proxy (not directly to internet)
-\[Your Laptop\] → \[Forward Proxy\]
+[Your Laptop] → [Forward Proxy]
 
 Step 3: Proxy checks rules
-\[Forward Proxy\]:
+[Forward Proxy]:
 
   ✅ youtube.com allowed? YES
 
@@ -93,60 +93,60 @@ Step 3: Proxy checks rules
   ✅ User authorized? YES
 
 Step 4: Proxy makes request on your behalf
-\[Forward Proxy\] → \[YouTube\]
-  (YouTube sees proxy's IP, not yours\!)
+[Forward Proxy] → [YouTube]
+  (YouTube sees proxy's IP, not yours!)
 
 Step 5: Proxy returns content to you
-\[Forward Proxy\] → \[Your Laptop\]
+[Forward Proxy] → [Your Laptop]
   (Optionally caches for next person)
 
 ![img4](https://res.cloudinary.com/dretwg3dy/image/upload/v1766641268/340_cre0g4.png)
 
 ### **Real-World Forward Proxy Uses:**
 
-#### **1\. Corporate Network Control**
+#### **1. Corporate Network Control**
 
 Company Policy Enforcement:
 
 Employee tries: facebook.com
-Proxy: ❌ "Blocked \- Social media not allowed during work hours"
+Proxy: ❌ "Blocked - Social media not allowed during work hours"
 
 Employee tries: github.com
-Proxy: ✅ "Allowed \- Development resource"
+Proxy: ✅ "Allowed - Development resource"
 
 Employee tries: malware-site.evil
-Proxy: ❌ "Blocked \- Known malicious site"
+Proxy: ❌ "Blocked - Known malicious site"
 
-**Mental model:** Like a strict librarian who controls what books you can check out\!
+**Mental model:** Like a strict librarian who controls what books you can check out!
 
-#### **2\. School Content Filtering**
+#### **2. School Content Filtering**
 
 Student tries: educational-site.edu
 Proxy: ✅ "Allowed"
 
 Student tries: gaming-site.com
-Proxy: ❌ "Blocked \- Gaming not allowed"
+Proxy: ❌ "Blocked - Gaming not allowed"
 
 Student tries: VPN service
-Proxy: ❌ "Blocked \- Circumvention tool detected"
+Proxy: ❌ "Blocked - Circumvention tool detected"
 
-#### **3\. Privacy Protection (VPN-like)**
+#### **3. Privacy Protection (VPN-like)**
 
 Your IP: 123.45.67.89
          ↓
 Forward Proxy IP: 98.76.54.32
          ↓
-Website sees: 98.76.54.32 (not your real IP\!)
+Website sees: 98.76.54.32 (not your real IP!)
 
 Benefit: Browse anonymously, bypass geo-restrictions
 
-#### **4\. Bandwidth Saving (Caching)**
+#### **4. Bandwidth Saving (Caching)**
 
 First employee visits: cnn.com
-Proxy: \[Downloads\] → \[Caches copy\]
+Proxy: [Downloads] → [Caches copy]
 
 Second employee visits: cnn.com (5 minutes later)
-Proxy: \[Serves cached copy\] (No internet download needed\!)
+Proxy: [Serves cached copy] (No internet download needed!)
 
 Result: Faster load \+ Saves bandwidth 💰
 
@@ -161,16 +161,16 @@ A reverse proxy sits in front of **your servers**, handling requests on behalf o
 Internet-Facing Setup:
 ![img5](https://res.cloudinary.com/dretwg3dy/image/upload/v1766641268/345_nlkczw.png)
 
-### **How It Works \- Step by Step:**
+### **How It Works - Step by Step:**
 
 Step 1: User visits yourcompany.com
-\[User Browser\] → "GET https://yourcompany.com"
+[User Browser] → "GET https://yourcompany.com"
 
 Step 2: DNS points to reverse proxy (not actual servers)
-\[User\] → \[Reverse Proxy IP: 203.0.113.10\]
+[User] → [Reverse Proxy IP: 203.0.113.10]
 
 Step 3: Reverse proxy decides which server to use
-\[Reverse Proxy\]:
+[Reverse Proxy]:
 
   ✅ Check server health
 
@@ -179,25 +179,25 @@ Step 3: Reverse proxy decides which server to use
   ✅ Decrypt SSL (if needed)
 
 Step 4: Forward to actual server
-\[Reverse Proxy\] → \[Web Server 3\] (internal IP: 10.0.0.15)
+[Reverse Proxy] → [Web Server 3] (internal IP: 10.0.0.15)
 
 Step 5: Server responds through proxy
-\[Web Server 3\] → \[Reverse Proxy\] → \[User\]
-  (User never knows server's real IP\!)
+[Web Server 3] → [Reverse Proxy] → [User]
+  (User never knows server's real IP!)
 
 ### **Real-World Reverse Proxy Uses:**
 
-#### **1\. Load Balancing**
+#### **1. Load Balancing**
 
 750 users hit your site simultaneously:
 
 ![img6](https://res.cloudinary.com/dretwg3dy/image/upload/v1766641267/337_a0aylw.png)
 
-Result: No single server overwhelmed\! 🎉
+Result: No single server overwhelmed! 🎉
 
-**Mental model:** Like a restaurant host distributing customers across different tables evenly\!
+**Mental model:** Like a restaurant host distributing customers across different tables evenly!
 
-#### **2\. Security Shield**
+#### **2. Security Shield**
 
 Internet-facing setup:
 
@@ -206,9 +206,9 @@ Internet-facing setup:
 Attacker only sees: Proxy IP (203.0.113.10)
 Attacker CANNOT see: Real server IPs (10.0.0.x)
 
-Result: Servers protected from direct attacks\! 🛡️
+Result: Servers protected from direct attacks! 🛡️
 
-#### **3\. SSL Termination**
+#### **3. SSL Termination**
 
 Without Reverse Proxy:
 ![img8](https://res.cloudinary.com/dretwg3dy/image/upload/v1766641267/336_humewg.png)
@@ -219,23 +219,23 @@ With Reverse Proxy:
 
 ![img9](https://res.cloudinary.com/dretwg3dy/image/upload/v1766641269/346_y1dhgi.png)
 
-Result: Servers focus on application logic, not encryption\! 💪
+Result: Servers focus on application logic, not encryption! 💪
 
-#### **4\. Caching Static Content**
+#### **4. Caching Static Content**
 
 User requests: yoursite.com/logo.png
 
 First time:
-\[Proxy\] → \[Backend Server\] → Downloads logo
-\[Proxy\] → Caches logo in memory
+[Proxy] → [Backend Server] → Downloads logo
+[Proxy] → Caches logo in memory
 
 Next 1000 requests for logo.png:
-\[Proxy\] → Serves from cache (backend never hit\!)
+[Proxy] → Serves from cache (backend never hit!)
 
 Result:
-\- Lightning fast response ⚡
-\- Backend servers not burdened 📉
-\- Bandwidth saved 💰
+- Lightning fast response ⚡
+- Backend servers not burdened 📉
+- Bandwidth saved 💰
 
 ---
 
@@ -255,7 +255,7 @@ Setup: School network filters student access to social media
 
 Setup: Netflix distributes content through edge servers
 
-\[Users\] → \[Edge Proxy\] → \[Origin Servers\]
+[Users] → [Edge Proxy] → [Origin Servers]
                ↓
          Serves cached video
 
@@ -267,7 +267,7 @@ Setup: Netflix distributes content through edge servers
 
 Setup: Company allows employees to access internal resources from home
 
-\[Home Worker\] → \[VPN Proxy\] → \[Corporate Network\]
+[Home Worker] → [VPN Proxy] → [Corporate Network]
                      ↓
                 Appears internal
 
@@ -279,7 +279,7 @@ Setup: Company allows employees to access internal resources from home
 
 Setup: Cloudflare sits between visitors and your web servers
 
-\[Visitors\] → \[Cloudflare\] → \[Your Servers\]
+[Visitors] → [Cloudflare] → [Your Servers]
                   ↓
             DDoS protection
 
@@ -331,33 +331,33 @@ Setup: Cloudflare sits between visitors and your web servers
 
 Think about it... Would this make sense?
 
-### **The Answer: YES\! Common in Enterprise**
+### **The Answer: YES! Common in Enterprise**
 
 Enterprise Setup:
 
 Internet
    ↓
-\[Reverse Proxy\] ← Protects company's public website
+[Reverse Proxy] ← Protects company's public website
    ↓
-\[Web Servers\]
+[Web Servers]
    ↓
-\[Forward Proxy\] ← Controls employees' internet access
+[Forward Proxy] ← Controls employees' internet access
    ↓
-\[Employee Computers\]
+[Employee Computers]
 
 ### **Real Example: Corporate Network**
 
 Inbound Web Traffic (Customer visiting your site):
-\[Customer\] → \[Cloudflare Reverse Proxy\] → \[Your Web Servers\]
-             \- DDoS protection
-             \- Load balancing
-             \- SSL termination
+[Customer] → [Cloudflare Reverse Proxy] → [Your Web Servers]
+             - DDoS protection
+             - Load balancing
+             - SSL termination
 
 Outbound Employee Traffic (Employee browsing):
-\[Employee\] → \[Corporate Forward Proxy\] → \[Internet\]
-             \- Content filtering
-             \- Logging
-             \- Bandwidth control
+[Employee] → [Corporate Forward Proxy] → [Internet]
+             - Content filtering
+             - Logging
+             - Bandwidth control
 
 **Mental model:** Like a building with:
 
@@ -388,20 +388,20 @@ Outbound Employee Traffic (Employee browsing):
 
 ### **Forward Proxy Tools:**
 
-#### **1\. Squid Proxy**
+#### **1. Squid Proxy**
 
 Purpose: Corporate content filtering and caching
-Setup:   \[Office Network\] → \[Squid\] → \[Internet\]
+Setup:   [Office Network] → [Squid] → [Internet]
 Features:
   • Block websites by category
   • Cache frequently accessed content
   • Log all internet activity
   • Bandwidth throttling
 
-#### **2\. VPN Services (Acting as Forward Proxy)**
+#### **2. VPN Services (Acting as Forward Proxy)**
 
 Purpose: Privacy and geo-restriction bypass
-Setup:   \[You\] → \[NordVPN\] → \[Internet\]
+Setup:   [You] → [NordVPN] → [Internet]
 Features:
   • Hide your IP address
   • Encrypt traffic
@@ -410,30 +410,30 @@ Features:
 
 ### **Reverse Proxy Tools:**
 
-#### **1\. Nginx**
+#### **1. Nginx**
 
 Purpose: Web server and reverse proxy
-Setup:   \[Internet\] → \[Nginx\] → \[App Servers\]
+Setup:   [Internet] → [Nginx] → [App Servers]
 Features:
   • Load balancing across servers
   • SSL termination
   • Static content caching
   • Compression
 
-#### **2\. HAProxy**
+#### **2. HAProxy**
 
 Purpose: High-performance load balancer
-Setup:   \[Traffic\] → \[HAProxy\] → \[Backend Pool\]
+Setup:   [Traffic] → [HAProxy] → [Backend Pool]
 Features:
   • Health checking
   • Session persistence
   • Advanced routing rules
   • Real-time monitoring
 
-#### **3\. Cloudflare**
+#### **3. Cloudflare**
 
 Purpose: CDN and security service
-Setup:   \[Users\] → \[Cloudflare Edge\] → \[Your Origin\]
+Setup:   [Users] → [Cloudflare Edge] → [Your Origin]
 Features:
   • DDoS protection
   • Global caching
@@ -444,11 +444,11 @@ Features:
 
 
 
-## **🚨 Common Misconceptions: Busted\!**
+## **🚨 Common Misconceptions: Busted!**
 
 ### **Misconception 1: "VPN \= Forward Proxy"**
 
-**Reality:** Not quite\! While similar, they differ:
+**Reality:** Not quite! While similar, they differ:
 
 VPN (Virtual Private Network):
 
@@ -456,7 +456,7 @@ VPN (Virtual Private Network):
 
 • Routes ALL traffic through it
 
-• Operates at network layer (Layer 3\)
+• Operates at network layer (Layer 3)
 
 • Typically requires special software
 
@@ -466,7 +466,7 @@ Forward Proxy:
 
 • Routes only configured traffic
 
-• Operates at application layer (Layer 7\)
+• Operates at application layer (Layer 7)
 
 • Often configured in browser/OS settings
 
@@ -474,7 +474,7 @@ Forward Proxy:
 
 ### **Misconception 2: "Reverse Proxy \= Load Balancer"**
 
-**Reality:** Reverse proxy can do load balancing, but it's just one feature\!
+**Reality:** Reverse proxy can do load balancing, but it's just one feature!
 
 Reverse Proxy capabilities:
 
@@ -506,29 +506,29 @@ Load Balancer:
 
 ### **Misconception 3: "Proxies Always Slow Things Down"**
 
-**Reality:** Proxies can actually SPEED things up\!
+**Reality:** Proxies can actually SPEED things up!
 
 Caching Example:
 
 Without Proxy:
 
-User 1: \[Request image\] → \[Origin Server\] → 500ms response
+User 1: [Request image] → [Origin Server] → 500ms response
 
-User 2: \[Request image\] → \[Origin Server\] → 500ms response
+User 2: [Request image] → [Origin Server] → 500ms response
 
-User 3: \[Request image\] → \[Origin Server\] → 500ms response
+User 3: [Request image] → [Origin Server] → 500ms response
 
 
 With Caching Proxy:
 
-User 1: \[Request image\] → \[Proxy\] → \[Origin\] → 500ms (cached)
+User 1: [Request image] → [Proxy] → [Origin] → 500ms (cached)
 
-User 2: \[Request image\] → \[Proxy serves cache\] → 10ms ⚡
+User 2: [Request image] → [Proxy serves cache] → 10ms ⚡
 
-User 3: \[Request image\] → \[Proxy serves cache\] → 10ms ⚡
+User 3: [Request image] → [Proxy serves cache] → 10ms ⚡
 
 
-Result: 50x faster for subsequent users\!
+Result: 50x faster for subsequent users!
 
 ---
 
@@ -553,8 +553,8 @@ Your answer should include:
 
 ### **Forward Proxy (Outbound Guardian)**
 
-\[Your Network\] ─┬─\> \[Forward Proxy\] ──\> \[Internet\]
-                └─\> (Controls exit)
+[Your Network] ─┬─> [Forward Proxy] ──> [Internet]
+                └─> (Controls exit)
 
 **Think of it as:** Your personal assistant who handles your outbound affairs
 
@@ -566,8 +566,8 @@ Your answer should include:
 
 ### **Reverse Proxy (Inbound Protector)**
 
-\[Internet\] ──\> \[Reverse Proxy\] ─┬─\> \[Server 1\]
-                                 └─\> \[Server 2\]
+[Internet] ──> [Reverse Proxy] ─┬─> [Server 1]
+                                 └─> [Server 2]
        (Controls entry)
 
 **Think of it as:** Your receptionist who handles incoming visitors
@@ -590,15 +590,15 @@ Complete Enterprise Setup:
 
 Internet
     ↕
-\[Reverse Proxy\] ← Shields servers from attackers
+[Reverse Proxy] ← Shields servers from attackers
     ↕             Load balances traffic
-\[Your Servers\]    Terminates SSL
+[Your Servers]    Terminates SSL
     ↕
-\[Forward Proxy\] ← Controls employee browsing
+[Forward Proxy] ← Controls employee browsing
     ↕             Filters content
-\[Employee PCs\]    Logs activity
+[Employee PCs]    Logs activity
 
-**The beautiful thing:** Neither side knows about the proxy on the other end\! Internet users don't know about your forward proxy, and employees don't know servers use reverse proxies. They just work silently, making the internet secure and efficient\! 🎯
+**The beautiful thing:** Neither side knows about the proxy on the other end! Internet users don't know about your forward proxy, and employees don't know servers use reverse proxies. They just work silently, making the internet secure and efficient! 🎯
 
 ---
 
@@ -616,7 +616,7 @@ Without looking back, can you answer:
 
 5. **Both Together:** Can you use both types simultaneously? Why or why not?
 
-**Mental check:** If you can answer these clearly, you understand the proxy landscape\! If not, revisit the relevant sections.
+**Mental check:** If you can answer these clearly, you understand the proxy landscape! If not, revisit the relevant sections.
 
 ---
 
@@ -633,7 +633,7 @@ Now that you understand proxies, you're ready to explore:
 ### **Related Technologies:**
 
 * **API Gateways:** Specialized reverse proxies for APIs (Kong, AWS API Gateway)
-* **Service Mesh:** Istio, Linkerd \- advanced proxy patterns for microservices
+* **Service Mesh:** Istio, Linkerd - advanced proxy patterns for microservices
 * **CDN Architecture:** How Cloudflare, Akamai work at global scale
 
 ### **Advanced Topics:**
@@ -648,4 +648,4 @@ Now that you understand proxies, you're ready to explore:
 * **Try Squid:** Run a forward proxy on your network
 * **Use Burp Suite:** Learn about proxies for security testing
 
-**Next recommended read:** "Load Balancer Types (L4 vs L7)" \- to understand how reverse proxies make routing decisions\!
+**Next recommended read:** "Load Balancer Types (L4 vs L7)" - to understand how reverse proxies make routing decisions!

@@ -5,7 +5,7 @@ readTime: 20 min
 orderIndex: 4
 premium: false
 ---
-## **Load Balancing Basics \- The Traffic Director**
+## **Load Balancing Basics - The Traffic Director**
 
 ### **🎯 Challenge 4: The Restaurant Host Problem**
 
@@ -24,11 +24,11 @@ Room 2: ████         (some people)
 
 Room 3: ████████████ (packed)
 
-Room 4: ██           (almost empty\!)
+Room 4: ██           (almost empty!)
 
 Room 5: ████████████ (packed)
 
-Problem: Customers just pick random rooms\!
+Problem: Customers just pick random rooms!
 Result: Long waits, unhappy customers, empty tables
 
 **With a smart host:**
@@ -51,9 +51,9 @@ Entrance
 
    └─→ Room 5: ██████  (balanced)
 
-Result: No waits, happy customers, efficient\!
+Result: No waits, happy customers, efficient!
 
-**This is exactly what a Load Balancer does\!**
+**This is exactly what a Load Balancer does!**
 
 ---
 
@@ -63,9 +63,9 @@ Result: No waits, happy customers, efficient\!
 
 ![img1](https://res.cloudinary.com/dretwg3dy/image/upload/v1764771695/262_rajp5f.png)
 
-All servers: Happy and balanced\!
+All servers: Happy and balanced!
 
-**Key Insight:** Load balancers prevent any single server from being overwhelmed\!
+**Key Insight:** Load balancers prevent any single server from being overwhelmed!
 
 ---
 
@@ -81,7 +81,7 @@ Let's explore different strategies:
 
 ![img2](https://res.cloudinary.com/dretwg3dy/image/upload/v1764771695/254_ggpk1u.png)
 
-Perfect equality\!
+Perfect equality!
 
 **Pros:** Simple, fair, easy to implement **Cons:** Doesn't consider server load or speed
 
@@ -109,7 +109,7 @@ New request arrives:
 
 → Server 3 has fewest connections (1)
 
-→ Send request to Server 3\!
+→ Send request to Server 3!
 
 ![img4](https://res.cloudinary.com/dretwg3dy/image/upload/v1764771696/258_e36d0v.png)
 
@@ -118,7 +118,7 @@ New request arrives:
 **Cons:** Slightly more complex, needs to track connections
 
 
-**Real-world example:** Like a grocery store checkout \- you join the shortest line\!
+**Real-world example:** Like a grocery store checkout - you join the shortest line!
 
 ---
 
@@ -169,15 +169,15 @@ User IP: 192.168.1.100
 
 → 347 % 3 \= 2  (modulo number of servers)
 
-→ Always routes to Server 2\!
+→ Always routes to Server 2!
 
 Same user's next request:
 
-→ hash(192.168.1.100) \= 347  (same\!)
+→ hash(192.168.1.100) \= 347  (same!)
 
 → 347 % 3 \= 2
 
-→ Server 2 again\!
+→ Server 2 again!
 
 Different user IP: 192.168.1.101
 
@@ -199,7 +199,7 @@ Different user IP: 192.168.1.101
 * Uneven distribution if many users from same IP range
 * Server failure requires rehashing
 
-**Real-world example:** Like having a regular doctor \- you always see the same one who knows your history
+**Real-world example:** Like having a regular doctor - you always see the same one who knows your history
 
 ---
 
@@ -235,7 +235,7 @@ Sees: URLs, headers, cookies, content
 
 Fast: Slower (must read HTTP)
 
-Smart: Very\!
+Smart: Very!
 
 Example decision:
 "This request is for /api/users"
@@ -256,25 +256,25 @@ Example decision:
          │
     ┌────┴─────┐
     ▼          ▼
-\[API Servers\] \[Static Servers\]
+[API Servers] [Static Servers]
 
 Use when: Need smart routing by content
 
 **Real-world comparison:**
 
-* **Layer 4:** Like a highway toll booth \- just directs cars, doesn't care what's inside
+* **Layer 4:** Like a highway toll booth - just directs cars, doesn't care what's inside
 
-* **Layer 7:** Like a smart receptionist \- reads your request and directs you to the right department
+* **Layer 7:** Like a smart receptionist - reads your request and directs you to the right department
 
 ### **🚨 Common Misconception: "Load Balancers Never Fail"**
 
-**You might think:** "Great\! Load balancer solves everything\!"
+**You might think:** "Great! Load balancer solves everything!"
 
-**The Reality:** Load balancers themselves can fail or become bottlenecks\!
+**The Reality:** Load balancers themselves can fail or become bottlenecks!
 
-**The Solution: Multiple Load Balancers\!**
+**The Solution: Multiple Load Balancers!**
 
-❌ SINGLE LOAD BALANCER (Risky\!)
+❌ SINGLE LOAD BALANCER (Risky!)
 
 ═════════════════════════════════
 
@@ -282,13 +282,13 @@ Use when: Need smart routing by content
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
-✅ REDUNDANT LOAD BALANCERS (Safe\!)
+✅ REDUNDANT LOAD BALANCERS (Safe!)
 
 ═════════════════════════════════
 
 ![img9](https://res.cloudinary.com/dretwg3dy/image/upload/v1764771695/255_i2kk9d.png)
 
-Safety: If LB 1 fails, LB 2 continues\!
+Safety: If LB 1 fails, LB 2 continues!
 
 ---
 
@@ -329,13 +329,13 @@ Each zone has:
 
 **Without Health Checks:**
 
-Load Balancer: "Round robin time\!"
+Load Balancer: "Round robin time!"
 
 Request 1 → Server 1 ✅ (works)
 
 Request 2 → Server 2 ✅ (works)
 
-Request 3 → Server 3 ❌ (DEAD\! User sees error)
+Request 3 → Server 3 ❌ (DEAD! User sees error)
 
 Request 4 → Server 4 ✅ (works)
 
@@ -343,53 +343,53 @@ Request 5 → Server 1 ✅ (works)
 
 Request 6 → Server 2 ✅ (works)
 
-Request 7 → Server 3 ❌ (STILL DEAD\! Another error)
+Request 7 → Server 3 ❌ (STILL DEAD! Another error)
 
-Result: 25% of requests fail\! 😡
+Result: 25% of requests fail! 😡
 
-**With Health Checks (Smart\!):**
+**With Health Checks (Smart!):**
 
 Health Check Configuration:
 
-\- Check every 10 seconds
+- Check every 10 seconds
 
-\- Send HTTP GET to /health
+- Send HTTP GET to /health
 
-\- Expect 200 OK response
+- Expect 200 OK response
 
-\- If fails 3 times → Mark unhealthy
+- If fails 3 times → Mark unhealthy
 
 Timeline:
-10:00:00 \- Server 3 crashes
+10:00:00 - Server 3 crashes
 
-10:00:10 \- Health check fails (1/3)
+10:00:10 - Health check fails (1/3)
 
-10:00:20 \- Health check fails (2/3)
+10:00:20 - Health check fails (2/3)
 
-10:00:30 \- Health check fails (3/3) → REMOVED\!
+10:00:30 - Health check fails (3/3) → REMOVED!
 
-Load Balancer: "Server 3 is out\! Skip it\!"
+Load Balancer: "Server 3 is out! Skip it!"
 
 Request 1 → Server 1 ✅
 
 Request 2 → Server 2 ✅
 
-Request 3 → Server 4 ✅ (skipped dead Server 3\!)
+Request 3 → Server 4 ✅ (skipped dead Server 3!)
 
 Request 4 → Server 1 ✅
 
 Request 5 → Server 2 ✅
 
-Result: 0% failures\! 🎉
+Result: 0% failures! 🎉
 
-10:05:00 \- Server 3 comes back online
-10:05:10 \- Health check succeeds (1/3)
-10:05:20 \- Health check succeeds (2/3)
-10:05:30 \- Health check succeeds (3/3) → ADDED BACK\!
+10:05:00 - Server 3 comes back online
+10:05:10 - Health check succeeds (1/3)
+10:05:20 - Health check succeeds (2/3)
+10:05:30 - Health check succeeds (3/3) → ADDED BACK!
 
-Load Balancer: "Welcome back, Server 3\!"
+Load Balancer: "Welcome back, Server 3!"
 
-**Key Insight:** Health checks are CRITICAL for reliability\!
+**Key Insight:** Health checks are CRITICAL for reliability!
 
 ---
 
@@ -401,9 +401,9 @@ Load Balancer: "Welcome back, Server 3\!"
 
 **Scenario A:** Simple website, all servers identical
 
-**Scenario B:** Video encoding \- jobs take 5 seconds to 5 minutes
+**Scenario B:** Video encoding - jobs take 5 seconds to 5 minutes
 
-**Scenario C:** Shopping cart \- need same user to hit same server
+**Scenario C:** Shopping cart - need same user to hit same server
 
 **Scenario D:** 1 new powerful server \+ 2 older slower servers
 
@@ -494,11 +494,11 @@ MODERN LOAD BALANCER CAPABILITIES
 
 ✅ Content-Based Routing
 
-   ├─ /api/\* → API servers
+   ├─ /api/* → API servers
 
-   ├─ /images/\* → Image servers
+   ├─ /images/* → Image servers
 
-   └─ /admin/\* → Admin servers
+   └─ /admin/* → Admin servers
 
 ✅ Metrics & Logging
 
@@ -533,7 +533,7 @@ MODERN LOAD BALANCER CAPABILITIES
 4️⃣ Layer 4 \= Fast & simple (TCP/IP)
    Layer 7 \= Smart & content-aware (HTTP)
 
-5️⃣ Load balancers themselves need redundancy\!
+5️⃣ Load balancers themselves need redundancy!
 
 6️⃣ Essential for horizontal scaling
 

@@ -23,15 +23,15 @@ But: "Can user actually accomplish their goal?"
 **Like mystery shopping at your own store:**
 
 You hire someone who doesn't work there to:
-1\. Walk into store (like a real customer)
-2\. Browse products
-3\. Ask employee questions
-4\. Add items to cart
-5\. Go through checkout
-6\. Complete purchase
-7\. Receive receipt
+1. Walk into store (like a real customer)
+2. Browse products
+3. Ask employee questions
+4. Add items to cart
+5. Go through checkout
+6. Complete purchase
+7. Receive receipt
 
-Test the ENTIRE customer experience\!
+Test the ENTIRE customer experience!
 
 ### **E2E Test Example: E-commerce Purchase**
 
@@ -147,7 +147,7 @@ click('#place-order') |
  assert(orderStatus \=== 'Processing') ✅
  ````
 
-Complete user journey tested\! ✅
+Complete user journey tested! ✅
 
 ### **E2E vs Integration vs System Testing:**
 
@@ -228,7 +228,7 @@ Solutions:
 
 ### **E2E Testing Best Practices:**
 
-1\. Test Critical User Paths Only
+1. Test Critical User Paths Only
 
    ✅ User registration
 
@@ -240,22 +240,22 @@ Solutions:
 
    ❌ Don't test every button color
 
-2\. Use Page Object Pattern
+2. Use Page Object Pattern
    LoginPage.login('user@test.com', 'password')
    ProductPage.addToCart()
    CartPage.checkout()
 
    (Encapsulate UI interactions)
 
-3\. Separate Test Data
+3. Separate Test Data
    Use unique data per test run
    Don't rely on existing data
 
-4\. Implement Retry Logic
+4. Implement Retry Logic
    Retry flaky steps (up to 3 times)
    Log failures for debugging
 
-5\. Run Smoke Tests First
+5. Run Smoke Tests First
    If smoke tests fail, skip E2E
    (Don't waste time on broken build)
 

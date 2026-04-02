@@ -9,7 +9,7 @@ premium: false
 
 
 
-# **\. TLS (Transport Layer Security) \- Interactive Learning Guide**
+# **. TLS (Transport Layer Security) - Interactive Learning Guide**
 
 ## **Challenge 1: The Postcard Problem**
 
@@ -22,7 +22,7 @@ premium: false
 * The store's firewall
 * Finally, their server
 
-That's at least 10+ different computers handling your data\!
+That's at least 10+ different computers handling your data!
 
 **Pause and think:** If TCP just ensures your data arrives intact, who's ensuring nobody along the route can READ your credit card number?
 
@@ -32,25 +32,25 @@ That's at least 10+ different computers handling your data\!
 
 **Without TLS:**
 
-Your browser → "Card: 4532-1234-5678-9012" → \[Readable by everyone\] → Server
+Your browser → "Card: 4532-1234-5678-9012" → [Readable by everyone] → Server
 
                     ↑
 
-            Any router can read this\!
+            Any router can read this!
 
 **![img1](https://res.cloudinary.com/dretwg3dy/image/upload/v1762746654/183_r4iquy.png)**
 
 **With TLS:**
 
-Your browser → "XK\#9$mQ2@pL..." → \[Encrypted gibberish\] → Server
+Your browser → "XK#9$mQ2@pL..." → [Encrypted gibberish] → Server
 
                     ↑
 
-         Looks like random noise to routers\!
+         Looks like random noise to routers!
 
 ![img2](https://res.cloudinary.com/dretwg3dy/image/upload/v1762746655/186_t7yjsn.png)
 
-**Key Insight:** TLS creates a private tunnel through the public internet. Even if someone intercepts your data, they can't read it\!
+**Key Insight:** TLS creates a private tunnel through the public internet. Even if someone intercepts your data, they can't read it!
 
 ---
 
@@ -61,10 +61,10 @@ Your browser → "XK\#9$mQ2@pL..." → \[Encrypted gibberish\] → Server
 **Think about this challenge:**
 
 1. You could encrypt the message, but how do you share the decryption key?
-2. If you post the key on the bulletin board, everyone can decrypt it\!
+2. If you post the key on the bulletin board, everyone can decrypt it!
 3. If you meet in person to share the key, you didn't need the bulletin board...
 
-**This is the fundamental problem TLS solves\!**
+**This is the fundamental problem TLS solves!**
 
 **Question:** How can two parties establish a secret when all their communication is public?
 
@@ -92,7 +92,7 @@ You: Takes a random secret number
 
 
 
-     Nobody can open this box except the server\!
+     Nobody can open this box except the server!
 
 **Step 3: Both Share a Secret**
 
@@ -102,7 +102,7 @@ Server: Opens box with private key
 
 
 
-Now you BOTH know the secret number, but nobody else does\!
+Now you BOTH know the secret number, but nobody else does!
 
 **Real-world parallel:** It's like a mailbox with a slot. Anyone can drop mail IN (public key), but only you have the key to open it and take mail OUT (private key).
 
@@ -136,7 +136,7 @@ Unencrypted envelope (visible to routers):
 
 ![img3](https://res.cloudinary.com/dretwg3dy/image/upload/v1762746654/182_iie8ru.png)
 
-**This is why VPNs exist\!** They encrypt even the envelope by wrapping it in another encrypted envelope.
+**This is why VPNs exist!** They encrypt even the envelope by wrapping it in another encrypted envelope.
 
 ---
 
@@ -146,18 +146,18 @@ Unencrypted envelope (visible to routers):
 
 **Scenario:** You connect to `bank.com`. A server responds:
 
-"Hi\! I'm bank.com\! Here's my public key: \[KEY123\]"
+"Hi! I'm bank.com! Here's my public key: [KEY123]"
 
 **But what if it's actually a hacker?**
 
-Hacker: "Hi\! I'm bank.com\! Here's MY public key: \[HACKER\_KEY\]"
+Hacker: "Hi! I'm bank.com! Here's MY public key: [HACKER\_KEY]"
 
-        "Now encrypt your password with my key\!"
+        "Now encrypt your password with my key!"
 
 **How do you know you're talking to the REAL bank.com?**
 
 A. Trust the first key you receive
- B. The bank posts their key on their website (wait, that's the site we're trying to verify\!)
+ B. The bank posts their key on their website (wait, that's the site we're trying to verify!)
  C. A trusted third party vouches for them
  D. We can't solve this problem
 
@@ -165,7 +165,7 @@ A. Trust the first key you receive
 
 ---
 
-**Answer: C \- Certificate Authorities (CAs)**
+**Answer: C - Certificate Authorities (CAs)**
 
 **The Trust Chain:**
 
@@ -173,13 +173,13 @@ A. Trust the first key you receive
 
 Your browser comes with \~100 trusted CAs pre-installed:
 
-\- DigiCert
+- DigiCert
 
-\- Let's Encrypt
+- Let's Encrypt
 
-\- GlobalSign
+- GlobalSign
 
-\- etc.
+- etc.
 
 You're saying: "I trust these organizations to verify identities"
 
@@ -189,9 +189,9 @@ Bank.com → "I want a certificate"
 
 DigiCert → "Prove you own bank.com"
 
-Bank.com → \[Proves ownership via DNS/email/files\]
+Bank.com → [Proves ownership via DNS/email/files]
 
-DigiCert → "Verified\! Here's your signed certificate"
+DigiCert → "Verified! Here's your signed certificate"
 
            Signs with DigiCert's private key
 
@@ -203,15 +203,15 @@ Server → "Here's my certificate (signed by DigiCert)"
 
 Your browser:
 
-1\. "Is this signed by a CA I trust?" → Checks DigiCert
+1. "Is this signed by a CA I trust?" → Checks DigiCert
 
-2\. "Is DigiCert's signature valid?" → Verifies cryptographically
+2. "Is DigiCert's signature valid?" → Verifies cryptographically
 
-3\. "Does the certificate match bank.com?" → Checks domain
+3. "Does the certificate match bank.com?" → Checks domain
 
-4\. "Is it expired?" → Checks dates
+4. "Is it expired?" → Checks dates
 
-5\. All pass → "✓ This is the real bank.com"
+5. All pass → "✓ This is the real bank.com"
 
 **Real-world parallel:** Like a passport:
 
@@ -222,7 +222,7 @@ Your browser:
 
 **Challenge question:** What happens if a CA gets hacked?
 
-**Answer:** Massive security breach\! All certificates they issued become suspect. (This happened to DigiNotar in 2011, they went bankrupt.)
+**Answer:** Massive security breach! All certificates they issued become suspect. (This happened to DigiNotar in 2011, they went bankrupt.)
 
 ---
 
@@ -234,19 +234,19 @@ Your browser:
 
 Your browser → Server:
 
-"Hello\! I want to establish TLS connection
+"Hello! I want to establish TLS connection
 
-\- I support these TLS versions: 1.3, 1.2
+- I support these TLS versions: 1.3, 1.2
 
-\- I support these cipher suites:
+- I support these cipher suites:
 
-  \* TLS\_AES\_128\_GCM\_SHA256
+  * TLS\_AES\_128\_GCM\_SHA256
 
-  \* TLS\_CHACHA20\_POLY1305\_SHA256
+  * TLS\_CHACHA20\_POLY1305\_SHA256
 
-\- Here's a random number: \[CLIENT\_RANDOM\]
+- Here's a random number: [CLIENT\_RANDOM]
 
-\- (TLS 1.3) Here's my key share: \[CLIENT\_KEY\_SHARE\]"
+- (TLS 1.3) Here's my key share: [CLIENT\_KEY\_SHARE]"
 
 **Mental model:** "Here's what I can speak and understand, what about you?"
 
@@ -256,19 +256,19 @@ Your browser → Server:
 
 Server → Your browser:
 
-"Hello back\!
+"Hello back!
 
-\- Let's use TLS 1.3
+- Let's use TLS 1.3
 
-\- Let's use cipher suite: TLS\_AES\_128\_GCM\_SHA256
+- Let's use cipher suite: TLS\_AES\_128\_GCM\_SHA256
 
-\- Here's my random number: \[SERVER\_RANDOM\]
+- Here's my random number: [SERVER\_RANDOM]
 
-\- Here's my key share: \[SERVER\_KEY\_SHARE\]
+- Here's my key share: [SERVER\_KEY\_SHARE]
 
-\- Here's my certificate (signed by Let's Encrypt)
+- Here's my certificate (signed by Let's Encrypt)
 
-\- Certificate chain: \[MY\_CERT\] → \[INTERMEDIATE\_CA\] → \[ROOT\_CA\]"
+- Certificate chain: [MY\_CERT] → [INTERMEDIATE\_CA] → [ROOT\_CA]"
 
 **Mental model:** "I'll match your capabilities, here's my proof of identity"
 
@@ -278,23 +278,23 @@ Server → Your browser:
 
 Both sides now have:
 
-\- CLIENT\_RANDOM (public)
+- CLIENT\_RANDOM (public)
 
-\- SERVER\_RANDOM (public)
+- SERVER\_RANDOM (public)
 
-\- CLIENT\_KEY\_SHARE (public)
+- CLIENT\_KEY\_SHARE (public)
 
-\- SERVER\_KEY\_SHARE (public)
+- SERVER\_KEY\_SHARE (public)
 
 They combine these using Diffie-Hellman key exchange:
 
 → Both derive the SAME secret key (symmetric key)
 
-→ Nobody watching the connection can derive this key\!
+→ Nobody watching the connection can derive this key!
 
 ![img4](https://res.cloudinary.com/dretwg3dy/image/upload/v1762746654/181_jgbh4r.png)
 
-This is mathematical magic\! 🎩✨
+This is mathematical magic! 🎩✨
 
 **Simplified analogy:**
 
@@ -312,15 +312,15 @@ You send: Orange (public)
 
 Server sends: Teal (public)
 
-You mix: Teal \+ Red \= \[Final Color\]
+You mix: Teal \+ Red \= [Final Color]
 
-Server mixes: Orange \+ Green \= \[SAME Final Color\]
+Server mixes: Orange \+ Green \= [SAME Final Color]
 
 Attacker sees: Yellow, Blue, Orange, Teal
 
 Attacker CANNOT figure out: Red or Green
 
-Attacker CANNOT derive: \[Final Color\]
+Attacker CANNOT derive: [Final Color]
 
 ---
 
@@ -349,7 +349,7 @@ Server → Browser: (encrypted with symmetric key)
 
 * Public key \= Armored truck to deliver a house key
 * Symmetric key \= Using that house key for everyday entry
-* You don't use the armored truck every time, just once\!
+* You don't use the armored truck every time, just once!
 
 ---
 
@@ -396,4 +396,4 @@ TLS handshake: 100ms
 
 Total: 200ms before first byte
 
-33% faster\!
+33% faster!

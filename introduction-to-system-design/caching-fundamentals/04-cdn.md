@@ -8,7 +8,7 @@ premium: false
 
 
 
-# CDN (Content Delivery Network) \- Global Speed Boost
+# CDN (Content Delivery Network) - Global Speed Boost
 
 
 
@@ -37,7 +37,7 @@ premium: false
 
 **Question:** Which method serves all customers faster?
 
-### **The Answer: CDN \= Distributed Kitchens for the Internet\!**
+### **The Answer: CDN \= Distributed Kitchens for the Internet!**
 
 **Definition:** A CDN is a network of servers distributed globally that store copies of your content closer to users.
 
@@ -52,9 +52,9 @@ User in Tokyo requests cat video from US server:
 ![img1](https://res.cloudinary.com/dretwg3dy/image/upload/v1764590270/230_cgm3i9.png)
 
 Round trip:
-\- Request: 150ms
-\- Video download: 5 seconds
-\- Total: 5.15 seconds ⏱️
+- Request: 150ms
+- Video download: 5 seconds
+- Total: 5.15 seconds ⏱️
 
 **With CDN (Edge Servers):**
 
@@ -65,18 +65,18 @@ Step 1: Request goes to nearest CDN edge server
 ![img2](https://res.cloudinary.com/dretwg3dy/image/upload/v1764590270/230_cgm3i9.png)
 
 **If cached:**
-\- Request: 10ms4
-\- Video download: 0.5 seconds
-\- Total: 0.51 seconds ⚡
-(10x faster\!)
+- Request: 10ms4
+- Video download: 0.5 seconds
+- Total: 0.51 seconds ⚡
+(10x faster!)
 
 If NOT cached (first request):
 Tokyo 🇯🇵 ─── 🇯🇵 Tokyo CDN ─────────── 🇺🇸 Origin
          (10ms)              (150ms)
 
-\- CDN fetches from origin: 5.15s
-\- CDN caches for future requests
-\- Future Tokyo users: 0.51s ⚡
+- CDN fetches from origin: 5.15s
+- CDN caches for future requests
+- Future Tokyo users: 0.51s ⚡
 
 ![img3](https://res.cloudinary.com/dretwg3dy/image/upload/v1764590269/231_tyyfl4.png)
 
@@ -90,12 +90,12 @@ Tokyo 🇯🇵 ─── 🇯🇵 Tokyo CDN ─────────── �
 
 **How it works:**
 
-1\. You upload content to origin server
-2\. CDN automatically replicates to edge servers
-3\. User requests content
-4\. DNS routes to nearest edge server
-5\. Edge server serves cached content (fast\!)
-6\. If not cached, fetches from origin and caches
+1. You upload content to origin server
+2. CDN automatically replicates to edge servers
+3. User requests content
+4. DNS routes to nearest edge server
+5. Edge server serves cached content (fast!)
+6. If not cached, fetches from origin and caches
 
 ---
 
@@ -146,9 +146,9 @@ Tokyo → California Server: 150ms latency
 London → California Server: 130ms latency
 
 With CDN:
-New York → New York Edge: 5ms latency (14x faster\!)
-Tokyo → Tokyo Edge: 10ms latency (15x faster\!)
-London → London Edge: 8ms latency (16x faster\!)
+New York → New York Edge: 5ms latency (14x faster!)
+Tokyo → Tokyo Edge: 10ms latency (15x faster!)
+London → London Edge: 8ms latency (16x faster!)
 
 **Bandwidth savings:**
 
@@ -158,10 +158,10 @@ Cost: $200/TB \= $400
 
 With CDN (90% cache hit):
 100k requests × 2 MB \= 200 GB from origin
-900k served from cache (free\!)
+900k served from cache (free!)
 Cost: $200/TB × 0.2 TB \= $40
 
-Savings: $360 (90% cheaper\!) 💰
+Savings: $360 (90% cheaper!) 💰
 
 ---
 
@@ -199,7 +199,7 @@ Savings: $360 (90% cheaper\!) 💰
    * Public library
    * Never changes (versioned)
    * Used by millions of sites
-   * **Cache for: Forever\! (immutable)**
+   * **Cache for: Forever! (immutable)**
 4. **Shopping Cart Total: Origin ❌**
 
    * User-specific
@@ -281,29 +281,29 @@ https://d1234.cloudfront.net/images/product.jpg |
 
 **Cache-Control directives:**
 
-public          \- Anyone can cache
+public          - Anyone can cache
 
-private         \- Only browser can cache (not CDN)
+private         - Only browser can cache (not CDN)
 
-no-cache        \- Must revalidate before using
+no-cache        - Must revalidate before using
 
-no-store        \- Never cache
+no-store        - Never cache
 
-max-age=3600    \- Cache for 1 hour
+max-age=3600    - Cache for 1 hour
 
-immutable       \- Never changes, cache forever
+immutable       - Never changes, cache forever
 
-must-revalidate \- Check with origin if expired
+must-revalidate - Check with origin if expired
 
 ---
 
 ### **🔥 CDN Cache Invalidation: Updating Cached Content**
 
-**Problem:** You update logo.png on origin, but CDN still serves old cached version\!
+**Problem:** You update logo.png on origin, but CDN still serves old cached version!
 
 **Solution 1: Wait for TTL to expire**
 
-❌ Slow\! Could take hours/days
+❌ Slow! Could take hours/days
 Not acceptable for urgent updates
 
  Solution 2:
@@ -340,40 +340,40 @@ fetch('https://api.cloudflare.com/client/v4/zones/ZONE_ID/purge_cache', {
 
 Cloudflare 🌐
 
-\- Cloudflare as a free tier available
+- Cloudflare as a free tier available
 
-\- It has availability across 200+ locations worldwide
+- It has availability across 200+ locations worldwide
 
-\- DDoS protection included
+- DDoS protection included
 
-\- It is considered great for small-medium sites
+- It is considered great for small-medium sites
 
 Amazon CloudFront ☁️
 
-\- Cloud front is amazon’s Pay-as-you-go cdn service
+- Cloud front is amazon’s Pay-as-you-go cdn service
 
-\- Integrates with AWS
+- Integrates with AWS
 
-\- 400+ edge locations (high availability)
+- 400+ edge locations (high availability)
 
-\- Enterprise-grade
+- Enterprise-grade
 
 Fastly ⚡
 
-\- Real-time purging
+- Real-time purging
 
-\- Edge computing (VCL)
+- Edge computing (VCL)
 
-\- Premium performance
+- Premium performance
 
-\- Used by: GitHub, Shopify
+- Used by: GitHub, Shopify
 
 Akamai 🏢
 
-\- Largest CDN (4,000+ locations)
+- Largest CDN (4,000+ locations)
 
-\- Enterprise focus
+- Enterprise focus
 
-\- Most expensive
+- Most expensive
 
-\- Used by: Apple, Facebook
+- Used by: Apple, Facebook

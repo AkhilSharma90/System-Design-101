@@ -12,16 +12,16 @@ Status codes are the API's way of saying "Here's what happened with your request
 
 ### **The Universal Pattern:**
 
-* **2xx \= Success** ✅ "All good\!"
+* **2xx \= Success** ✅ "All good!"
 * **3xx \= Redirect** ↪️ "Go look over there"
 * **4xx \= Client Error** 🚫 "You messed up"
 * **5xx \= Server Error** 💥 "We messed up"
 
 ---
 
-## **✅ 2xx Success: "Mission Accomplished\!"**
+## **✅ 2xx Success: "Mission Accomplished!"**
 
-### **200 OK \- The Universal Success**
+### **200 OK - The Universal Success**
 
 **Restaurant:** "Here's your food, exactly as ordered"
 
@@ -32,7 +32,7 @@ Status codes are the API's way of saying "Here's what happened with your request
 
 ---
 
-### **201 Created \- "Successfully Made\!"**
+### **201 Created - "Successfully Made!"**
 
 **Restaurant:** "Your order is placed and here's your receipt number"
 
@@ -41,11 +41,11 @@ Status codes are the API's way of saying "Here's what happened with your request
 | POST /postsResponse: 201 CreatedLocation: /posts/43Body: { "id": 43, "title": "New Post" } |
 | :---- |
 
-**Key Insight:** Often includes a `Location` header pointing to the new resource\!
+**Key Insight:** Often includes a `Location` header pointing to the new resource!
 
 ---
 
-### **204 No Content \- "Done, But Nothing to Show"**
+### **204 No Content - "Done, But Nothing to Show"**
 
 **Restaurant:** "Your order is cancelled" (no food to bring back)
 
@@ -58,7 +58,7 @@ Status codes are the API's way of saying "Here's what happened with your request
 
 ## **↪️ 3xx Redirects: "Not Here, Try There"**
 
-### **301 Moved Permanently \- "We've Moved\!"**
+### **301 Moved Permanently - "We've Moved!"**
 
 **Restaurant:** "We permanently moved to a new location"
 
@@ -84,22 +84,22 @@ Status codes are the API's way of saying "Here's what happened with your request
 
 ---
 
-### **304 Not Modified \- "You Already Have This\!"**
+### **304 Not Modified - "You Already Have This!"**
 
 **Restaurant:** "Same menu as yesterday, no need to print a new one"
 
-**Real-world:** Caching \- you already have the latest version
+**Real-world:** Caching - you already have the latest version
 
 | GET /posts/42If-None-Match: "etag-12345"Response: 304 Not Modified |
 | :---- |
 
-**Browser's reaction:** "Great\! I'll use my cached version"
+**Browser's reaction:** "Great! I'll use my cached version"
 
 ---
 
 ## **🚫 4xx Client Errors: "You Did Something Wrong"**
 
-### **400 Bad Request \- "I Don't Understand"**
+### **400 Bad Request - "I Don't Understand"**
 
 **Restaurant:** "I can't understand your order"
 
@@ -107,14 +107,14 @@ Status codes are the API's way of saying "Here's what happened with your request
 
 POST /posts
 
-| Body: { "title": }  ← Invalid JSON\!Response: 400 Bad Request{ "error": "Invalid JSON syntax" } |
+| Body: { "title": }  ← Invalid JSON!Response: 400 Bad Request{ "error": "Invalid JSON syntax" } |
 | :---- |
 
-**Mental model:** Like ordering "one of the purple" \- what are you asking for?
+**Mental model:** Like ordering "one of the purple" - what are you asking for?
 
 ---
 
-### **401 Unauthorized \- "Who Are You?"**
+### **401 Unauthorized - "Who Are You?"**
 
 **Restaurant:** "Show me your ID before I serve you alcohol"
 
@@ -127,7 +127,7 @@ POST /posts
 
 ---
 
-### **403 Forbidden \- "I Know Who You Are, But You Can't Do This"**
+### **403 Forbidden - "I Know Who You Are, But You Can't Do This"**
 
 **Restaurant:** "Sorry, this is the VIP section"
 
@@ -143,7 +143,7 @@ POST /posts
 
 ---
 
-### **404 Not Found \- "That Doesn't Exist"**
+### **404 Not Found - "That Doesn't Exist"**
 
 **Restaurant:** "We don't have that item on the menu"
 
@@ -152,11 +152,11 @@ POST /posts
 | GET /posts/999999Response: 404 Not Found{ "error": "Post not found" } |
 | :---- |
 
-**Most famous code on the internet\!** Everyone's seen this.
+**Most famous code on the internet!** Everyone's seen this.
 
 ---
 
-### **409 Conflict \- "That Creates a Problem"**
+### **409 Conflict - "That Creates a Problem"**
 
 **Restaurant:** "You already have an order in progress"
 
@@ -167,7 +167,7 @@ POST /posts
 
 ---
 
-### **429 Too Many Requests \- "Slow Down\!"**
+### **429 Too Many Requests - "Slow Down!"**
 
 **Restaurant:** "You're ordering too fast, give us a minute"
 
@@ -180,7 +180,7 @@ POST /posts
 
 ## **💥 5xx Server Errors: "It's Not You, It's Us"**
 
-### **500 Internal Server Error \- "We Broke Something"**
+### **500 Internal Server Error - "We Broke Something"**
 
 **Restaurant:** "The kitchen caught fire"
 
@@ -189,11 +189,11 @@ POST /posts
 | GET /postsResponse: 500 Internal Server Error{ "error": "An unexpected error occurred" } |
 | :---- |
 
-**What to do:** Not your fault\! Report to developers, try again later.
+**What to do:** Not your fault! Report to developers, try again later.
 
 ---
 
-### **502 Bad Gateway \- "The Kitchen Isn't Responding"**
+### **502 Bad Gateway - "The Kitchen Isn't Responding"**
 
 **Restaurant:** "Our supplier didn't deliver ingredients"
 
@@ -202,11 +202,11 @@ POST /posts
 | GET /postsResponse: 502 Bad Gateway |
 | :---- |
 
-**Mental model:** Like a chain of dominoes \- one service down affects others.
+**Mental model:** Like a chain of dominoes - one service down affects others.
 
 ---
 
-### **503 Service Unavailable \- "We're Temporarily Closed"**
+### **503 Service Unavailable - "We're Temporarily Closed"**
 
 **Restaurant:** "Closed for maintenance"
 
@@ -217,7 +217,7 @@ POST /posts
 
 ## **🎯 Status Code Decision Tree**
 
-**Did the request succeed?** → YES: 2xx (200, 201, 204\)
+**Did the request succeed?** → YES: 2xx (200, 201, 204)
 
 **NO → Did the client make a mistake?** → YES: 4xx
 

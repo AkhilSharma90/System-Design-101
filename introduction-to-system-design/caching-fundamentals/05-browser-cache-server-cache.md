@@ -7,7 +7,7 @@ premium: false
 
 ---
 
-#  **Browser Cache vs Server Cache \- The Complete Picture**
+#  **Browser Cache vs Server Cache - The Complete Picture**
 
 ### **🎯 Challenge 5: The Coffee Shop Chain**
 
@@ -16,7 +16,7 @@ premium: false
 **Storage Option A: Customer's Pocket**
 
 * Customer buys coffee, keeps cup for refill
-* Next visit: Instant refill (they bring their own cup\!)
+* Next visit: Instant refill (they bring their own cup!)
 * Fast but limited (only that customer's drink)
 
 **Storage Option B: Shop Counter**
@@ -33,7 +33,7 @@ premium: false
 
 **Question:** Which layer serves which purpose? Can you use all three?
 
-### **The Answer: Multi-Layer Caching\!**
+### **The Answer: Multi-Layer Caching!**
 
 Browser Cache \= Customer's pocket (local storage) Server Cache \= Shop counter (shared cache) Database \= Warehouse (source of truth)
 
@@ -46,7 +46,7 @@ Browser Cache \= Customer's pocket (local storage) Server Cache \= Shop counter 
 * Storage on YOUR computer/phone
 * Managed by YOUR browser
 * Only YOU can access it
-* Fastest possible cache\!
+* Fastest possible cache!
 
 **What gets cached:**
 
@@ -70,13 +70,13 @@ Browser saves locally ✓
 
 Second visit (within 1 day):
 
-Browser → Check local cache → style.css found\! ✓
-         (No server request needed\!)
+Browser → Check local cache → style.css found! ✓
+         (No server request needed!)
          Load instantly ⚡
 
 After 1 day (expired):
 
-Browser → Check local cache → Expired\!
+Browser → Check local cache → Expired!
 Browser → "Is style.css still current?" → Server
 Server → "Yes, use cached version" → Browser (304 Not Modified)
          OR
@@ -97,11 +97,11 @@ Linux: ~/.cache/mozilla/firefox/ |
 ```
 Size limits:
 
-\- Chrome: \~10% of disk space
+- Chrome: \~10% of disk space
 
-\- Firefox: \~1 GB (configurable)
+- Firefox: \~1 GB (configurable)
 
-\- Safari: No fixed limit
+- Safari: No fixed limit
 
 ---
 
@@ -200,8 +200,8 @@ User visits [https://mysite.com/products](https://mysite.com/products)
 ![img2](https://res.cloudinary.com/dretwg3dy/image/upload/v1764593047/235_i3cmdn.png)
 
 TOTAL PAGE LOAD:
-\- Best case (all cached): 10-20ms ⚡⚡⚡
-\- Worst case (nothing cached): 100-200ms ⏱️
+- Best case (all cached): 10-20ms ⚡⚡⚡
+- Worst case (nothing cached): 100-200ms ⏱️
 
 ---
 
@@ -254,9 +254,9 @@ const cacheClient = redis.createClient();
 
  < -- CLIENT SIDE (HTML)>
  < !-- ============================================ -- >
- <!DOCTYPE html\>
- <html\>
-     <head\>
+ <!DOCTYPE html>
+ <html>
+     <head>
       < !-- Cached for 1 year (versioned URL) -- >
       <link rel="stylesheet" href="/static/style.css?v=123">
       < !-- CDN-hosted library (cached forever) -- >
@@ -345,7 +345,7 @@ self.addEventListener('install', (event) => {
 
 **Benefits:**
 
-* Offline support (works without internet\!)
+* Offline support (works without internet!)
 * Custom caching strategies
 * Background sync
 * Push notifications
@@ -370,7 +370,7 @@ self.addEventListener('install', (event) => {
 * Cache sensitive data in browser
 * Set TTL too high for dynamic content
 * Forget to invalidate on updates
-* Cache everything (be selective\!)
+* Cache everything (be selective!)
 * Ignore cache headers
 
 ---
@@ -398,7 +398,7 @@ Average: 6.4ms per request ⚡
 
 Without caching:
 1000 requests × 100ms \= 100 seconds ⏱️
-(15x slower\!)
+(15x slower!)
 
 ---
 
@@ -420,15 +420,15 @@ Without caching:
 
 **Answers:**
 
-1. **Caching stores frequently accessed data in fast storage (memory) instead of slow storage (disk/network).** It's faster because memory access takes nanoseconds while disk/network takes milliseconds \- a 1000-10,000x difference\!
+1. **Caching stores frequently accessed data in fast storage (memory) instead of slow storage (disk/network).** It's faster because memory access takes nanoseconds while disk/network takes milliseconds - a 1000-10,000x difference!
 
-2. **Cache hit \= data found in cache (fast). Cache miss \= data not in cache, must fetch from source (slow).** Hits are better\! High hit ratio (85%+) means your cache is working well.
+2. **Cache hit \= data found in cache (fast). Cache miss \= data not in cache, must fetch from source (slow).** Hits are better! High hit ratio (85%+) means your cache is working well.
 
-3. **LRU removes the least recently used item.** Mental model: If you haven't used it recently, you probably won't need it soon. Use LRU for general-purpose caching \- it's the best balance of performance and simplicity for most workloads.
+3. **LRU removes the least recently used item.** Mental model: If you haven't used it recently, you probably won't need it soon. Use LRU for general-purpose caching - it's the best balance of performance and simplicity for most workloads.
 
-4. **CDN stores copies of content on servers worldwide, close to users.** Instead of everyone accessing your US server from Tokyo (150ms), they access a Tokyo CDN server (10ms) \- 15x faster\! Also saves bandwidth.
+4. **CDN stores copies of content on servers worldwide, close to users.** Instead of everyone accessing your US server from Tokyo (150ms), they access a Tokyo CDN server (10ms) - 15x faster! Also saves bandwidth.
 
-5. **Browser cache: On user's device (C:\\Users...\\Cache). Server cache: On server/cloud (Redis/Memcached in RAM). Browser cache is faster for that user (local), but server cache helps all users\!**
+5. **Browser cache: On user's device (C:\\Users...\\Cache). Server cache: On server/cloud (Redis/Memcached in RAM). Browser cache is faster for that user (local), but server cache helps all users!**
 
 ---
 
@@ -459,7 +459,7 @@ Without caching:
 * Monitor and optimize cache hit ratios
 * Design caching strategy for real app
 
-**Remember:** Caching is the \#1 way to make applications faster\! Master these concepts and you'll be able to make any system lightning-fast\! ⚡💪
+**Remember:** Caching is the #1 way to make applications faster! Master these concepts and you'll be able to make any system lightning-fast! ⚡💪
 
 ---
 
@@ -475,4 +475,4 @@ Without caching:
 
 ✅ Browser vs Server caching
 
-**Congratulations\! You understand how the entire internet stays fast\! 🎉**
+**Congratulations! You understand how the entire internet stays fast! 🎉**

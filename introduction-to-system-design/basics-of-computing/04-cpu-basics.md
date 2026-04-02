@@ -9,7 +9,7 @@ premium: false
 
 
 
-## **⚙️ 4: CPU Basics \- The Brain in Detail**
+## **⚙️ 4: CPU Basics - The Brain in Detail**
 
 ### **🎯 Challenge 4: The Restaurant Kitchen**
 
@@ -21,13 +21,13 @@ premium: false
 
 **Question:** Which is best? What are the trade-offs?
 
-**The Answer:** This is exactly the CPU design problem\! Modern CPUs use a combination of all three approaches.
+**The Answer:** This is exactly the CPU design problem! Modern CPUs use a combination of all three approaches.
 
 ---
 
 ### **🧠 What is a CPU Core?**
 
-CPU CORE \- The Processing Unit
+CPU CORE - The Processing Unit
 
 A core is one independent processing unit:
 
@@ -74,7 +74,7 @@ Can do: 4 tasks simultaneously
 ![img24](https://res.cloudinary.com/dretwg3dy/image/upload/v1762354298/28_mcqmzg.png)
 
 High-End Desktop: 32 cores
-Server CPU: 128+ cores\!
+Server CPU: 128+ cores!
 
 ---
 
@@ -87,7 +87,7 @@ GAME RUNNING ON 8-CORE CPU
 ![img25](https://res.cloudinary.com/dretwg3dy/image/upload/v1762354295/14_oq93li.png)
 
 Without multiple cores:
-One core at 370% \= Impossible\!
+One core at 370% \= Impossible!
 Game would run at \<30 FPS
 
 ---
@@ -96,7 +96,7 @@ Game would run at \<30 FPS
 
 ### **⏱️ Clock Speed: How Fast the CPU Thinks**
 
-CLOCK SPEED (GHz \- Gigahertz)
+CLOCK SPEED (GHz - Gigahertz)
 
 Clock speed \= How many cycles per second
 
@@ -106,7 +106,7 @@ Clock speed \= How many cycles per second
 1 GHz \= 1,000,000,000 cycles per second
 
 Modern CPU: 3.5 GHz
-\= 3,500,000,000 cycles per second\!
+\= 3,500,000,000 cycles per second!
 
 What happens in one cycle?
 
@@ -152,16 +152,16 @@ Classic  pipeline:
 
 ### **🚨 Common Misconception: "Higher GHz Always Faster"**
 
-**You might think:** "5 GHz CPU must be faster than 3 GHz\!"
+**You might think:** "5 GHz CPU must be faster than 3 GHz!"
 
-**The Reality:** It's more complex\!
+**The Reality:** It's more complex!
 
 ❌ NAIVE COMPARISON:
 
 CPU A: 5.0 GHz, 4 cores
 CPU B: 3.5 GHz, 8 cores
 
-Your assumption: A is 43% faster\!
+Your assumption: A is 43% faster!
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
@@ -169,7 +169,7 @@ Your assumption: A is 43% faster\!
 
 Single-threaded task (video game main thread):
 
-├─ CPU A: 100 FPS  ✓ (Winner\!)
+├─ CPU A: 100 FPS  ✓ (Winner!)
 
 └─ CPU B: 70 FPS
 
@@ -177,7 +177,7 @@ Multi-threaded task (video rendering):
 
 ├─ CPU A: 4 min
 
-└─ CPU B: 2.5 min  ✓ (Winner\!)
+└─ CPU B: 2.5 min  ✓ (Winner!)
 
 Why?────────────────────────────────────
 
@@ -203,13 +203,13 @@ Architecture efficiency:
 
 ├─ Some CPUs do more per clock
 
-└─ Example: Apple M3 beats Intel at same GHz\!
+└─ Example: Apple M3 beats Intel at same GHz!
 
 Cache size:
 
 ├─ Larger cache \= fewer RAM accesses
 
-└─ Can matter more than 0.5 GHz\!
+└─ Can matter more than 0.5 GHz!
 
 Memory speed:
 
@@ -221,7 +221,7 @@ Power efficiency:
 
 ├─ High GHz \= high power \= thermal throttling
 
-└─ Sustained 4 GHz \> burst 5 GHz that throttles
+└─ Sustained 4 GHz > burst 5 GHz that throttles
 
 ---
 
@@ -239,15 +239,15 @@ C. 16 cores, 3.0 GHz, 64 MB cache, $500
 
 Tasks:
 
-1\. Gaming (mostly single-threaded)
+1. Gaming (mostly single-threaded)
 
-2\. Video editing (multi-threaded)
+2. Video editing (multi-threaded)
 
-3\. 3D rendering (highly parallel)
+3. 3D rendering (highly parallel)
 
-4\. Office work (light multitasking)
+4. Office work (light multitasking)
 
-5\. Software development (compiling code)
+5. Software development (compiling code)
 
 **Think about each one...**
 
@@ -255,13 +255,13 @@ Tasks:
 
 **ANSWERS:**
 
-1\. Gaming → CPU A
+1. Gaming → CPU A
 
    Why: High single-thread performance
 
    5.5 GHz handles main game thread best
 
-2\. Video editing → CPU B
+2. Video editing → CPU B
 
    Why: Good balance
 
@@ -269,7 +269,7 @@ Tasks:
 
    4 GHz still decent for playback
 
-3\. 3D rendering → CPU C
+3. 3D rendering → CPU C
 
    Why: Maximum parallelism
 
@@ -277,15 +277,15 @@ Tasks:
 
    3 GHz sufficient per thread
 
-4\. Office work → CPU A or B
+4. Office work → CPU A or B
 
-   Why: Overkill for Office\!
+   Why: Overkill for Office!
 
    Even CPU A is excessive
 
    (Budget option would work fine)
 
-5\. Software development → CPU B
+5. Software development → CPU B
 
    Why: Balanced
 

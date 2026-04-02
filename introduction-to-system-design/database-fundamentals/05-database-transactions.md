@@ -9,7 +9,7 @@ premium: false
 
 
 
-##  **Database Transactions \- The All-or-Nothing Guarantee**
+##  **Database Transactions - The All-or-Nothing Guarantee**
 
 ### **🎯 Challenge 1: The Concert Ticket Catastrophe**
 
@@ -23,15 +23,15 @@ premium: false
 
 **Question:** Your internet crashes after Step 3 (card charged). What should happen?
 
-A. Card charged, tickets not reserved → You paid but got nothing\! 😱 B. Tickets reserved, card not charged → Free tickets\! (Chaos for venue) C. Partial completion → Database is confused about what happened D. Entire purchase cancelled, card refunded → Everything rolls back safely
+A. Card charged, tickets not reserved → You paid but got nothing! 😱 B. Tickets reserved, card not charged → Free tickets! (Chaos for venue) C. Partial completion → Database is confused about what happened D. Entire purchase cancelled, card refunded → Everything rolls back safely
 
 **Think carefully...** What protects both you and the venue?
 
-### **The Answer: Database Transactions\!**
+### **The Answer: Database Transactions!**
 
-**A transaction is a group of operations that either ALL succeed or ALL fail together \- never partial\!**
+**A transaction is a group of operations that either ALL succeed or ALL fail together - never partial!**
 
-Real-world parallel: Think of a transaction like a legal contract signing ceremony. You don't partially sign a contract\! Either all parties sign and it's binding, or someone refuses and nothing happens. There's no "half-signed" contract.
+Real-world parallel: Think of a transaction like a legal contract signing ceremony. You don't partially sign a contract! Either all parties sign and it's binding, or someone refuses and nothing happens. There's no "half-signed" contract.
 
 ---
 
@@ -39,32 +39,32 @@ Real-world parallel: Think of a transaction like a legal contract signing ceremo
 
 **Imagine filming a scene in a movie:**
 
-**Without Transactions (Disaster\!):**
+**Without Transactions (Disaster!):**
 
-Director: "Action\!"
+Director: "Action!"
 Actor 1: Delivers perfect line ✓
 Actor 2: Forgets their line ✗
 Actor 3: Hasn't even started
 
-Director: "Cut\! But Actor 1's part is already filmed..."
+Director: "Cut! But Actor 1's part is already filmed..."
 Result: Unusable footage, must reshoot everything
 
-**With Transactions (Protected\!):**
+**With Transactions (Protected!):**
 
-Director: "BEGIN TRANSACTION \- Action\!"
+Director: "BEGIN TRANSACTION - Action!"
 Actor 1: Delivers perfect line ✓
 Actor 2: Forgets their line ✗
 
-Director: "ROLLBACK\! Reset to starting positions"
-Result: Like it never happened, start fresh\!
+Director: "ROLLBACK! Reset to starting positions"
+Result: Like it never happened, start fresh!
 
 Second take:
-Director: "BEGIN TRANSACTION \- Action\!"
+Director: "BEGIN TRANSACTION - Action!"
 Actor 1: Perfect ✓
 Actor 2: Perfect ✓
 Actor 3: Perfect ✓
 
-Director: "COMMIT\! That's the take we're keeping\!"
+Director: "COMMIT! That's the take we're keeping!"
 Result: Scene is officially recorded
 
 ---
@@ -76,17 +76,17 @@ Result: Scene is officially recorded
 **1️⃣ BEGIN TRANSACTION (or START TRANSACTION)**
 
 BEGIN TRANSACTION;
-\-- Like saying "Start recording, this is one atomic operation"
+-- Like saying "Start recording, this is one atomic operation"
 
 **2️⃣ COMMIT**
 
 COMMIT;
-\-- Like saying "Save it\! Make all changes permanent"
+-- Like saying "Save it! Make all changes permanent"
 
 **3️⃣ ROLLBACK**
 
 ROLLBACK;
-\-- Like saying "Undo everything\! Restore to how it was before"
+-- Like saying "Undo everything! Restore to how it was before"
 
 ![img1](https://res.cloudinary.com/dretwg3dy/image/upload/v1764474744/209_jyku0g.png)
 
@@ -98,57 +98,57 @@ ROLLBACK;
 
 **Without Transaction (DISASTER ZONE):**
 
-\-- Step 1: Deduct from Alice
+-- Step 1: Deduct from Alice
 ```sql
 
 UPDATE accounts SET balance = balance - 500 WHERE name = 'Alice';
 
 ```
 
-\-- ✓ Success\! Alice now has $500 less
+-- ✓ Success! Alice now has $500 less
 
-\-- Step 2: Add to Bob
+-- Step 2: Add to Bob
 
-\-- 💥 DATABASE CRASHES HERE\!
+-- 💥 DATABASE CRASHES HERE!
 
-\-- Result: Alice lost $500, Bob never received it\! Money vanished\! 😱
+-- Result: Alice lost $500, Bob never received it! Money vanished! 😱
 
 **With Transaction (PROTECTED):**
 
 BEGIN TRANSACTION;
 
-\-- Step 1: Deduct from Alice
+-- Step 1: Deduct from Alice
 ```sql
 UPDATE accounts SET balance = balance - 500 WHERE name = 'Alice';
 
 ```
 
-\-- Balance: Alice $1000 → $500 (temporary, not permanent yet\!)
+-- Balance: Alice $1000 → $500 (temporary, not permanent yet!)
 
-\-- Step 2: Add to Bob
+-- Step 2: Add to Bob
 ```sql
 UPDATE accounts SET balance = balance + 500 WHERE name = 'Bob';
 ```
 
- Balance: Bob $500 → $1000 (temporary, not permanent yet\!)
+ Balance: Bob $500 → $1000 (temporary, not permanent yet!)
 
-\-- Check if both succeeded
+-- Check if both succeeded
 
 IF both\_steps\_successful THEN
 
   COMMIT;
 
-  \-- Make both changes permanent\!
+  -- Make both changes permanent!
 
-  \-- Result: Alice $500, Bob $1000 ✓
+  -- Result: Alice $500, Bob $1000 ✓
 
 ELSE
 
   ROLLBACK;
 
-  \-- Undo both changes\!
+  -- Undo both changes!
 
-  \-- Result: Back to original state: Alice $1000, Bob $500
+  -- Result: Back to original state: Alice $1000, Bob $500
 
 END IF;
 
@@ -166,7 +166,7 @@ END IF;
 
 **In SQL terms:**
 
-\-- State 1: ACTIVE (Transaction in progress)
+-- State 1: ACTIVE (Transaction in progress)
 
 ```sql
 BEGIN TRANSACTION;
@@ -200,9 +200,9 @@ ROLLBACK;  -- All changes discarded, database unchanged!
 
 **Should this be ONE transaction?** 🤔
 
-**Answer:** NO\! Here's why:
+**Answer:** NO! Here's why:
 
-\-- User record and preferences: YES, one transaction
+-- User record and preferences: YES, one transaction
 
 BEGIN TRANSACTION
 ```sql
@@ -213,12 +213,12 @@ INSERT INTO preferences (user\_id) VALUES (LAST\_INSERT\_ID());
 COMMIT;
 ```
 
-\-- Email and logging: SEPARATE operations
-\-- (External services, can fail independently)
-send\_email('alice@email.com', 'Welcome\!');
+-- Email and logging: SEPARATE operations
+-- (External services, can fail independently)
+send\_email('alice@email.com', 'Welcome!');
 log\_event('user\_registered', user\_id);
 
-**Mental model:** Only database operations that MUST succeed together should be in one transaction. External services (email, APIs) should be separate\!
+**Mental model:** Only database operations that MUST succeed together should be in one transaction. External services (email, APIs) should be separate!
 
 ---
 
@@ -231,7 +231,7 @@ log\_event('user\_registered', user\_id);
 
 **Should this be ONE transaction?** 🤔
 
-**Answer:** MOSTLY YES, but payment is tricky\!
+**Answer:** MOSTLY YES, but payment is tricky!
 ```sql
  BEGIN TRANSACTION;
   UPDATE products SET stock = stock- 1 WHERE id = 123;
@@ -246,10 +246,10 @@ log\_event('user\_registered', user\_id);
   ```
 
 
-\-- Payment processing happens separately
-\-- (External payment gateway, different rules)
+-- Payment processing happens separately
+-- (External payment gateway, different rules)
 
-**Key insight:** Transactions are for database consistency, not for orchestrating external systems\!
+**Key insight:** Transactions are for database consistency, not for orchestrating external systems!
 
 ---
 
@@ -294,12 +294,12 @@ UPDATE accounts SET balance = balance - 100 WHERE id = 1;
 
 COMMIT;
 ```
- Done in milliseconds\! ⚡ |
+ Done in milliseconds! ⚡ |
 
 
 
 
-**Mental model:** Transactions are like holding your breath underwater \- keep them SHORT\!
+**Mental model:** Transactions are like holding your breath underwater - keep them SHORT!
 
 ---
 
@@ -327,7 +327,7 @@ COMMIT;
  COMMIT;
  ```
 
- \-- Always end your transactions\!
+ -- Always end your transactions!
 
  Or use try-catch:
  ```javascript
@@ -349,7 +349,7 @@ COMMIT;
 
 ---
 
-**❌ Mistake 3: Nested Transactions (Not What You Think\!)**
+**❌ Mistake 3: Nested Transactions (Not What You Think!)**
 
 **Confusing:**
 ```sql
@@ -375,9 +375,9 @@ COMMIT;
  ```
 
 
-**Most databases don't support true nested transactions\!** Instead, they flatten to one transaction.
+**Most databases don't support true nested transactions!** Instead, they flatten to one transaction.
 
-**Better approach \- Savepoints:**
+**Better approach - Savepoints:**
 
 ```sql
  BEGIN TRANSACTION
@@ -417,7 +417,7 @@ COMMIT;
 **Read Uncommitted (Least Isolated)**
 
 You: Reading someone's plate while they're still cooking on it
-Problem: You might see raw chicken\! (Dirty Read)
+Problem: You might see raw chicken! (Dirty Read)
 Real issue: You read data that might get rolled back
 
 **Read Committed (Default for most databases)**
@@ -440,7 +440,7 @@ Problem: Slowest performance
 
 **Example showing the differences:**
 
-\-- Scenario: Two people checking same account balance
+-- Scenario: Two people checking same account balance
 
 ```sql
  Transaction A (You)
@@ -495,7 +495,7 @@ Problem: Slowest performance
 
 ### **🎯 Quick Recap: Transaction Essentials**
 
-**Test yourself \- without looking back:**
+**Test yourself - without looking back:**
 
 1. What happens if a transaction is interrupted mid-execution?
 2. Why should transactions be kept short?
@@ -504,7 +504,7 @@ Problem: Slowest performance
 
 **Answers:**
 
-1. If not committed, all changes are automatically rolled back (ACID's Atomicity\!)
+1. If not committed, all changes are automatically rolled back (ACID's Atomicity!)
 2. Long transactions hold locks, blocking other users and increasing deadlock risk
 3. COMMIT makes changes permanent, ROLLBACK discards all changes
 4. Most databases don't support true nesting; use savepoints instead

@@ -44,19 +44,19 @@ Integration Test:
 
 Components involved:
 
-1\. \[Frontend\] \- User Interface
+1. [Frontend] - User Interface
 
-2\. \[Auth Service\] \- User authentication
+2. [Auth Service] - User authentication
 
-3\. \[Product Service\] \- Product catalog
+3. [Product Service] - Product catalog
 
-4\. \[Cart Service\] \- Shopping cart
+4. [Cart Service] - Shopping cart
 
-5\. \[Payment Service\] \- Payment processing
+5. [Payment Service] - Payment processing
 
-6\. \[Inventory Service\] \- Stock management
+6. [Inventory Service] - Stock management
 
-7\. \[Email Service\] \- Order confirmation
+7. [Email Service] - Order confirmation
 
 Integration Test: "Place an Order"
 
@@ -132,7 +132,7 @@ Integration points tested:
 
 ### **Types of Integration Testing:**
 
-#### **1\. Big Bang Integration**
+#### **1. Big Bang Integration**
 
 Test all components together at once:
 
@@ -142,7 +142,7 @@ Pros: Fast to set up
 
 Cons: Hard to debug when something fails
 
-#### **2\. Incremental Integration**
+#### **2. Incremental Integration**
 
 Test pairs,
 
@@ -155,7 +155,7 @@ Pros: Easy to isolate issues
 
 Cons: Takes more time
 
-#### **3\. Top-Down Integration**
+#### **3. Top-Down Integration**
 
 Start from UI, stub lower components:
 
@@ -163,7 +163,7 @@ Start from UI, stub lower components:
 
 Test top-level flow first, replace stubs incrementally
 
-#### **4\. Bottom-Up Integration**
+#### **4. Bottom-Up Integration**
 
 Start from database, build up:
 
@@ -177,7 +177,7 @@ Service A sends: { "date": "2024-01-15" }
 
 Service B expects: { "date": "01/15/2024" }
 
-Result: Parse error\! 💥
+Result: Parse error! 💥
 
 ❌ Authentication token expired
 
@@ -185,7 +185,7 @@ Service A: Calls Service B after 1 hour
 
 Service B: "Token expired"
 
-Result: Request fails\! 💥
+Result: Request fails! 💥
 
 ❌ Race condition
 
@@ -193,7 +193,7 @@ Service A: Updates inventory
 
 Service B: Reads inventory (at same time)
 
-Result: Wrong stock count\! 💥
+Result: Wrong stock count! 💥
 
 ❌ Timeout
 
@@ -203,7 +203,7 @@ Service B: Takes 60 seconds
 
 Service A: Timeout at 30 seconds
 
-Result: Request fails\! 💥
+Result: Request fails! 💥
 
 **Key characteristics:**
 

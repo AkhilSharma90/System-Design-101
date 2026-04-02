@@ -68,19 +68,19 @@ Floor plan:
 
 Each box (block):
 
-\- Same size block  (512 bytes or 4KB)
+- Same size block  (512 bytes or 4KB)
 
-\- Just a number (no label)
+- Just a number (no label)
 
-\- Can contain ANYTHING
+- Can contain ANYTHING
 
 Your book "War and Peace" is stored across:
 
-\- Blocks 003, 004, 005, 007, 009
+- Blocks 003, 004, 005, 007, 009
 
-\- No one knows what's in each block
+- No one knows what's in each block
 
-\- You need a separate map to track which blocks belong to your book
+- You need a separate map to track which blocks belong to your book
 
 This is BLOCK STORAGE.
 
@@ -112,11 +112,11 @@ Organization:
 
 Each item:
 
-\- Has a name
+- Has a name
 
-\- Lives in a folder (directory)
+- Lives in a folder (directory)
 
-\- Organized hierarchically
+- Organized hierarchically
 
 You find your book by path:
 
@@ -131,20 +131,20 @@ The Amazon Warehouse:
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 Everything gets a unique ID:
-📦 Item \#7f8e9a2b3c4d
+📦 Item #7f8e9a2b3c4d
 
    Content: "War and Peace" book
 
    Tags:
 
-     \- author: "Tolstoy"
-     \- genre: "fiction"
-     \- year: 1869
-     \- language: "English"
-     \- size: 1.2MB
+     - author: "Tolstoy"
+     - genre: "fiction"
+     - year: 1869
+     - language: "English"
+     - size: 1.2MB
   Metadata: Last accessed, created date, etc.
 
-No folders\! Just objects with IDs and tags.
+No folders! Just objects with IDs and tags.
 You search by tags or retrieve by ID.
 
 This is OBJECT STORAGE.
@@ -164,15 +164,15 @@ Physical disk divided into blocks:
 
 Each block in a block storage has
 
-\-  Fixed size (usually 4KB)
+-  Fixed size (usually 4KB)
 
-\- Addressable by number
+- Addressable by number
 
-\- No built-in organization
+- No built-in organization
 
-\- No metadata
+- No metadata
 
-It's like raw memory on disk\!
+It's like raw memory on disk!
 
 **How data is stored:**
 
@@ -182,23 +182,23 @@ Example: Storing "HELLO WORLD" (11 bytes)
 
 Operating system:
 
-1\. "I need to write 11 bytes"
+1. "I need to write 11 bytes"
 
-2\. "Let me allocate blocks... I'll use block 42"
+2. "Let me allocate blocks... I'll use block 42"
 
-3\. Writes to block 42: "HELLO WORLD"
+3. Writes to block 42: "HELLO WORLD"
 
-4\. Remembers: "This file uses block 42"
+4. Remembers: "This file uses block 42"
 
 The block itself doesn't know:
 
-\- What data it contains
+- What data it contains
 
-\- What file it belongs to
+- What file it belongs to
 
-\- Who owns it
+- Who owns it
 
-The filesystem (ext4, NTFS, etc.) tracks all this\!
+The filesystem (ext4, NTFS, etc.) tracks all this!
 
 **Real-World Usage:**
 
@@ -206,39 +206,39 @@ Perfect for:
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
-1\. Databases
+1. Databases
 
    Why: Need raw, fast access
 
    Example:
 
-   \- MySQL/PostgreSQL writing directly to blocks
+   - MySQL/PostgreSQL writing directly to blocks
 
-   \- No filesystem overhead
+   - No filesystem overhead
 
-   \- Can optimize exactly how data is laid out
+   - Can optimize exactly how data is laid out
 
-2\. Virtual Machine Disks
+2. Virtual Machine Disks
 
    Why: VM needs to think it has a physical disk
 
    Example:
 
-   \- AWS EBS (Elastic Block Store)
+   - AWS EBS (Elastic Block Store)
 
-   \- Your VM sees: "I have a 100GB hard drive"
+   - Your VM sees: "I have a 100GB hard drive"
 
-   \- Actually: 100GB of blocks on AWS infrastructure
+   - Actually: 100GB of blocks on AWS infrastructure
 
-3\. Boot Drives
+3. Boot Drives
 
    Why: Operating system needs direct block access
 
    Example:
 
-   \- Your laptop's hard drive
+   - Your laptop's hard drive
 
-   \- Server's boot volume
+   - Server's boot volume
 
 Examples in the Cloud:
 
@@ -246,21 +246,21 @@ Examples in the Cloud:
 
 AWS EBS (Elastic Block Store provided by Amazon Cloud )
 
-\- Attach to EC2(AWS’s computer) instance like a hard drive
+- Attach to EC2(AWS’s computer) instance like a hard drive
 
-\- Appears as /dev/xvda
+- Appears as /dev/xvda
 
-\- Use it just like a physical disk
+- Use it just like a physical disk
 
 Azure Managed Disks (Microsoft Cloud)
 
-\- It is similar concept to AWS EB2
+- It is similar concept to AWS EB2
 
-\- Attach to VMs
+- Attach to VMs
 
 Google Persistent Disks
 
-\- Block storage for Compute Engine
+- Block storage for Compute Engine
 
 **The Performance Characteristics:**
 
@@ -270,11 +270,11 @@ Block Storage Performance:
 
 Speed: VERY FAST ⚡
 
-\- Direct access to blocks
+- Direct access to blocks
 
-\- Low latency (\~1ms)
+- Low latency (\~1ms)
 
-\- High IOPS (Input/Output Operations Per Second)
+- High IOPS (Input/Output Operations Per Second)
 
 Use case example:
 
@@ -282,11 +282,11 @@ Database write:
 
 "Write 4KB to block 12345"
 
-\- Direct operation: 1ms
+- Direct operation: 1ms
 
-\- No filesystem traversal
+- No filesystem traversal
 
-\- No metadata lookup
+- No metadata lookup
 
 Perfect for: Applications needing speed
 
@@ -315,13 +315,13 @@ Your Computer's Files:
           ── Videos
 
 
-This is file storage\!
+This is file storage!
 
-\- Hierarchical in nature (folders in folders)
+- Hierarchical in nature (folders in folders)
 
-\- Each file has a path
+- Each file has a path
 
-\- Familiar and intuitive
+- Familiar and intuitive
 
 **How it works under the hood:**
 
@@ -330,26 +330,26 @@ When you save "Resume.pdf":
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 
-1\. Filesystem creates entry:
+1. Filesystem creates entry:
 
    /Users/YourName/Documents/Resume.pdf
 
-2\. Stores metadata:
+2. Stores metadata:
 
 
-|   \- Size: 245KB   \- Created: 2025\-10\-19   \- Modified: 2025\-10\-19   \- Permissions: Read/Write   \- Owner: YourName |
+|   - Size: 245KB   - Created: 2025-10-19   - Modified: 2025-10-19   - Permissions: Read/Write   - Owner: YourName |
 | :---- |
 
-3\. Allocates blocks (under the hood\!):
+3. Allocates blocks (under the hood!):
 
-   \- Uses block storage beneath
+   - Uses block storage beneath
 
-   \- File uses blocks: 100, 101, 102, 103
+   - File uses blocks: 100, 101, 102, 103
 
-4\. Updates directory structure:
+4. Updates directory structure:
    /Documents/ now contains "Resume.pdf"
 
-The filesystem manages the complexity\!
+The filesystem manages the complexity!
 
 **Real-World Usage:**
 
@@ -357,39 +357,39 @@ Perfect for:
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
-1\. Shared File Systems
+1. Shared File Systems
 
    Why: Multiple servers need to access same files
 
    Example:
 
-   \- Company shared drive
+   - Company shared drive
 
-   \- Web servers accessing same static files
+   - Web servers accessing same static files
 
-   \- Media files accessed by multiple apps
+   - Media files accessed by multiple apps
 
-2\. Application Data
+2. Application Data
 
    Why: Apps expect filesystem semantics
 
    Example:
 
-   \- Log files: /var/log/app.log
+   - Log files: /var/log/app.log
 
-   \- Config files: /etc/config.yaml
+   - Config files: /etc/config.yaml
 
-   \- Static assets: /public/images/
+   - Static assets: /public/images/
 
-3\. User Home Directories
+3. User Home Directories
 
    Why: Natural organization
 
    Example:
 
-   \- Each user has /home/username/
+   - Each user has /home/username/
 
-   \- Familiar folder structure
+   - Familiar folder structure
 
 Examples in the Cloud:
 
@@ -397,20 +397,20 @@ Examples in the Cloud:
 
 AWS EFS (Elastic File System)
 
-\- Network file system (NFS)
+- Network file system (NFS)
 
-\- Multiple EC2 instances can mount it
+- Multiple EC2 instances can mount it
 
-\- Appears like a regular directory
+- Appears like a regular directory
 
 Azure Files
 
-\- SMB file shares in the cloud
+- SMB file shares in the cloud
 
-\- Windows-style file sharing
+- Windows-style file sharing
 
 Google Filestore
-\- Managed NFS for Compute Engine
+- Managed NFS for Compute Engine
 
 **Network File Storage Example:**
 
@@ -419,15 +419,15 @@ Multiple Web Servers Sharing Files:
 ![img3](https://res.cloudinary.com/dretwg3dy/image/upload/v1762436767/52_xifyn5.png)
 
 
-All servers see same files\!
+All servers see same files!
 Update index.html once → All servers see the change
 
 Use case:
-\- Static website assets
+- Static website assets
 
-\- Uploaded user content
+- Uploaded user content
 
-\- Shared configuration files
+- Shared configuration files
 
 Benefit:
 
@@ -470,30 +470,30 @@ File Storage Performance:
 
 Speed: FAST (but slower than block)
 
-\- Need to traverse directory structure
+- Need to traverse directory structure
 
-\- Latency: \~10ms (network file systems)
+- Latency: \~10ms (network file systems)
 
-\- Good throughput for sequential reads
+- Good throughput for sequential reads
 
 Example operation:
 Read /path/to/deep/folder/file.txt
 
-1\. Look up "/path" → 1ms
+1. Look up "/path" → 1ms
 
-2\. Look up "/path/to" → 1ms
+2. Look up "/path/to" → 1ms
 
-3\. Look up "/path/to/deep" → 1ms
+3. Look up "/path/to/deep" → 1ms
 
-4\. Look up "/path/to/deep/folder" → 1ms
+4. Look up "/path/to/deep/folder" → 1ms
 
-5\. Look up "file.txt" → 1ms
+5. Look up "file.txt" → 1ms
 
-6\. Read file data → 5ms
+6. Read file data → 5ms
 
 Total: 10ms
 
-Slower than block (10ms vs 1ms) but more convenient\!
+Slower than block (10ms vs 1ms) but more convenient!
 Cost: Moderate
 
 ### **Object Storage: The Cloud-Native Solution**
@@ -504,7 +504,7 @@ The Flat Namespace:
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
-No folders are involved \! Just objects with unique IDs:
+No folders are involved ! Just objects with unique IDs:
 ```json
  {
  Object 1: ,
@@ -528,9 +528,9 @@ Object 2,
 
 ````
 
-Each object is self-contained\!
+Each object is self-contained!
 
-**The "key" looks like a path, but it's not\!**
+**The "key" looks like a path, but it's not!**
 
 Common Misconception:
 
@@ -538,18 +538,18 @@ Common Misconception:
 
 This looks like a folder structure:
 
-But it's actually just a STRING (the key)\!
+But it's actually just a STRING (the key)!
 
 There's no actual "user-photos" folder.
 There's no actual "john" folder.
-It's all flat\!
+It's all flat!
 
 Think of it like hashtags:
 
-| /user-photos/john/vacation/beach.jpg\#user-photos-john-vacation-beach.jpg |
+| /user-photos/john/vacation/beach.jpg#user-photos-john-vacation-beach.jpg |
 | :---- |
 
-So what are the "folders" in the  S3 console you may ask ?  It’s just for  UI convenience\!
+So what are the "folders" in the  S3 console you may ask ?  It’s just for  UI convenience!
 They group objects by common prefix.
 
 **Real-World Usage:**
@@ -558,48 +558,48 @@ Perfect for:
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
-1\. Static Assets (Images, Videos, PDFs)
+1. Static Assets (Images, Videos, PDFs)
    Why: Cheap, scalable, durable
    Example:
 
-   \- User profile pictures
+   - User profile pictures
 
-   \- Product images for e-commerce
+   - Product images for e-commerce
 
-   \- Video streaming content
+   - Video streaming content
 
-2\. Backups and Archives
+2. Backups and Archives
    Why: Extremely durable
 
    Example:
 
-   \- Database backups can be directly added to object storage
+   - Database backups can be directly added to object storage
 
-   \- Log archives can also be archived to object storage
+   - Log archives can also be archived to object storage
 
-   \- Historical data
+   - Historical data
 
-3\. Big Data / Data Lakes
+3. Big Data / Data Lakes
 
    Why:  It is a good option for big data as it has unlimited scale and it is very  cheap
 
    Example:
 
-   \- Analytics data can be added to object storage
+   - Analytics data can be added to object storage
 
-   \- Machine learning datasets can
+   - Machine learning datasets can
 
-   \- IoT sensor data can be streamed to object storage
+   - IoT sensor data can be streamed to object storage
 
-4\. Static Website Hosting
+4. Static Website Hosting
 
    Why: Simple, cheap, fast with CDN
 
    Example:
 
-   \- HTML/CSS/JS files
+   - HTML/CSS/JS files
 
-   \- SPA (Single Page Application)
+   - SPA (Single Page Application)
 
 Examples in the Cloud:
 
@@ -607,23 +607,23 @@ Examples in the Cloud:
 
 AWS S3 (Simple Storage Service)
 
-\- The original and most popular object storage
+- The original and most popular object storage
 
-\- Buckets contain objects
+- Buckets contain objects
 
-\- Virtually unlimited storage
+- Virtually unlimited storage
 
 Azure Blob Storage
 
-\- Similar to S3
+- Similar to S3
 
-\- Containers hold blobs
+- Containers hold blobs
 
 Google Cloud Storage
 
-\- Buckets and objects
+- Buckets and objects
 
-\- Similar model to S3
+- Similar model to S3
 
 **Performance Characteristics:**
 
@@ -633,41 +633,41 @@ Object Storage Performance:
 
 Speed: SLOWER ( block storage is optimized for throughput, not latency)
 
-\- Latency: \~100ms first byte
+- Latency: \~100ms first byte
 
-\- High throughput: GB/s for large files
+- High throughput: GB/s for large files
 
-\- REST API (HTTP) overhead
+- REST API (HTTP) overhead
 
 Example the  operation:
 GET [https://s3.amazonaws.com/bucket/key.jpg](https://s3.amazonaws.com/bucket/key.jpg)
 
 Involves the following steps
 
-1\. HTTP request → 20ms
+1. HTTP request → 20ms
 
-2\. Authentication → 10ms
+2. Authentication → 10ms
 
-3\. Locate object → 30ms
+3. Locate object → 30ms
 
-4\. Start streaming → 40ms
+4. Start streaming → 40ms
 
 Total: 100ms (vs 1ms for block storage)
 
 BUT:
 
-\- Unlimited scale ✓
+- Unlimited scale ✓
 
-\- Extremely cheap ✓
+- Extremely cheap ✓
 
-\- Built-in redundancy ✓
+- Built-in redundancy ✓
 
-\- Global accessibility ✓
+- Global accessibility ✓
 
 Cost: VERY CHEAP (\~$0.023/GB/month for S3)
 
 **Connection to REST APIs:**
-Object storage is accessed via HTTP REST APIs\! Remember GET, PUT, DELETE? That's how you interact with S3. Each object has a URL\!
+Object storage is accessed via HTTP REST APIs! Remember GET, PUT, DELETE? That's how you interact with S3. Each object has a URL!
 
 
 ### **The Comparison Table**
@@ -694,7 +694,7 @@ Volume: 500 GB
 
 Cost: $50/month
 
-\[PostgreSQL\] → \[EBS Volume 500GB\]
+[PostgreSQL] → [EBS Volume 500GB]
                (Direct block access)
 
 ![img5](https://res.cloudinary.com/dretwg3dy/image/upload/v1762436765/47_gqcxuc.png)
@@ -745,14 +745,14 @@ Data: Daily database backups
 
 Volume: 10 TB
 
-Cost: $40/month (Glacier Deep Archive\!)
+Cost: $40/month (Glacier Deep Archive!)
 
 ![img8](https://res.cloudinary.com/dretwg3dy/image/upload/v1762436768/51_we1d9q.png)
 
 Total Monthly Cost: $235
 Total Storage: 15.6 TB
 
-If everything was block storage: $1,560/month\! 😱
-Savings: $1,325/month (85% savings\!)
+If everything was block storage: $1,560/month! 😱
+Savings: $1,325/month (85% savings!)
 
 ---

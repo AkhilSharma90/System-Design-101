@@ -8,7 +8,7 @@ premium: false
 
 
 
-#  Database Backup Types \- Your Safety Net
+#  Database Backup Types - Your Safety Net
 
 ### **🎯 Challenge 4: The Photo Album Disaster**
 
@@ -37,19 +37,19 @@ premium: false
 
 **Question:** Which strategy is most efficient for regular backups? What if you need to restore?
 
-### **The Answer: These are Full, Incremental, and Differential Backups\!**
+### **The Answer: These are Full, Incremental, and Differential Backups!**
 
 ---
 
 ### **💽 Backup Type 1: FULL BACKUP**
 
-**Definition:** Copy EVERYTHING \- the entire database from scratch.
+**Definition:** Copy EVERYTHING - the entire database from scratch.
 
 **How it works:**
 
 ![img1](https://res.cloudinary.com/dretwg3dy/image/upload/v1764508558/223_tosvhm.png)
 
-**Real-world analogy:** Moving to a new house \- you pack and move EVERY single item you own.
+**Real-world analogy:** Moving to a new house - you pack and move EVERY single item you own.
 
 ---
 
@@ -77,7 +77,7 @@ premium: false
 
 ✅ Database configuration
 
-Result: Complete standalone backup\!
+Result: Complete standalone backup!
 
 ---
 
@@ -115,7 +115,7 @@ Result: Complete standalone backup\!
 
 **How it works:![img2](https://res.cloudinary.com/dretwg3dy/image/upload/v1764508558/221_zngbka.png)**
 
-**Real-world analogy:** Packing for a trip where you add only new items each day \- Day 1: Full suitcase, Day 2: Add toothbrush, Day 3: Add sunglasses.
+**Real-world analogy:** Packing for a trip where you add only new items each day - Day 1: Full suitcase, Day 2: Add toothbrush, Day 3: Add sunglasses.
 
 ---
 
@@ -142,14 +142,14 @@ mysqlbinlog mysql-bin.000002 > incremental_tuesday.sql
 Database changes over time:
 
 
-Sunday:    \[Table1: 1000 rows\]\[Table2: 500 rows\] \= FULL BACKUP
+Sunday:    [Table1: 1000 rows][Table2: 500 rows] \= FULL BACKUP
 
 
-Monday:    \[Table1: \+50 rows\] \= INCR (50 rows)
+Monday:    [Table1: \+50 rows] \= INCR (50 rows)
 
-Tuesday:   \[Table2: \+20 rows\] \= INCR (20 rows)
+Tuesday:   [Table2: \+20 rows] \= INCR (20 rows)
 
-Wednesday: \[Table1: \+100 rows\]\[Table2: \+30 rows\] \= INCR (130 rows)
+Wednesday: [Table1: \+100 rows][Table2: \+30 rows] \= INCR (130 rows)
 
 
 
@@ -169,7 +169,7 @@ Wednesday: \[Table1: \+100 rows\]\[Table2: \+30 rows\] \= INCR (130 rows)
 * **Slower restore**: Must apply each backup sequentially
 * **Chain management**: Must track dependencies
 
-**Restore process (the pain\!):**
+**Restore process (the pain!):**
 
 To restore Wednesday data:
 
@@ -187,7 +187,7 @@ Step 4: Apply INCR (Wednesday)    ⏱️ 8 minutes
 
 Total restore time: \~2.5 hours
 
-(And if any backup is corrupt, restore FAILS\!)
+(And if any backup is corrupt, restore FAILS!)
 
 **When to use:**
 
@@ -213,11 +213,11 @@ Sunday (Full):     ████████████████████ 
 
 Monday (Diff):     ██ 2 GB (changed since Sunday)
 
-Tuesday (Diff):    ███ 3 GB (changed since Sunday\!)
+Tuesday (Diff):    ███ 3 GB (changed since Sunday!)
 
-Wednesday (Diff):  █████ 5 GB (changed since Sunday\!)
+Wednesday (Diff):  █████ 5 GB (changed since Sunday!)
 
-Thursday (Diff):   ███████ 7 GB (changed since Sunday\!)
+Thursday (Diff):   ███████ 7 GB (changed since Sunday!)
 
 Total storage: 117 GB (more than incremental)
 
@@ -238,9 +238,9 @@ FULL (Sun) → DIFF (Wed) ✓ Can restore from these two
 FULL (Sun) → DIFF (Thu) ✓ Can restore from these two
 
 
-Only need: FULL \+ Latest DIFF (much simpler\!)
+Only need: FULL \+ Latest DIFF (much simpler!)
 
-**Real-world analogy:** Writing a book \- you keep the original manuscript (full backup) and each day you save a copy with ALL changes made since the original (not just today's changes).
+**Real-world analogy:** Writing a book - you keep the original manuscript (full backup) and each day you save a copy with ALL changes made since the original (not just today's changes).
 
 ---
 
@@ -264,16 +264,16 @@ Only need: FULL \+ Latest DIFF (much simpler\!)
 
 Database changes over time:
 
-Sunday:    \[1000 rows total\] \= FULL BACKUP
+Sunday:    [1000 rows total] \= FULL BACKUP
 
-Monday:    \[+50 new rows\]
+Monday:    [+50 new rows]
            DIFF \= 50 rows
 
-Tuesday:   \[+20 more new rows\]
-           DIFF \= 50 \+ 20 \= 70 rows (cumulative\!)
+Tuesday:   [+20 more new rows]
+           DIFF \= 50 \+ 20 \= 70 rows (cumulative!)
 
-Wednesday: \[+100 more new rows\]
-           DIFF \= 50 \+ 20 \+ 100 \= 170 rows (cumulative\!)
+Wednesday: [+100 more new rows]
+           DIFF \= 50 \+ 20 \+ 100 \= 170 rows (cumulative!)
 
 ---
 
@@ -290,7 +290,7 @@ Wednesday: \[+100 more new rows\]
 * **More storage**: Larger than incremental
 * **Redundancy**: Backs up same changes multiple times
 
-**Restore process (much simpler\!):**
+**Restore process (much simpler!):**
 
 To restore Wednesday data:
 
@@ -298,7 +298,7 @@ Step 1: Restore FULL (Sunday)       ⏱️ 2 hours
 Step 2: Apply DIFF (Wednesday only) ⏱️ 30 minutes
 
 Total restore time: 2.5 hours
-(Only need 2 backups \- much simpler\!)
+(Only need 2 backups - much simpler!)
 
 **When to use:**
 
@@ -310,7 +310,7 @@ Total restore time: 2.5 hours
 
 ✓ When simplicity is important
 
-✓ Most common strategy for production\!
+✓ Most common strategy for production!
 
 ---
 
@@ -351,23 +351,23 @@ Incremental:  3+ hours (restore Full \+ all Incrementals)
 
 ### **🎪 Real-World Backup Strategy: The 3-2-1 Rule**
 
-**Best practice: Combine all three types\!**
+**Best practice: Combine all three types!**
 
 **![img3](https://res.cloudinary.com/dretwg3dy/image/upload/v1764508559/224_ti5sb8.png)**
 
 ┌**The 3-2-1 Rule:**
 3 \= Keep 3 copies of data
-    \- Production database
-    \- Local backup
-    \- Offsite backup
+    - Production database
+    - Local backup
+    - Offsite backup
 
 2 \= Use 2 different storage types
-    \- Local disk/SAN
-    \- Cloud storage (S3, Azure Blob)
+    - Local disk/SAN
+    - Cloud storage (S3, Azure Blob)
 
 1 \= Keep 1 copy offsite
-    \- Different geographic location
-    \- Protected from local disasters
+    - Different geographic location
+    - Protected from local disasters
 
 ---
 
@@ -377,7 +377,7 @@ Incremental:  3+ hours (restore Full \+ all Incrementals)
 
 * Size: 500 GB
 * Daily changes: 10 GB
-* Business hours: 8am \- 8pm
+* Business hours: 8am - 8pm
 * Recovery Time Objective (RTO): 2 hours
 * Recovery Point Objective (RPO): 4 hours max data loss
 
@@ -397,24 +397,24 @@ Incremental:  3+ hours (restore Full \+ all Incrementals)
 STRATEGY:
 
 FULL BACKUP:
-\- Sunday 2am (weekly)
-\- Time: 4 hours (runs overnight)
-\- Retention: 4 weeks
+- Sunday 2am (weekly)
+- Time: 4 hours (runs overnight)
+- Retention: 4 weeks
 
 DIFFERENTIAL BACKUP:
-\- Daily at 2am (Mon-Sat)
-\- Time: 1 hour
-\- Retention: 1 week
+- Daily at 2am (Mon-Sat)
+- Time: 1 hour
+- Retention: 1 week
 
 INCREMENTAL BACKUP:
-\- Every 4 hours during business hours (8am, 12pm, 4pm, 8pm)
-\- Time: 15 minutes each
-\- Retention: 3 days
+- Every 4 hours during business hours (8am, 12pm, 4pm, 8pm)
+- Time: 15 minutes each
+- Retention: 3 days
 
 STORAGE:
-\- Local: Fast SSD (last 7 days)
-\- Remote: Cloud (S3) for everything
-\- Offsite: Different region for weekly fulls
+- Local: Fast SSD (last 7 days)
+- Remote: Cloud (S3) for everything
+- Offsite: Different region for weekly fulls
 
 WHY THIS WORKS:
 
@@ -433,40 +433,40 @@ WHY THIS WORKS:
 **Horror Story 1: Untested Backups**
 
 ❌ Problem:
-   \- Ran backups daily for 2 years
-   \- Never tested restore
-   \- Database crashed
-   \- Tried to restore: ALL BACKUPS CORRUPTED\! 😱
+   - Ran backups daily for 2 years
+   - Never tested restore
+   - Database crashed
+   - Tried to restore: ALL BACKUPS CORRUPTED! 😱
 
 ✅ Solution:
-   \- Test restore monthly
-   \- Automate restore tests
-   \- Verify backup integrity
+   - Test restore monthly
+   - Automate restore tests
+   - Verify backup integrity
 
 **Horror Story 2: No Offsite Storage**
 
 ❌ Problem:
-   \- All backups on same server as database
-   \- Server room flooded
-   \- Lost database AND all backups\! 💦
+   - All backups on same server as database
+   - Server room flooded
+   - Lost database AND all backups! 💦
 
 ✅ Solution:
-   \- Store backups in different location
-   \- Use cloud storage
-   \- 3-2-1 rule\!
+   - Store backups in different location
+   - Use cloud storage
+   - 3-2-1 rule!
 
 **Horror Story 3: Backup Windows Missed**
 
 ❌ Problem:
-   \- Full backup takes 6 hours
-   \- Business needs 24/7 uptime
-   \- Can't find backup window
-   \- Backup fails/incomplete
+   - Full backup takes 6 hours
+   - Business needs 24/7 uptime
+   - Can't find backup window
+   - Backup fails/incomplete
 
 ✅ Solution:
-   \- Use online backups (snapshot technology)
-   \- Implement incremental forever
-   \- Use read replicas for backups
+   - Use online backups (snapshot technology)
+   - Implement incremental forever
+   - Use read replicas for backups
 
 ---
 
@@ -486,7 +486,7 @@ WHY THIS WORKS:
 
 **❌ DON'T:**
 
-* Assume backups work (test them\!)
+* Assume backups work (test them!)
 * Store all backups in one location
 * Keep backups forever (costs add up)
 * Forget to backup configuration files

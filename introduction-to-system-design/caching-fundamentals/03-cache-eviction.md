@@ -8,7 +8,7 @@ premium: false
 
 
 
-# Cache Eviction Policies \- When the Cache Gets Full
+# Cache Eviction Policies - When the Cache Gets Full
 ### **🎯 Challenge 3: The Parking Lot Problem**
 
 **Scenario:** You manage a parking lot with 10 spaces (cache). All spaces are full. A new car arrives (new data). Which car do you remove to make space?
@@ -23,13 +23,13 @@ premium: false
 
 **Question:** Which strategy makes the most sense for keeping the lot efficient?
 
-### **The Answer: Cache Eviction Policies\!**
+### **The Answer: Cache Eviction Policies!**
 
-When cache is full, we need rules for what to remove. Let's explore each\!
+When cache is full, we need rules for what to remove. Let's explore each!
 
 ---
 
-### **🥇 LRU (Least Recently Used) \- Most Popular\!**
+### **🥇 LRU (Least Recently Used) - Most Popular!**
 
 **Rule:** Remove the item that hasn't been accessed in the longest time.
 
@@ -133,15 +133,15 @@ lru.set('D', 4);
 
 Examples:
 
-\- Browser cache (recently visited pages)
+- Browser cache (recently visited pages)
 
-\- Operating system page cache
+- Operating system page cache
 
-\- Database query cache
+- Database query cache
 
 ---
 
-### **📊 LFU (Least Frequently Used) \- Count Matters\!**
+### **📊 LFU (Least Frequently Used) - Count Matters!**
 
 **Rule:** Remove the item accessed the fewest times.
 
@@ -159,8 +159,8 @@ C: 7 accesses
 
 D: 15 accesses
 
-Cache full\! New item E arrives (1 access).
-Remove B (least frequently used \- only 2 accesses)
+Cache full! New item E arrives (1 access).
+Remove B (least frequently used - only 2 accesses)
 
 ![img2](https://res.cloudinary.com/dretwg3dy/image/upload/v1764582002/225_kyo4x6.png)
 
@@ -224,32 +224,32 @@ lfu.set('D', 4);  // Must evict: B or C (both freq=1)                  // Evicts
 ✅ Media streaming platforms
 
 Examples:
-\- YouTube video cache (popular videos stay)
+- YouTube video cache (popular videos stay)
 
-\- Spotify song cache
+- Spotify song cache
 
-\- News article cache (trending stories)
+- News article cache (trending stories)
 
 **LFU Problem: The "Aging" Issue**
 
 Problem:
   Old item: 1000 accesses (from 2 years ago)
-  New item: 5 accesses (from today, trending\!)
+  New item: 5 accesses (from today, trending!)
 
-LFU keeps old item, evicts new trending item\! ❌
+LFU keeps old item, evicts new trending item! ❌
 
 Solution: Use "Time-aware LFU" with decay
-  \- Reduce frequency counts over time
+  - Reduce frequency counts over time
 
-  \- Or use LRU \+ LFU hybrid
+  - Or use LRU \+ LFU hybrid
 
 ---
 
-### **🎯 FIFO (First In, First Out) \- Simple Queue**
+### **🎯 FIFO (First In, First Out) - Simple Queue**
 
 **Rule:** Remove the oldest item (first added), regardless of usage.
 
-**Mental model:** Like a queue at a store \- first person in line leaves first.
+**Mental model:** Like a queue at a store - first person in line leaves first.
 
 **Visual example:**
 
@@ -309,9 +309,9 @@ fifo.set('D', 4);  // Queue: \[B, C, D\] (A evicted \- oldest) |
 ✅ Predictable access patterns
 
 Examples:
-\- Log file rotation
-\- Message queues
-\- Simple rate limiting
+- Log file rotation
+- Message queues
+- Simple rate limiting
 
 **FIFO Problems:**
 
@@ -382,14 +382,14 @@ Examples:
 
 ![img4](https://res.cloudinary.com/dretwg3dy/image/upload/v1764582002/226_q9efo8.png)
 
-LRU wins most scenarios\! ✓
+LRU wins most scenarios! ✓
 
 **Complexity:**
 
 | Policy | Get Complexity | Set Complexity | Implementation |
 | ----- | ----- | ----- | ----- |
 | LRU | O(1) | O(1) | Moderate (doubly-linked list \+ hash map) |
-| LFU | O(1)\* | O(log n)\* | Complex (multiple data structures) |
+| LFU | O(1)* | O(log n)* | Complex (multiple data structures) |
 | FIFO | O(1) | O(1) | Simple (queue \+ hash map) |
 
 ---
@@ -426,4 +426,4 @@ Choose FIFO when:
 
 ✓ Learning/prototyping
 
-**Most common choice: LRU** (best balance of performance and simplicity\!)
+**Most common choice: LRU** (best balance of performance and simplicity!)

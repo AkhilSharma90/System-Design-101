@@ -33,7 +33,7 @@ Smart approach: Set up a mail room with:
 
 Pause and think: How do you efficiently route messages with complex delivery rules?
 
-The Answer: RabbitMQ is your intelligent message broker\! It's like a sophisticated mail room that:
+The Answer: RabbitMQ is your intelligent message broker! It's like a sophisticated mail room that:
 
 ✅ Routes messages based on rules (exchanges)
 
@@ -49,7 +49,7 @@ The Answer: RabbitMQ is your intelligent message broker\! It's like a sophistica
 
 ✅ Distributes work fairly (load balancing)
 
-Key Insight: RabbitMQ excels at flexible, intelligent message routing with delivery guarantees\!
+Key Insight: RabbitMQ excels at flexible, intelligent message routing with delivery guarantees!
 
 🏢 Interactive Exercise: The Mail Room Model
 
@@ -60,13 +60,13 @@ Traditional Direct Delivery (Without RabbitMQ):
 
 Problems:
 
-\- Service A must know about B, C, D (tight coupling)
+- Service A must know about B, C, D (tight coupling)
 
-\- If Service B is down, what happens?
+- If Service B is down, what happens?
 
-\- How to add Service E without changing Service A?
+- How to add Service E without changing Service A?
 
-\- No delivery guarantees
+- No delivery guarantees
 
 RabbitMQ Mail Room (With Message Broker):
 
@@ -82,7 +82,7 @@ Benefits:
 
 ✅ Guaranteed delivery with acknowledgments
 
-Real-world parallel: RabbitMQ is like a post office. You drop mail at the post office (exchange), they sort it (routing), hold it in mailboxes (queues), and deliver when the recipient is ready\!
+Real-world parallel: RabbitMQ is like a post office. You drop mail at the post office (exchange), they sort it (routing), hold it in mailboxes (queues), and deliver when the recipient is ready!
 
 🎭 The Three Core Concepts: Exchanges, Queues, Bindings
 
@@ -150,11 +150,11 @@ Setup:
 Exchange: "logs" (type: direct)
 Queues:
 
-  \- "error-logs" (binding key: "error")
+  - "error-logs" (binding key: "error")
 
-  \- "info-logs" (binding key: "info")
+  - "info-logs" (binding key: "info")
 
-  \- "debug-logs" (binding key: "debug")
+  - "debug-logs" (binding key: "debug")
 
 Message Flow:
 
@@ -188,7 +188,7 @@ channel.basic_publish(
 )
 ```
 
-Real-world parallel: Direct exchange is like apartment mail \- exact apartment number needed.
+Real-world parallel: Direct exchange is like apartment mail - exact apartment number needed.
 
 2. Fanout Exchange (Broadcast to All):
 
@@ -197,16 +197,16 @@ Use case: Send same message to multiple queues
 Setup:
 Exchange: "notifications" (type: fanout)
 Queues:
-  \- "email-queue"
+  - "email-queue"
 
-  \- "sms-queue"
+  - "sms-queue"
 
-  \- "push-queue"
+  - "push-queue"
 
 Message Flow:
 ![img8](https://res.cloudinary.com/dretwg3dy/image/upload/v1766811958/144_lhywgv.png)
 
-Same message reaches ALL queues simultaneously\!
+Same message reaches ALL queues simultaneously!
 
 Code example:
 
@@ -229,9 +229,9 @@ channel.basic_publish(
 ```
 
 
-\# All 3 queues receive the message!
+# All 3 queues receive the message!
 
-Real-world parallel: Fanout is like a PA system \- everyone hears the announcement.
+Real-world parallel: Fanout is like a PA system - everyone hears the announcement.
 
 3. Topic Exchange (Pattern Matching):
 
@@ -239,34 +239,34 @@ Use case: Flexible routing with wildcards
 
 Wildcards:
   * (star) = exactly one word
-  \# (hash) = zero or more words
+  # (hash) = zero or more words
 
 Setup:
 Exchange: "events" (type: topic)
 Bindings:
-  \- "user.\*.created" → user-created-queue
-  \- "user.\#" → all-user-events-queue
-  \- "\*.\*.deleted" → deletion-audit-queue
-  \- "order.\#" → order-events-queue
+  - "user.*.created" → user-created-queue
+  - "user.#" → all-user-events-queue
+  - "*.*.deleted" → deletion-audit-queue
+  - "order.#" → order-events-queue
 
 Message Flow:
 Routing key: "user.account.created"
     ↓
-Matches: "user.\*.created" ✓
-         "user.\#" ✓
+Matches: "user.*.created" ✓
+         "user.#" ✓
     ↓
 Goes to: user-created-queue AND all-user-events-queue
 
 Routing key: "user.profile.updated"
     ↓
-Matches: "user.\#" ✓
+Matches: "user.#" ✓
     ↓
 Goes to: all-user-events-queue
 
 Routing key: "order.payment.deleted"
     ↓
-Matches: "\*.\*.deleted" ✓
-         "order.\#" ✓
+Matches: "*.*.deleted" ✓
+         "order.#" ✓
     ↓
 Goes to: deletion-audit-queue AND order-events-queue
 
@@ -296,9 +296,9 @@ channel.basic_publish(
 
 Real-world parallel: Topic exchange is like organizing files:
 
-* "docs/2024/january/\*.pdf" \= specific pattern
+* "docs/2024/january/*.pdf" \= specific pattern
 
-* "docs/\#" \= everything under docs
+* "docs/#" \= everything under docs
 
 4. Headers Exchange (Attribute-Based Routing):
 
@@ -320,7 +320,7 @@ Message with headers:
 Matches: priority-queue ✓ (both headers match)
          sales-queue ✓ (department matches)
 
-Real-world parallel: Headers exchange is like email filters \- route based on multiple attributes (sender, subject, has attachment).
+Real-world parallel: Headers exchange is like email filters - route based on multiple attributes (sender, subject, has attachment).
 
 🎮 Decision Game: Which Exchange Type?
 
@@ -346,7 +346,7 @@ B. Notify all microservices → Fanout (2)
    Broadcast to everyone
 
 C. Route user events with patterns → Topic (3)
-   Pattern: "user.\*.\*" or "user.\#"
+   Pattern: "user.*.*" or "user.#"
 
 D. Multiple attributes → Headers (4)
    Match on: priority=high AND category=urgent
@@ -358,7 +358,7 @@ E. Currency-specific routing → Direct (1)
 
 You might think: "Once a consumer reads a message, it's gone."
 
-The Reality: Acknowledgments Control Deletion\!
+The Reality: Acknowledgments Control Deletion!
 
 Without Acknowledgment (Auto-ack):
 
@@ -437,41 +437,41 @@ The Problem:
 
 Without fair dispatch:
 
-Consumer A: Gets \[heavy\] → takes 10 seconds
+Consumer A: Gets [heavy] → takes 10 seconds
 
-Consumer B: Gets \[heavy\] → takes 10 seconds
+Consumer B: Gets [heavy] → takes 10 seconds
 
-Consumer A: Gets \[light\] → takes 1 second
+Consumer A: Gets [light] → takes 1 second
 
-Consumer B: Gets \[light\] → takes 1 second
+Consumer B: Gets [light] → takes 1 second
 
-Consumer B finishes early but waits\! Inefficient\!
+Consumer B finishes early but waits! Inefficient!
 
 Solution: Prefetch Count (QoS)
 
-\# Set prefetch to 1 (one message at a time)
+# Set prefetch to 1 (one message at a time)
 channel.basic\_qos(prefetch\_count=1)
 
 Now:
-Consumer A: Gets \[heavy\] (10 sec) → busy
+Consumer A: Gets [heavy] (10 sec) → busy
 
-Consumer B: Gets \[heavy\] (10 sec) → busy
+Consumer B: Gets [heavy] (10 sec) → busy
 
   (both busy, no messages dispatched yet)
 
-Consumer B finishes first\!
+Consumer B finishes first!
 
-Consumer B: Gets \[light\] (1 sec) → processes immediately
+Consumer B: Gets [light] (1 sec) → processes immediately
 
 Consumer A: Still working on first message...
 
-Consumer B: Gets \[light\] (1 sec) → processes immediately
+Consumer B: Gets [light] (1 sec) → processes immediately
 
-Consumer B: Gets \[heavy\] (10 sec)
+Consumer B: Gets [heavy] (10 sec)
 
 Consumer A: Finishes, gets next message
 
-Fair distribution based on availability\! ✨
+Fair distribution based on availability! ✨
 
 Prefetch Strategies:
 
@@ -521,19 +521,19 @@ Setup:
 queue\_args \= {
     'x-dead-letter-exchange': 'dlx',
     'x-dead-letter-routing-key': 'failed',
-    'x-message-ttl': 60000,  \# 60 seconds
-    'x-max-length': 10000     \# Queue size limit
+    'x-message-ttl': 60000,  # 60 seconds
+    'x-max-length': 10000     # Queue size limit
 }
 channel.queue\_declare(queue='orders', arguments=queue\_args)
 
-Real-world parallel: DLX is like undeliverable mail \- goes to special processing center.
+Real-world parallel: DLX is like undeliverable mail - goes to special processing center.
 
 2. Message TTL (Time To Live):
 
 Expire old messages:
 
 queue\_args \= {
-    'x-message-ttl': 60000  \# Messages expire after 60 seconds
+    'x-message-ttl': 60000  # Messages expire after 60 seconds
 }
 
 Or per-message:
@@ -542,7 +542,7 @@ channel.basic\_publish(
     routing\_key='orders',
     body='Order data',
     properties=pika.BasicProperties(
-        expiration='60000'  \# This message expires in 60 sec
+        expiration='60000'  # This message expires in 60 sec
     )
 )
 
@@ -550,7 +550,7 @@ Expired messages:
 ├─ Deleted automatically
 └─ Or sent to DLX if configured
 
-Real-world parallel: TTL is like expiration dates on food \- discard after certain time.
+Real-world parallel: TTL is like expiration dates on food - discard after certain time.
 
 3. Priority Queues:
 
@@ -580,9 +580,9 @@ channel.basic_publish(
 )
 ```
 
-Result: Priority 10 messages processed before priority 1\!
+Result: Priority 10 messages processed before priority 1!
 
-Real-world parallel: Priority queue is like airport boarding \- first class boards first\!
+Real-world parallel: Priority queue is like airport boarding - first class boards first!
 
 4. Message Persistence:
 
@@ -607,7 +607,7 @@ Trade-off:
 ✅ Data survives broker crash
 ❌ Slower (disk writes)
 
-Real-world parallel: Persistence is like saving documents \- slower but won't lose work if computer crashes.
+Real-world parallel: Persistence is like saving documents - slower but won't lose work if computer crashes.
 
 🎪 RabbitMQ vs Kafka: When to Use What?
 
@@ -819,7 +819,7 @@ This is why:
 
 * Zalando uses RabbitMQ for order processing pipeline
 
-RabbitMQ transforms simple message passing into reliable, flexible communication infrastructure\!
+RabbitMQ transforms simple message passing into reliable, flexible communication infrastructure!
 
 🎯 Quick Recap: Test Your Understanding Without looking back, can you explain:
 
@@ -831,7 +831,7 @@ RabbitMQ transforms simple message passing into reliable, flexible communication
 
 4. When should you use RabbitMQ vs Kafka?
 
-Mental check: If you can answer these clearly, you've mastered RabbitMQ fundamentals\!
+Mental check: If you can answer these clearly, you've mastered RabbitMQ fundamentals!
 
 🚀 Your Next Learning Adventure Now that you understand RabbitMQ, explore:
 

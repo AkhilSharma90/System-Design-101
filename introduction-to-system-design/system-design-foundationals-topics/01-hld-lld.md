@@ -6,7 +6,7 @@ orderIndex: 1
 premium: false
 ---
 
-## **HLD vs LLD \- The Architect's Tale**
+## **HLD vs LLD - The Architect's Tale**
 
 ### **🎯 Challenge 1: The House Building Dilemma**
 
@@ -16,10 +16,10 @@ premium: false
 
 **The Two-Level Reality:** Just like building a house needs both an architectural blueprint AND detailed construction plans, software systems need:
 
-* **High-Level Design (HLD)** \- The "what" and "why"
-* **Low-Level Design (LLD)** \- The "how" in detail
+* **High-Level Design (HLD)** - The "what" and "why"
+* **Low-Level Design (LLD)** - The "how" in detail
 
-**Key Insight:** You can't jump from idea to implementation without both levels of design\!
+**Key Insight:** You can't jump from idea to implementation without both levels of design!
 
 ---
 

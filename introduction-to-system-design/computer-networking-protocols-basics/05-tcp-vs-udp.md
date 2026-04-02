@@ -20,15 +20,15 @@ Let's settle this once and for all with side-by-side comparison:
 
 "Hello, can we talk?"
 
-   "Yes, I'm ready\!"
+   "Yes, I'm ready!"
 
-      "Great, let's begin\!"
+      "Great, let's begin!"
 
-         \[3 round trips \= \~150ms delay\]
+         [3 round trips \= \~150ms delay]
 
 **UDP:**
 
-"Here's my data\!" \[Immediate \- 0ms setup\]
+"Here's my data!" [Immediate - 0ms setup]
 
 **Winner:** UDP for speed, TCP for assured readiness
 
@@ -78,15 +78,15 @@ Receiver: "I can only handle 10 MB/s"
 
 Sender: "Got it, slowing down to 10 MB/s"
 
-\[Prevents overwhelming receiver\]
+[Prevents overwhelming receiver]
 
 **UDP:**
 
-Sender: "Here's 100 MB/s\!"
+Sender: "Here's 100 MB/s!"
 
-Receiver: \[Drops 90% of packets\]
+Receiver: [Drops 90% of packets]
 
-\[Application must handle overload\]
+[Application must handle overload]
 
 **Winner:** TCP prevents overload, UDP requires application-level management
 
@@ -151,11 +151,11 @@ Receiver: \[Drops 90% of packets\]
 
 1. **UDP**
    * Why: Position updates 60 times/sec, old data becomes irrelevant instantly
-   * Low latency \> perfect delivery for game feel
+   * Low latency > perfect delivery for game feel
    * Example: Fortnite, Call of Duty, League of Legends
 2. **TCP**
    * Why: Money MUST be transferred reliably, cannot lose transactions
-   * Order matters (withdraw before deposit could be catastrophic\!)
+   * Order matters (withdraw before deposit could be catastrophic!)
    * Example: Bank APIs, payment gateways
 3. **UDP Multicast**
    * Why: One stream to many viewers \= huge bandwidth savings
@@ -170,7 +170,7 @@ Receiver: \[Drops 90% of packets\]
    * If one reading is lost, next one comes in 10 seconds anyway
    * Example: IoT devices, smart thermostats
 
-**The Pattern:** When timing and efficiency matter more than perfection, choose UDP. When data integrity is non-negotiable, choose TCP\!
+**The Pattern:** When timing and efficiency matter more than perfection, choose UDP. When data integrity is non-negotiable, choose TCP!
 
 ---
 
@@ -184,7 +184,7 @@ Receiver: \[Drops 90% of packets\]
 4. **Why** is UDP's 8-byte header important for some applications?
 5. **When** would you choose UDP over TCP?
 
-**Mental check:** If you can answer these clearly, you've mastered UDP fundamentals\!
+**Mental check:** If you can answer these clearly, you've mastered UDP fundamentals!
 
 ---
 
@@ -200,14 +200,14 @@ Receiver: \[Drops 90% of packets\]
 
 **Application Layer Protocols:**
 
-* **HTTP/HTTPS:** How web browsing uses TCP (and now HTTP/3 uses UDP via QUIC\!)
+* **HTTP/HTTPS:** How web browsing uses TCP (and now HTTP/3 uses UDP via QUIC!)
 * **DNS:** Deep dive into how domain name resolution works with UDP (and TCP for large responses)
 * **RTP/RTCP:** Real-time transport protocols for media streaming
 * **WebRTC:** Peer-to-peer video calling using UDP
 
 **Advanced Topics:**
 
-* **QUIC:** Google's new protocol \- "TCP-like reliability on top of UDP speed"
+* **QUIC:** Google's new protocol - "TCP-like reliability on top of UDP speed"
 * **Reliable UDP:** How applications add reliability to UDP (retransmission, ACKs)
 * **DTLS:** Securing UDP communication (like TLS for TCP)
 * **Multicast Routing:** How routers handle multicast efficiently (PIM, IGMP)

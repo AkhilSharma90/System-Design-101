@@ -10,7 +10,7 @@ premium: false
 
 Decoupled Communication at Scale (One Shout, Many Listeners)
 
- 🎯 Challenge 1: The Breaking News Broadcast Problem Imagine this scenario: A major event happens \- your company just launched a new product. Now you need to notify:
+ 🎯 Challenge 1: The Breaking News Broadcast Problem Imagine this scenario: A major event happens - your company just launched a new product. Now you need to notify:
 
 * Email service (send announcement emails)
 * SMS service (send text notifications)
@@ -41,7 +41,7 @@ Problems:
 
 Pause and think: What if you could just announce the event once, and everyone interested automatically hears it?
 
-The Answer: The Publish-Subscribe (Pub-Sub) pattern\! It's like a radio broadcast:
+The Answer: The Publish-Subscribe (Pub-Sub) pattern! It's like a radio broadcast:
 
 ✅ Publishers broadcast messages (radio station)
 
@@ -53,7 +53,7 @@ The Answer: The Publish-Subscribe (Pub-Sub) pattern\! It's like a radio broadcas
 
 ✅ Add/remove listeners without code changes (dynamic)
 
-Key Insight: Pub-Sub decouples producers from consumers using a message broker intermediary\!
+Key Insight: Pub-Sub decouples producers from consumers using a message broker intermediary!
 
 📻 Interactive Exercise: The Radio Station Analogy
 
@@ -69,19 +69,19 @@ Radio Host → calls → Listener 1
 
 Problems:
 
-\- Host needs everyone's phone number
+- Host needs everyone's phone number
 
-\- If someone doesn't answer, host waits
+- If someone doesn't answer, host waits
 
-\- Adding new listener requires host to know them
+- Adding new listener requires host to know them
 
-\- Host responsible for every delivery
+- Host responsible for every delivery
 
 Pub-Sub (Broadcast):
 
   ![img1](https://res.cloudinary.com/dretwg3dy/image/upload/v1766758664/127_ly59xd.png)
 
-New Listener 4 tunes in → automatically receives broadcasts\!
+New Listener 4 tunes in → automatically receives broadcasts!
 
 Benefits:
 
@@ -95,7 +95,7 @@ Benefits:
 
    OR buffer messages for them (depending on system)
 
-Real-world parallel: Pub-Sub is like YouTube subscriptions. Content creator (publisher) uploads videos (messages). Subscribers (consumers) get notified automatically. Creator doesn't know or care who subscribes\!
+Real-world parallel: Pub-Sub is like YouTube subscriptions. Content creator (publisher) uploads videos (messages). Subscribers (consumers) get notified automatically. Creator doesn't know or care who subscribes!
 
 🏗️ Core Pub-Sub Concepts
 
@@ -118,7 +118,7 @@ Topic: "user.registered"
 ![img2](https://res.cloudinary.com/dretwg3dy/image/upload/v1766763247/one_image_er0uxm.png)
 
 Think: Topics are like hashtags on social media
-\#ProductLaunch → Everyone following this hashtag sees posts
+#ProductLaunch → Everyone following this hashtag sees posts
 
 2. Publishers (The Broadcasters):
 
@@ -166,9 +166,9 @@ Order Service: publish("order.created", {orderId: 123, ...})
 
 Step 3: Broker delivers
 Message Broker:
-  \- Sees message on "order.created"
-  \- Looks up subscribers (Email, SMS)
-  \- Delivers to both
+  - Sees message on "order.created"
+  - Looks up subscribers (Email, SMS)
+  - Delivers to both
 
 Step 4: Subscribers process independently
 Email Service: Sends confirmation email ✓
@@ -213,21 +213,21 @@ Topics:
 
 Subscriber patterns:
 
-├── "sensors.temperature.\*" → all temperature sensors
+├── "sensors.temperature.*" → all temperature sensors
 
-├── "sensors.\*.room1" → all sensors in room1
+├── "sensors.*.room1" → all sensors in room1
 
-├── "sensors.\#" → ALL sensor data
+├── "sensors.#" → ALL sensor data
 
 ![img7](https://res.cloudinary.com/dretwg3dy/image/upload/v1766758669/134_bscl1h.png)
 
-Similar to topic exchanges in RabbitMQ\!
+Similar to topic exchanges in RabbitMQ!
 
 3. Content-Based Filtering:
 
 Subscribe based on message content:
 
-Subscriber 1: "Give me orders where price \> $1000"
+Subscriber 1: "Give me orders where price > $1000"
 
 Subscriber 2: "Give me orders where country \= 'US'"
 
@@ -289,13 +289,13 @@ D. Log all events → Pub-Sub (2)
 E. Request user profile → Request-Reply (3)
    Need synchronous response
 
-Key Insight: Use Pub-Sub when multiple independent consumers need the same event\!
+Key Insight: Use Pub-Sub when multiple independent consumers need the same event!
 
 🚨 Common Misconception: "Pub-Sub Guarantees Delivery... Right?"
 
 You might think: "If I publish a message, all subscribers definitely receive it."
 
-The Reality: Delivery guarantees vary\!
+The Reality: Delivery guarantees vary!
 
 At-Most-Once (Fire and Forget):
 
@@ -303,7 +303,7 @@ Publisher publishes → Message sent → Subscriber 1 ✓
                                    → Subscriber 2 ✓
                                    → Subscriber 3 ❌ (offline)
 
-Subscriber 3 was offline → Message LOST\!
+Subscriber 3 was offline → Message LOST!
 ![img9](https://res.cloudinary.com/dretwg3dy/image/upload/v1766758674/132_nvs8ns.png)
 
 Use case: Non-critical events (page views, clicks)
@@ -319,9 +319,9 @@ Publisher publishes → Message sent → Subscriber 1 ✓
 
                                    → Subscriber 3 ❌ (retry)
 
-                                   → Subscriber 3 ✓ (success\!)
+                                   → Subscriber 3 ✓ (success!)
 
-Subscriber 3 receives eventually, but might get duplicates\!
+Subscriber 3 receives eventually, but might get duplicates!
 
 Use case: Important events (orders, payments)
 Trade-off: Reliable, but possible duplicates
@@ -335,7 +335,7 @@ Publisher publishes → Message sent with ID
 
                     → Subscriber 1 gets duplicate (ID: msg123)
 
-                    → "Already processed msg123, skip\!" ✓
+                    → "Already processed msg123, skip!" ✓
 
 Requires: Idempotent operations \+ deduplication
 
@@ -760,13 +760,13 @@ Message:
   "order": {
     "id": "123",
     "customer": {"name": "Alice", "email": "..."},
-    "items": \[...\],
+    "items": [...],
     "shipping": {...},
     "total": 99.99
   }
 }
 
-Benefit: Subscribers don't need to call back for more data\!
+Benefit: Subscribers don't need to call back for more data!
 
 Pattern 3: Event Sourcing
 
@@ -774,7 +774,7 @@ Use case: "Store all events, rebuild state from them"
 
 Event Stream:
 
-\[OrderCreated\] → \[PaymentReceived\] → \[OrderShipped\] → \[OrderDelivered\]
+[OrderCreated] → [PaymentReceived] → [OrderShipped] → [OrderDelivered]
 
 Subscribers:
 
@@ -784,7 +784,7 @@ Subscribers:
 
 └─ Audit Log (compliance)
 
-Can replay events to rebuild state at any point in time\!
+Can replay events to rebuild state at any point in time!
 
 Real-world parallel:
 
@@ -922,7 +922,7 @@ This is why:
 
 * Facebook uses Pub-Sub for real-time updates
 
-Pub-Sub transforms tightly coupled systems into loosely coupled, event-driven architectures\!
+Pub-Sub transforms tightly coupled systems into loosely coupled, event-driven architectures!
 
 🎯 Quick Recap: Test Your Understanding Without looking back, can you explain:
 
@@ -934,7 +934,7 @@ Pub-Sub transforms tightly coupled systems into loosely coupled, event-driven ar
 
 4. When should you use Pub-Sub vs request-reply?
 
-Mental check: If you can answer these clearly, you've mastered Pub-Sub fundamentals\!
+Mental check: If you can answer these clearly, you've mastered Pub-Sub fundamentals!
 
 🚀 Your Next Learning Adventure Now that you understand Pub-Sub, explore:
 

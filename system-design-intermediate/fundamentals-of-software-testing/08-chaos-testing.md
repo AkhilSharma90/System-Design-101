@@ -25,20 +25,20 @@ Philosophy:
 
 **Like fire drills in a building:**
 
-Don't wait for real fire to test evacuation plan\!
+Don't wait for real fire to test evacuation plan!
 
 Chaos Test:
-1\. Pull fire alarm (simulate disaster)
+1. Pull fire alarm (simulate disaster)
 
-2\. Observe: Do people know where to go?
+2. Observe: Do people know where to go?
 
-3\. Measure: How long does evacuation take?
+3. Measure: How long does evacuation take?
 
-4\. Find: Are there bottlenecks?
+4. Find: Are there bottlenecks?
 
-5\. Improve: Fix issues before real emergency
+5. Improve: Fix issues before real emergency
 
-Test your disaster response BEFORE disaster strikes\!
+Test your disaster response BEFORE disaster strikes!
 
 ### **Chaos Testing Principles:**
 
@@ -47,13 +47,13 @@ Randomly terminates instances in production
 
 Why?
 
-\- Forces engineers to build resilient systems
+- Forces engineers to build resilient systems
 
-\- Identifies weak points
+- Identifies weak points
 
-\- Proves system can handle failures
+- Proves system can handle failures
 
-\- No surprises during real outages
+- No surprises during real outages
 
 Philosophy:
 "If we never test our backup systems,
@@ -61,7 +61,7 @@ Philosophy:
 
 ### **Chaos Experiments:**
 
-#### **1\. Instance Failure**
+#### **1. Instance Failure**
 
 Experiment: "Random Server Crash"
 
@@ -70,11 +70,11 @@ Hypothesis:
  the system should remain available with no customer impact"
 
 Steady State:
-\- All servers healthy
+- All servers healthy
 
-\- Response time: 100ms
+- Response time: 100ms
 
-\- Error rate: 0%
+- Error rate: 0%
 
 Introduce Chaos:
 → Kill random application server
@@ -88,36 +88,36 @@ Observe:
 
 ✅ Response time: 120ms (slight increase)
 
-✅ Error rate: 0% (no errors\!)
+✅ Error rate: 0% (no errors!)
 
 ⚠️ Auto-scaling triggered (new instance launched)
 
-Result: System resilient\! Experiment confirms hypothesis ✅
+Result: System resilient! Experiment confirms hypothesis ✅
 
 Learnings:
 
-\- Health check interval: 5 seconds (acceptable)
+- Health check interval: 5 seconds (acceptable)
 
-\- Auto-scaling works
+- Auto-scaling works
 
-\- No manual intervention needed
+- No manual intervention needed
 
-#### **2\. Network Partition**
+#### **2. Network Partition**
 
 Experiment: "Network Split"
 
 
 Setup: Microservices architecture
 
-\- Frontend
+- Frontend
 
-\- API Gateway
+- API Gateway
 
-\- User Service
+- User Service
 
-\- Order Service
+- Order Service
 
-\- Payment Service
+- Payment Service
 
 Introduce Chaos:
 
@@ -136,7 +136,7 @@ Order Service: Hangs for 60 seconds
 
 User: Sees timeout error 💥
 
-Shopping cart: Lost\! 💥
+Shopping cart: Lost! 💥
 
 ✅ Good Design:
 
@@ -155,10 +155,10 @@ User: Sees confirmation "We're processing your order"
 Background job: Retries payment when network restored
 
 Result:
-Bad design exposed by chaos testing\!
+Bad design exposed by chaos testing!
 Fix: Implement circuit breaker, async processing
 
-#### **3\. Latency Injection**
+#### **3. Latency Injection**
 
 Experiment: "Slow Database"
 
@@ -177,13 +177,13 @@ GET /api/health → 5ms ✅ (doesn't hit DB)
 
 Cascading effects:
 
-\- Request queues backing up
+- Request queues backing up
 
-\- Thread pool exhaustion
+- Thread pool exhaustion
 
-\- Memory usage increasing
+- Memory usage increasing
 
-\- Timeouts occurring
+- Timeouts occurring
 
 Improvements needed:
 
@@ -195,7 +195,7 @@ Improvements needed:
 
 ✅ Circuit breaker for DB calls
 
-#### **4\. Resource Exhaustion**
+#### **4. Resource Exhaustion**
 
 Experiment: "Memory Leak"
 
@@ -244,37 +244,37 @@ Improvements:
 
 ### **Chaos Testing Tools:**
 
-1\. Chaos Monkey (Netflix)
+1. Chaos Monkey (Netflix)
 
-   \- Randomly terminates instances
+   - Randomly terminates instances
 
-   \- Production testing
+   - Production testing
 
-   \- AWS-focused
+   - AWS-focused
 
-2\. Chaos Toolkit
+2. Chaos Toolkit
 
-   \- Declarative chaos experiments
+   - Declarative chaos experiments
 
-   \- Multiple platforms
+   - Multiple platforms
 
-   \- Hypothesis-driven
+   - Hypothesis-driven
 
-3\. Gremlin
+3. Gremlin
 
-   \- Commercial chaos engineering platform
+   - Commercial chaos engineering platform
 
-   \- CPU, memory, network, disk attacks
+   - CPU, memory, network, disk attacks
 
-   \- Safe rollback
+   - Safe rollback
 
-4\. Litmus (Kubernetes)
+4. Litmus (Kubernetes)
 
-   \- Chaos for Kubernetes
+   - Chaos for Kubernetes
 
-   \- Pod failures, network chaos
+   - Pod failures, network chaos
 
-   \- GitOps-friendly
+   - GitOps-friendly
 
 Example Chaos Toolkit experiment:
 ```json
@@ -344,7 +344,7 @@ Stage 4: Production Testing (Business hours)
 
   Goal: Prove resilience under realistic conditions
 
-Note: Only reach Stage 4 after building confidence in Stages 1-3\!
+Note: Only reach Stage 4 after building confidence in Stages 1-3!
 
 **Key characteristics:**
 

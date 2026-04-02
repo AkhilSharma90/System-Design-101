@@ -6,11 +6,11 @@ orderIndex: 3
 premium: false
 ---
 
-# **Horizontal vs Vertical Scaling \- The Growth Strategy**
+# **Horizontal vs Vertical Scaling - The Growth Strategy**
 
 ### **🎯 Challenge The Pizza Restaurant Dilemma**
 
-**Scenario:** Your pizza restaurant is packed every night. There's a 2-hour wait\!
+**Scenario:** Your pizza restaurant is packed every night. There's a 2-hour wait!
 
 **You have two options to handle more customers:**
 
@@ -24,7 +24,7 @@ premium: false
 
 ### **🍕 The Scaling Revelation**
 
-**This is exactly the difference between Vertical and Horizontal Scaling\!**
+**This is exactly the difference between Vertical and Horizontal Scaling!**
 
 🏢 VERTICAL SCALING (Option A)
 ═══════════════════════════════════
@@ -72,7 +72,7 @@ Like: Building a team instead of finding a superhero
 ![img6](https://res.cloudinary.com/dretwg3dy/image/upload/v1764650667/252_vsuacm.png)
 
 
-Pros: Simple \- just upgrade one server
+Pros: Simple - just upgrade one server
 Cons: Expensive, has limits, single point of failure
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
@@ -81,9 +81,9 @@ Cons: Expensive, has limits, single point of failure
 
 ![img7](https://res.cloudinary.com/dretwg3dy/image/upload/v1764650663/243_yp1sqc.png)
 
-    Total capacity: 2000 req/sec\! 😊 💰
+    Total capacity: 2000 req/sec! 😊 💰
     Cost: 4 cheap servers \< 1 mega server
-    Bonus: If one fails, others continue\!
+    Bonus: If one fails, others continue!
 
 Pros: Cost-effective, redundant, unlimited growth
 Cons: More complex architecture
@@ -94,7 +94,7 @@ Cons: More complex architecture
 
 **You might think:** "Horizontal scaling sounds way better. Why would anyone use vertical scaling?"
 
-**The Truth:** Both have their place\!
+**The Truth:** Both have their place!
 
 ✅ WHEN TO USE VERTICAL SCALING
 ════════════════════════════════════
@@ -107,7 +107,7 @@ Good for:
 • When simplicity matters
 
 Example: Your PostgreSQL database
-You CAN'T easily split it across 10 servers (complex\!)
+You CAN'T easily split it across 10 servers (complex!)
 Easier to give it more RAM and CPU
 ![img8](https://res.cloudinary.com/dretwg3dy/image/upload/v1764650663/239_kovskg.png)
 
@@ -122,7 +122,7 @@ Good for:
 • Unlimited growth potential
 
 Example: Your web application
-Easy to run same code on 100 servers\!
+Easy to run same code on 100 servers!
 ![img9](https://res.cloudinary.com/dretwg3dy/image/upload/v1764650666/249_xrdotn.png)
 
 **Real-world parallel:**
@@ -156,7 +156,7 @@ Scenario C: HORIZONTAL ✓
 Why: Each image processed independently
 Solution: 50 servers processing in parallel
 
-Scenario D: BOTH\!
+Scenario D: BOTH!
 Why: Vertical to start, then horizontal with clustering
 Solution: Upgrade RAM first, then add cache nodes
 
@@ -175,7 +175,7 @@ Solution: 20+ identical web servers behind load balancer
 
 ![img10](https://res.cloudinary.com/dretwg3dy/image/upload/v1764650665/248_qdj6es.png)
 
-Strategy: Nothing\! One server is fine.
+Strategy: Nothing! One server is fine.
 
 
 
@@ -212,7 +212,7 @@ Cost: $5,000/month
 
 ![img13](https://res.cloudinary.com/dretwg3dy/image/upload/v1764650665/245_cpuo1n.png)
 
-Strategy: BOTH everywhere\!
+Strategy: BOTH everywhere!
 
 Cost: $50,000/month
 
@@ -262,7 +262,7 @@ Problems:
 
 • 1 TB SSD each
 
-Cloud cost: $3,000/month (cheaper\!)
+Cloud cost: $3,000/month (cheaper!)
 
 Benefits:
 
@@ -274,7 +274,7 @@ Benefits:
 
 ✅ Update one at a time (no downtime)
 
-Winner: Horizontal\! 🎉
+Winner: Horizontal! 🎉
 
 ---
 
@@ -282,13 +282,13 @@ Winner: Horizontal\! 🎉
 
 ![img14](https://res.cloudinary.com/dretwg3dy/image/upload/v1764650665/247_tynxaf.png)
 
-Key Insight: Start vertical, grow horizontal\!
+Key Insight: Start vertical, grow horizontal!
 
 ---
 
 ### **🔑 The Hybrid Approach: Best of Both Worlds**
 
-**Real-world wisdom:** Most large systems use BOTH\!
+**Real-world wisdom:** Most large systems use BOTH!
 
 Modern Architecture:
 
@@ -298,7 +298,7 @@ Modern Architecture:
 
 Strategy:
 
-• Scale web/app servers horizontally (easy\!)
+• Scale web/app servers horizontally (easy!)
 
 • Scale database vertically first (simpler)
 

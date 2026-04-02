@@ -16,9 +16,9 @@ Okay, imagine you own a popular ice cream shop. On a hot summer day, if you let 
 * Staff gets overwhelmed
 * Everyone has a bad experience
 
-So what do smart shop owners do? They control the flow \- only let in a certain number of people at a time.
+So what do smart shop owners do? They control the flow - only let in a certain number of people at a time.
 
-**That's rate limiting\!**
+**That's rate limiting!**
 
 ### **Why APIs Need Rate Limiting**
 
@@ -39,15 +39,15 @@ Malicious User (or bug):
 
 Result:
 
-\- Your server gets 1 MILLION requests instantly
+- Your server gets 1 MILLION requests instantly
 
-\- Server crashes
+- Server crashes
 
-\- ALL users (good and bad) can't access your API
+- ALL users (good and bad) can't access your API
 
-\- You're paying for all that bandwidth
+- You're paying for all that bandwidth
 
-\- Your database melts
+- Your database melts
 
 Cost: Thousands of dollars
 Downtime: Hours or days
@@ -70,11 +70,11 @@ Retry-After: 60
 
 Result:
 
-\- Bad user is blocked
+- Bad user is blocked
 
-\- Other users keep working fine
+- Other users keep working fine
 
-\- Server stays healthy
+- Server stays healthy
 
 ### **Common Rate Limit Strategies**
 
@@ -86,27 +86,27 @@ This is the easiest to understand. Imagine a stopwatch that resets every minute:
 
 Example: 100 requests per minute
 
-Minute 1 (00:00 \- 00:59):
+Minute 1 (00:00 - 00:59):
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━
 
 User makes:
 
 
-\- 50 requests at 00:30  ✓ Allowed (50/100)
+- 50 requests at 00:30  ✓ Allowed (50/100)
 
-\- 30 requests at 00:45  ✓ Allowed (80/100)
+- 30 requests at 00:45  ✓ Allowed (80/100)
 
-\- 20 requests at 00:50  ✓ Allowed (100/100)
+- 20 requests at 00:50  ✓ Allowed (100/100)
 
-\- 1 request at 00:55    ❌ BLOCKED (101/100)
+- 1 request at 00:55    ❌ BLOCKED (101/100)
 
-Minute 2 (01:00 \- 01:59):
+Minute 2 (01:00 - 01:59):
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━
 
-Counter resets to 0\!
-\- 100 requests at 01:01  ✓ Allowed (100/100)
+Counter resets to 0!
+- 100 requests at 01:01  ✓ Allowed (100/100)
 
 **The Problem:**
 
@@ -114,11 +114,11 @@ User is sneaky:
 
 00:59 → Makes 100 requests  ✓
 
-01:00 → Counter resets\!
+01:00 → Counter resets!
 
 01:01 → Makes 100 requests  ✓
 
-Result: 200 requests in 2 seconds\! The "burst problem"
+Result: 200 requests in 2 seconds! The "burst problem"
 
 ### **Strategy 2: Sliding Window (The Moving Average)**
 
@@ -136,19 +136,19 @@ From 01:30 to 02:30:
 
 Requests:
 
-\- 01:35 → 20 requests
+- 01:35 → 20 requests
 
-\- 01:50 → 30 requests
+- 01:50 → 30 requests
 
-\- 02:10 → 40 requests
+- 02:10 → 40 requests
 
-\- 02:25 → 10 requests
+- 02:25 → 10 requests
 
 Total: 100 requests in last 60 seconds
 
 New request at 02:30?
 
-❌ BLOCKED (would be 101\)
+❌ BLOCKED (would be 101)
 
 At 02:36 (after the 01:35 requests expire):
 
@@ -160,7 +160,7 @@ Only 80 requests (the 20 from 01:35 dropped off)
 New request?
 ✓ ALLOWED (now 81/100)
 
-This prevents the "burst problem"\!
+This prevents the "burst problem"!
 
 ### **Strategy 3: Token Bucket (The Piggy Bank)**
 
@@ -170,13 +170,13 @@ The Rules:
 
 ━━━━━━━━━━━
 
-1\. Piggy bank starts with 100 tokens
+1. Piggy bank starts with 100 tokens
 
-2\. Each API request costs 1 token
+2. Each API request costs 1 token
 
-3\. New tokens added at rate of 10/minute
+3. New tokens added at rate of 10/minute
 
-4\. Maximum capacity: 100 tokens
+4. Maximum capacity: 100 tokens
 
 Example Timeline:
 
@@ -194,7 +194,7 @@ Time 02:00 → 10 tokens added → Bucket has 40 tokens
 
 Time 10:00 → 10 tokens added every minute for 8 minutes
 
-           → Bucket has 40 \+ 80 \= 100 tokens (can't exceed 100\!)
+           → Bucket has 40 \+ 80 \= 100 tokens (can't exceed 100!)
 
 **The beauty:**
 
@@ -265,9 +265,9 @@ Free Tier:
 ━━━━━━━━━━
 
 
-\- 100 requests/hour
+- 100 requests/hour
 
-\- 1000 requests/day
+- 1000 requests/day
 
 Example response:
 ```bash
@@ -281,9 +281,9 @@ Pro Tier ($29/month):
 ━━━━━━━━━━━━━━━━━━━━
 
 
-\- 10,000 requests/hour
+- 10,000 requests/hour
 
-\- No daily limit
+- No daily limit
 
 Example response:
 ```bash
@@ -297,10 +297,10 @@ Enterprise Tier (Custom):
 ━━━━━━━━━━━━━━━━━━━━━━━
 
 
-\- Unlimited requests
+- Unlimited requests
 
 
-\- Dedicated servers
+- Dedicated servers
 
 Example response:
 ```bash
@@ -318,17 +318,17 @@ Let’s lay out a solid design Framework:
 
 Your server can handle:
 
-\- 10,000 requests/second
+- 10,000 requests/second
 
-\- You have 1000 users
+- You have 1000 users
 
-\- Average user makes 100 requests/day
+- Average user makes 100 requests/day
 
 Math: 10,000 req/sec × 60 × 60 \= 36 million req/hour capacity
 
       1000 users × 100 req/day \= 100,000 req/day needed
 
-You have PLENTY of capacity\!
+You have PLENTY of capacity!
 
 Safe rate limit: 1000 requests/hour per user
 (Far below capacity, but generous for users)
@@ -345,17 +345,17 @@ Enterprise: Custom (negotiate based on needs)
 
 After 1 month:
 
-\- 90% of users never hit limit ✓
+- 90% of users never hit limit ✓
 
-\- 5% hit limit occasionally → Probably okay
+- 5% hit limit occasionally → Probably okay
 
-\- 5% hit limit constantly → Contact them (might be bugs or need upgrade)
+- 5% hit limit constantly → Contact them (might be bugs or need upgrade)
 
 ### **Rate Limiting Best Practices**
 
 Here are the rules to keep in mind:
 
-**1\. Always return helpful headers**
+**1. Always return helpful headers**
 
 ✓ X-RateLimit-Limit
 
@@ -365,13 +365,13 @@ Here are the rules to keep in mind:
 
 ✓ Retry-After (when blocked)
 
-**2\. Give clear error messages**
+**2. Give clear error messages**
 
 ❌ "Too many requests"
 
 ✓ "You've made 1000/1000 requests. Limit resets in 45 minutes at 3:00 PM."
 
-**3\. Different limits for different endpoints**
+**3. Different limits for different endpoints**
 
 GET /users → 10,000/hour (reading is cheap)
 
@@ -379,17 +379,17 @@ POST /users → 100/hour (writing is expensive)
 
 POST /send-email → 10/hour (external service costs money)
 
-**4\. Document your limits**
+**4. Document your limits**
 
 Your API docs should clearly state:
 
-\- What the limits are
+- What the limits are
 
-\- How they're calculated
+- How they're calculated
 
-\- What headers to check
+- What headers to check
 
-\- What happens when exceeded
+- What happens when exceeded
 
 ---
 
@@ -405,7 +405,7 @@ Example Request Flow:
 
 ━━━━━━━━━━━━━━━━━━━━━
 
-1\. Get photos from a specific user, filtered by date:
+1. Get photos from a specific user, filtered by date:
 
 
 ```bash
@@ -416,7 +416,7 @@ Example Request Flow:
 
 ```
 
-2\. Gateway checks:
+2. Gateway checks:
 
    ✓ Authentication (Bearer token)
 
@@ -424,7 +424,7 @@ Example Request Flow:
 
    ✓ Routes to Photos API v2
 
-3\. Photos API returns:
+3. Photos API returns:
 
 ```bash
  200 OK
@@ -459,32 +459,32 @@ You've mastered advanced API concepts if you can:
 
 **API Gateway:**
 
-* \[ \] Explain why gateways centralize authentication
-* \[ \] Describe how routing works
-* \[ \] Understand when to use a gateway
+* [ ] Explain why gateways centralize authentication
+* [ ] Describe how routing works
+* [ ] Understand when to use a gateway
 
 **Parameters:**
 
-* \[ \] Choose between path and query parameters correctly
-* \[ \] Design clean, logical URLs
-* \[ \] Understand hierarchical structure
+* [ ] Choose between path and query parameters correctly
+* [ ] Design clean, logical URLs
+* [ ] Understand hierarchical structure
 
 **Pagination:**
 
-* \[ \] Implement offset pagination
-* \[ \] Implement cursor pagination
-* \[ \] Choose the right method for your use case
+* [ ] Implement offset pagination
+* [ ] Implement cursor pagination
+* [ ] Choose the right method for your use case
 
 **Versioning:**
 
-* \[ \] Identify breaking vs non-breaking changes
-* \[ \] Version your APIs properly
-* \[ \] Deprecate old versions responsibly
+* [ ] Identify breaking vs non-breaking changes
+* [ ] Version your APIs properly
+* [ ] Deprecate old versions responsibly
 
 **Rate Limiting:**
 
-* \[ \] Calculate appropriate limits
-* \[ \] Return helpful rate limit headers
-* \[ \] Implement tiered limits
+* [ ] Calculate appropriate limits
+* [ ] Return helpful rate limit headers
+* [ ] Implement tiered limits
 
-Congratulations\! You now understand professional API design\! 🎉
+Congratulations! You now understand professional API design! 🎉

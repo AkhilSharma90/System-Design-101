@@ -6,6 +6,9 @@ orderIndex: 6
 premium: false
 ---
 
+# Latency vs Throughput
+
+
 
 
 ## **⚡ Latency vs Throughput: The Highway Story**

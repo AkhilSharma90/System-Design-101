@@ -6,6 +6,9 @@ orderIndex: 7
 premium: false
 ---
 
+# Database Read Write Operations
+
+
 ##  **Read vs Write Operations - Understanding the Flow**
 
 ### **🎯 Challenge 2: The Library Rush**

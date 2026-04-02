@@ -6,6 +6,9 @@ readTime: 30 min
 orderIndex: 3
 premium: false
 ---
+
+# Google Remote Procedure Call (GRPC)
+
 **GRPC**:
 
 Modern RPC Done Right (How Google Talks to Itself)

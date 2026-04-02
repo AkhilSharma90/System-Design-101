@@ -6,6 +6,9 @@ orderIndex: 4
 premium: false
 ---
 
+# Stream Processing Patterns
+
+
 ## 💪 Stream Processing Patterns
 
 Stream processing involves continuously ingesting, transforming, and analyzing data as it flows through your system. Understanding these core patterns is essential for building robust real-time data pipelines.

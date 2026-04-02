@@ -5,6 +5,9 @@ readTime: 20 min
 orderIndex: 4
 premium: false
 ---
+
+# Load Balancing
+
 ## **Load Balancing Basics - The Traffic Director**
 
 ### **🎯 Challenge 4: The Restaurant Host Problem**

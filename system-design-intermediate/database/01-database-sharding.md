@@ -6,6 +6,9 @@ orderIndex: 1
 premium: false
 ---
 
+# Database Sharding
+
+
 
 Database Sharding: Breaking Up Your Data for Massive Scale (Instagram's Growth Secret)
 🎯 Challenge 1: The Phone Book Problem

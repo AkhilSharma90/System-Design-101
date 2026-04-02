@@ -5,6 +5,9 @@ readTime: 10 min
 orderIndex: 3
 premium: false
 ---
+
+# Synchronous and Asynchronous Communication Patterns
+
 ## **📞 Synchronous vs Asynchronous Communication: The Phone Call vs Email Story**
 
 ### **The Dinner Invitation Scenario**

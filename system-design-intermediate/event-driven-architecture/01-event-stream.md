@@ -5,6 +5,9 @@ readTime: 10 min
 orderIndex: 1
 premium: false
 ---
+
+# Fundamentals of Event Streams
+
 ## **Event Streams:** ##
 # The Never-Ending Data River: Time Travel for Your Application
 

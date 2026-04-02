@@ -6,6 +6,9 @@ orderIndex: 1
 premium: false
 ---
 
+# Cache-Aside (Lazy Loading)
+
+
 
 Cache-Aside (Lazy Loading): The Art of Fetching Only What You Need
 🎯 Challenge 1: The Overwhelming Library Problem

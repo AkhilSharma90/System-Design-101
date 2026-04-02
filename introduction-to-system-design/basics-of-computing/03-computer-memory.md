@@ -6,6 +6,9 @@ orderIndex: 3
 premium: false
 ---
 
+# Computer Memory Hierarchy
+
+
 
 ## **💾 3: Memory Hierarchy - The Speed Pyramid**
 

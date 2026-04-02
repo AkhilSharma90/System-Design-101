@@ -6,6 +6,9 @@ readTime: 15 min
 orderIndex: 6
 premium: false
 ---
+
+# Important Website Metrics
+
 ## **📊 Important Website Metrics: The Health Vital Signs**
 
 When you go to a doctor, they check your vital signs: blood pressure, heart rate, temperature. Websites have vital signs too! Let’s see the most  important ones.

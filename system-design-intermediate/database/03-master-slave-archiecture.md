@@ -6,6 +6,9 @@ orderIndex: 2
 premium: false
 ---
 
+# Master-Slave Architecture
+
+
 
 
 

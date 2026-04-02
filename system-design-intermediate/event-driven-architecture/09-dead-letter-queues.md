@@ -5,6 +5,9 @@ readTime: 20 min
 orderIndex: 9
 premium: false
 ---
+
+# Dead Letter Queues
+
 Dead Letter Queues: The Safety Net for Failed Messages (Where Bad Messages Go to Be Debugged)
 🎯 Challenge 1: The Undeliverable Mail Problem
 Imagine this scenario: You're a postal worker delivering mail. You encounter several problems:

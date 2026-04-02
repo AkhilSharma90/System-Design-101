@@ -6,6 +6,9 @@ orderIndex: 3
 premium: false
 ---
 
+# Hot, Warm, and Cold Data
+
+
 ## **🌡️ Hot vs Cold Data: The Temperature Model**
 
 ### **The Closet Organization Analogy**

@@ -6,6 +6,9 @@ orderIndex: 4
 premium: false
 ---
 
+# Write Behind Cache
+
+
 
 
 Write-Behind (Write-Back) Cache: The Art of "I'll Get To It Later"

@@ -6,6 +6,9 @@ orderIndex: 2
 premium: false
 ---
 
+# Binary System
+
+
 ## **🔢 2. Binary System - The Language of Computers**
 
 ### **🎯 Challenge 2: The Light Switch Language**

@@ -6,6 +6,9 @@ orderIndex: 5
 premium: false
 ---
 
+# Publish Subscribe Pattern
+
+
 **Pub-Sub Pattern:**
 
 Decoupled Communication at Scale (One Shout, Many Listeners)

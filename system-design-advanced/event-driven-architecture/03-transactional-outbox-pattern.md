@@ -6,3 +6,6 @@ orderIndex: 3
 premium: false
 ---
 
+# Transactional Outbox Pattern
+
+

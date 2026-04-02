@@ -6,6 +6,9 @@ orderIndex: 1
 premium: false
 ---
 
+# Client Server Architecture
+
+
 
 
 ## **👥 Client-Server Architecture: The Restaurant Revisited**

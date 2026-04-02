@@ -6,6 +6,9 @@ orderIndex: 6
 premium: false
 ---
 
+# Hexagonal Architecture
+
+
 
 
 

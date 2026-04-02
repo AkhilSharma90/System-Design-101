@@ -6,6 +6,9 @@ orderIndex: 6
 premium: false
 ---
 
+# Kafka
+
+
 **Kafka:**
 
 The Distributed Commit Log That Powers Real-Time Data (LinkedIn's Gift to the World)

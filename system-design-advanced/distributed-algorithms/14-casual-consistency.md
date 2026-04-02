@@ -6,3 +6,6 @@ orderIndex: 14
 premium: false
 ---
 
+# Causal Consistency
+
+

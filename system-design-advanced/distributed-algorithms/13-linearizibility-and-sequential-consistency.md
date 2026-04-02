@@ -6,3 +6,6 @@ orderIndex: 13
 premium: false
 ---
 
+# Linearizability and Sequential Consistency
+
+

@@ -5,6 +5,9 @@ readTime: 10 min
 orderIndex: 6
 premium: false
 ---
+
+# Monoliths to Microservices
+
 ## **🏢 Monolith vs Microservices: The Building Story**
 
 Let’s learn about two companies building their office spaces.

@@ -6,6 +6,9 @@ orderIndex: 1
 premium: false
 ---
 
+# High Level and Low Level Design
+
+
 ## **HLD vs LLD - The Architect's Tale**
 
 ### **🎯 Challenge 1: The House Building Dilemma**

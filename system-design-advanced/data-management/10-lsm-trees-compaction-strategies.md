@@ -6,6 +6,9 @@ orderIndex: 10
 premium: false
 ---
 
+# LSM Trees and Compaction Strategies
+
+
 
 
 ## LSM Tree Compaction Strategies (Size-Tiered vs Leveled) —

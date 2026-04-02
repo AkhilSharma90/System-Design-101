@@ -6,6 +6,9 @@ orderIndex: 4
 premium: false
 ---
 
+# Primary and Foreign Keys
+
+
 
 
 ## **Primary Key vs Foreign Key - The Relationship Builders**

@@ -6,6 +6,9 @@ orderIndex: 2
 premium: false
 ---
 
+# Memory vs Disk
+
+
 
 ## **💾 Memory vs Disk: The Speed Hierarchy**
 

@@ -5,6 +5,9 @@ readTime: 15 min
 orderIndex: 2
 premium: false
 ---
+
+# Write Through Cache
+
 Write-Through Cache: The Art of Writing Everywhere at Once
 🎯 Challenge 1: The Consistency Guarantee Problem
 

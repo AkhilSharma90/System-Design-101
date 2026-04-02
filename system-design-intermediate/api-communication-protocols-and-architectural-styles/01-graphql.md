@@ -7,6 +7,9 @@ premium: false
 
 ---
 
+# Graph Query Language
+
+
 
 GraphQL:
 

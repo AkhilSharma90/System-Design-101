@@ -855,3 +855,14 @@ Final key insight box:
 - Semantic correctness validation (diffing)
 - Runbooks and on-call readiness
 - Retirement plan for last 20%
+
+
+---
+
+## Key Takeaways
+
+1. **The Strangler Fig pattern incrementally replaces a legacy system** — routing traffic feature-by-feature from old to new, never a big-bang rewrite
+2. **A facade or proxy routes requests to old or new implementations** — enabling gradual migration with rollback capability
+3. **Start with the easiest, lowest-risk components** — build confidence and tooling before migrating critical paths
+4. **The old system is decommissioned only after all traffic is migrated** — it keeps running as a safety net throughout the process
+5. **This is how Amazon, Netflix, and most large companies modernize** — full rewrites fail; incremental migration succeeds

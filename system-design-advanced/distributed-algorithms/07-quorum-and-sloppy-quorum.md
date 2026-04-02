@@ -975,3 +975,13 @@ When partition heals, how do you ensure:
 - **Sloppy quorum:** write/read may use fallback nodes when primaries unavailable
 - **Hinted handoff:** temporary storage + later delivery to intended replica
 - **Anti-entropy:** background reconciliation (often Merkle-tree based)
+
+
+---
+
+## Key Takeaways
+
+1. **Quorum requires W+R > N for strong consistency** — ensuring at least one node overlaps between reads and writes
+2. **Sloppy quorum writes to any N available nodes, not specific replicas** — improving availability at the cost of consistency guarantees
+3. **Hinted handoff stores writes temporarily on nearby nodes** — forwarding them to the correct replica when it recovers
+4. **DynamoDB and Cassandra use sloppy quorum with hinted handoff** — prioritizing availability and partition tolerance (AP systems)

@@ -1278,3 +1278,14 @@ def simulate(n=10_000, fanout=1, rounds=25, trials=200):
 # Usage example
 # print(simulate(n=10_000, fanout=2, rounds=20, trials=300))
 ```
+
+
+---
+
+## Key Takeaways
+
+1. **Gossip protocols spread information by having each node randomly share with peers** — like a rumor spreading through a crowd
+2. **Gossip converges in O(log N) rounds** — a 1000-node cluster reaches full convergence in about 10 gossip rounds
+3. **No single point of failure** — every node participates equally in spreading information, no coordinator needed
+4. **Used for failure detection, membership, and metadata propagation** — Cassandra, Redis Cluster, and Consul all use gossip
+5. **Trade-off is convergence delay** — updates take multiple rounds to reach all nodes, not suitable for latency-critical state changes

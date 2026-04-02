@@ -1164,3 +1164,14 @@ def withdraw(acct: str, amount: int, idem_key: str):
 
 - Final challenge question
   What invariant in your system is truly non-negotiable - and how much coordination are you willing to pay to protect it?
+
+
+---
+
+## Key Takeaways
+
+1. **Pessimistic locking locks resources before modifying them** — prevents conflicts but reduces concurrency and risks deadlocks
+2. **Optimistic locking checks for conflicts at commit time** — uses version numbers or timestamps to detect concurrent modifications
+3. **Use pessimistic locking for high-contention resources** — when conflicts are frequent, optimistic retries become expensive
+4. **Use optimistic locking for low-contention, read-heavy workloads** — most operations succeed without conflict, avoiding lock overhead
+5. **Optimistic concurrency control is the default for most web applications** — version columns or ETags enable safe concurrent editing

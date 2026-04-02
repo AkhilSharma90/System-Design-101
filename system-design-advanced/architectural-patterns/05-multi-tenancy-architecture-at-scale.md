@@ -1388,3 +1388,14 @@ Pause and think. Sketch it.
 ---
 
 End of reviewed article.
+
+
+---
+
+## Key Takeaways
+
+1. **Multi-tenancy serves multiple customers from shared infrastructure** — reducing cost per tenant but requiring isolation between them
+2. **Shared database with tenant_id column is simplest but riskiest** — one bad query can affect all tenants; noisy neighbor problems are common
+3. **Database-per-tenant provides strongest isolation** — but increases operational overhead linearly with tenant count
+4. **Schema-per-tenant balances isolation and efficiency** — tenants share a database server but have separate schemas
+5. **Tenant-aware rate limiting and resource quotas prevent noisy neighbor issues** — essential regardless of isolation model

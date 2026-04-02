@@ -1191,3 +1191,14 @@ Your active-active architecture is live. Both US and EU regions write to the sam
 - [ ] Frequent conflicts requiring manual resolution (sharding strategy wrong)
 - [ ] Failover takes > 5 minutes (routing strategy inadequate)
 - [ ] Operational overhead exceeds engineering capacity (too complex)
+
+
+---
+
+## Key Takeaways
+
+1. **Active-active serves traffic from multiple regions simultaneously** — users are routed to the nearest region for lowest latency
+2. **Data replication across regions is the hardest challenge** — asynchronous replication has lag, synchronous replication has latency
+3. **Conflict resolution is required when two regions write the same data** — last-writer-wins, CRDTs, or application-level merge logic
+4. **DNS-based global load balancing routes users to the nearest healthy region** — with automatic failover when a region goes down
+5. **Active-active is significantly more complex than active-passive** — only worth the investment if your users are globally distributed and need low latency everywhere

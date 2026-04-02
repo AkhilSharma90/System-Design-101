@@ -1169,3 +1169,13 @@ export async function connectWithBackoff(host, port, {baseMs=100, capMs=2000, ma
 - [ ] Can we survive reconnect storms?
 
 ---
+
+
+---
+
+## Key Takeaways
+
+1. **Thundering herd occurs when a cache entry expires and hundreds of concurrent requests hit the database simultaneously** — causing a load spike that can cascade into an outage
+2. **Cache stampede prevention: use locking so only one request regenerates the cache** — all other requests wait for the result or serve stale data
+3. **Stale-while-revalidate serves the expired value while refreshing in the background** — users get instant responses, the cache updates asynchronously
+4. **Jittered TTLs prevent synchronized expiration** — adding randomness to TTLs ensures not all keys expire at the same moment

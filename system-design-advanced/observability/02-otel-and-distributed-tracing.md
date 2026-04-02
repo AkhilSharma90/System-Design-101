@@ -1255,3 +1255,14 @@ After 6 months, your trace storage costs doubled (traffic grew). How do you redu
 - [ ] > 10% latency overhead (optimize instrumentation)
 - [ ] Collector OOM crashes (reduce buffer or add instances)
 - [ ] Traces incomplete (spans arriving out of order)
+
+
+---
+
+## Key Takeaways
+
+1. **Distributed tracing follows a request across multiple services** — showing the full call chain, timing, and where latency or errors occur
+2. **OpenTelemetry is the industry standard for instrumentation** — vendor-neutral SDKs for traces, metrics, and logs across all major languages
+3. **Trace context propagation passes trace IDs across service boundaries** — via HTTP headers (traceparent) so each service can contribute its span
+4. **Spans represent individual operations within a trace** — with parent-child relationships forming a tree that visualizes the request flow
+5. **Start with auto-instrumentation** — OpenTelemetry SDKs automatically instrument HTTP clients, databases, and frameworks with zero code changes

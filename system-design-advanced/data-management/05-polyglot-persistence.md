@@ -1263,3 +1263,13 @@ function esUpsert({ baseUrl, index, orderId, doc, ifPrimaryTerm, ifSeqNo }) {
 
 [IMAGE: Matching exercise card set]
 A printable set of cards: workloads (search, OLTP, graph traversals, analytics), datastores, and failure modes. Learners match them.
+
+
+---
+
+## Key Takeaways
+
+1. **Polyglot persistence uses different databases for different data needs** — PostgreSQL for transactions, Redis for cache, Elasticsearch for search
+2. **Each database type has strengths** — relational for joins/ACID, document for flexible schemas, graph for relationships, time-series for metrics
+3. **Operational complexity increases with each additional database** — more backups, monitoring, expertise, and failure modes to handle
+4. **Data synchronization between databases is the hardest challenge** — use CDC (Change Data Capture) or event-driven patterns to keep databases in sync

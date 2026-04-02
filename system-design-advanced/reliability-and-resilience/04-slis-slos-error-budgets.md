@@ -1343,3 +1343,14 @@ Your SLOs are met (99.9% success rate), but your customer NPS (Net Promoter Scor
 - [ ] Error budget always exhausted (targets unrealistic)
 - [ ] Error budget never spent (targets too loose, or culture problem)
 - [ ] Users complain despite meeting SLOs (measuring wrong thing)
+
+
+---
+
+## Key Takeaways
+
+1. **SLIs (Service Level Indicators) are the metrics that define service health** — request latency, error rate, and availability are the most common
+2. **SLOs (Service Level Objectives) set targets for SLIs** — e.g., 99.9% of requests complete in under 200ms
+3. **Error budgets are the allowed amount of unreliability** — a 99.9% SLO means you have 43.8 minutes of downtime budget per month
+4. **When error budget is exhausted, freeze feature releases and focus on reliability** — this creates a natural balance between velocity and stability
+5. **SLAs are contractual commitments with financial penalties** — SLOs are internal targets; SLAs should be looser than SLOs to provide a safety margin

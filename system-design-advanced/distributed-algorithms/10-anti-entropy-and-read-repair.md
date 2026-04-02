@@ -1249,3 +1249,13 @@ You're designing a multi-region, Dynamo-like store:
 
 ### Key insight box (final)
 > **Anti-entropy** ensures global convergence over time; **read repair** accelerates convergence for accessed data. Both must be designed with failure modes, merge semantics, tombstones, and operational capacity in mind.
+
+
+---
+
+## Key Takeaways
+
+1. **Anti-entropy continuously synchronizes replicas in the background** — using Merkle tree comparisons to find and fix divergent data
+2. **Read repair fixes inconsistencies at read time** — when a quorum read detects stale replicas, the coordinator sends the latest value to outdated nodes
+3. **Anti-entropy is proactive, read repair is reactive** — both are needed for strong eventual consistency
+4. **Cassandra uses both mechanisms** — read repair catches inconsistencies on the read path, anti-entropy repair catches everything else periodically

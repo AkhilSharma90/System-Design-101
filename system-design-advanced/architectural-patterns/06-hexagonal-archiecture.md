@@ -1335,3 +1335,14 @@ You’ll feel the architecture “click” when:
 - domain tests run without Docker
 - you can add a new adapter without touching domain logic
 - failure handling becomes explicit and consistent
+
+
+---
+
+## Key Takeaways
+
+1. **Hexagonal architecture separates business logic from external dependencies** — the core domain has no knowledge of databases, APIs, or frameworks
+2. **Ports define interfaces, adapters implement them** — swapping a database or API requires only a new adapter, not changes to business logic
+3. **Inbound adapters handle incoming requests (HTTP, CLI, events)** — they translate external input into domain operations
+4. **Outbound adapters handle external integrations (database, messaging, APIs)** — the domain calls port interfaces, adapters provide implementations
+5. **This architecture makes testing easy** — mock the ports and test business logic in complete isolation from infrastructure

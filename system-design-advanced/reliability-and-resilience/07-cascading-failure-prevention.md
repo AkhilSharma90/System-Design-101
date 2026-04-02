@@ -1330,3 +1330,14 @@ Your payment system is cascade-resistant. But what if the cascade starts in YOUR
 - [ ] Retry storms observed regularly (bad retry strategy)
 - [ ] Circuit breakers always open (dependency not reliable enough)
 - [ ] Timeouts too aggressive (false positives) or too lenient (thread exhaustion)
+
+
+---
+
+## Key Takeaways
+
+1. **Cascading failures occur when one component's failure overloads others** — creating a domino effect that brings down the entire system
+2. **Circuit breakers stop calling failing services** — after a threshold of errors, the circuit opens and fails fast instead of waiting for timeouts
+3. **Bulkheads isolate failures** — separate thread pools, connection pools, or processes for different dependencies
+4. **Timeouts and retries with backoff prevent resource exhaustion** — without timeouts, threads pile up waiting for unresponsive services
+5. **Load shedding drops excess requests gracefully** — returning 503 to some users is better than crashing and returning 503 to all users

@@ -1397,3 +1397,13 @@ After implementing tail-based sampling, your storage costs are on target, but qu
 - [ ] Missing critical errors in sampled data
 - [ ] Storage costs exceed ROI from better debugging
 - [ ] Query performance degraded despite sampling
+
+
+---
+
+## Key Takeaways
+
+1. **Tail-based sampling decides whether to keep a trace after it completes** — unlike head-based sampling which decides upfront and misses rare errors
+2. **Captures 100% of error and high-latency traces** — while sampling routine successful requests to control storage costs
+3. **Requires buffering complete traces before making the sampling decision** — adding memory overhead and collection delay
+4. **Essential for debugging production issues** — the traces you most need to see (errors, timeouts) are exactly the ones head-based sampling drops

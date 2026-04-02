@@ -674,3 +674,13 @@ One solid solution:
 - Inbox makes duplicates safe by recording "already processed" in the same transaction as domain updates.
 - Ack after commit; never ack inside the DB transaction.
 - Inbox does not solve ordering or external side effects; pair with OCC, partitioning, idempotency keys, and often an outbox.
+
+
+---
+
+## Key Takeaways
+
+1. **The inbox pattern ensures idempotent message consumption** — store processed message IDs in the same transaction as the business logic
+2. **Prevents duplicate processing of at-least-once delivered messages** — checking the inbox table before processing detects and skips duplicates
+3. **The inbox and business write happen in a single database transaction** — guaranteeing exactly-once processing semantics at the consumer
+4. **Complements the outbox pattern** — outbox ensures reliable publishing, inbox ensures reliable consumption

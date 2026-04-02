@@ -1153,3 +1153,13 @@ Final challenge question: if you could only implement one improvement this quart
 - Versioning + idempotent invalidation + fresh-enough refill sources are your core tools.
 
 [IMAGE: Summary visual: a “coherence triangle” with corners: Freshness, Availability, Latency; show typical strategies plotted inside.]
+
+
+---
+
+## Key Takeaways
+
+1. **Multi-region caches face the coherence problem** — a write in one region must invalidate or update caches in all other regions
+2. **Eventual consistency is usually acceptable for caches** — users in different regions may see slightly different data for a brief window
+3. **Invalidation-based coherence sends delete signals across regions** — simpler than replicating values, lets each region re-fetch on next miss
+4. **Cross-region invalidation latency is the key metric** — the time between a write and all caches being updated determines staleness

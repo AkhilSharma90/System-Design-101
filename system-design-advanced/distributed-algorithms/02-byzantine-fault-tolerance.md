@@ -1201,3 +1201,14 @@ def simulate_equivocation():
 
 Closing challenge:
 If you could change one assumption (synchrony, authentication, membership, or fault bound), which would you change to make BFT cheaper - and what new failure would that allow?
+
+
+---
+
+## Key Takeaways
+
+1. **Byzantine faults are when nodes behave arbitrarily (including maliciously)** — sending conflicting information to different peers
+2. **BFT requires 3f+1 nodes to tolerate f Byzantine failures** — a 4-node system can tolerate 1 malicious node
+3. **PBFT (Practical Byzantine Fault Tolerance) enables consensus despite Byzantine nodes** — but requires O(n^2) messages per consensus round
+4. **BFT is essential for blockchain and financial systems** — where participants may not trust each other
+5. **Most distributed systems assume crash-stop failures, not Byzantine** — BFT is expensive and only needed when trust is absent

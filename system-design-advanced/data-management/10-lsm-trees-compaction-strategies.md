@@ -1009,3 +1009,15 @@ writeAlerts('./lsm_compaction_alerts.yaml').catch((e) => {
   process.exitCode = 1;
 });
 ```
+
+
+---
+
+## Key Takeaways
+
+1. **LSM trees optimize for write throughput** — writes go to an in-memory buffer (memtable) then flush to sorted files (SSTables) on disk
+2. **Reads may check multiple SSTables** — Bloom filters and sparse indexes reduce the number of files that must be checked
+3. **Compaction merges SSTables to reduce read amplification** — size-tiered and leveled compaction offer different trade-offs
+4. **Size-tiered compaction is write-optimized** — fewer compaction operations but higher space amplification and read amplification
+5. **Leveled compaction is read-optimized** — more compaction overhead but bounded space usage and faster reads
+6. **Cassandra, RocksDB, LevelDB, and HBase all use LSM trees** — the dominant storage engine for write-heavy distributed databases

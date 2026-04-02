@@ -1242,3 +1242,13 @@ Your design achieves 99.95% uptime (22 min downtime/month). Should you over-engi
 - [ ] Infrastructure costs 3x+ comparable monolithic design
 - [ ] Cross-cell operations are frequent and slow
 - [ ] Isolation is preventing needed features
+
+
+---
+
+## Key Takeaways
+
+1. **Blast radius is the scope of impact when something fails** — a single-server failure affects one request; a regional outage affects millions
+2. **Failure domain isolation limits the blast radius of any single failure** — separate availability zones, regions, and cell architectures
+3. **Cell-based architecture isolates groups of users into independent cells** — a failure in one cell doesn't affect users in other cells
+4. **Bulkheads prevent cascading failures** — like watertight compartments in a ship, failing components don't bring down the entire system

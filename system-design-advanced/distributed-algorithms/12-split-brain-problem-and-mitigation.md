@@ -1215,3 +1215,13 @@ Also answer:
 
 ### End-of-article challenge question
 If you could add only one improvement this week to reduce split brain risk, what would it be: (a) add a witness, (b) add fencing tokens, (c) change commit semantics to quorum, (d) improve observability of leader epochs — and why?
+
+
+---
+
+## Key Takeaways
+
+1. **Split-brain occurs when network partitions cause two groups of nodes to each elect their own leader** — both sides accept writes, causing conflicting data
+2. **Quorum-based systems prevent split-brain** — a leader needs a majority (N/2+1), and only one majority can exist at a time
+3. **Fencing prevents deposed leaders from continuing to serve** — using fencing tokens, STONITH, or epoch numbers to invalidate stale leaders
+4. **Split-brain is the most dangerous failure mode in distributed systems** — it can cause data corruption, financial loss, and inconsistency that's difficult to repair

@@ -1086,3 +1086,14 @@ Consistency model clarity:
 - Great for: detecting concurrent versions, causal consistency
 
 ![img6](https://res.cloudinary.com/dretwg3dy/image/upload/v1768459004/161_tecgsq.png)
+
+
+---
+
+## Key Takeaways
+
+1. **Lamport timestamps establish a partial ordering of events** — if A happened before B, then timestamp(A) < timestamp(B)
+2. **Vector clocks track causality across multiple nodes** — each node maintains a vector of counters, one per node in the system
+3. **Vector clocks detect concurrent events that Lamport timestamps cannot** — two events are concurrent if neither vector dominates the other
+4. **DynamoDB and Riak use vector clocks for conflict detection** — when two replicas diverge, vector clocks identify the conflict for resolution
+5. **The trade-off is metadata overhead** — vector clocks grow with the number of nodes, which is why some systems use simpler alternatives

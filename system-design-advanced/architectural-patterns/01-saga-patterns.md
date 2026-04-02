@@ -830,3 +830,14 @@ Constraints:
 - Compensations are business operations, not rollbacks.
 
 If you can answer: "After a timeout, how do I know what happened?" and "How do I undo this step safely?" you're thinking like a distributed systems engineer.
+
+
+---
+
+## Key Takeaways
+
+1. **Sagas replace distributed transactions with a sequence of local transactions and compensations** — each service commits independently and rolls back via compensating actions on failure
+2. **Choreography uses events with no central coordinator** — simpler for few services but hard to trace and debug as complexity grows
+3. **Orchestration uses a central coordinator to drive the workflow** — clearer flow visibility but the orchestrator becomes a single point of failure
+4. **Compensating transactions must be idempotent** — because they may be triggered multiple times due to at-least-once delivery
+5. **Sagas provide eventual consistency, not ACID** — design your business logic to tolerate intermediate states

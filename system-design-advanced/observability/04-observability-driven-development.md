@@ -1308,3 +1308,13 @@ After 6 months, adoption is 60% (not 100%). Some teams resist, saying "observabi
 - [ ] PII in logs/traces
 - [ ] Checklist bypassed
 - [ ] No log/metric/trace correlation
+
+
+---
+
+## Key Takeaways
+
+1. **Observability-driven development instruments code before deploying** — not as an afterthought when things break
+2. **Every new feature should ship with its SLIs defined** — what does "working correctly" mean for this feature, in measurable terms?
+3. **Structured events are more valuable than scattered log lines** — one rich event per operation beats ten context-free log statements
+4. **Test your observability in staging** — verify that dashboards, alerts, and traces work before they need to work in a real incident

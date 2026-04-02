@@ -1673,3 +1673,13 @@ To ensure the [IMAGE:] placeholders become real diagrams, include at least:
 5) **Topology diagram**: core BFF vs edge BFF with latency arrows.
 6) **Trace waterfall**: parallel spans with one slow dependency.
 7) **Request coalescing diagram**: many requests collapse into one downstream call.
+
+
+---
+
+## Key Takeaways
+
+1. **BFF creates a dedicated backend per frontend type** — web, mobile, and IoT each get an API tailored to their specific needs
+2. **BFF reduces over-fetching and under-fetching** — each frontend gets exactly the data shape it needs in a single call
+3. **BFF moves aggregation and formatting logic out of the client** — the BFF combines data from multiple microservices into frontend-ready responses
+4. **Each BFF is owned by the frontend team that consumes it** — aligning ownership with the team that knows the client's needs best

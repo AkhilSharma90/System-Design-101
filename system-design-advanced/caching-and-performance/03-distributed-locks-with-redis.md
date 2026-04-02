@@ -1346,3 +1346,14 @@ If you remember only one thing:
 > If executing the critical section twice is catastrophic, don’t rely on a Redis lock alone. Use fencing/conditional writes or a system built for coordination.
 
 ---
+
+
+---
+
+## Key Takeaways
+
+1. **Distributed locks ensure only one process executes a critical section across multiple nodes** — essential for preventing double-processing in distributed systems
+2. **Redis SET with NX and EX provides a simple distributed lock** — NX ensures only one client acquires it, EX sets automatic expiration
+3. **Redlock uses multiple independent Redis instances for fault-tolerant locking** — acquiring the lock on a majority (N/2+1) of instances
+4. **Always set lock expiration to prevent deadlocks** — if the lock holder crashes, the lock must eventually release itself
+5. **Fencing tokens prevent split-brain issues** — a monotonically increasing token ensures stale lock holders can't overwrite newer writes

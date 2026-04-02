@@ -1503,3 +1503,13 @@ flowchart TB
   Cache -->|metrics| G1
   Slow -->|async policy| Cache
 ```
+
+
+---
+
+## Key Takeaways
+
+1. **Adaptive caching uses machine learning to predict which items to cache** — based on access patterns, time-of-day, and popularity signals
+2. **ML models can predict cache hit probability** — items with low predicted hit rates are evicted first, improving overall hit ratio
+3. **Feature engineering for cache prediction includes recency, frequency, size, and temporal patterns** — combining signals that LRU alone can't capture
+4. **Start with simple heuristics before adding ML** — LRU with TTL solves 90% of caching problems; ML optimization is for the last 10%

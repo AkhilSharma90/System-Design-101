@@ -883,3 +883,14 @@ Your CEO asks: "How much will this chaos engineering program cost us in downtime
 - [ ] Remediation tickets never close
 - [ ] Team dreads Game Days (psychological safety issue)
 - [ ] No executive support or visibility
+
+
+---
+
+## Key Takeaways
+
+1. **Game days are scheduled exercises where teams deliberately inject failures** — testing incident response processes, not just system resilience
+2. **DIRT (Disaster Recovery Testing) verifies that recovery procedures actually work** — backup restores, failover mechanisms, and runbooks
+3. **Start with tabletop exercises before live failures** — walk through failure scenarios on a whiteboard before injecting them in production
+4. **Document everything** — the goal is to find gaps in processes and runbooks, then fix them before a real incident
+5. **Run game days regularly** — systems change, teams change, and institutional knowledge decays; quarterly exercises maintain readiness

@@ -1049,3 +1049,13 @@ After implementing this architecture, your COO asks: "Why do we need 4 databases
 - [ ] Prometheus OOM crashes
 - [ ] Storage costs growing >50%/month
 - [ ] New labels added without review
+
+
+---
+
+## Key Takeaways
+
+1. **High-cardinality dimensions (user IDs, request IDs) explode metric storage** — creating millions of unique time series that overwhelm traditional monitoring systems
+2. **Don't use high-cardinality values as metric labels** — use them in logs and traces instead, where storage is per-event not per-series
+3. **Columnar storage (ClickHouse, Druid) handles high-cardinality analytics** — compressing and querying billions of unique values efficiently
+4. **Aggregate before storing where possible** — pre-compute counts and summaries rather than storing every raw data point as a metric

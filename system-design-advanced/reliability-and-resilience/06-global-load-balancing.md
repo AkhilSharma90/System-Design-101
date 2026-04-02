@@ -1210,3 +1210,14 @@ During a live sports event, traffic to EU region spikes 10x. Your GSLB routes ov
 - [ ] Bandwidth costs increased after GSLB (inefficient routing)
 - [ ] Regional health checks unreliable (synthetic != real traffic)
 - [ ] GSLB is a black box (no observability)
+
+
+---
+
+## Key Takeaways
+
+1. **Global load balancing routes users to the optimal datacenter based on geography, health, and load** — using DNS, anycast, or a combination
+2. **GeoDNS returns different IP addresses based on the client's location** — routing European users to Frankfurt and US users to Virginia
+3. **Anycast advertises the same IP from multiple locations** — network routing automatically directs packets to the nearest one
+4. **Health checks remove unhealthy regions from DNS rotation** — automatic failover when a datacenter goes down
+5. **DNS TTL affects failover speed** — lower TTLs enable faster failover but increase DNS query volume

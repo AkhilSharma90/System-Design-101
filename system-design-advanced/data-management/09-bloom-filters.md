@@ -1029,3 +1029,14 @@ Questions:
 - Treat Bloom filters as an optimization layer: define fail-open vs fail-closed explicitly.
 - Monitor saturation and rebuild/grow before collapse.
 - Version and validate filter blobs (length + checksum) to prevent corruption-induced false negatives.
+
+
+---
+
+## Key Takeaways
+
+1. **Bloom filters answer "definitely not in the set" or "probably in the set"** — false positives are possible, false negatives are not
+2. **Extremely memory-efficient** — 1 billion items can be checked with ~1.2 GB of memory at a 1% false positive rate
+3. **Used for URL deduplication, cache lookups, and spam filtering** — any scenario where a fast negative check avoids expensive operations
+4. **Cannot remove elements from a standard Bloom filter** — use Counting Bloom filters or Cuckoo filters if deletion is needed
+5. **The false positive rate is tunable** — more memory (more bits) and more hash functions reduce the false positive rate

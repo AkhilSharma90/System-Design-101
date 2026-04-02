@@ -1406,3 +1406,14 @@ const r = new ToyRaft(['A','B','C','D','E']);
 r.partition(new Set(['A','B'])); console.log(r.append('x=1'));
 r.partition(new Set(['C','D','E'])); r.leaderChange('C'); console.log(r.append('y=2'));
 ```
+
+
+---
+
+## Key Takeaways
+
+1. **Consensus allows a distributed system to act as a single reliable decision-maker** — even when nodes fail and networks partition
+2. **Safety is non-negotiable** — consensus never produces conflicting decisions, even at the cost of temporary unavailability
+3. **Raft is the most understandable consensus algorithm** — leader election, log replication, and safety rules are clearly separated
+4. **Paxos is theoretically equivalent to Raft but harder to implement** — most production systems prefer Raft for its clarity
+5. **etcd, ZooKeeper, and Consul all use consensus for distributed coordination** — leader election, configuration management, and distributed locks

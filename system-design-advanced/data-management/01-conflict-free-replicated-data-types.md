@@ -1148,3 +1148,14 @@ Pick one feature you’re building right now. Write down:
 - the merge policy
 
 If you can’t write a merge policy you’d be happy to explain to a teammate, you’re not ready for CRDTs yet.
+
+
+---
+
+## Key Takeaways
+
+1. **CRDTs enable conflict-free merging across replicas without coordination** — every replica can accept writes independently and converge automatically
+2. **G-Counters and PN-Counters handle distributed counting** — each replica maintains its own count, totals are summed at read time
+3. **LWW (Last Writer Wins) registers resolve conflicts using timestamps** — simple but can lose concurrent updates
+4. **CRDTs guarantee eventual consistency mathematically** — the merge function is commutative, associative, and idempotent
+5. **Used by Riak, Redis CRDTs, and collaborative editors** — anywhere concurrent writes from multiple locations must converge without locks

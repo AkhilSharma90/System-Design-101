@@ -1241,3 +1241,13 @@ Key: meet latency by reducing cross-source join size and avoiding high-volume so
 - **Coordinator**: node that plans and orchestrates distributed query execution.
 - **Semi-join**: two-phase join that ships keys to reduce data transfer.
 - **2PC**: two-phase commit for distributed transactions.
+
+
+---
+
+## Key Takeaways
+
+1. **Federation splits databases by function** — users DB, orders DB, products DB each on separate servers
+2. **Reduces read and write load on any single database** — each functional shard handles only its own domain's traffic
+3. **Cross-database joins are not possible** — applications must aggregate data from multiple databases in application code
+4. **Federation is simpler than sharding** — no hash functions or routing logic, just separate databases per domain

@@ -1299,3 +1299,13 @@ If you could only implement *one* improvement to make Merkle-based repair safer 
 [ANSWER] Version/snapshot IDs end-to-end (and restart-on-mismatch). It prevents incorrect comparisons and “repairing the wrong thing” under concurrent writes/topology churn.
 
 ---
+
+
+---
+
+## Key Takeaways
+
+1. **Merkle trees efficiently detect differences between data replicas** — by comparing tree hashes from root to leaves, narrowing down to specific divergent blocks
+2. **Only differing subtrees need to be transferred** — reducing bandwidth from O(n) to O(log n) for synchronization
+3. **The root hash summarizes the entire dataset** — if root hashes match, the replicas are identical; no further comparison needed
+4. **Used by Cassandra for anti-entropy repair, Git for content addressing, and Bitcoin for transaction verification** — any scenario where two parties need to efficiently find differences

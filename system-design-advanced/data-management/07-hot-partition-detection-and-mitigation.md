@@ -1428,3 +1428,13 @@ Multi-region note:
 - [ ] Rate limiting / fairness controls per tenant
 - [ ] Safe leader rebalancing and throttled rebalancing
 - [ ] Structural mitigations: salting, splitting, aggregation, caching
+
+
+---
+
+## Key Takeaways
+
+1. **Hot partitions occur when traffic concentrates on a single shard or partition** — caused by celebrity users, viral content, or skewed partition keys
+2. **Detect hot partitions by monitoring per-partition latency and throughput** — a sudden spike in one partition while others are idle is the signal
+3. **Key splitting distributes hot keys across multiple partitions** — append a random suffix to spread load, aggregate at read time
+4. **Local caching absorbs repeated reads for hot keys** — application-level caches reduce traffic to the hot partition

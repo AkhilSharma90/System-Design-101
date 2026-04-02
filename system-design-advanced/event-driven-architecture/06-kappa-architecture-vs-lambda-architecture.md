@@ -1449,3 +1449,13 @@ If you had to bet your on-call sanity on one capability, which would you invest 
 3) A serving layer that can merge two sources flawlessly
 
 Write down your answer and the failure that answer prevents.
+
+
+---
+
+## Key Takeaways
+
+1. **Lambda architecture uses separate batch and streaming paths** — batch for accuracy, streaming for speed, with a serving layer that merges both
+2. **Kappa architecture uses only a streaming path** — reprocessing historical data by replaying the event log through the same streaming pipeline
+3. **Kappa is simpler to maintain** — one codebase instead of two, but requires a replayable event log (Kafka) and idempotent processing
+4. **Lambda is still useful when batch and streaming have fundamentally different processing needs** — e.g., ML model training (batch) vs real-time inference (streaming)

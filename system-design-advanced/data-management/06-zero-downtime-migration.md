@@ -1757,3 +1757,14 @@ Production answer: **mismatch metrics**. Dark reads and throttling help, but mis
 - [ ] Downstream contracts (events, caches, search) are versioned
 
 If you implement only one habit: **instrument correctness**. Latency tells you you're slow; correctness tells you you're right.
+
+
+---
+
+## Key Takeaways
+
+1. **Zero-downtime migrations change database schemas without taking the application offline** — essential for systems that can't afford maintenance windows
+2. **Expand-contract pattern adds new columns/tables first, migrates data, then removes old ones** — never drop before the new path is verified
+3. **Dual-write during migration writes to both old and new schemas** — ensuring no data is lost during the transition period
+4. **Feature flags control which code path reads from old vs new schema** — enabling instant rollback if the migration causes issues
+5. **Always make migrations backward-compatible** — old application code must still work during the rollout of new database changes

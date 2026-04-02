@@ -1142,3 +1142,14 @@ At the start, you had one change to survive the telemetry storm:
 - [ ] Use tiered storage with immutable blocks + caches
 - [ ] Test failure scenarios (node loss, AZ loss, object store slowdown)
 - [ ] Document your “success means…” contracts for writes and reads
+
+
+---
+
+## Key Takeaways
+
+1. **Time-series databases are optimized for append-heavy, time-ordered data** — metrics, logs, IoT sensor data, and financial ticks
+2. **Data is partitioned by time ranges** — enabling efficient range queries and automatic expiration of old data
+3. **Compression is dramatically effective on time-series data** — delta encoding and gorilla compression achieve 10-20x compression ratios
+4. **Downsampling reduces storage for old data** — keep per-second granularity for recent data, per-hour for historical
+5. **InfluxDB, TimescaleDB, and Prometheus are the leading options** — each with different trade-offs in query language, scalability, and ecosystem

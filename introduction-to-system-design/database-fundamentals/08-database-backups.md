@@ -529,3 +529,14 @@ Choose INCREMENTAL when:
 ✓ Storage space is limited
 
 ✓ Between differential backups
+
+
+---
+
+## Key Takeaways
+
+1. **Regular backups are your last line of defense against data loss** — hardware failures, human errors, and ransomware all happen
+2. **Full backups capture everything, incremental backups capture only changes** — combine both for a practical backup strategy
+3. **Test your backups by actually restoring them** — an untested backup is not a backup, it's a hope
+4. **Point-in-time recovery (PITR) lets you restore to any moment** — using WAL replay on top of a base backup
+5. **Follow the 3-2-1 rule** — 3 copies of data, on 2 different media types, with 1 copy offsite

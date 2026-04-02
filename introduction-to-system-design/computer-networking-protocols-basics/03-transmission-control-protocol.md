@@ -350,3 +350,14 @@ Both people confirm the conversation is **completely finished**.
 * **HTTP/HTTPS:** How web browsing uses TCP
 * **SSH/SFTP:** How secure remote access relies on TCP
 * **Email (SMTP):** Why email needs TCP's reliability
+
+
+---
+
+## Key Takeaways
+
+1. **TCP provides reliable, ordered, error-checked delivery** — the three-way handshake (SYN, SYN-ACK, ACK) establishes a connection before data flows
+2. **TCP handles retransmission automatically** — lost packets are detected via acknowledgments and re-sent with exponential backoff
+3. **Flow control prevents senders from overwhelming receivers** — the sliding window adjusts based on the receiver's buffer capacity
+4. **Congestion control prevents network overload** — algorithms like slow start and congestion avoidance adapt to network conditions
+5. **TCP's reliability comes at a cost** — the handshake, acknowledgments, and retransmissions add latency compared to UDP

@@ -422,3 +422,13 @@ Log-Structured Storage: Append only
 * Slower and more complex
 
 **Key Insight:** Design your application architecture around the read/write ratio! Most applications are read-heavy, so optimize for reads first.
+
+
+---
+
+## Key Takeaways
+
+1. **Read and write operations have fundamentally different performance characteristics** — most applications are 90%+ reads
+2. **Read replicas scale read throughput horizontally** — route read queries to replicas, writes to the primary
+3. **Write amplification occurs when a single write triggers multiple disk operations** — indexes, WAL, and replication all add write overhead
+4. **Connection pooling reduces the overhead of establishing database connections** — essential for high-throughput applications

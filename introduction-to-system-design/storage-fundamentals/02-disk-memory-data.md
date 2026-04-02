@@ -487,3 +487,13 @@ The Memory/Storage Pyramid (**we saw similar diagram in our computer fundamental
 
 
 ---
+
+
+---
+
+## Key Takeaways
+
+1. **RAM is 1,000x faster than SSD for random access** — but RAM is volatile and expensive ($3-5/GB vs $0.10/GB for SSD)
+2. **SSDs have no moving parts and offer consistent low-latency reads** — ideal for databases and applications with random access patterns
+3. **HDDs are cheapest per GB but have high seek times** — best for sequential workloads like log files and backups
+4. **Databases use RAM for active data and disk for persistence** — buffer pools keep frequently accessed data in memory

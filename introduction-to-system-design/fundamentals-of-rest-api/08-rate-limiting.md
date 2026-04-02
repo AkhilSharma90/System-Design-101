@@ -488,3 +488,13 @@ You've mastered advanced API concepts if you can:
 * [ ] Implement tiered limits
 
 Congratulations! You now understand professional API design! 🎉
+
+
+---
+
+## Key Takeaways
+
+1. **Rate limiting protects APIs from abuse and ensures fair usage** — without it, one client can overwhelm the entire system
+2. **Token bucket and sliding window are the most common algorithms** — token bucket allows bursting, sliding window prevents boundary spikes
+3. **Always return 429 status codes with Retry-After headers** — well-behaved clients will back off automatically
+4. **Implement rate limiting at the API gateway level** — before requests reach your application code

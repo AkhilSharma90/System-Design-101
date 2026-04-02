@@ -317,3 +317,13 @@ Like sending a sealed, locked letter - only the recipient can read it.
 * 🔒 Padlock icon in browser
 * URL starts with `https://` not `http://`
 * Modern browsers warn you if a site uses HTTP
+
+
+---
+
+## Key Takeaways
+
+1. **REST uses standard HTTP methods to represent operations** — GET (read), POST (create), PUT (update), PATCH (partial update), DELETE (remove)
+2. **Resources are identified by URLs and represented as JSON** — the URL structure should be noun-based (/users/42) not verb-based (/getUser)
+3. **REST is stateless** — each request contains all information needed to process it, enabling horizontal scaling
+4. **Use proper HTTP status codes** — 2xx for success, 4xx for client errors, 5xx for server errors

@@ -430,3 +430,14 @@ Choose FIFO when:
 ✓ Learning/prototyping
 
 **Most common choice: LRU** (best balance of performance and simplicity!)
+
+
+---
+
+## Key Takeaways
+
+1. **LRU (Least Recently Used) is the most common eviction policy** — removes the item that hasn't been accessed for the longest time
+2. **LFU (Least Frequently Used) is better for skewed access patterns** — keeps items that are accessed often, even if not recently
+3. **TTL-based expiration removes stale data automatically** — essential for correctness when source data changes
+4. **The choice of eviction policy depends on your access pattern** — LRU for general use, LFU for popularity-based caching, TTL for freshness requirements
+5. **Redis supports multiple eviction policies configurable at runtime** — allkeys-lru is the safest default for most applications

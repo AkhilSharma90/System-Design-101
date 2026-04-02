@@ -500,3 +500,13 @@ This entire article you're reading:
 01000001 01110010 01100101... (and so on for 50KB!)
 
 ---
+
+
+---
+
+## Key Takeaways
+
+1. **Computers use binary because transistors have two states** — on (1) and off (0), making binary the natural number system for hardware
+2. **All data types are encoded as binary** — integers, floating-point numbers, characters (ASCII/UTF-8), and colors are all bit patterns
+3. **Understanding binary helps you reason about storage sizes** — 1 byte = 8 bits = 256 possible values, which is why IP addresses max at 255
+4. **Hexadecimal is a compact way to represent binary** — each hex digit maps to exactly 4 bits, making it useful for memory addresses and colors

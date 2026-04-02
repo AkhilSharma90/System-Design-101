@@ -756,3 +756,13 @@ If everything was block storage: $1,560/month! 😱
 Savings: $1,325/month (85% savings!)
 
 ---
+
+
+---
+
+## Key Takeaways
+
+1. **Data lives in a hierarchy from fast/expensive to slow/cheap** — registers, cache, RAM, SSD, HDD, tape, cloud storage
+2. **Choosing the right storage tier is a cost vs performance trade-off** — hot data in RAM, warm data on SSD, cold data in archival storage
+3. **Understanding storage fundamentals helps you design systems that are both fast and cost-effective** — most data is rarely accessed after creation
+4. **Cloud storage abstracts the physical hardware** — but the performance characteristics of the underlying storage tier still matter

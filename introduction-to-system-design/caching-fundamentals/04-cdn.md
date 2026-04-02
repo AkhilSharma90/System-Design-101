@@ -377,3 +377,14 @@ Akamai 🏢
 - Most expensive
 
 - Used by: Apple, Facebook
+
+
+---
+
+## Key Takeaways
+
+1. **CDNs cache content at edge servers close to users** — reducing latency from 150ms to 15ms for geographically distant users
+2. **Pull CDNs fetch content on first request (cache miss)** — simpler to set up, only caches what's actually requested
+3. **Push CDNs proactively replicate content to all edge servers** — better for large, predictable content like software releases
+4. **Cache-Control headers drive CDN behavior** — set long TTLs for static assets and use content-hashed filenames for safe cache busting
+5. **CDNs also provide DDoS protection and TLS termination** — security benefits beyond just performance

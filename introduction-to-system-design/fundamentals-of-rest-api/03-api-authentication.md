@@ -460,3 +460,14 @@ The internet is essentially millions of APIs talking to each other. You've just 
 ---
 
 Now that you understand the fundamentals, let's dive into some crucial concepts that you'll encounter in real-world API development.
+
+
+---
+
+## Key Takeaways
+
+1. **API keys identify the calling application** — simple but not suitable for user authentication, easily leaked in client-side code
+2. **JWT (JSON Web Tokens) are self-contained, stateless tokens** — the server can verify them without a database lookup
+3. **OAuth 2.0 enables third-party access without sharing credentials** — the standard for "Sign in with Google/GitHub" flows
+4. **Always transmit credentials over HTTPS** — API keys and tokens in plaintext HTTP can be intercepted by anyone on the network
+5. **Use short-lived tokens with refresh tokens for security** — limits damage if a token is compromised

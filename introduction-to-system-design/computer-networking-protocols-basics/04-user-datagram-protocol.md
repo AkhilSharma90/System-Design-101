@@ -388,3 +388,13 @@ DONE!
 * Buffering pauses (kills natural flow)
 
 **UDP advantage:** Low latency > Perfect accuracy for human conversation
+
+
+---
+
+## Key Takeaways
+
+1. **UDP is connectionless and unreliable by design** — no handshake, no acknowledgments, no guaranteed delivery or ordering
+2. **UDP is faster than TCP due to minimal overhead** — no connection setup, no retransmission, smaller header (8 bytes vs TCP's 20+)
+3. **UDP is ideal for real-time applications** — video streaming, online gaming, VoIP, and DNS all use UDP because speed matters more than perfect delivery
+4. **Applications using UDP must handle reliability themselves if needed** — many protocols (like QUIC) build their own reliability on top of UDP

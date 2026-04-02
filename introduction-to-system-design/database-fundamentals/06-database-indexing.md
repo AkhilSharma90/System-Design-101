@@ -349,3 +349,14 @@ COMMIT;
 5. **What do the letters in CRUD stand for?**
 
 **Mental check:** If you can answer these clearly, you've mastered database fundamentals! 🎓
+
+
+---
+
+## Key Takeaways
+
+1. **Indexes speed up reads dramatically at the cost of slower writes** — like a book's index, they let the database jump directly to relevant rows
+2. **B-tree indexes are the default and handle most query patterns** — efficient for equality, range queries, and sorting
+3. **Only index columns you actually query frequently** — each index adds overhead to INSERT, UPDATE, and DELETE operations
+4. **Composite indexes cover queries on multiple columns** — column order in the index matters (leftmost prefix rule)
+5. **Use EXPLAIN to verify your queries actually use indexes** — a missing or unused index is a common source of slow queries

@@ -168,3 +168,14 @@ Good NoSQL approach:// Flexible but consistent!
 
 * **SQL:** Like a meticulous accountant - precise, structured, perfect for financial records
 * **NoSQL:** Like a creative scrapbook - flexible, fast, perfect for diverse content
+
+
+---
+
+## Key Takeaways
+
+1. **SQL databases enforce structure with schemas and support complex queries with JOINs** — PostgreSQL, MySQL, and SQLite are the most popular
+2. **NoSQL databases trade structure for flexibility and horizontal scalability** — document (MongoDB), key-value (Redis), column-family (Cassandra), and graph (Neo4j)
+3. **Use SQL when you need ACID transactions, complex queries, and data integrity** — financial systems, e-commerce, and relational data
+4. **Use NoSQL when you need flexible schemas, massive scale, or specific data models** — real-time analytics, content management, and IoT
+5. **Many modern systems use both (polyglot persistence)** — SQL for transactional data, Redis for caching, Elasticsearch for search

@@ -402,3 +402,13 @@ Step 4: Shutdown
 
  "Please use v2: https://api.myapi.com/v2/users"}
  ```
+
+
+---
+
+## Key Takeaways
+
+1. **API versioning lets you evolve your API without breaking existing clients** — critical for public APIs with many consumers
+2. **URL versioning (/v1/users) is the most common and visible approach** — easy to understand, but creates URL proliferation
+3. **Header versioning keeps URLs clean** — uses Accept or custom headers, but is less discoverable
+4. **Always maintain backward compatibility within a version** — adding fields is safe, removing or renaming fields is breaking

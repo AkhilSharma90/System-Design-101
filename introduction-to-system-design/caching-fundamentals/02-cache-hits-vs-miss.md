@@ -366,3 +366,13 @@ Key metrics to track:
   }
 
 ---
+
+
+---
+
+## Key Takeaways
+
+1. **Cache hit ratio is the key metric for cache effectiveness** — aim for 80%+ hit rate in production systems
+2. **A cache miss triggers a slower path to the data source** — cold misses (first access), capacity misses (eviction), and conflict misses all have different solutions
+3. **Cache warming pre-populates the cache before traffic arrives** — critical for deployments and restarts to avoid cold-start performance degradation
+4. **Monitor hit/miss ratios continuously** — a sudden drop in hit rate often signals a bug, traffic pattern change, or misconfigured TTL

@@ -304,3 +304,14 @@ Protected by:
 * Need full ACID guarantees
 
 ---
+
+
+---
+
+## Key Takeaways
+
+1. **ACID guarantees data integrity in transactions** — Atomicity (all or nothing), Consistency (valid state), Isolation (concurrent safety), Durability (permanent writes)
+2. **Atomicity ensures partial failures don't corrupt data** — if any step in a transaction fails, all steps are rolled back
+3. **Isolation levels trade consistency for performance** — Read Uncommitted is fastest but riskiest, Serializable is safest but slowest
+4. **Durability means committed data survives crashes** — achieved through write-ahead logging (WAL) and flushing to disk
+5. **NoSQL databases often relax ACID guarantees for scalability** — offering BASE (Basically Available, Soft state, Eventually consistent) instead

@@ -233,3 +233,14 @@ POST /posts
 * Server crashed: 500
 * Upstream failed: 502
 * Temporarily down: 503
+
+
+---
+
+## Key Takeaways
+
+1. **Status codes communicate the result of an HTTP request** — they tell the client what happened without parsing the response body
+2. **2xx means success** — 200 OK, 201 Created, 204 No Content are the most common
+3. **4xx means client error** — 400 Bad Request, 401 Unauthorized, 403 Forbidden, 404 Not Found, 429 Too Many Requests
+4. **5xx means server error** — 500 Internal Server Error, 502 Bad Gateway, 503 Service Unavailable, 504 Gateway Timeout
+5. **Use the most specific status code available** — 409 Conflict is better than 400 Bad Request when a resource already exists

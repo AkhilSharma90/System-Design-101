@@ -511,3 +511,13 @@ Problem: Slowest performance
 2. Long transactions hold locks, blocking other users and increasing deadlock risk
 3. COMMIT makes changes permanent, ROLLBACK discards all changes
 4. Most databases don't support true nesting; use savepoints instead
+
+
+---
+
+## Key Takeaways
+
+1. **Transactions group multiple operations into a single atomic unit** — either all operations succeed or none do
+2. **BEGIN, COMMIT, and ROLLBACK control transaction boundaries** — COMMIT saves changes permanently, ROLLBACK undoes them all
+3. **Isolation levels control what concurrent transactions can see** — higher isolation prevents more anomalies but reduces throughput
+4. **Deadlocks occur when two transactions wait for each other's locks** — databases detect and resolve these by aborting one transaction

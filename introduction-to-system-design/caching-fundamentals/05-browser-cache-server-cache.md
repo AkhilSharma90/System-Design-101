@@ -476,3 +476,13 @@ Without caching:
 ✅ Browser vs Server caching
 
 **Congratulations! You understand how the entire internet stays fast! 🎉**
+
+
+---
+
+## Key Takeaways
+
+1. **Browser cache is the fastest cache layer** — zero network latency, but limited to a single user
+2. **Server-side caches (Redis, Memcached) are shared across all users** — one cache entry serves thousands of requests
+3. **Cache-Control headers control browser caching behavior** — max-age, no-cache, no-store, and ETag serve different purposes
+4. **Service workers enable offline caching in the browser** — critical for progressive web apps and unreliable network conditions

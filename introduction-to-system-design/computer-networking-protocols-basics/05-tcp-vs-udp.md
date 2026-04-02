@@ -225,3 +225,13 @@ Receiver: [Drops 90% of packets]
 * **Video Streaming:** Netflix, YouTube, and live streaming architectures
 * **VoIP Systems:** How Zoom, Discord, and Skype optimize voice quality
 * **CDN Architecture:** How Cloudflare and Akamai use anycast
+
+
+---
+
+## Key Takeaways
+
+1. **TCP is for reliability, UDP is for speed** — choose based on whether your application can tolerate data loss
+2. **Use TCP for web pages, file transfers, emails, and databases** — any scenario where every byte must arrive correctly and in order
+3. **Use UDP for live streaming, gaming, DNS, and IoT** — scenarios where a dropped packet is better than a delayed one
+4. **QUIC (HTTP/3) builds reliability on top of UDP** — combining UDP's speed with TCP-like guarantees, used by Google and Cloudflare

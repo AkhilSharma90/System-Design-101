@@ -326,3 +326,13 @@ fetch('/api/posts/123', { method: 'DELETE' });
 * Forget to back up before bulk operations
 * Expose database directly to users
 * Trust user input (always validate!)
+
+
+---
+
+## Key Takeaways
+
+1. **CRUD (Create, Read, Update, Delete) covers all basic database operations** — every application ultimately performs some combination of these
+2. **INSERT creates new records, SELECT reads them, UPDATE modifies them, DELETE removes them** — master these four SQL statements first
+3. **Most applications are read-heavy** — optimize for reads with proper indexing and caching
+4. **Soft deletes (marking as inactive) are safer than hard deletes** — you can always recover soft-deleted data

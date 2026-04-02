@@ -272,3 +272,13 @@ Let me tell you about the ones you're most likely to use:
 * Built on Express.js
 * Great if your team knows JavaScript
 * Example: Small to medium startups
+
+
+---
+
+## Key Takeaways
+
+1. **An API gateway is a single entry point for all client requests** — handles routing, authentication, rate limiting, and load balancing
+2. **API gateways decouple clients from backend services** — clients call one endpoint, the gateway routes to the correct microservice
+3. **Common API gateway features include request transformation, caching, and logging** — reducing boilerplate in every backend service
+4. **Kong, AWS API Gateway, and Nginx are popular choices** — each with different strengths in performance, features, and ecosystem integration

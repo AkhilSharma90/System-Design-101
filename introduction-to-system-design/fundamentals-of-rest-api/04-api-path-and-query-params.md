@@ -319,3 +319,13 @@ Filters and options belong in query params\!
 
 ```
 Don't make a crazy hierarchy\! Keep it reasonable \- usually 2-3 levels max.
+
+
+---
+
+## Key Takeaways
+
+1. **Path parameters identify a specific resource** — /users/42 targets user with ID 42
+2. **Query parameters filter, sort, or modify the response** — /users?role=admin&sort=name filters users by role and sorts by name
+3. **Use path params for required identifiers, query params for optional filters** — /products/123 (required) vs /products?category=electronics (optional)
+4. **Keep URLs readable and predictable** — consistent naming conventions make APIs easier to use and maintain

@@ -340,3 +340,13 @@ F → 6 (Motherboard) - The circuit board connecting everything
 
 
 ---
+
+
+---
+
+## Key Takeaways
+
+1. **Computers process everything as binary (0s and 1s)** — every image, video, and text is ultimately a sequence of electrical signals
+2. **The CPU, memory, and storage work together in a hierarchy** — CPU registers are fastest, RAM is volatile working memory, disk is persistent
+3. **Input → Processing → Output is the fundamental computing model** — understanding this helps you reason about system bottlenecks
+4. **All software is an abstraction over hardware** — operating systems, languages, and frameworks all sit on top of physical components

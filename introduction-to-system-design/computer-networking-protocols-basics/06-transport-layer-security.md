@@ -397,3 +397,14 @@ TLS handshake: 100ms
 Total: 200ms before first byte
 
 33% faster!
+
+
+---
+
+## Key Takeaways
+
+1. **TLS encrypts data in transit between client and server** — preventing eavesdropping, tampering, and impersonation
+2. **The TLS handshake establishes encryption keys** — using asymmetric cryptography for key exchange, then symmetric cryptography for data transfer
+3. **Certificates verify server identity** — Certificate Authorities (CAs) sign certificates to prove a server is who it claims to be
+4. **TLS 1.3 reduced the handshake to one round trip** — significantly faster than TLS 1.2's two round trips
+5. **HTTPS = HTTP + TLS** — always use HTTPS in production to protect user data and improve SEO rankings

@@ -326,3 +326,14 @@ Ask yourself:
    - Yes (personal blog) → Some SPOFs OK
 
 ---
+
+
+---
+
+## Key Takeaways
+
+1. **A single point of failure (SPOF) is any component whose failure brings down the entire system** — databases, load balancers, and DNS are common SPOFs
+2. **Redundancy eliminates SPOFs** — run multiple instances of every critical component across different availability zones
+3. **Active-passive failover keeps a standby ready to take over** — simpler but wastes resources; active-active uses all instances
+4. **Health checks detect failures automatically** — the system must know something is down before it can route around it
+5. **Design for failure from the start** — assume any component can fail at any time and build accordingly

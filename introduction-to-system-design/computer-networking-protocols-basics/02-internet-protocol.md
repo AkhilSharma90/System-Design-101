@@ -248,3 +248,13 @@ Now that you understand IP, you're ready to explore:
 * **Subnetting:** Why is `192.168.1.0/24` different from `192.168.1.0/16`?
 * **IPv6 transition:** How is the world moving from IPv4 to IPv6?
 * **NAT:** How do multiple devices share one public IP address?
+
+
+---
+
+## Key Takeaways
+
+1. **IP addresses uniquely identify devices on a network** — IPv4 uses 32 bits (4.3 billion addresses), IPv6 uses 128 bits
+2. **IP is a best-effort, connectionless protocol** — packets may arrive out of order, be duplicated, or get lost
+3. **Subnetting divides networks into smaller segments** — CIDR notation (e.g., 10.0.0.0/24) defines the network and host portions
+4. **NAT allows multiple devices to share one public IP** — essential for IPv4 address conservation in home and corporate networks

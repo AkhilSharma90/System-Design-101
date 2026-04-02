@@ -249,3 +249,14 @@ Browser: "Finally! Connecting to 93.184.216.34..."
 
 
 ![img3](https://res.cloudinary.com/dretwg3dy/image/upload/v1762769972/189_nrb793.png)
+
+
+---
+
+## Key Takeaways
+
+1. **DNS translates human-readable domain names to IP addresses** — the internet's phone book, resolving billions of queries daily
+2. **DNS resolution follows a hierarchy** — browser cache → OS cache → recursive resolver → root → TLD → authoritative nameserver
+3. **DNS records serve different purposes** — A (IPv4), AAAA (IPv6), CNAME (alias), MX (email), TXT (verification), NS (nameserver)
+4. **DNS caching at multiple levels reduces lookup latency** — but TTL controls how long cached records are trusted
+5. **DNS is a critical single point of failure** — use multiple DNS providers and low TTLs for services that need fast failover

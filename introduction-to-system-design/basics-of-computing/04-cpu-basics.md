@@ -297,3 +297,13 @@ Tasks:
    High clock helps IDE responsiveness
 
    32MB cache helps with large projects
+
+
+---
+
+## Key Takeaways
+
+1. **The CPU executes instructions in a fetch-decode-execute cycle** — understanding this helps you reason about computational bottlenecks
+2. **Clock speed (GHz) measures how many cycles per second** — but more cycles doesn't always mean faster execution due to instruction complexity
+3. **Multi-core CPUs enable parallel processing** — but software must be designed for concurrency to take advantage of multiple cores
+4. **CPU-bound vs I/O-bound workloads need different optimization strategies** — CPU-bound benefits from faster processors, I/O-bound from async/non-blocking designs

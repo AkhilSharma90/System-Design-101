@@ -295,3 +295,13 @@ Let see a pagination technique:
 * Users mostly scroll forward
 * Exact position isn't important
 * Example: Social feeds, notifications, real-time data
+
+
+---
+
+## Key Takeaways
+
+1. **Pagination prevents returning millions of records in one response** — essential for performance and usability
+2. **Offset-based pagination is simple but breaks with changing data** — page 2 may show duplicates if new items are inserted on page 1
+3. **Cursor-based pagination is more reliable for real-time data** — uses a pointer to the last seen item, unaffected by insertions
+4. **Always include pagination metadata in responses** — total count, next/previous links, and current page help clients navigate

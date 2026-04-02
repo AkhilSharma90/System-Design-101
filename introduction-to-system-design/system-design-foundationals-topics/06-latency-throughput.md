@@ -354,3 +354,14 @@ Result: Process 10 emails in parallel instead of 1
 Total time: 6 minutes! (10x improvement!) ✓
 
 For batch jobs: Throughput > Latency
+
+
+---
+
+## Key Takeaways
+
+1. **Latency is how long a single request takes, throughput is how many requests per second** — you can optimize for one at the expense of the other
+2. **P99 latency matters more than average latency** — 1% of users seeing 10-second load times is a real problem even if the average is 100ms
+3. **Network latency dominates in distributed systems** — within a datacenter is ~0.5ms, cross-continent is ~150ms
+4. **Caching, connection pooling, and async processing are the top latency reduction techniques** — measure before and after to verify improvement
+5. **Throughput scales with parallelism** — more workers, more partitions, more replicas all increase total throughput

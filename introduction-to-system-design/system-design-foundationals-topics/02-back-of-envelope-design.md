@@ -508,3 +508,14 @@ Streaming servers: \~50,000 (estimated separately)
 Reality: YouTube stores \~1 exabyte total, uses \~1,000 Tbps
 
 Our estimates are in the right ballpark! 🎉
+
+
+---
+
+## Key Takeaways
+
+1. **Back-of-envelope calculations give you order-of-magnitude estimates in minutes** — you don't need exact numbers, just the right ballpark
+2. **Know your powers of 2** — 2^10 ≈ 1K, 2^20 ≈ 1M, 2^30 ≈ 1B, 2^40 ≈ 1T
+3. **Convert daily numbers to per-second** — divide by 86,400 (seconds/day) or approximate: 1M/day ≈ 12/sec
+4. **Storage estimation: multiply users × data per user** — 1 billion users × 1 KB each = 1 TB
+5. **Always state your assumptions clearly** — the estimation process matters more than the exact answer

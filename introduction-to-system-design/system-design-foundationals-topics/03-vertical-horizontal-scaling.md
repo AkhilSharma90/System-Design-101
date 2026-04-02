@@ -305,3 +305,14 @@ Strategy:
 • Add database read replicas horizontally later
 
 • Use caching layer (horizontal) to reduce DB load
+
+
+---
+
+## Key Takeaways
+
+1. **Vertical scaling (scale up) means adding more resources to a single machine** — simpler but has a hardware ceiling
+2. **Horizontal scaling (scale out) means adding more machines** — more complex but virtually unlimited capacity
+3. **Stateless services are easy to scale horizontally** — move session state to an external store (Redis, database)
+4. **Most production systems use both** — scale up first for simplicity, scale out when you hit the ceiling
+5. **Auto-scaling adjusts capacity based on demand** — use metrics like CPU, memory, or request queue depth as triggers

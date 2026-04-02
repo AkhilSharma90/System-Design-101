@@ -310,3 +310,14 @@ All 1000 query database at once
 // Database overload! 💥
 
 // SOLUTION: Use locking or cache warming
+
+
+---
+
+## Key Takeaways
+
+1. **Caching stores frequently accessed data in fast, nearby storage** — reducing latency from seconds to milliseconds
+2. **Cache when data is read-heavy, expensive to generate, and tolerant of slight staleness** — don't cache rapidly changing or security-sensitive data
+3. **Multiple cache layers exist** — browser cache, CDN cache, server cache (Redis/Memcached), database cache, and application cache
+4. **Cache stampede is a critical failure mode** — when cache expires and thousands of requests hit the database simultaneously
+5. **Always set a TTL (Time To Live)** — caching forever leads to stale data and memory exhaustion

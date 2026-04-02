@@ -484,3 +484,13 @@ Content-Type: application/json
 ## **🎎 The Matryoshka Doll Model**
 
 Each layer wraps the previous one. To read data, you unwrap layer by layer!![img12](https://res.cloudinary.com/dretwg3dy/image/upload/v1762395693/10_bnqlhf.png)
+
+
+---
+
+## Key Takeaways
+
+1. **The OSI model organizes networking into 7 layers** — each layer handles a specific concern from physical signals to application data
+2. **Protocols are standardized rules for communication** — without them, devices from different manufacturers couldn't communicate
+3. **The TCP/IP model is the practical 4-layer model used on the internet** — application, transport, internet, and network access layers
+4. **Understanding networking layers helps you debug connectivity issues** — you can isolate whether a problem is DNS, TCP, HTTP, or application-level

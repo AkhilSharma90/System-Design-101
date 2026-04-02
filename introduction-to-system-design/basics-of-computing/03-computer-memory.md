@@ -482,3 +482,13 @@ Spatial locality:
 → Load whole cache lines (64 bytes at a time)
 
 This is why caches work so well!
+
+
+---
+
+## Key Takeaways
+
+1. **Memory forms a hierarchy trading speed for capacity** — registers > L1 cache > L2 cache > L3 cache > RAM > SSD > HDD
+2. **RAM is volatile — data is lost when power is off** — this is why databases need write-ahead logs and checkpointing
+3. **Cache locality matters for performance** — accessing data sequentially (spatial locality) or repeatedly (temporal locality) is dramatically faster
+4. **Memory management is fundamental to system design** — understanding how memory works helps you reason about caching, buffering, and scaling

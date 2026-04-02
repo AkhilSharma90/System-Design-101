@@ -212,3 +212,13 @@ CS101 has these students:
 * **Foreign Key** \= Your name on your visitor's guest list (referencing you)
 
 ---
+
+
+---
+
+## Key Takeaways
+
+1. **Primary keys uniquely identify each row in a table** — must be unique, non-null, and ideally immutable
+2. **Foreign keys create relationships between tables** — enforcing referential integrity so orphaned records can't exist
+3. **Use auto-incrementing integers or UUIDs as primary keys** — UUIDs are better for distributed systems, integers are better for performance
+4. **Foreign key constraints prevent data inconsistency** — you can't delete a user if their orders still reference them

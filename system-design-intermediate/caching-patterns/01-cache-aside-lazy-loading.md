@@ -157,7 +157,7 @@ Solution: Cache Invalidation!
 
 The application must explicitly remove or update the cached data:
 
-```
+```sql
 User updates profile:
 
 Application:
@@ -225,7 +225,7 @@ Pro tip: Some systems pre-warm the cache by running popular queries at startup, 
 
 Scenario: You're writing the code for Cache-Aside. Here's the pseudocode pattern you'll use thousands of times:
 
-```
+```sql
 function getProduct(productId):
     // Step 1: Try cache first
     data = cache.get(productId)
@@ -302,7 +302,7 @@ Doesn't solve the race condition problem
 ```
 
 Option D - Update database, then delete from cache:
-```
+```sql
 1. Update Database: Cart = [Item A, Item B] ✓
 2. Delete from Cache: Remove cart entry ✓
 3. Next request: Cache miss → reads new data from DB ✓
@@ -313,7 +313,7 @@ Safe! The next request gets fresh data from database!
 The Winner: Option D (Update DB, then invalidate cache)!
 
 This is the most common Cache-Aside update pattern:
-```
+```javascript
 function updateProduct(productId, newData):
     // Step 1: Update source of truth
     database.update(productId, newData)
@@ -343,7 +343,7 @@ Lazy loading → ?
 Think about each one...
 
 Answers revealed:
-```
+```javascript
 Check cache first → 🧠 Checking your memory before looking it up
 Cache miss → 🤔 "I don't remember, let me look it up"
 Load from database → 📚 Looking up information in a book/website
@@ -428,7 +428,7 @@ Mental check: If you can answer these clearly, you've mastered Cache-Aside! If n
 
 📊 The Cache-Aside Cheat Sheet
 
-```
+```yaml
 Characteristics:
 - Pattern Type: Application manages cache and database
 - Loading: Lazy (on-demand)

@@ -275,7 +275,7 @@ You’ll learn about Message Queues in details in later sections)
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
-```js
+```
 // Order Service:
 queue.send("process_order", orderData)
 response.send("Order received!")  // ← Immediate!
@@ -283,7 +283,7 @@ response.send("Order received!")  // ← Immediate!
 // [Order Service moves on to other work]
 ```
 
-```js
+```
 // Payment Service (later):
 message = queue.receive()
 processPayment(message)

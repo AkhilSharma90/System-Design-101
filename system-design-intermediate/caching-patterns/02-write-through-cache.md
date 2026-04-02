@@ -265,7 +265,7 @@ try {
 
 Scenario: You're implementing Write-Through cache. Here's the pattern:
 
-```
+```javascript
 function saveUser(userId, userData):
     try {
         // Step 1: Write to cache first (or simultaneously)
@@ -292,7 +292,7 @@ Question: What happens if the cache write succeeds but the database write fails?
 
 The Consistency Problem:
 
-```
+```yaml
 Step 1: cache.set(userId, userData) ✓
 Step 2: database.update() ✗ FAILS!
 
@@ -312,7 +312,7 @@ Confusion! Data loss!
 
 The Solution: Write-Through Order Matters!
 
-```
+```javascript
 Better Implementation:
 
 function saveUser(userId, userData):
@@ -514,7 +514,7 @@ Mental check: If you can answer these clearly, you've mastered Write-Through! If
 
 📊 The Write-Through Cheat Sheet
 
-```
+```yaml
 Characteristics:
 - Pattern Type: Cache manages database writes
 - Loading: Can be lazy or pre-loaded

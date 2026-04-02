@@ -18,7 +18,7 @@ Master-Slave Architecture: The Classic Database Pattern (Now Called Primary-Repl
 Imagine this scenario: You run a restaurant with one chef who does everything.
 
 Single Chef (No Delegation):
-```
+```yaml
 ┌──────────────────────────────────────┐
 │          Single Chef                 │
 │                                      │
@@ -38,7 +38,7 @@ Problems:
 ```
 
 Head Chef + Sous Chefs (Master-Slave Pattern):
-```
+```yaml
           ┌─────────────────────┐
           │    Head Chef        │ ← Creates new recipes (WRITES)
           │    (Master/Primary) │    Updates menu
@@ -86,7 +86,7 @@ Key Insight: This pattern trades write scalability for read scalability - you ca
 🎬 Interactive Exercise: Write vs Read Workloads
 
 Understanding the 90/10 Rule:
-```
+```sql
 Most applications are read-heavy:
 
 Typical Web Application:
@@ -168,7 +168,7 @@ Real-world parallel: Primary-Replica is like a company with one CEO (makes decis
 🏗️ How Primary-Replica Works (The Details)
 
 The Write Path:
-```
+```sql
 Step 1: Client sends write
 Client: UPDATE users SET email='new@email.com' WHERE id=123;
    ↓
@@ -202,7 +202,7 @@ Total time: ~50-200ms (depending on synchronous vs async)
 ```
 
 The Read Path:
-```
+```sql
 Option A: Read from Primary
 Client: SELECT * FROM users WHERE id=123;
    ↓
@@ -227,7 +227,7 @@ Cons: Might be slightly stale (replication lag)
 Replication Modes:
 
 Asynchronous (Default):
-```
+```yaml
 Client → Primary: UPDATE user 123
            ↓
 Primary: Execute UPDATE
@@ -248,7 +248,7 @@ Cons:
 ```
 
 Synchronous:
-```
+```yaml
 Client → Primary: UPDATE user 123
            ↓
 Primary: Execute UPDATE
@@ -272,7 +272,7 @@ Cons:
 ```
 
 Semi-synchronous (Best of Both):
-```
+```yaml
 Primary waits for at least 1 replica (not all):
 
 Client → Primary: UPDATE user 123

@@ -250,7 +250,7 @@ const cacheClient = redis.createClient();
   app.use('/static', express.static('public', {  maxAge: '1y',
   // Browser cache for 1 year
   immutable: true}))
-  ````
+  ````html
 
  < -- CLIENT SIDE (HTML)>
  < !-- ============================================ -- >

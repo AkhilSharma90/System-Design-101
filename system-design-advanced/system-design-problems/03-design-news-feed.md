@@ -32,7 +32,7 @@ Design a personalized news feed system like Facebook, Instagram, or Twitter — 
 
 ## Step 2: Back-of-Envelope Estimation
 
-```
+```yaml
 Writes (posts):
   300M posts/day = 300,000,000 / 86,400 ≈ 3,500 writes/sec
 

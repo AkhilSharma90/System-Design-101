@@ -31,7 +31,7 @@ Design a video streaming service like YouTube or Netflix — supporting video up
 
 ## Step 2: Back-of-Envelope Estimation
 
-```
+```yaml
 Video uploads:
   500 hours/minute = 30,000 seconds of video/minute
   At 1 Mbps average bitrate: 30,000 MB/min ≈ 500 GB/min of raw video
@@ -109,7 +109,7 @@ Raw uploaded video → multiple formats and resolutions for different devices an
 
 ### Why Transcode?
 
-```
+```yaml
 User uploads: 4K ProRes footage (2 GB, 10 min video)
 
 We need to produce:
@@ -128,7 +128,7 @@ Plus:
 
 ### Transcoding as a DAG
 
-```
+```go
 Input: raw_video.mov
               │
       ┌───────┼───────┐
@@ -264,7 +264,7 @@ Exception: popular videos stay in Standard regardless of age
 
 ## Step 8: Thumbnail Generation
 
-```
+```sql
 During transcoding pipeline:
   Extract frame at 0s, 5s, 10s, 30s, 60s, 120s...
   → Select highest-quality/most-representative frames

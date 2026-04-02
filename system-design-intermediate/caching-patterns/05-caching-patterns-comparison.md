@@ -24,7 +24,7 @@ Let's build a decision framework together! 🚀
 
 🏆 The Pattern Showdown: Head-to-Head Comparison
 
-```
+```yaml
 ┌──────────────┬─────────────┬──────────────┬──────────────┬──────────────┐
 │   Feature    │Cache-Aside  │Write-Through │ Write-Behind │ Read-Through │
 ├──────────────┼─────────────┼──────────────┼──────────────┼──────────────┤
@@ -94,7 +94,7 @@ START: What's your main concern?
 Let's test your pattern-picking skills! For each scenario, think about which pattern fits best:
 
 **Scenario 1: E-Commerce Product Catalog**
-```
+```yaml
 Requirements:
 - 1 million products
 - Read:Write ratio = 1000:1 (mostly reads)
@@ -117,7 +117,7 @@ Choose Cache-Aside if you want maximum flexibility
 ```
 
 **Scenario 2: Banking Transaction System**
-```
+```yaml
 Requirements:
 - Account balance updates constantly
 - Read:Write ratio = 1:1 (balanced)
@@ -141,7 +141,7 @@ Use Write-Through only if database can handle write load
 ```
 
 **Scenario 3: Gaming Leaderboard**
-```
+```yaml
 Requirements:
 - Millions of score updates per second
 - Read:Write ratio = 1:10 (write-heavy!)
@@ -165,7 +165,7 @@ Monitor: Queue depth, sync lag
 ```
 
 **Scenario 4: User Profile Service**
-```
+```yaml
 Requirements:
 - 50 different API endpoints all fetch user data
 - Read:Write ratio = 100:1 (read-heavy)
@@ -192,7 +192,7 @@ userCache = ReadThroughCache(
 ```
 
 **Scenario 5: IoT Sensor Data Collection**
-```
+```yaml
 Requirements:
 - 100,000 sensors sending data every second
 - Read:Write ratio = 1:1000 (write-heavy!)
@@ -243,7 +243,7 @@ Configuration Service
 ```
 
 **Combination 2: Cache-Aside + Write-Behind**
-```
+```yaml
 Perfect for: High-performance analytics
 
 Reads: Cache-Aside (flexible, control)
@@ -305,7 +305,7 @@ Write-Behind: (WritePerf + WriteVolume) - DataLoss
 📊 Pattern Characteristics Deep Dive
 
 **Cache-Aside: The Swiss Army Knife**
-```
+```yaml
 Personality: "I'll do it myself!"
 
 Strengths:
@@ -327,7 +327,7 @@ When simplicity matters more than code beauty
 ```
 
 **Write-Through: The Consistency Champion**
-```
+```yaml
 Personality: "Everything stays in sync!"
 
 Strengths:
@@ -350,7 +350,7 @@ When consistency > performance
 ```
 
 **Write-Behind: The Speed Demon**
-```
+```yaml
 Personality: "I'll catch up later!"
 
 Strengths:
@@ -374,7 +374,7 @@ When speed > absolute safety
 ```
 
 **Read-Through: The Code Cleanser**
-```
+```yaml
 Personality: "I'll handle the details!"
 
 Strengths:

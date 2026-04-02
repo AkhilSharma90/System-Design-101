@@ -17,7 +17,7 @@ Distributed Databases: When One Server Isn't Enough (Google's Spanner Revolution
 Imagine this scenario: You're building a library system that needs to serve the entire planet - billions of users, petabytes of data, 24/7 availability.
 
 Traditional Single Database (Centralized):
-```
+```yaml
 ┌─────────────────────────────────────┐
 │    Library in New York              │
 │    - All books stored here          │
@@ -38,7 +38,7 @@ Problems:
 ```
 
 Distributed Database (Decentralized):
-```
+```yaml
 New York          London           Tokyo          São Paulo
 ┌───────────┐    ┌───────────┐    ┌───────────┐    ┌───────────┐
 │ Library   │←──→│ Library   │←──→│ Library   │←──→│ Library   │
@@ -78,7 +78,7 @@ Key Insight: Distributed databases trade simplicity for massive scale and global
 🎬 Interactive Exercise: Single vs Distributed Database
 
 Single Database (Monolithic):
-```
+```yaml
 ┌─────────────────────────────────────┐
 │     PostgreSQL on Big Server        │
 │     - 1TB RAM                       │
@@ -103,7 +103,7 @@ Characteristics:
 ```
 
 Distributed Database (Horizontal):
-```
+```yaml
 ┌──────────┐ ┌──────────┐ ┌──────────┐ ┌──────────┐ ┌──────────┐
 │  Node 1  │ │  Node 2  │ │  Node 3  │ │  Node 4  │ │  Node 5  │
 │ 32GB RAM │ │ 32GB RAM │ │ 32GB RAM │ │ 32GB RAM │ │ 32GB RAM │
@@ -150,7 +150,7 @@ Real-world parallel: Single database is like a skyscraper (limited height, expen
 🏗️ Types of Distributed Databases
 
 Type 1: Distributed SQL (NewSQL)
-```
+```yaml
 Examples: Google Spanner, CockroachDB, YugabyteDB
 
 Architecture:
@@ -183,7 +183,7 @@ Trade-off:
 ```
 
 Type 2: Eventually Consistent NoSQL
-```
+```yaml
 Examples: Cassandra, DynamoDB, Riak
 
 Architecture:
@@ -216,7 +216,7 @@ Trade-off:
 ```
 
 Type 3: Sharded Traditional DB
-```
+```yaml
 Example: Vitess (MySQL), Citus (PostgreSQL)
 
 Architecture:
@@ -251,7 +251,7 @@ Trade-off:
 ```
 
 Type 4: Distributed Document Stores
-```
+```yaml
 Example: MongoDB (sharded cluster)
 
 Architecture:

@@ -15,7 +15,7 @@ Database Sharding: Breaking Up Your Data for Massive Scale (Instagram's Growth S
 Imagine this scenario: You're managing a phone book for an entire country - 300 million people.
 
 Single Book Approach (Traditional Database):
-```
+```yaml
 ┌─────────────────────────────────────┐
 │   THE MASSIVE PHONE BOOK            │
 │   300 Million Entries               │
@@ -38,7 +38,7 @@ Problems:
 ```
 
 Sharded Approach (Distributed Database):
-```
+```yaml
 Split alphabetically into 26 books:
 
 Book A-B        Book C-D        Book E-F    ...    Book Y-Z
@@ -152,7 +152,7 @@ Real-world parallel: Vertical scaling is like building a taller building (expens
 🏗️ Sharding Strategies: How to Split Your Data
 
 Strategy 1: Range-Based Sharding
-```
+```yaml
 Split by value ranges:
 
 Users table:
@@ -181,7 +181,7 @@ Cons:
 ```
 
 Strategy 2: Hash-Based Sharding
-```
+```javascript
 Use hash function to determine shard:
 
 shard = hash(user_id) % number_of_shards
@@ -209,7 +209,7 @@ Cons:
 ```
 
 Strategy 3: Consistent Hashing
-```
+```yaml
 Hash both shards and keys onto a circle:
 
          0°
@@ -248,7 +248,7 @@ Cons:
 ```
 
 Strategy 4: Directory-Based Sharding
-```
+```yaml
 Maintain a lookup table:
 
 ┌──────────────────────────────┐

@@ -66,7 +66,7 @@ Retry-After: 60
 
  { "error": "Rate limit exceeded",  "message": "You can make 100 requests per minute. Try again in 60 seconds."}
 
-````
+````yaml
 
 Result:
 

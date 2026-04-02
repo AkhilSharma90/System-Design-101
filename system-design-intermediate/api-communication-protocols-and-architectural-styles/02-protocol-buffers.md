@@ -158,7 +158,7 @@ message User {
 
 
 
-````
+````yaml
 
 
 Mental model: Field numbers are like social security numbers - assigned once, never changed!

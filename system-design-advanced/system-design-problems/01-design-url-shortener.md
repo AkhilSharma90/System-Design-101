@@ -35,7 +35,7 @@ Design a system like TinyURL or Bit.ly that converts long URLs into short aliase
 
 ## Step 2: Back-of-Envelope Estimation
 
-```
+```yaml
 Write (URL creation):
   100M URLs/month = 100,000,000 / (30 × 24 × 3600) ≈ 40 writes/sec
 

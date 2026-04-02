@@ -18,7 +18,7 @@ Package C: Package is damaged
 Package D: Address format is invalid
 
 Traditional approach: Keep trying forever?
-```
+```yaml
 Day 1: Try to deliver Package A → Fail
 Day 2: Try to deliver Package A → Fail
 Day 3: Try to deliver Package A → Fail
@@ -33,7 +33,7 @@ Problems:
 ```
 
 Better approach: Dead Letter Office!
-```
+```yaml
 Try to deliver Package A → Fail
 Try again (2nd attempt) → Fail
 Try again (3rd attempt) → Fail
@@ -67,7 +67,7 @@ Key Insight: DLQs transform "keep retrying forever" into "retry reasonably, then
 🎬 Interactive Exercise: With and Without DLQ
 
 Without Dead Letter Queue:
-```
+```yaml
 Main Queue "orders":
 [Good Order 1] → Processed ✓
 [Bad Order X]  → Process fails → Retry
@@ -89,7 +89,7 @@ Problems:
 ```
 
 With Dead Letter Queue:
-```
+```yaml
 Main Queue "orders":
 [Good Order 1] → Processed ✓
 [Bad Order X]  → Fails (attempt 1)
@@ -167,7 +167,7 @@ Message moved to Dead Letter Queue
 ```
 
 Configuration Options:
-```
+```yaml
 Dead Letter Queue Configuration:
 ├── maxReceiveCount: 3 (retries before DLQ)
 ├── deadLetterTargetArn: "arn:aws:sqs:...:orders-dlq"

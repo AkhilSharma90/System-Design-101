@@ -16,7 +16,7 @@ Database Replication: Keeping Multiple Copies in Sync (Your Data's Backup Dancer
 Imagine this scenario: You have a critically important document - your company's only copy of customer contracts.
 
 Single Copy (No Replication):
-```
+```yaml
 ┌─────────────────────────┐
 │  Main Office            │
 │  Customer Contracts     │
@@ -32,7 +32,7 @@ Problems:
 ```
 
 With Replication (Multiple Copies):
-```
+```yaml
 ┌─────────────────┐     ┌─────────────────┐     ┌─────────────────┐
 │ New York Office │────→│ London Office   │────→│ Tokyo Office    │
 │ (Primary Copy)  │     │ (Replica Copy)  │     │ (Replica Copy)  │
@@ -67,7 +67,7 @@ You might think: "Isn't replication just fancy backup?"
 The Key Differences:
 
 Backup (Snapshot):
-```
+```yaml
 Timeline:
 Monday 00:00    → Full backup created
   ↓
@@ -86,7 +86,7 @@ Use case: Disaster recovery (long-term protection)
 ```
 
 Replication (Real-time):
-```
+```yaml
 Timeline:
 Primary: Write X=5
   ↓ (milliseconds)
@@ -135,7 +135,7 @@ Real-world parallel: Backup is like photos in a safe (for long-term recovery). R
 🏗️ Types of Replication
 
 Type 1: Primary-Replica (Master-Slave)
-```
+```yaml
 Most common pattern:
 
         ┌─────────────┐
@@ -174,7 +174,7 @@ Cons:
 ```
 
 Type 2: Primary-Primary (Multi-Master)
-```
+```yaml
 Both nodes accept writes:
 
 ┌─────────────┐         ┌─────────────┐
@@ -211,7 +211,7 @@ Cons:
 ```
 
 Type 3: Chain Replication
-```
+```yaml
 Data flows through chain:
 
 ┌─────────┐    ┌─────────┐    ┌─────────┐    ┌─────────┐
@@ -308,7 +308,7 @@ Money is too important for automatic conflict resolution!
 ```
 
 The Golden Rule:
-```
+```yaml
 Use Primary-Primary only when:
 ✅ Conflicts are rare
 ✅ Conflicts are mergeable
@@ -331,7 +331,7 @@ Real-world parallel: Multi-primary is like two people editing the same Google Do
 ⚡ Replication Methods: How Data Gets Copied
 
 Method 1: Statement-Based Replication
-```
+```sql
 What gets replicated: SQL statements
 
 Primary:
@@ -356,7 +356,7 @@ Cons:
 ```
 
 Method 2: Row-Based Replication (Logical)
-```
+```sql
 What gets replicated: Actual data changes
 
 Primary:
@@ -379,7 +379,7 @@ Cons:
 ```
 
 Method 3: Physical Replication (Binary)
-```
+```yaml
 What gets replicated: Actual disk blocks
 
 Primary:

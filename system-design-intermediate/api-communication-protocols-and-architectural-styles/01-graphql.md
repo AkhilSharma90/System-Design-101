@@ -309,7 +309,7 @@ fetch('http://localhost:4000/graphql', {
   .then(res => res.json())
   .then(data => console.log(data));
 
-````
+````sql
 Real-world parallel: The schema is like a restaurant menu (what's available), resolvers are like the kitchen (how to prepare it), and queries are like your order (what you want).
 
 🎮 Decision Game: Query vs Mutation?
@@ -876,7 +876,7 @@ GET /posts/2/comments → 3KB
 
 
 
-```graphql
+```
 # GraphQL (Feed screen):
 # POST /graphql
 
@@ -921,7 +921,7 @@ Interactive IDE for testing queries
 Access at: http://localhost:4000/graphql
 
 2. Apollo Client (Frontend)
-```js
+```
 import { ApolloClient, InMemoryCache, gql } from '@apollo/client';
 
 const client = new ApolloClient({
@@ -947,11 +947,11 @@ function UserProfile({ userId }) {
 ````
 
 3. GraphQL Code Generator
-```bash
+```
 # Generate TypeScript types from schema
 npm install -D @graphql-codegen/cli
 ```
-```yaml
+```
 # codegen.yml
 schema: http://localhost:4000/graphql
 generates:
@@ -965,7 +965,7 @@ generates:
 
 
 4. GraphQL Federation (Microservices)
-```graphql
+```
 # Service A (Users):
 type User @key(fields: "id") {
   id: ID!

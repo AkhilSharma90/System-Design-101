@@ -100,7 +100,7 @@ window.addEventListener('load', function() {
 
   console.log(`Page fully loaded in ${loadTime}ms`);
 });
-````
+````sql
 
 
 

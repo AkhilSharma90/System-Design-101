@@ -131,7 +131,7 @@ Lookup:     HashMap for O(1) access to any node
 
 Each primary node has a replica:
 
-```
+```javascript
 ┌──────────────────────────────────────────────────────────┐
 │  Normal operation (Node 1 = Primary, Node 5 = Replica)  │
 │                                                          │
@@ -194,7 +194,7 @@ Con:  Cache cold for newly written data
 
 A single key receives disproportionate traffic:
 
-```
+```yaml
 Problem: "product:featured_item" accessed 1M times/sec
          All on the same cache node (consistent hashing by key)
          → Single node overwhelmed while others are idle

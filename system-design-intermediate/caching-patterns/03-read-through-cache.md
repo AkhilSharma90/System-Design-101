@@ -101,7 +101,7 @@ The Reality Check:
 They look similar but have important differences!
 
 **Cache-Aside (Application manages):**
-```
+```javascript
 function getProduct(id):
     // Application writes ALL this logic ❌
     data = cache.get(id)
@@ -115,7 +115,7 @@ function getProduct(id):
 ```
 
 **Read-Through (Cache manages):**
-```
+```javascript
 function getProduct(id):
     // Simple! Cache handles everything ✓
     return cache.get(id)
@@ -156,7 +156,7 @@ Answer: B - You configure a "cache loader" function!
 
 Here's how Read-Through is set up:
 
-```
+```sql
 Step 1: Define your cache loader
 ----------------------------------------
 
@@ -293,7 +293,7 @@ Mental model: Like 100 people asking you "What time is it?" You don't check your
 
 Implementation pattern:
 
-```
+```python
 class ReadThroughCache:
     def get(self, key):
         # Check cache
@@ -369,7 +369,7 @@ Mental model: Read-Through is like a library that will fetch books for you (read
 
 The common approach with Read-Through:
 
-```
+```javascript
 // Reads: Simple! Let cache handle it ✓
 function getUser(userId):
     return userCache.get(userId)
@@ -391,7 +391,7 @@ The key insight: Read-Through only handles the READ path. You need to pair it wi
 
 Scenario: You have a product catalog that updates every hour. With basic Read-Through, users experience a slow request after data expires.
 
-```
+```yaml
 Timeline:
 
 9:00 AM: Product 42 cached (expires at 10:00 AM)
@@ -486,7 +486,7 @@ Which is better?
 The Analysis:
 
 **Option A: Synchronous (Load Everything)**
-```
+```yaml
 Pros:
 + Complete data on first request
 + Simpler logic
@@ -498,7 +498,7 @@ Cons:
 ```
 
 **Option B: Async/Lazy (Load Incrementally)**
-```
+```yaml
 Pros:
 + Faster initial response
 + Load only what's needed
@@ -513,7 +513,7 @@ Cons:
 
 The modern approach: **Layered Loading**
 
-```
+```javascript
 cache = new ReadThroughCache({
     loader: async (productId) => {
         // Load critical data immediately
@@ -563,7 +563,7 @@ Let's solidify your understanding with a side-by-side comparison:
 ```
 
 **Cache-Aside Code:**
-```
+```javascript
 // Endpoint 1
 function getProduct(id):
     data = cache.get(id)
@@ -584,7 +584,7 @@ function getUser(id):
 ```
 
 **Read-Through Code:**
-```
+```javascript
 // Configuration (once!)
 productCache = ReadThroughCache(
     loader = db.getProduct
@@ -715,7 +715,7 @@ Mental check: If you can answer these clearly, you've mastered Read-Through! If 
 
 📊 The Read-Through Cheat Sheet
 
-```
+```yaml
 Characteristics:
 - Pattern Type: Cache-managed read loading
 - Loading: Automatic via configured loader
@@ -753,7 +753,7 @@ Best for:
 
 📈 Code Comparison
 
-```
+```python
 Lines of code to cache 10 different entities:
 
 Cache-Aside:
@@ -792,7 +792,7 @@ def get_product(id):
 
 🔧 Popular Libraries
 
-```
+```yaml
 Java:
 - Spring Cache (@Cacheable annotations)
 - Caffeine (built-in loading cache)

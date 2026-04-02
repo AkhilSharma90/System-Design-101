@@ -122,7 +122,7 @@ lru.get('A');     // Cache: \[B, C, A\]
 lru.set('D', 4);
 
 // Cache:[C, A, D] (B evicted least recent)
-````
+````yaml
 
 **When LRU works best:**
 

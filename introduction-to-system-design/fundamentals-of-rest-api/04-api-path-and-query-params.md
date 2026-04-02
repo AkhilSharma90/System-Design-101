@@ -150,13 +150,13 @@ Think of query parameters as answering questions:
 
 **WHICH → Path Parameter**
 
-```bash
+```
 
  GET /books/12345          ← WHICH book? #12345
 
  ```
 
-```bash
+```
 
  GET /users/john/orders/99 ← WHICH user's WHICH order?
  ```
@@ -164,7 +164,7 @@ Think of query parameters as answering questions:
 
 **HOW → Query Parameter**
 
-```bash
+```
  GET books?format=pdf\&lang=spanish
 
  ← HOW do I want books? PDF, Spanish
@@ -180,7 +180,7 @@ Imagine you're building a movie database API. A client wants to get reviews for 
 
 **Bad Design (mixing everything in query):**
 
-```bash
+```
 
 GET /reviews?movie\_id=123\&rating=5\&sort=date
 
@@ -190,7 +190,7 @@ This works, but `movie_id` should be in the path because it identifies WHICH res
 
 **Good Design:**
 
-```bash
+```
 
  GET /movies/123/reviews?rating=5\&sort=date
 
@@ -205,7 +205,7 @@ Let's say you're building a blog platform. Walk through this with me:
 
 **Scenario 1: Get a specific post**
 
-```bash
+```
  GET /posts/456
  ```
 
@@ -214,7 +214,7 @@ Let's say you're building a blog platform. Walk through this with me:
 **Scenario 2: Get all posts by an author**
 
  Option A:
- ```bash
+ ```
 
  GET /authors/john/posts
 
@@ -238,7 +238,7 @@ Most APIs choose Option A for cleaner structure.
 
 **Scenario 3: Search posts with multiple filters**
 
-```bash
+```
  GET /posts?author=john\&category=tech\&status=published\&limit=10
  ```
 
@@ -257,7 +257,7 @@ Here, EVERYTHING is a filter:
 
 Let’s see a really practical example. Imagine you're building Amazon's API. A user is searching for laptops:
 
-```bash
+```
  GET products?category=laptops&brand=dell&min_price=500&max_price=1500&ram=16GB&sort=price_low_to_high&page=2&limit=20
 
  ```
@@ -279,18 +279,18 @@ Notice how ALL of these are optional\! If the user removes any parameter, the re
 
 **Mistake 1: Putting everything in query params**
 
-```bash
+```
 GET /api?resource=users\&id=42
 ```
 Good:
-```bash
+```
 GET /users/42
 ```
 
 If it identifies the resource, put it in the path\!
 
 **Mistake 2: Putting optional filters in the path**
-```bash
+```
 
  Bad:
 GET /users/active/admin/seattle
@@ -303,7 +303,7 @@ Filters and options belong in query params\!
 
 **Mistake 3: Making paths too deep**
 
-```bash
+```
 
  Bad:
  GET/companies/123/departments/456/teams/789/employees/111/tasks/222

@@ -305,7 +305,7 @@ What's happening here?
 
 The Consistency Window Problem:
 
-```
+```yaml
 Timeline:
 
 T0: User writes new data
@@ -385,7 +385,7 @@ Which option is best?
 The Analysis:
 
 **Option A: Time-Based**
-```
+```yaml
 Pros:
 + Predictable database load
 + Bounded delay (max 5 seconds)
@@ -402,7 +402,7 @@ High traffic: Batches of 10,000 writes every 5 seconds!
 ```
 
 **Option B: Size-Based**
-```
+```yaml
 Pros:
 + Consistent batch size (efficient)
 + Adapts to traffic volume
@@ -418,7 +418,7 @@ Low traffic: Batches of 1000 every 2 hours! ✗
 ```
 
 **Option C: Hybrid** ✓ BEST CHOICE!
-```
+```yaml
 Pros:
 + Benefits of both approaches
 + Bounded delay (max 5 seconds)
@@ -649,7 +649,7 @@ Mental check: If you can answer these clearly, you've mastered Write-Behind! If 
 
 📊 The Write-Behind Cheat Sheet
 
-```
+```yaml
 Characteristics:
 - Pattern Type: Asynchronous cache-to-database write
 - Loading: Usually lazy (on-demand)

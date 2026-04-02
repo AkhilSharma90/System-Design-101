@@ -38,7 +38,7 @@ Imagine this scenario: You need to know your current bank balance, but you also 
 
 **Current balance calculation:**
 
-```
+```bash
 $1,000 - $200 + $500 - $50 - $8 = $1,542 ✓
 ```
 

@@ -168,6 +168,14 @@ Result:
   No 400M-write explosions
 ```
 
+### Fan-Out Strategy Comparison
+
+| Strategy | Write cost | Read cost | Freshness | Celebrity-safe | Used by |
+|----------|-----------|-----------|-----------|---------------|---------|
+| Fan-out on Write (Push) | High (N writes per post) | Very low (read from cache) | Pre-computed | No (400M writes per celebrity post) | Twitter (early) |
+| Fan-out on Read (Pull) | Low (1 write) | High (merge N sources) | Always fresh | Yes | — |
+| Hybrid | Medium | Low-Medium | Good | Yes | Facebook, Instagram |
+
 ---
 
 ## Step 5: Architecture

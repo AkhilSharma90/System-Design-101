@@ -489,6 +489,22 @@ Each service owns its data!
 
 ---
 
+## Monolith vs Microservices Comparison
+
+| Dimension | Monolith | Microservices |
+|-----------|----------|---------------|
+| Deployment | One unit, all or nothing | Independent per service |
+| Scaling | Scale entire app | Scale individual services |
+| Development speed | Fast early on | Faster at scale with many teams |
+| Debugging | Easy (single process, one log) | Hard (distributed tracing needed) |
+| Data management | One database | Database per service |
+| Team structure | One team can own everything | One team per service |
+| Failure blast radius | One bug can crash everything | Failures are isolated |
+| Operational complexity | Low | High (networking, service discovery, monitoring) |
+| Best for | Startups, small teams, MVPs | Large orgs, independent teams, varied scaling needs |
+
+---
+
 ## Key Takeaways
 
 1. **Monoliths are simpler to develop, deploy, and debug** — the right choice for most early-stage products and small teams

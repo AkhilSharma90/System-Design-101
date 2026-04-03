@@ -464,6 +464,18 @@ Now that you understand the fundamentals, let's dive into some crucial concepts 
 
 ---
 
+## Authentication Methods Comparison
+
+| Method | Credentials sent | Server state | Scalability | Logout | Best for |
+|--------|-----------------|-------------|-------------|--------|----------|
+| Basic Auth | Every request | None | High | Not possible | Simple internal tools |
+| Session-Based | Once (login) | Session store | Low (shared state) | Easy (delete session) | Traditional web apps |
+| Token (JWT) | Once (login) | None (stateless) | High | Hard (token still valid until expiry) | APIs, mobile apps, SPAs |
+| OAuth 2.0 | Delegated | Authorization server | High | Revoke token | Third-party integrations |
+| API Key | Every request | None | High | Revoke key | Server-to-server, public APIs |
+
+---
+
 ## Key Takeaways
 
 1. **API keys identify the calling application** — simple but not suitable for user authentication, easily leaked in client-side code

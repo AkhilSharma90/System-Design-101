@@ -406,6 +406,16 @@ Step 4: Shutdown
 
 ---
 
+## Versioning Methods Comparison
+
+| Method | Example | Discoverability | URL cleanliness | Browser testable | Used by |
+|--------|---------|----------------|-----------------|-----------------|---------|
+| URL path | `/v2/users` | High | Low (version in URL) | Yes | Stripe, GitHub, Google |
+| Header | `Accept: vnd.api.v2+json` | Low | High | No | GitHub (also), Azure |
+| Query param | `/users?version=2` | Medium | Medium | Yes | Amazon, Netflix |
+
+---
+
 ## Key Takeaways
 
 1. **API versioning lets you evolve your API without breaking existing clients** — critical for public APIs with many consumers

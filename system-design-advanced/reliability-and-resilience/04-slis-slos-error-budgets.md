@@ -924,6 +924,14 @@ synthetic_check:
 - Can't measure user-specific features (auth, personalization)
 - Creates artificial load
 
+### Measurement Approaches Comparison
+
+| Approach | Sees real user experience | Complete coverage | Detects issues proactively | Best for |
+|----------|--------------------------|-------------------|---------------------------|----------|
+| Client-side (RUM) | Yes | No (only successful loads) | No | User-facing latency, CWV |
+| Server-side | No (misses network/render) | Yes (all requests) | No | API reliability, error rates |
+| Synthetic monitoring | No (artificial) | No (sampled) | Yes | Uptime monitoring, multi-region |
+
 ### Recommended: Multi-layer measurement
 
 ```text

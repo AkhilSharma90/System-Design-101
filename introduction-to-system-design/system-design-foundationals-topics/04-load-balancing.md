@@ -542,6 +542,23 @@ MODERN LOAD BALANCER CAPABILITIES
 
 6️⃣ Essential for horizontal scaling
 
-🎯 One sentence: "Load balancers are traffic directors
-    that ensure no server gets overwhelmed and every
-    request reaches a healthy server"
+## Load Balancing Algorithms Comparison
+
+| Algorithm | How it works | Best for | Drawback |
+|-----------|-------------|----------|----------|
+| Round Robin | Rotate through servers sequentially | Equal servers, stateless requests | Ignores server load |
+| Least Connections | Route to server with fewest active connections | Varying request durations | Slightly more overhead |
+| Weighted Round Robin | Rotate with proportional weight per server | Mixed hardware capabilities | Must configure weights manually |
+| IP Hash | Hash client IP to pick server | Session stickiness without cookies | Uneven if IP distribution is skewed |
+| Least Response Time | Route to fastest responding server | Latency-sensitive applications | Requires constant health monitoring |
+| Random | Pick a server randomly | Simple systems with equal servers | No intelligence at all |
+
+## Layer 4 vs Layer 7
+
+| Feature | Layer 4 (Transport) | Layer 7 (Application) |
+|---------|--------------------|-----------------------|
+| Operates on | TCP/UDP packets | HTTP requests |
+| Speed | Faster (no content inspection) | Slower (reads headers/body) |
+| Routing decisions | IP + port only | URL path, headers, cookies, body |
+| Use case | Raw throughput, non-HTTP | Content-based routing, API gateways |
+| Example | AWS NLB | AWS ALB, Nginx, HAProxy |

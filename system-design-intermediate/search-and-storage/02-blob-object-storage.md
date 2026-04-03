@@ -34,6 +34,8 @@ Object storage treats data as discrete objects, each with a key, value (the bina
 └────────────────────────────────────────────────────────┘
 ```
 
+> **Pause and think:** If you need to store 10 million user-uploaded images, would you put them in your PostgreSQL database, on a file system, or somewhere else? What trade-offs are you making?
+
 ---
 
 ## Object Storage vs File System vs Block Storage

@@ -33,6 +33,8 @@ Design a system like TinyURL or Bit.ly that converts long URLs into short aliase
 
 ---
 
+> **Pause and think:** If you need to generate 100 million unique short URLs, how many characters do you need? What character set would you use and why?
+
 ## Step 2: Back-of-Envelope Estimation
 
 ```yaml

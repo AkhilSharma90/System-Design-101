@@ -94,6 +94,8 @@ Client caches this mapping locally → routes directly to correct node
 
 ---
 
+> **Pause and think:** Your cache is full and a new write arrives. How do you decide which existing item to remove? What if you remove something that's about to be requested again?
+
 ## Step 5: Eviction Policies
 
 When the cache is full, what gets removed?

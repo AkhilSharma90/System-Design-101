@@ -89,6 +89,8 @@ Supporting components:
 
 ---
 
+> **Pause and think:** If your crawler fetches 100 pages per second from the same website, what happens? How do you crawl fast globally while being polite to each individual website?
+
 ## Step 4: URL Frontier (The Core)
 
 The URL Frontier manages the queue of URLs to be crawled. It must solve two problems simultaneously:
@@ -257,6 +259,8 @@ Robots.txt cache (Redis):
 ```
 
 ---
+
+> **Pause and think:** A website generates calendar pages for every date from year 1 to year 9999 — all with unique URLs. How does your crawler avoid getting stuck crawling millions of near-identical pages?
 
 ## Step 9: Spider Traps
 

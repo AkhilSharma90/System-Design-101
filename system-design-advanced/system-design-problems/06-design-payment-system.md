@@ -47,6 +47,8 @@ Latency target: < 2 seconds for payment completion (user-facing)
 
 ---
 
+> **Pause and think:** A customer clicks "Pay" and their network times out. They click "Pay" again. Without special handling, what happens? How do you prevent charging them twice?
+
 ## Step 3: Key Concept — Idempotency
 
 This is the most critical concept in payment systems. A payment request may be retried due to:
@@ -231,6 +233,8 @@ Step 5: Async side effects (from Kafka events)
 ```
 
 ---
+
+> **Pause and think:** Your server calls Stripe, the card is charged successfully, but your server crashes before saving the result to your database. The customer retries. How do you avoid charging them again?
 
 ## Step 7: Handling Failures
 

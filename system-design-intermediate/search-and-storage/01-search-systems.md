@@ -28,6 +28,8 @@ SELECT * FROM articles WHERE body LIKE '%system design%';
 
 Full-text search requires purpose-built data structures.
 
+> **Pause and think:** If your database has 100 million articles and a user searches for "distributed systems", how would you find the relevant articles without scanning every row?
+
 ---
 
 ## The Inverted Index

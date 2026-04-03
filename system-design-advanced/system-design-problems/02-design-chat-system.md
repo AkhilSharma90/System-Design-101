@@ -36,6 +36,8 @@ Design a real-time messaging system supporting 1:1 and group chat, online presen
 
 ---
 
+> **Pause and think:** Why can't we use regular HTTP request-response for chat messages? What happens if a user has the app open and a new message arrives?
+
 ## Step 2: Back-of-Envelope Estimation
 
 ```

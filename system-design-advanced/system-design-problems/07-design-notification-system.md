@@ -191,6 +191,8 @@ POST https://api.twilio.com/2010-04-01/Accounts/{AccountSid}/Messages
 
 ---
 
+> **Pause and think:** If your Kafka consumer processes a "payment succeeded" event twice due to at-least-once delivery, the user gets two push notifications saying "Payment received." How do you prevent this?
+
 ### Deep Dive 2: Deduplication
 
 Prevent sending the same notification twice:

@@ -103,6 +103,8 @@ Large video files (multi-GB) must be uploaded in chunks for reliability:
 
 ---
 
+> **Pause and think:** A user uploads a 4K video. Why can't you just serve that original file to everyone? What happens when someone on a 3G connection tries to watch it?
+
 ## Step 5: Video Transcoding Pipeline
 
 Raw uploaded video → multiple formats and resolutions for different devices and bandwidths.

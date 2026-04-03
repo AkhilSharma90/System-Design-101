@@ -31,6 +31,8 @@ São Paulo user ────  20ms ───▶ São Paulo PoP  ← 6× faster
 LA user       ────   8ms ────▶ LA PoP         ← 8× faster
 ```
 
+> **Pause and think:** If your website serves users globally but all your servers are in Virginia, what happens to the experience for a user in Tokyo? What if a popular image is requested 1 million times per day?
+
 ---
 
 ## How CDNs Work

@@ -355,6 +355,18 @@ COMMIT;
 
 ---
 
+## Common Mistakes
+
+| Mistake | Why it's wrong | Correct approach |
+|---------|---------------|-----------------|
+| Indexing every column | Slows down writes and wastes storage | Only index columns used in WHERE, JOIN, and ORDER BY |
+| Wrong column order in composite indexes | Index isn't used for queries that don't match the leftmost prefix | Put the most selective, most queried column first |
+| Not using EXPLAIN | Guessing whether queries use indexes | Always verify with EXPLAIN ANALYZE before and after adding indexes |
+| Indexing low-cardinality columns | Boolean or enum columns have too few distinct values for an index to help | Indexes work best on columns with many distinct values |
+| Never removing unused indexes | Every index slows writes | Audit and drop indexes that queries no longer use |
+
+---
+
 ## Key Takeaways
 
 1. **Indexes speed up reads dramatically at the cost of slower writes** — like a book's index, they let the database jump directly to relevant rows

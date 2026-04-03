@@ -615,9 +615,6 @@ Worth it for debugging? YES! ✓
 
 ---
 
-
----
-
 ## Key Takeaways
 
 1. **Structured logging (JSON) is essential for searchability** — key-value pairs are parseable by log aggregation tools, free-text is not

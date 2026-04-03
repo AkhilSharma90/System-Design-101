@@ -314,6 +314,18 @@ All 1000 query database at once
 
 ---
 
+## Common Mistakes
+
+| Mistake | Why it's wrong | Correct approach |
+|---------|---------------|-----------------|
+| Caching everything | Wastes memory on rarely accessed data | Cache only hot, frequently read data |
+| No TTL on cached items | Stale data served indefinitely | Always set a TTL; shorter for volatile data |
+| Ignoring cache stampede | Thousands of requests hit DB when cache expires | Use locking, stale-while-revalidate, or jittered TTLs |
+| Caching user-specific data globally | Users see each other's data | Include user ID in the cache key |
+| Not monitoring hit rate | No visibility into cache effectiveness | Track hit/miss ratio; investigate drops immediately |
+
+---
+
 ## Key Takeaways
 
 1. **Caching stores frequently accessed data in fast, nearby storage** — reducing latency from seconds to milliseconds

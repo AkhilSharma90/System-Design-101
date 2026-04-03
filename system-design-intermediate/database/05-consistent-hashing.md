@@ -190,6 +190,17 @@ CDNs use consistent hashing to route requests for the same URL to the same edge 
 
 ---
 
+## Common Mistakes
+
+| Mistake | Why it's wrong | Correct approach |
+|---------|---------------|-----------------|
+| Using modulo hashing for distributed systems | Adding one server rehashes 75%+ of keys | Use consistent hashing — only 1/N keys move |
+| Too few virtual nodes | Uneven distribution across physical servers | Use 100-256 virtual nodes per server (Cassandra default: 256) |
+| Not accounting for heterogeneous servers | A powerful server gets the same load as a weak one | Assign more virtual nodes to servers with more capacity |
+| Ignoring replication in ring design | Data on a failed node is lost | Replicate to the next N nodes clockwise on the ring |
+
+---
+
 ## Key Takeaways
 
 1. **Naive modulo hashing moves ~75% of keys** when you add one server — catastrophic for caches

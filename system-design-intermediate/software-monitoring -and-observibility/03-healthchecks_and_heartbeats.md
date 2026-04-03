@@ -412,9 +412,6 @@ Tool: PagerDuty, OpsGenie
 
 ---
 
-
----
-
 ## Key Takeaways
 
 1. **Health checks verify a service is running and can serve requests** — load balancers and orchestrators use them to route traffic

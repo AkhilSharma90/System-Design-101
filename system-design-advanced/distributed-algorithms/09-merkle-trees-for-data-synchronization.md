@@ -1300,9 +1300,6 @@ If you could only implement *one* improvement to make Merkle-based repair safer 
 
 ---
 
-
----
-
 ## Key Takeaways
 
 1. **Merkle trees efficiently detect differences between data replicas** — by comparing tree hashes from root to leaves, narrowing down to specific divergent blocks

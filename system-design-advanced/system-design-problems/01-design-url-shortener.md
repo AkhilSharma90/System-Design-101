@@ -324,6 +324,17 @@ Cold URL (visited rarely):        May not be cached
 
 ---
 
+## Common Mistakes
+
+| Mistake | Why it's wrong | Correct approach |
+|---------|---------------|-----------------|
+| Auto-incrementing IDs as short codes | Predictable, enumerable, and reveals volume | Use a key generation service (KGS) or base62-encoded random IDs |
+| Not normalizing URLs before deduplication | Same page creates multiple short URLs | Normalize (lowercase, sort params, strip fragments) before storing |
+| Using 301 redirects without considering analytics | Browser caches the redirect, your server never sees repeat visits | Use 302 if you need click analytics, 301 for pure performance |
+| No expiration strategy | Database grows forever with abandoned URLs | Implement lazy + active expiration to reclaim short codes |
+
+---
+
 ## Key Takeaways
 
 1. **The redirect path is the hottest path** — optimize it relentlessly (Redis cache + CDN)

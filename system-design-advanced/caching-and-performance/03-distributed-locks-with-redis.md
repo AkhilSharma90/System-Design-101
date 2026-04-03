@@ -1347,9 +1347,6 @@ If you remember only one thing:
 
 ---
 
-
----
-
 ## Key Takeaways
 
 1. **Distributed locks ensure only one process executes a critical section across multiple nodes** — essential for preventing double-processing in distributed systems

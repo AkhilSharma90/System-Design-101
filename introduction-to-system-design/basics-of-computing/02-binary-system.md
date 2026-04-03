@@ -503,9 +503,6 @@ This entire article you're reading:
 
 ---
 
-
----
-
 ## Key Takeaways
 
 1. **Computers use binary because transistors have two states** — on (1) and off (0), making binary the natural number system for hardware

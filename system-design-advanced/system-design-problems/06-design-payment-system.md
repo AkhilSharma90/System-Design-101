@@ -361,6 +361,18 @@ Merchants need asynchronous notification of payment events:
 
 ---
 
+## Common Mistakes
+
+| Mistake | Why it's wrong | Correct approach |
+|---------|---------------|-----------------|
+| No idempotency keys | Network retries create duplicate charges | Every write endpoint must accept and enforce an idempotency key |
+| Storing card numbers in your database | Violates PCI DSS, massive liability | Let the PSP (Stripe, Braintree) handle card data; store only tokens |
+| Single-entry bookkeeping | Money can be created or destroyed without detection | Use double-entry bookkeeping — every debit has a corresponding credit |
+| No reconciliation process | Discrepancies between your records and PSP go undetected | Run daily reconciliation comparing your ledger against PSP reports |
+| Synchronous webhook delivery | Merchant server is down → your payment flow blocks | Deliver webhooks asynchronously with exponential backoff retries |
+
+---
+
 ## Key Takeaways
 
 1. **Idempotency is the most important concept** — use idempotency keys on every write operation

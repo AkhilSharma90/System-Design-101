@@ -757,9 +757,6 @@ Savings: $1,325/month (85% savings!)
 
 ---
 
-
----
-
 ## Key Takeaways
 
 1. **Data lives in a hierarchy from fast/expensive to slow/cheap** — registers, cache, RAM, SSD, HDD, tape, cloud storage

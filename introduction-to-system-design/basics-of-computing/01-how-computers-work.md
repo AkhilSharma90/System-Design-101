@@ -341,9 +341,6 @@ F → 6 (Motherboard) - The circuit board connecting everything
 
 ---
 
-
----
-
 ## Key Takeaways
 
 1. **Computers process everything as binary (0s and 1s)** — every image, video, and text is ultimately a sequence of electrical signals

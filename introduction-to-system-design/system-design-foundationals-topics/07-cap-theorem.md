@@ -225,6 +225,17 @@ Can stale reads cause financial loss or data corruption?
 
 ---
 
+## Common Mistakes
+
+| Mistake | Why it's wrong | Correct approach |
+|---------|---------------|-----------------|
+| "We'll build a CA system" | CA doesn't exist in distributed systems — partitions are inevitable | Accept that you must choose C or A during partitions |
+| Choosing CP for everything | Unnecessary consistency kills performance and availability | Match consistency to the use case — social feeds don't need CP |
+| Ignoring PACELC | CAP only covers partition behavior, not normal operation | Consider latency vs consistency trade-offs during normal operation too |
+| Confusing eventual consistency with data loss | Eventually consistent doesn't mean data disappears | All writes are persisted; they just take time to propagate to all replicas |
+
+---
+
 ## Key Takeaways
 
 1. **Partition tolerance is mandatory** in real distributed systems — choose C or A, not C+A+P

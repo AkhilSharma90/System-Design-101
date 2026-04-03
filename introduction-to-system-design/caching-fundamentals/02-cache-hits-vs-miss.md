@@ -367,9 +367,6 @@ Key metrics to track:
 
 ---
 
-
----
-
 ## Key Takeaways
 
 1. **Cache hit ratio is the key metric for cache effectiveness** — aim for 80%+ hit rate in production systems

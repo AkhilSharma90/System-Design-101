@@ -292,9 +292,6 @@ Use for: Quick setup needed
 
 ---
 
-
----
-
 ## Key Takeaways
 
 1. **Observability is the ability to understand system behavior from external outputs** — metrics, logs, and traces are the three pillars

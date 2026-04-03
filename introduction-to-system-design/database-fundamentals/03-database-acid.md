@@ -305,9 +305,6 @@ Protected by:
 
 ---
 
-
----
-
 ## Key Takeaways
 
 1. **ACID guarantees data integrity in transactions** — Atomicity (all or nothing), Consistency (valid state), Isolation (concurrent safety), Durability (permanent writes)

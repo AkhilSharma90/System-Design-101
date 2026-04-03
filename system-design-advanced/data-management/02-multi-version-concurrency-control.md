@@ -1244,9 +1244,6 @@ A good MVCC design is not “turn it on.” It’s a set of explicit choices abo
 
 ---
 
-
----
-
 ## Key Takeaways
 
 1. **MVCC keeps multiple versions of data to avoid locking readers** — reads never block writes and writes never block reads

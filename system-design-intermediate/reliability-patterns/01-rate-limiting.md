@@ -288,6 +288,18 @@ Content-Type: application/json
 
 ---
 
+## Common Mistakes
+
+| Mistake | Why it's wrong | Correct approach |
+|---------|---------------|-----------------|
+| Rate limiting only at the application level | Requests still reach your servers and consume resources | Implement at CDN/API gateway level too — block abuse before it hits your app |
+| Using fixed-window counters | 2x burst possible at window boundaries | Use sliding window counter or token bucket for smoother limiting |
+| Not returning Retry-After headers | Clients don't know when to retry, leading to thundering herd on window reset | Always include Retry-After in 429 responses |
+| Same limits for all endpoints | Expensive endpoints get hammered at the same rate as cheap ones | Set per-endpoint limits — /search costs more than /health |
+| Not whitelisting internal services | Your own services get rate limited during high traffic | Separate rate limit policies for internal vs external traffic |
+
+---
+
 ## Key Takeaways
 
 1. **Rate limiting protects systems from abuse, runaway clients, and traffic spikes** — essential for any public API

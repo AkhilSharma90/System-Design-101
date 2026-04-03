@@ -327,9 +327,6 @@ Ask yourself:
 
 ---
 
-
----
-
 ## Key Takeaways
 
 1. **A single point of failure (SPOF) is any component whose failure brings down the entire system** — databases, load balancers, and DNS are common SPOFs

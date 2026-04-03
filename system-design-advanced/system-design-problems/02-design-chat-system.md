@@ -357,6 +357,17 @@ Hot conversation problem:
 
 ---
 
+## Common Mistakes
+
+| Mistake | Why it's wrong | Correct approach |
+|---------|---------------|-----------------|
+| Using HTTP polling for real-time messages | Wastes bandwidth and adds latency | Use WebSockets for persistent, bidirectional connections |
+| Storing messages in a relational DB without partitioning | Single table becomes a bottleneck at scale | Partition by conversation_id (Cassandra is ideal for this pattern) |
+| No message deduplication | Network retries deliver the same message twice | Use client-generated message IDs with UNIQUE constraints |
+| Fan-out on write for large groups | A message to a 10K-member group triggers 10K writes | Use fan-out on read for large groups, fan-out on write for small ones |
+
+---
+
 ## Key Takeaways
 
 1. **WebSockets provide persistent bidirectional connections** — essential for < 100ms message delivery

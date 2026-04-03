@@ -1170,9 +1170,6 @@ export async function connectWithBackoff(host, port, {baseMs=100, capMs=2000, ma
 
 ---
 
-
----
-
 ## Key Takeaways
 
 1. **Thundering herd occurs when a cache entry expires and hundreds of concurrent requests hit the database simultaneously** — causing a load spike that can cascade into an outage

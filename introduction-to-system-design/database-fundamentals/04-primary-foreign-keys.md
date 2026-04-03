@@ -215,9 +215,6 @@ CS101 has these students:
 
 ---
 
-
----
-
 ## Key Takeaways
 
 1. **Primary keys uniquely identify each row in a table** — must be unique, non-null, and ideally immutable

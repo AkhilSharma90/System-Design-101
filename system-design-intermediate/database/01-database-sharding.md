@@ -793,6 +793,18 @@ Real-World Case Studies:
 
 ---
 
+## Common Mistakes
+
+| Mistake | Why it's wrong | Correct approach |
+|---------|---------------|-----------------|
+| Sharding too early | Adds massive complexity before it's needed | Exhaust vertical scaling, read replicas, and caching first |
+| Choosing the wrong shard key | Causes hotspots or makes common queries cross-shard | Analyze query patterns and data distribution before choosing |
+| Not planning for resharding | Adding shards later requires painful data migration | Design for growth — use consistent hashing or a shard mapping table |
+| Cross-shard joins in application code | Extremely slow and error-prone | Denormalize data so related records live on the same shard |
+| Ignoring shard-local indexes | Queries without shard key hit every shard (scatter-gather) | Always include the shard key in queries when possible |
+
+---
+
 ## Key Takeaways
 
 1. **Sharding splits data horizontally across multiple databases** — each shard holds a subset of the data and operates independently

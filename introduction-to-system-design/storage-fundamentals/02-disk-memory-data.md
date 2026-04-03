@@ -490,9 +490,6 @@ The Memory/Storage Pyramid (**we saw similar diagram in our computer fundamental
 
 ---
 
-
----
-
 ## Key Takeaways
 
 1. **RAM is 1,000x faster than SSD for random access** — but RAM is volatile and expensive ($3-5/GB vs $0.10/GB for SSD)

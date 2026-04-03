@@ -195,6 +195,20 @@ Cassandra schema:
      └──────────────┘      └────────────────┘
 ```
 
+```mermaid
+graph TD
+    Users((Users)) --> LB[Load Balancer L7]
+    LB --> CS1[Chat Server 1<br/>WebSocket]
+    LB --> CS2[Chat Server 2<br/>WebSocket]
+    LB --> CS3[Chat Server 3<br/>WebSocket]
+    CS1 & CS2 & CS3 --> Kafka[Kafka<br/>Message Backbone]
+    Kafka --> MS[Message Service]
+    Kafka --> NS[Notification Service<br/>APNs / FCM]
+    MS --> Cassandra[(Cassandra<br/>Message Store)]
+    CS1 & CS2 & CS3 --> Redis[(Redis<br/>Presence + Sessions)]
+    Users --> S3[S3 + CDN<br/>Media Storage]
+```
+
 ---
 
 ## Step 7: Deep Dives

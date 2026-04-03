@@ -87,6 +87,19 @@ Supporting components:
   Content deduplication (SimHash)
 ```
 
+```mermaid
+graph TD
+    UF[URL Frontier<br/>Priority + Politeness Queues] --> DNS[DNS Resolver<br/>Cached Lookups]
+    DNS --> Fetch[Fetcher<br/>HTTP Workers Pool]
+    Fetch --> Parse[Parser<br/>Extract Links + Metadata]
+    Parse --> Dedup{URL Seen?<br/>Bloom Filter}
+    Parse --> Store[(Content Store<br/>S3 / HDFS)]
+    Dedup -- No --> UF
+    Dedup -- Yes --> Discard[Discard]
+    Robots[(robots.txt Cache)] -.-> Fetch
+    SimHash[SimHash<br/>Content Dedup] -.-> Store
+```
+
 ---
 
 > **Pause and think:** If your crawler fetches 100 pages per second from the same website, what happens? How do you crawl fast globally while being polite to each individual website?

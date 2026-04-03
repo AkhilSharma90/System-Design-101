@@ -81,6 +81,20 @@ Event Sources                   Notification System
                   └──────────────┘   └──────────────┘   └──────────────┘
 ```
 
+```mermaid
+graph TD
+    PS[Payment Service] --> API[Notification API]
+    CS[Chat Service] --> API
+    Cron[Cron Jobs] --> API
+    API --> NP[Notification Processor<br/>Validate · Dedup · Rate Limit · Template]
+    NP --> PQ[Push Queue]
+    NP --> EQ[Email Queue]
+    NP --> SQ[SMS Queue]
+    PQ --> PW[Push Workers<br/>APNs / FCM]
+    EQ --> EW[Email Workers<br/>SendGrid / SES]
+    SQ --> SW[SMS Workers<br/>Twilio / Vonage]
+```
+
 ---
 
 ## Step 4: Data Model

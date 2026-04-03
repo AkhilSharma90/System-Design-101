@@ -75,6 +75,22 @@ User ──▶ Upload Service                   User ──▶ CDN Edge
                                           User's player
 ```
 
+```mermaid
+graph LR
+    subgraph Upload Path
+        U1[User] --> US[Upload Service]
+        US --> S3Raw[(S3 Raw Video)]
+        S3Raw --> Kafka[Kafka]
+        Kafka --> TW[Transcoding Workers]
+        TW --> S3T[(S3 Transcoded)]
+    end
+    subgraph Watch Path
+        U2[User] --> CDN[CDN Edge]
+        CDN -- miss --> Stream[Streaming Service]
+        Stream --> S3T
+    end
+```
+
 ---
 
 ## Step 4: Video Upload Pipeline

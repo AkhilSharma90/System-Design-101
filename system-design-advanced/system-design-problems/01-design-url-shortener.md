@@ -152,6 +152,30 @@ CREATE TABLE clicks (
                     └─────────────────────────┘
 ```
 
+```mermaid
+graph TD
+    Users((Users))
+    LB[Load Balancer]
+    S1[App Server 1]
+    S2[App Server 2]
+    S3[App Server 3]
+    Cache[(Redis Cache)]
+    DB[(PostgreSQL)]
+    Kafka[Kafka Analytics Stream]
+
+    Users --> LB
+    LB --> S1
+    LB --> S2
+    LB --> S3
+    S1 --> Cache
+    S2 --> Cache
+    S3 --> Cache
+    Cache -- cache miss --> DB
+    S1 --> Kafka
+    S2 --> Kafka
+    S3 --> Kafka
+```
+
 ---
 
 ## Step 6: Deep Dives

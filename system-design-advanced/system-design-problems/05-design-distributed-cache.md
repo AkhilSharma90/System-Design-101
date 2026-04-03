@@ -64,6 +64,19 @@ Network:     Avg value size 1 KB → 1M × 1 KB = 1 GB/sec bandwidth (distribute
 └─────────────────────────────────────────────────────────────┘
 ```
 
+```mermaid
+graph TD
+    Client((Client)) --> Router[Hash Slot Router<br/>CRC16 key mod 16384]
+    Router --> N1[Node 1<br/>Slots 0-4095<br/>+ Replica of Node 3]
+    Router --> N2[Node 2<br/>Slots 4096-8191<br/>+ Replica of Node 4]
+    Router --> N3[Node 3<br/>Slots 8192-12287<br/>+ Replica of Node 1]
+    Router --> N4[Node 4<br/>Slots 12288-16383<br/>+ Replica of Node 2]
+    N1 -.-> N3
+    N2 -.-> N4
+    N3 -.-> N1
+    N4 -.-> N2
+```
+
 ---
 
 ## Step 4: Data Partitioning

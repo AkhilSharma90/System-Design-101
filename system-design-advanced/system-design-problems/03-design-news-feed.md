@@ -207,6 +207,20 @@ Result:
                    └─────────────┘
 ```
 
+```mermaid
+graph TD
+    Users((Users)) --> GW[API Gateway / Load Balancer]
+    GW --> PS[Post Service]
+    GW --> FS[Feed Service]
+    PS --> PostDB[(Posts DB<br/>PostgreSQL)]
+    PS --> Kafka[Kafka<br/>post.created]
+    Kafka --> FOW[Fan-Out Workers]
+    FOW --> FeedCache[(Feed Cache<br/>Redis)]
+    FOW --> FollowDB[(Follow Graph DB)]
+    FS --> FeedCache
+    FeedCache -- miss --> PostDB
+```
+
 ---
 
 ## Step 6: Deep Dives

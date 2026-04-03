@@ -162,6 +162,17 @@ Elasticsearch is the most widely deployed search engine. It wraps Apache Lucene 
 - **Replica** — copy of a shard for high availability and read throughput
 - **Node** — single Elasticsearch server instance
 
+```mermaid
+graph LR
+    Client((Client)) --> Coord[Coordinator Node]
+    Coord --> S0[Shard 0 Primary<br/>Node A]
+    Coord --> S1[Shard 1 Primary<br/>Node B]
+    Coord --> S2[Shard 2 Primary<br/>Node A]
+    S0 -.-> S0R[Shard 0 Replica<br/>Node B]
+    S1 -.-> S1R[Shard 1 Replica<br/>Node A]
+    S2 -.-> S2R[Shard 2 Replica<br/>Node B]
+```
+
 ---
 
 ## Write Path (Indexing)

@@ -191,6 +191,20 @@ Customer                    Merchant
   └──────────────────┘
 ```
 
+```mermaid
+graph TD
+    Customer((Customer)) --> GW[API Gateway<br/>Auth, Rate Limit, TLS]
+    Merchant((Merchant)) --> GW
+    GW --> PS[Payment Service<br/>Validate → Idempotency → Create → Ledger]
+    PS --> PSP[PSP Service<br/>Stripe / Braintree]
+    PS --> Fraud[Fraud Detection]
+    PS --> Ledger[Ledger Service]
+    PSP --> CardNetwork[Card Network<br/>Visa / Mastercard]
+    PS --> Kafka[Kafka<br/>payment.succeeded]
+    Kafka --> WH[Webhook Service<br/>Notify Merchants]
+    Kafka --> Email[Email Confirmation]
+```
+
 ---
 
 ## Step 6: Payment Flow

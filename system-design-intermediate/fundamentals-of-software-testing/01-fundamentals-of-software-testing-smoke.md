@@ -65,7 +65,7 @@ Just like testing a car requires multiple approaches, software testing has diffe
 
 "Can it survive disasters?"
 
-**Key Insight:** No single test type is enough! You need a testing strategy that combines different approaches at different stages!
+**Key insight:** No single test type is enough! You need a testing strategy that combines different approaches at different stages!
 
 ---
 

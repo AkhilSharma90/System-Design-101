@@ -23,7 +23,7 @@ Just like those two-way security checkpoints, proxy servers can face two differe
 
 **Forward Proxy:** Sits in front of clients (users), intermediary for outbound requests **Reverse Proxy:** Sits in front of servers, intermediary for inbound requests
 
-**Key Insight:** The direction the proxy "faces" completely changes its purpose and benefits!
+**Key insight:** The direction the proxy "faces" completely changes its purpose and benefits!
 
 ---
 

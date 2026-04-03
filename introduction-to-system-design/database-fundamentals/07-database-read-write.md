@@ -421,7 +421,7 @@ Log-Structured Storage: Append only
 * Changes need to be saved
 * Slower and more complex
 
-**Key Insight:** Design your application architecture around the read/write ratio! Most applications are read-heavy, so optimize for reads first.
+**Key insight:** Design your application architecture around the read/write ratio! Most applications are read-heavy, so optimize for reads first.
 
 
 ---

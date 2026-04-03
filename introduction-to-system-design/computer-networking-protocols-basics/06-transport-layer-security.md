@@ -50,7 +50,7 @@ Your browser → "XK#9$mQ2@pL..." → [Encrypted gibberish] → Server
 
 ![img2](https://res.cloudinary.com/dretwg3dy/image/upload/v1762746655/186_t7yjsn.png)
 
-**Key Insight:** TLS creates a private tunnel through the public internet. Even if someone intercepts your data, they can't read it!
+**Key insight:** TLS creates a private tunnel through the public internet. Even if someone intercepts your data, they can't read it!
 
 ---
 

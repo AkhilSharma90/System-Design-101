@@ -60,7 +60,7 @@ Server publishes to: "home/living-room/commands" → Light receives update insta
 
 **MQTT** (Message Queuing Telemetry Transport) is a lightweight publish/subscribe messaging protocol designed for constrained devices and unreliable networks.
 
-**Key Insight:** Instead of constantly asking "Any news for me?", devices say "Tell me when there's news about X" and go to sleep until notified.
+**Key insight:** Instead of constantly asking "Any news for me?", devices say "Tell me when there's news about X" and go to sleep until notified.
 
 ---
 

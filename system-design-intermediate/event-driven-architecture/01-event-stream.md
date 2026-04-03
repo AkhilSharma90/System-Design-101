@@ -62,7 +62,7 @@ Event streams are immutable, append-only logs of events. They're like a video re
 - ✅ Multiple consumers read independently (parallel processing)
 - ✅ Source of truth for what happened (audit trail)
 
-**Key Insight:** Event streams transform the question from "What is the current state?" into "What happened, in order?"
+**Key insight:** Event streams transform the question from "What is the current state?" into "What happened, in order?"
 
 ---
 

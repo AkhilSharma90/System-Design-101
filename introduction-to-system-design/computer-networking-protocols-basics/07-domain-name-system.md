@@ -43,7 +43,7 @@ Browser: Connects to 142.250.185.46
 
 You never see the number!
 
-**Key Insight:** DNS is the reason the internet is usable by humans. It's one of the oldest and most critical internet protocols, created in 1983!
+**Key insight:** DNS is the reason the internet is usable by humans. It's one of the oldest and most critical internet protocols, created in 1983!
 
 ---
 

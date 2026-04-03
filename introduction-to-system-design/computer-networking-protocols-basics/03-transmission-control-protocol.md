@@ -22,7 +22,7 @@ premium: false
 * **Correct order** - Packets arrive in sequence, even if they traveled different routes
 * **Error-free data** - Corrupted packets are detected and retransmitted
 
-**Key Insight:** TCP transforms unreliable IP into a reliable communication channel!
+**Key insight:** TCP transforms unreliable IP into a reliable communication channel!
 
 ---
 

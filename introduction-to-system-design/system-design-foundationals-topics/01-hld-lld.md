@@ -22,7 +22,7 @@ premium: false
 * **High-Level Design (HLD)** - The "what" and "why"
 * **Low-Level Design (LLD)** - The "how" in detail
 
-**Key Insight:** You can't jump from idea to implementation without both levels of design!
+**Key insight:** You can't jump from idea to implementation without both levels of design!
 
 ---
 

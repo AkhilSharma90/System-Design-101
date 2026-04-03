@@ -23,7 +23,7 @@ Imagine this scenario: You write an email on Gmail and hit send to your friend u
 
 SMTP is like the international postal service agreement that makes mail deliverable worldwide. Just as a letter sent from Japan can reach Brazil because all countries follow universal postal standards, Gmail can email Outlook because they all speak SMTP!
 
-**Key Insight:** SMTP is the universal language that allows ANY email system to talk to ANY other email system!
+**Key insight:** SMTP is the universal language that allows ANY email system to talk to ANY other email system!
 
 ---
 

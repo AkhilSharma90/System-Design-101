@@ -68,7 +68,7 @@ Result: No waits, happy customers, efficient!
 
 All servers: Happy and balanced!
 
-**Key Insight:** Load balancers prevent any single server from being overwhelmed!
+**Key insight:** Load balancers prevent any single server from being overwhelmed!
 
 ---
 
@@ -392,7 +392,7 @@ Result: 0% failures! 🎉
 
 Load Balancer: "Welcome back, Server 3!"
 
-**Key Insight:** Health checks are CRITICAL for reliability!
+**Key insight:** Health checks are CRITICAL for reliability!
 
 ---
 

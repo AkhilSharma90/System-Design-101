@@ -66,7 +66,7 @@ In distributed systems, dependencies change and fail. If your **business rules**
 
 **Key insight:** In a distributed system, *network calls are not “implementation details”*. They are sources of latency, partial failure, retries, and inconsistency—Hexagonal Architecture helps you surface and manage that complexity.
 
-> **Key insight box:**
+> **Key insight:**
 > Hexagonal Architecture isn’t about “pretty folders.” It’s about **dependency direction**: the domain depends on *abstractions* (ports), while infrastructure depends on the domain.
 
 ---
@@ -99,7 +99,7 @@ In services:
 - Domain logic shouldn’t know HTTP headers, JSON shapes, Kafka partitioning, or ORM sessions.
 - It should operate on domain concepts: `Order`, `PaymentAuthorization`, `InventoryReservation`.
 
-> **Key insight box:**
+> **Key insight:**
 > **Ports** are the “order ticket format” and “supplier purchase order format.”
 > **Adapters** translate between the outside world and those formats.
 
@@ -123,7 +123,7 @@ Frameworks are great until:
 
 Hexagonal doesn’t ban frameworks—it **contains** them.
 
-> **Key insight box:**
+> **Key insight:**
 > Hexagonal Architecture is a *boundary management strategy*, not a framework boycott.
 
 ---
@@ -177,7 +177,7 @@ Pause & think.
 4) **Port** (inbound)
 </details>
 
-> **Key insight box:**
+> **Key insight:**
 > Ports are *stable contracts*. Adapters are *replaceable translators*.
 
 ---
@@ -209,7 +209,7 @@ For distributed systems, treat “adapters” as *policy-bearing components*:
 - outbound adapters enforce timeouts, retries, circuit breakers
 - inbound adapters enforce idempotency keys, rate limits, auth
 
-> **Key insight box:**
+> **Key insight:**
 > In distributed systems, adapters are not “dumb glue.” They are where you implement *resilience policy*.
 
 ---
@@ -244,7 +244,7 @@ Because network and infrastructure concerns leak into business logic:
 - HTTP status mapping inside domain
 - Kafka partition keys computed deep in aggregates
 
-> **Key insight box:**
+> **Key insight:**
 > If your domain imports an SDK for something that can fail over the network, you’ve coupled your business rules to failure mechanics.
 
 ---
@@ -316,7 +316,7 @@ async function kafkaCartCheckedOutConsumer(useCase, msg) {
 // Usage: wire httpPlaceOrderHandler(useCase) and kafkaCartCheckedOutConsumer(useCase, msg)
 ```
 
-> **Key insight box:**
+> **Key insight:**
 > Inbound adapters multiply; inbound ports stay stable.
 
 ---
@@ -352,7 +352,7 @@ Retries for payment authorization should live in:
 But: the domain may still need to decide *whether* to retry (business policy) vs adapter deciding *how* (technical policy). We’ll split that later.
 </details>
 
-> **Key insight box:**
+> **Key insight:**
 > Distributed systems force you to distinguish **business policy** (should we retry?) from **resilience mechanism** (how do we retry?).
 
 ---
@@ -403,7 +403,7 @@ Pause & think.
 4) likely leak (infrastructure failure types leaking into domain)
 </details>
 
-> **Key insight box:**
+> **Key insight:**
 > Domain should speak in domain terms. Failure types should be mapped at the boundary.
 
 ---
@@ -470,7 +470,7 @@ class HttpPaymentAdapter extends PaymentPort {
 // Usage: await new HttpPaymentAdapter(fetch, 'https://pay').authorize({amountCents:1000,currency:'USD',idempotencyKey:'req-1'},{deadlineMs:800})
 ```
 
-> **Key insight box:**
+> **Key insight:**
 > In distributed systems, a port is not just “a method signature.” It’s a **failure contract**.
 
 ---
@@ -534,7 +534,7 @@ def place_order(use_payment: PaymentPort, amount_cents: int, request_id: str, de
 # Usage: place_order(TcpPaymentAdapter('127.0.0.1', 9000), 1200, 'req-123', 800)
 ```
 
-> **Key insight box:**
+> **Key insight:**
 > Hexagonal boundaries help you *propagate* distributed-systems concerns without coupling to specific transports.
 
 ---
@@ -554,7 +554,7 @@ Interfaces alone don’t buy much unless:
 ### Distributed systems angle
 If your `PaymentPort` exposes Stripe-specific fields (like `paymentIntentId`) everywhere, you’ve created a “Stripe-shaped domain.”
 
-> **Key insight box:**
+> **Key insight:**
 > Ports should be **domain-shaped**, not vendor-shaped.
 
 ---
@@ -626,7 +626,7 @@ class PlaceOrderUseCase:
 # Usage: PlaceOrderUseCase(idem_store, order_repo).execute(PlaceOrderCommand('u1',[{'sku':'x','qty':1}],'evt-9'))
 ```
 
-> **Key insight box:**
+> **Key insight:**
 > In event-driven systems, idempotency is a first-class dependency—model it as a port.
 
 ---
@@ -698,7 +698,7 @@ def outbox_publisher_loop(store: OutboxStorePort, broker_host: str, broker_port:
 # Usage: run outbox_publisher_loop(outbox_store, '127.0.0.1', 9099, stop_event)
 ```
 
-> **Key insight box:**
+> **Key insight:**
 > Hexagonal architecture doesn’t replace distributed-systems patterns like Outbox—it gives them a clean home.
 
 ---
@@ -723,7 +723,7 @@ Pause & think—then check.
 All rows as shown are correct.
 </details>
 
-> **Key insight box:**
+> **Key insight:**
 > Put **protocol translation** at the edges, **business policy** in the center, and **resilience mechanics** near outbound calls.
 
 ---
@@ -769,7 +769,7 @@ When is hexagonal *not* worth it?
 **D.** But beware: distributed systems tend to grow dependencies quickly.
 </details>
 
-> **Key insight box:**
+> **Key insight:**
 > Hexagonal Architecture is an investment. It pays off when dependencies and change rates are high.
 
 ---
@@ -802,7 +802,7 @@ Hexagonal still helps:
 - isolate protocol translation
 - standardize resilience and observability
 
-> **Key insight box:**
+> **Key insight:**
 > Hexagonal is not tied to microservices. It’s a modularity technique that scales from monolith to distributed.
 
 ---
@@ -872,7 +872,7 @@ class PaymentAdapter:
 # Usage: handler = http_adapter(use_case, Tracer()); handler({'userId':'u1','items':[1]})
 ```
 
-> **Key insight box:**
+> **Key insight:**
 > Keep telemetry libraries at the edge; keep semantics in the center.
 
 ---
@@ -895,7 +895,7 @@ They can align, but they often differ:
 - Application layer decides which integration events to publish
 - Outbound adapter publishes to Kafka
 
-> **Key insight box:**
+> **Key insight:**
 > Don’t let external contracts dictate your internal model.
 
 ---
@@ -924,7 +924,7 @@ B) Keep port minimal; expose domain-level concepts; allow optional metadata
 - Prefer additive changes
 - Create separate ports for separate use cases (authorization vs capture)
 
-> **Key insight box:**
+> **Key insight:**
 > Port design is API design—treat it with the same rigor as public service APIs.
 
 ---
@@ -948,7 +948,7 @@ Pause & think.
 **1** is also a violation (serialization in domain), but it’s often easier to fix.
 </details>
 
-> **Key insight box:**
+> **Key insight:**
 > Vendor types should not cross port boundaries.
 
 ---
@@ -1042,7 +1042,7 @@ def http_adapter(use_case: PlaceOrderUseCase, req_json: dict, headers: dict) -> 
 But some teams keep transaction handling in the use case. The key is: the domain entities should not manage transactions.
 </details>
 
-> **Key insight box:**
+> **Key insight:**
 > Transactions are infrastructure. Keep them out of the domain; coordinate them at the application boundary.
 
 ---
@@ -1110,7 +1110,7 @@ def test_place_order_payment_timeout_does_not_persist_or_emit():
 # Usage: run test_place_order_payment_timeout_does_not_persist_or_emit() in your test runner
 ```
 
-> **Key insight box:**
+> **Key insight:**
 > Hexagonal architecture turns “distributed failure tests” into deterministic unit tests—when modeled correctly.
 
 ---
@@ -1171,7 +1171,7 @@ async function placeOrderSaga({ inventoryPort, paymentPort, orderRepo }, cmd) {
 // Usage: await placeOrderSaga({inventoryPort, paymentPort, orderRepo}, {userId:'u1',items:[...],amountCents:1000,requestId:'r1'})
 ```
 
-> **Key insight box:**
+> **Key insight:**
 > Ports make saga steps explicit and mockable; adapters keep network chaos out of the core.
 
 ---
@@ -1190,7 +1190,7 @@ Distributed systems note:
 - DDD helps define service boundaries
 - Hexagonal helps implement each service cleanly
 
-> **Key insight box:**
+> **Key insight:**
 > Use DDD to decide *what* services should be; use Hexagonal to decide *how* each service integrates with the world.
 
 ---
@@ -1215,7 +1215,7 @@ Pause & think.
 **3** is true; **4** breaks dependency direction.
 </details>
 
-> **Key insight box:**
+> **Key insight:**
 > Ports align to **use cases**, not tables.
 
 ---
@@ -1251,7 +1251,7 @@ Where does configuration live (URLs, credentials, topic names)?
 **C.** Configuration is infrastructure.
 </details>
 
-> **Key insight box:**
+> **Key insight:**
 > If your domain knows topic names, you’ve built a Kafka-shaped domain.
 
 ---
@@ -1312,7 +1312,7 @@ Write your answer as if you were explaining to a teammate.
 
 </details>
 
-> **Key insight box:**
+> **Key insight:**
 > A good hexagon design reads like an operational plan: clear contracts, clear failure handling, replaceable dependencies.
 
 ---

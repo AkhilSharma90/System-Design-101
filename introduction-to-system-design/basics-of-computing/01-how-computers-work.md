@@ -47,7 +47,7 @@ A COMPUTER \= A BUSTLING CITY
    \= Roads connecting everything
    Pathways for information to flow
 
-**Key Insight:** Just like a city needs government, workspace, archives, citizens, and roads to function, your computer needs all these components working together!
+**Key insight:** Just like a city needs government, workspace, archives, citizens, and roads to function, your computer needs all these components working together!
 
 ---
 

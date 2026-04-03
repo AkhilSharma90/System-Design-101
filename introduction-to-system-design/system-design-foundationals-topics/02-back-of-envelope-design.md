@@ -18,7 +18,7 @@ premium: false
 
 **The Answer:** Back of the envelope calculations! These are quick, rough estimates that get you in the right ballpark.
 
-**Key Insight:** You don't need exact numbers. Being within 10x is often good enough for design decisions!
+**Key insight:** You don't need exact numbers. Being within 10x is often good enough for design decisions!
 
 ---
 

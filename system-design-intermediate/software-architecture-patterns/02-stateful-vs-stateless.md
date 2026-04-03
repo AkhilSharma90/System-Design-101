@@ -270,7 +270,7 @@ The bank's database holds the state
 
 Stateless \= Server doesn't hold state"
 
-**Key Insight:** Stateless servers \+ Shared storage \= Best of both worlds!
+**Key insight:** Stateless servers \+ Shared storage \= Best of both worlds!
 
 ---
 

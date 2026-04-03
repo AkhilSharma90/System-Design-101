@@ -19,7 +19,7 @@ premium: false
 
 **The Answer:** IP (Internet Protocol) acts as the internet's **addressing and routing system**. Just like every house has a unique address so the postal service knows where to deliver mail, every device has an IP address so data packets know where to go.
 
-**Key Insight:** IP's primary job isn't to ensure delivery - it's to provide **addressing and routing** so packets can travel across multiple networks.
+**Key insight:** IP's primary job isn't to ensure delivery - it's to provide **addressing and routing** so packets can travel across multiple networks.
 
 ---
 

@@ -41,7 +41,7 @@ Status codes are the API's way of saying "Here's what happened with your request
 | POST /postsResponse: 201 CreatedLocation: /posts/43Body: { "id": 43, "title": "New Post" } |
 | :---- |
 
-**Key Insight:** Often includes a `Location` header pointing to the new resource!
+**Key insight:** Often includes a `Location` header pointing to the new resource!
 
 ---
 

@@ -48,7 +48,7 @@ premium: false
 * Perfect for flexible, rapidly changing data
 * Examples: MongoDB, Cassandra, Redis, DynamoDB
 
-**Key Insight:** The choice isn't about "better" - it's about the right tool for your specific problem!
+**Key insight:** The choice isn't about "better" - it's about the right tool for your specific problem!
 
 ---
 

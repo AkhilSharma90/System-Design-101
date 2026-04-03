@@ -28,7 +28,7 @@ Unlike TCP's reliability guarantees:
 * **No ordering** - Packets arrive as they come
 * **Minimal overhead** - Tiny 8-byte header vs TCP's 20+ bytes
 
-**Key Insight:** UDP trades reliability for speed. When timing matters more than perfection, UDP is your protocol!
+**Key insight:** UDP trades reliability for speed. When timing matters more than perfection, UDP is your protocol!
 
 ---
 

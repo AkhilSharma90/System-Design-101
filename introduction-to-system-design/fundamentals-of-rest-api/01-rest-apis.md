@@ -18,7 +18,7 @@ premium: false
 
 You (the customer) → Waiter (the API) → Kitchen (the server/database)
 
-**Key Insight:** APIs are the "waiters" of the internet. They take your requests, communicate with the backend (kitchen), and bring back responses. You never need to know what's happening behind the scenes!
+**Key insight:** APIs are the "waiters" of the internet. They take your requests, communicate with the backend (kitchen), and bring back responses. You never need to know what's happening behind the scenes!
 
 REST (Representational State Transfer) is simply a set of rules for how this "waiter service" should work on the web.
 
@@ -310,7 +310,7 @@ Like sending a sealed, locked letter - only the recipient can read it.
 
 **![img2](https://res.cloudinary.com/dretwg3dy/image/upload/v1762782123/https_cqkqci.png)**
 
-**Key Insight:** ALWAYS use HTTPS for anything sensitive. HTTP is like shouting your credit card number across a crowded room!
+**Key insight:** ALWAYS use HTTPS for anything sensitive. HTTP is like shouting your credit card number across a crowded room!
 
 **How to recognize HTTPS:**
 

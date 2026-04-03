@@ -57,7 +57,7 @@ But from these simple 0s and 1s, we get:
 
 ✓ The entire internet!
 
-**Key Insight:** Binary is like Morse code - simple signals that combine to express complex ideas!
+**Key insight:** Binary is like Morse code - simple signals that combine to express complex ideas!
 
 ---
 

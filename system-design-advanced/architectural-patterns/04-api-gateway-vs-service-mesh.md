@@ -8,6 +8,8 @@ premium: false
 
 # API Gateway vs Service Mesh
 
+> Two infrastructure patterns that look similar but solve completely different problems — one handles external traffic in, the other handles internal traffic between services.
+
 
 
 

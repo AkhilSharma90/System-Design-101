@@ -9,6 +9,8 @@ premium: false
 
 # RabbitMQ
 
+> A traditional message broker with sophisticated routing — direct, topic, fanout, and headers exchanges give you fine-grained control over message delivery.
+
 
 
 RabbitMQ: The Smart Message Router (When You Need Flexible Delivery)

@@ -9,6 +9,8 @@ premium: false
 
 # Graph Query Language
 
+> A query language that lets clients request exactly the data they need in a single request — solving REST's over-fetching and under-fetching problems.
+
 
 
 GraphQL:

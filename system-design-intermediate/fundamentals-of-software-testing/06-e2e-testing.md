@@ -9,6 +9,8 @@ premium: false
 
 # **🎭 End-to-End Testing: "Can Users Complete Their Journey?"**
 
+> Automating real user workflows through the browser — clicking, typing, navigating, and verifying that the full stack delivers the right experience.
+
 ### **What is E2E Testing?**
 
 E2E testing simulates **real user scenarios** from start to finish, using the actual UI/interface.

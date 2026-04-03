@@ -8,6 +8,8 @@ premium: false
 
 # Hexagonal Architecture
 
+> The architecture that lets you swap databases, frameworks, and APIs without touching business logic — by making your core domain completely independent of infrastructure.
+
 
 
 

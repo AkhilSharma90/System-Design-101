@@ -8,6 +8,8 @@ premium: false
 
 # Database Transactions
 
+> Grouping multiple database operations into a single atomic unit — either everything succeeds or everything rolls back, protecting your data from partial failures.
+
 
 
 

@@ -9,6 +9,8 @@ premium: false
 
 # Google Remote Procedure Call (GRPC)
 
+> High-performance RPC built on HTTP/2 and Protocol Buffers — 5-10x faster than REST+JSON for service-to-service communication.
+
 **GRPC**:
 
 Modern RPC Done Right (How Google Talks to Itself)

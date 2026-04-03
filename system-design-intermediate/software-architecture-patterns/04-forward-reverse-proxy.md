@@ -7,6 +7,8 @@ premium: false
 ---
 # **Forward Proxy vs Reverse Proxy**
 
+> Two types of proxies that face opposite directions and solve opposite problems — forward proxies protect clients, reverse proxies protect servers.
+
 # **🎯 Challenge : The Two-Way Gate Mystery**
 
 Imagine this scenario: You're in a secure office building. There are two types of security checkpoints:

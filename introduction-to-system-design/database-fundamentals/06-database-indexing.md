@@ -8,6 +8,8 @@ premium: false
 
 # Database Indexing
 
+> The single most impactful database optimization — indexes can turn a 10-second full table scan into a 1-millisecond lookup.
+
 
 
 

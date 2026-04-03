@@ -8,6 +8,8 @@ premium: false
 
 # Caching Patterns Comparison
 
+> A side-by-side comparison of all caching strategies — when to use each one, and how production systems combine them.
+
 
 Caching Patterns Showdown: Choosing Your Champion
 🎯 The Ultimate Challenge: Which Pattern Should You Choose?

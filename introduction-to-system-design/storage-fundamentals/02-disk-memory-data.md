@@ -8,6 +8,8 @@ premium: false
 
 # Memory vs Disk
 
+> RAM is 1,000x faster than SSD, but costs 30x more per GB — understanding this hierarchy is fundamental to designing cost-effective, high-performance systems.
+
 
 
 ## **💾 Memory vs Disk: The Speed Hierarchy**

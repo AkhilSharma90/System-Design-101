@@ -10,6 +10,8 @@ premium: false
 
 # **Integration Testing: "Do Components Work Together?"**
 
+> The tests that catch what unit tests can't — verifying that your services, databases, and APIs actually work together correctly.
+
 ### **What is Integration Testing?**
 
 Integration testing verifies that **different modules/services communicate correctly** when combined.

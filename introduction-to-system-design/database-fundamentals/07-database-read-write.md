@@ -8,6 +8,8 @@ premium: false
 
 # Database Read Write Operations
 
+> Understanding the performance characteristics of reads vs writes — and the techniques that let you scale each one independently.
+
 
 ##  **Read vs Write Operations - Understanding the Flow**
 

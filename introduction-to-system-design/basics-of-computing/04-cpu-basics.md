@@ -8,6 +8,8 @@ premium: false
 
 # Basics of CPU
 
+> Understanding how the CPU executes instructions helps you reason about performance bottlenecks — whether your system is CPU-bound or I/O-bound changes your optimization strategy.
+
 
 
 

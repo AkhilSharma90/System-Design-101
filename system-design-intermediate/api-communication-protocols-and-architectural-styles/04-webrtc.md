@@ -9,6 +9,8 @@ premium: false
 
 # Web Real Time Communication (WEBRTC)
 
+> The browser standard for peer-to-peer audio, video, and data — powering Google Meet, Discord, and every modern video calling application.
+
 
 
 

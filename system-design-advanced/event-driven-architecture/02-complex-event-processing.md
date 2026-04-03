@@ -8,6 +8,8 @@ premium: false
 
 # Complex Event Processing
 
+> Detecting meaningful patterns across millions of events in real-time — like "3 failed logins from different IPs within 5 minutes" triggering a fraud alert.
+
 
 
 

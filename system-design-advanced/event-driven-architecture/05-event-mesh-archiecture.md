@@ -8,6 +8,8 @@ premium: false
 
 # Event Mesh Architecture
 
+> A network of interconnected event brokers that routes events dynamically across clouds, regions, and environments — enabling truly global event-driven architectures.
+
 
 
 

@@ -8,6 +8,8 @@ premium: false
 
 # Hot, Warm, and Cold Data
 
+> Not all data is accessed equally — 90% of your storage costs may be serving data that's rarely touched, and tiering fixes that.
+
 
 ## **🌡️ Hot vs Cold Data: The Temperature Model**
 

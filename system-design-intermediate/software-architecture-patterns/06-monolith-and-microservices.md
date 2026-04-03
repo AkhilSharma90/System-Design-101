@@ -8,6 +8,8 @@ premium: false
 
 # Monoliths to Microservices
 
+> The spectrum from a single deployable unit to independently deployed services — and why most teams should start monolithic and extract services only when they need to.
+
 ## **🏢 Monolith vs Microservices: The Building Story**
 
 Let’s learn about two companies building their office spaces.

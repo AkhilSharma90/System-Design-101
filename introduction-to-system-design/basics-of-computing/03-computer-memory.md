@@ -8,6 +8,8 @@ premium: false
 
 # Computer Memory Hierarchy
 
+> A hierarchy from nanosecond registers to multi-second tape — each layer trades speed for capacity, and understanding this shapes how you design caching, buffering, and storage.
+
 
 
 ## **💾 3: Memory Hierarchy - The Speed Pyramid**

@@ -8,6 +8,8 @@ premium: false
 
 # Write Through Cache
 
+> A caching pattern that keeps the cache perfectly in sync with the database — by writing to both on every update, at the cost of higher write latency.
+
 Write-Through Cache: The Art of Writing Everywhere at Once
 🎯 Challenge 1: The Consistency Guarantee Problem
 

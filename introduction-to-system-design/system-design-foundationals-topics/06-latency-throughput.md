@@ -8,6 +8,8 @@ premium: false
 
 # Latency vs Throughput
 
+> Two metrics that define system performance — how fast a single request completes and how many requests the system handles per second.
+
 
 
 

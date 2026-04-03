@@ -8,6 +8,8 @@ premium: false
 
 # Event Sourcing at Scale
 
+> Instead of storing current state, store every change that ever happened — then derive any view of the data by replaying the event log.
+
 
 
 

@@ -8,6 +8,8 @@ premium: false
 
 # Cache-Aside (Lazy Loading)
 
+> The most common caching pattern — your application checks the cache first, falls back to the database on a miss, and populates the cache for next time.
+
 
 
 Cache-Aside (Lazy Loading): The Art of Fetching Only What You Need

@@ -8,6 +8,8 @@ premium: false
 
 # Read Through Cache
 
+> Let the cache handle database fetches automatically — your application only talks to the cache, and it transparently loads data on a miss.
+
 
 
 

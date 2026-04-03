@@ -8,6 +8,8 @@ premium: false
 
 # Double Ratchet Algorithm
 
+> The algorithm that gives Signal, WhatsApp, and Matrix end-to-end encryption — where compromising one message key reveals nothing about past or future messages.
+
 
 
 

@@ -7,6 +7,8 @@ premium: false
 ---
 # **API Testing: "Do Interfaces Work Correctly?"**
 
+> Validating that your API contracts are correct — every endpoint returns the right status codes, headers, and response shapes.
+
 ### **What is API Testing?**
 
 API testing verifies that **endpoints return correct responses** for various inputs, focusing on the interface layer.

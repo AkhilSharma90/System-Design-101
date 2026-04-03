@@ -8,6 +8,8 @@ premium: false
 
 # LSM Trees and Compaction Strategies
 
+> The storage engine behind Cassandra, RocksDB, and LevelDB — optimized for write-heavy workloads by turning random writes into sequential I/O.
+
 
 
 

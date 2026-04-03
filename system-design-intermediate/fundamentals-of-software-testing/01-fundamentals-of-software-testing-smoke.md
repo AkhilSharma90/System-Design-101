@@ -8,6 +8,8 @@ premium: false
 
 # **Software Testing:**
 
+> The fastest way to know if a deployment is fundamentally broken — a quick sanity check that runs in minutes and gates every release.
+
 #  **The New Car Mystery**
 
 Imagine you just built a car from scratch. Before selling it, what would you test?

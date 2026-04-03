@@ -8,6 +8,8 @@ premium: false
 
 # Two-Phase and Three-Phase Commit
 
+> The classic protocols for atomic commits across multiple databases — and why modern systems have largely moved away from them.
+
 
 
 

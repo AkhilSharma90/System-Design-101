@@ -8,6 +8,8 @@ premium: false
 
 # Dead Letter Queues
 
+> Where messages go when they can't be processed — a safety net that captures failed messages for investigation instead of silently dropping them.
+
 Dead Letter Queues: The Safety Net for Failed Messages (Where Bad Messages Go to Be Debugged)
 🎯 Challenge 1: The Undeliverable Mail Problem
 Imagine this scenario: You're a postal worker delivering mail. You encounter several problems:

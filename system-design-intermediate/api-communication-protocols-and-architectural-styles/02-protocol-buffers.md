@@ -10,6 +10,8 @@ premium: false
 
 # Protocol Buffers
 
+> Google's binary serialization format — smaller, faster, and more type-safe than JSON, with auto-generated code in any language.
+
 
 **Protocol Buffers (Protobuf):**
 

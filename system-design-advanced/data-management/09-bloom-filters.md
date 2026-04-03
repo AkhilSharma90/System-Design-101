@@ -8,6 +8,8 @@ premium: false
 
 # Bloom Filters
 
+> A data structure that uses 1.2 GB to check if any of 1 billion URLs have been seen before — with zero false negatives and a tunable false positive rate.
+
 
 
 

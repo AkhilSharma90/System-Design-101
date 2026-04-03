@@ -8,6 +8,8 @@ premium: false
 
 # Hot Partition Detection and Mitigation
 
+> When one database shard receives 100x more traffic than the others, your entire system's performance is limited by that single partition.
+
 
 
 

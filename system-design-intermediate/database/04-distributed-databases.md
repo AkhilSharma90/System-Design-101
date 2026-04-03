@@ -8,6 +8,8 @@ premium: false
 
 # Distributed Databases
 
+> Databases that spread data across multiple nodes and regions — combining the scalability of NoSQL with the transactional guarantees of SQL.
+
 
 
 

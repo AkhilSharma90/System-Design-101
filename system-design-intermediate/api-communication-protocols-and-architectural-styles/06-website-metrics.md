@@ -9,6 +9,8 @@ premium: false
 
 # Important Website Metrics
 
+> The metrics that tell you whether your website is fast enough — Core Web Vitals, TTFB, and the numbers that affect both user experience and SEO.
+
 ## **📊 Important Website Metrics: The Health Vital Signs**
 
 When you go to a doctor, they check your vital signs: blood pressure, heart rate, temperature. Websites have vital signs too! Let’s see the most  important ones.

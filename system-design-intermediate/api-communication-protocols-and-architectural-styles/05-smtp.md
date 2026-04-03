@@ -13,6 +13,8 @@ premium: false
 
 # **SMTP: The Postal Service of the Internet (And Why Your Email Actually Works)**
 
+> The 40-year-old protocol that still powers email delivery — understanding how messages hop between servers on their way to your inbox.
+
 ## **🎯 Challenge 1: The Email Mystery**
 
 Imagine this scenario: You write an email on Gmail and hit send to your friend using Outlook. Within seconds, your message travels across continents, through multiple servers, gets checked for spam, and lands perfectly in their inbox.

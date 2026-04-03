@@ -11,6 +11,8 @@ premium: false
 
 # Anti-Entropy and Read Repair (Final)
 
+> Two complementary mechanisms that keep distributed replicas in sync — one fixes inconsistencies proactively in the background, the other fixes them reactively at read time.
+
 
 ---
 

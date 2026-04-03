@@ -8,6 +8,8 @@ premium: false
 
 # Event Streaming Technologies
 
+> A comparison of the major event streaming platforms — Kafka, Pulsar, and Kinesis, each with different strengths in throughput, latency, and operational complexity.
+
 ## ⚡ Event Stream Technologies
 
 Event streaming platforms enable real-time data processing by allowing producers to publish events and consumers to subscribe to and process those events. These technologies form the backbone of modern event-driven architectures.

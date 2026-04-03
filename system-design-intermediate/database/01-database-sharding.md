@@ -8,6 +8,8 @@ premium: false
 
 # Database Sharding
 
+> Splitting your database horizontally across multiple servers — the technique Instagram, Discord, and Uber use when a single database can't handle the load.
+
 
 
 Database Sharding: Breaking Up Your Data for Massive Scale (Instagram's Growth Secret)

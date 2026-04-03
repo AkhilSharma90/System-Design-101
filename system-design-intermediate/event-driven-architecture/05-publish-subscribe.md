@@ -8,6 +8,8 @@ premium: false
 
 # Publish Subscribe Pattern
 
+> The pattern that decouples event producers from consumers — publishers send to a topic, subscribers choose which topics to listen to, and neither knows about the other.
+
 
 **Pub-Sub Pattern:**
 

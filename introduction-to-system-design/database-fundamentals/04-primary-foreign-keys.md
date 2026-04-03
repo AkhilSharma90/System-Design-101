@@ -8,6 +8,8 @@ premium: false
 
 # Primary and Foreign Keys
 
+> The foundation of relational database design — primary keys identify rows uniquely, foreign keys create relationships between tables, and together they enforce data integrity.
+
 
 
 

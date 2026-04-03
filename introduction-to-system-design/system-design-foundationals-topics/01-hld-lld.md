@@ -8,6 +8,8 @@ premium: false
 
 # High Level and Low Level Design
 
+> Two levels of system design that every engineer must master — high-level design decides what to build and why, low-level design decides exactly how to build it.
+
 
 ## **HLD vs LLD - The Architect's Tale**
 

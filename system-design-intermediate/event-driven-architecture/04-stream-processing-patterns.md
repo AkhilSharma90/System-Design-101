@@ -8,6 +8,8 @@ premium: false
 
 # Stream Processing Patterns
 
+> Processing data continuously as it arrives rather than in batches — windowing, joining, and aggregating streams in real-time.
+
 
 ## 💪 Stream Processing Patterns
 

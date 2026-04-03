@@ -8,6 +8,8 @@ premium: false
 
 # Database Replication
 
+> Copying data across multiple database nodes for availability and read scaling — and the consistency trade-offs that come with every replication strategy.
+
 
 
 

@@ -8,6 +8,8 @@ premium: false
 
 # Load Balancing
 
+> Distributing incoming traffic across multiple servers so no single machine becomes a bottleneck — the gateway to horizontal scaling.
+
 ## **Load Balancing Basics - The Traffic Director**
 
 ### **🎯 Challenge 4: The Restaurant Host Problem**

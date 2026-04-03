@@ -7,6 +7,8 @@ premium: false
 ---
 
 # Cache Eviction Techniques
+
+> When your cache is full and a new item needs space, something must go — the eviction policy you choose determines whether you keep the most valuable items or throw them away randomly.
 -
 
 

@@ -9,6 +9,8 @@ premium: false
 
 # Stress Testing
 
+> Pushing your system past its limits to find the breaking point — because you'd rather discover it in a test than during Black Friday.
+
 
 
 

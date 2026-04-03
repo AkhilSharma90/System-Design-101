@@ -8,6 +8,8 @@ premium: false
 
 # Kafka
 
+> The distributed commit log that powers real-time data at LinkedIn, Uber, and Netflix — not just a message queue, but a persistent, replayable event store.
+
 
 **Kafka:**
 

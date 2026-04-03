@@ -8,6 +8,8 @@ premium: false
 
 # Linearizability and Sequential Consistency
 
+> The two strongest consistency models in distributed systems — and the real-world cost of guaranteeing that every read returns the most recent write.
+
 
 
 

@@ -8,6 +8,8 @@ premium: false
 
 # Client Server Architecture
 
+> The foundational architecture pattern of the web — clients request, servers respond, and the separation of concerns enables everything from mobile apps to microservices.
+
 
 
 

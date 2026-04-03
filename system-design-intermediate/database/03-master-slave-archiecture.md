@@ -8,6 +8,8 @@ premium: false
 
 # Master-Slave Architecture
 
+> The simplest database scaling pattern — one master handles all writes, replicas handle reads, and automated failover keeps things running when the master goes down.
+
 
 
 

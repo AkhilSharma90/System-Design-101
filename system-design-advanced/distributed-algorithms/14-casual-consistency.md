@@ -8,6 +8,8 @@ premium: false
 
 # Causal Consistency
 
+> A practical middle ground between strong and eventual consistency — preserving cause-and-effect ordering without the performance cost of linearizability.
+
 
 
 

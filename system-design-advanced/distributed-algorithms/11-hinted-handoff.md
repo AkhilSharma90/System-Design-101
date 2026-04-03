@@ -8,6 +8,8 @@ premium: false
 
 # Hinted Handoff
 
+> A technique that improves write availability during temporary node failures — by having a healthy node temporarily accept writes on behalf of an unavailable one.
+
 
 
 

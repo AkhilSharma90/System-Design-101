@@ -8,6 +8,8 @@ premium: false
 
 # Synchronous and Asynchronous Communication Patterns
 
+> The fundamental choice in distributed communication — block and wait for a response, or fire-and-forget and process the result later.
+
 ## **📞 Synchronous vs Asynchronous Communication: The Phone Call vs Email Story**
 
 ### **The Dinner Invitation Scenario**

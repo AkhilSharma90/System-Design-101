@@ -8,6 +8,8 @@ premium: false
 
 # Write Behind Cache
 
+> The fastest caching pattern for writes — acknowledge immediately from cache and flush to the database asynchronously in the background.
+
 
 
 

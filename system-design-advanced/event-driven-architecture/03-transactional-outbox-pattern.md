@@ -8,6 +8,8 @@ premium: false
 
 # Transactional Outbox Pattern
 
+> The pattern that solves the dual-write problem — ensuring your database write and event publish either both happen or neither does.
+
 
 
 

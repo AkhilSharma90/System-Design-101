@@ -8,6 +8,8 @@ premium: false
 
 # Edge Computing and Edge Caching
 
+> Moving computation and content closer to users — turning 150ms round trips into 15ms responses by running code at the network edge.
+
 
 
 

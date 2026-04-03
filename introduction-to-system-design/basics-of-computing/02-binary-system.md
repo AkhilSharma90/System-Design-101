@@ -8,6 +8,8 @@ premium: false
 
 # Binary System
 
+> Every image, video, and message on the internet is ultimately a sequence of 0s and 1s — understanding binary is understanding how computers think.
+
 
 ## **🔢 2. Binary System - The Language of Computers**
 

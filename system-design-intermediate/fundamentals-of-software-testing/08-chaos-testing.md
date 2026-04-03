@@ -8,6 +8,8 @@ premium: false
 
 # Chaos Testing
 
+> Deliberately breaking things in production to prove your system can handle it — the practice Netflix pioneered with Chaos Monkey.
+
 
 
 
